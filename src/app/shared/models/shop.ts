@@ -1,0 +1,31 @@
+export interface Shop{
+    userId: string,
+    shopname: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    registeredAt: string,
+    isAdmin: boolean
+}
+
+export class AppShopUser implements Shop {
+
+    userId: string;
+    shopname: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    registeredAt: string;
+    isAdmin: boolean;
+     
+    constructor(_userId,_shopname,_firstname,_lastname,_email,_registeredAt,_isAdmin) {
+        this.userId = _userId;
+        this.shopname = _shopname;
+        this.firstName = _firstname;
+        this.lastName = _lastname;
+        this.email = _email;
+        this.registeredAt = _registeredAt;
+        this.isAdmin = _isAdmin;
+    }
+    
+}

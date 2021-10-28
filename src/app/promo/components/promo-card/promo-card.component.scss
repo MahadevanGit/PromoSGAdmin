@@ -1,0 +1,72 @@
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .app-button {
+    border: 1px thin currentColor;
+    padding: 0 15px;
+    line-height: 34px;
+    margin-right: 20px;
+  }
+
+  .div-action-menu{
+    display: contents;
+  }
+
+.span-badge{
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(141, 110, 110);
+  color: white;
+  font-size: 10px;
+}
+
+.span-badge::after{
+  content: "\a";
+  white-space: pre;
+}
+
+.gr{
+  background: rgb(73, 156, 91);
+}
+
+
+
+
+.mat-grid-tile, .mat-figure {
+  background: rgb(156, 226, 171);
+  border-radius: 15px;
+}
+
+.span-dark-green{
+  background: rgb(73, 156, 91);
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.mat-grid-promo-tile{
+  background: rgb(73, 156, 91);
+  cursor: pointer;
+  text-align: center;
+  font-size: small;
+}
+
+.mat-grid-promo-yellow-tile{
+  background: rgb(230, 221, 148);
+  cursor: pointer;
+  text-align: center;
+  font-size: small;
+}
+
+.mat-grid-promo-dark-yellow-tile{
+  background: rgb(187, 174, 58);
+  cursor: pointer;
+  text-align: center;
+  font-size: small;
+}
+ 

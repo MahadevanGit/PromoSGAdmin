@@ -1,0 +1,22 @@
+
+
+<div>
+
+  <promoSg-navbar-header [sidenav]="snav"></promoSg-navbar-header>
+
+  <mat-sidenav-container class="sidenav-container" >
+    <mat-sidenav #snav mode="side" opened>
+      <promo-menu-left *ngIf="appUser"></promo-menu-left>
+    </mat-sidenav>
+
+    <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
+      <div class="main_content">
+        <div style="padding-left: 90px;padding-right: 90px;padding-top: 30px;">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
+

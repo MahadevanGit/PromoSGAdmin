@@ -1,0 +1,53 @@
+  .app-button {
+    border: 1px thin currentColor;
+    padding: 0 15px;
+    line-height: 34px;
+    margin-right: 20px;
+  }
+
+  // mat-form-field{
+  //   padding-right: 10px;
+  // }
+
+  mat-button-toggle-group {
+    margin-left: 12px;
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .mat-list-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .mat-list-base{
+    height: 450px;
+    width: auto;
+    overflow: auto;
+  }
+
+  //breadcrump start
+  div.breadcrumb{
+    background-color: #eeeeee;
+    padding: 10px 16px;
+  }
+  div.breadcrumb div span {
+    font-size: large;
+    font-weight: 500;
+  }
+  .sp{
+    cursor: pointer;
+  }
+
+  .sp-selected{
+    cursor: pointer;
+    color: rgb(9, 79, 207);
+  }
+
+  div.breadcrumb div span.sp:hover {
+    color: rgb(9, 79, 207);
+    text-decoration: underline;
+  }
+  //breadcrump end

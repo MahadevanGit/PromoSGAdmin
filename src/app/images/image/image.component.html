@@ -1,0 +1,75 @@
+    <div class="card">
+        <div class="card-body">
+            <!-- Reactive form -->
+          <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+            <div class="row">
+                  <div class="col-md-6">
+
+                    <label for="upload">Select file to upload</label>
+                <div class="form-group">
+                    <input type="file" accept="image/*" class="form-control mb-4" #fileUploader formControlName="imageUrl"
+                    (change)="showPreview($event)">     
+
+                    <small class="form-text text-danger mb-4" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">
+                     <p>This field is required.</p> 
+                    </small>
+                </div>
+
+            <label for="upload">Caption</label>
+                <div class="form-group">
+                    <input class="form-control mb-4" formControlName="caption">
+
+                    <small class="form-text text-danger mb-4" *ngIf="isSubmitted && formControls.caption.errors?.required">
+                     <p>This field is required.</p> 
+                    </small>
+                </div>
+
+            <label for="category">Category</label>
+                <div class="form-group">
+                    <select #category formControlName="category" type="select" class="form-control mb-4" required>
+                        <option></option>
+                        <option *ngFor="let c of categoryList"  [value]="c.key">
+                            {{c.value}} 
+                        </option>
+                      </select>
+                        <small class="form-text text-danger mb-4"  *ngIf="isSubmitted && formControls.category.errors?.required">
+                            <p>category is required.</p> 
+                        </small>
+                </div>
+
+                  </div>
+                  <div class="col-md-6" style="text-align: center;">
+                    <div class="text-center mb-4">
+                        <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+                      </div>
+                      
+                  </div>
+
+
+                  
+            </div>
+
+            <div class="row">
+                <!-- Action button  -->
+                <div class="col-md-6" style="text-align: center;">
+                   <button class="app-button" mat-stroked-button color="primary" type="submit" >
+                       Save   
+                   </button> 
+                   <button class="app-button" mat-stroked-button color="basic" type="button" (click)="resetForm()">
+                       Clear
+                   </button>
+
+               </div>
+               <div class="col-md-6" style="text-align: center;">
+                   <button class="app-button" mat-stroked-button color="basic" routerLink = "/image/list">
+                       Go To Gallery 
+                   </button>
+               </div>
+
+                  
+            </div>
+            
+
+            </form>
+        </div>
+      </div>

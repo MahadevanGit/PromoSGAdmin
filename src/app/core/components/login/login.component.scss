@@ -1,0 +1,21 @@
+.login-card-div{
+    margin-top: 175px;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-card {
+      width: 350px;
+  }
+
+  .ele-div{
+    text-align: center;
+  }
+
+  .app-button {
+    border: 1px thin currentColor;
+    padding: 0 15px;
+    line-height: 34px;
+    margin-right: 20px;
+  }

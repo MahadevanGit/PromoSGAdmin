@@ -1,0 +1,92 @@
+<div>
+
+
+      <div class="row">
+        
+        <div  class="col-md-12">
+          <!-- breadcrumb -->
+          <div class="col-md-12 "> 
+            <div class="col-md-10 row breadcrumb" *ngIf="!isAdmin && (assignPromoCard || stampPromoCard)">
+                <div class="col-md-4">
+                  <span>{{currentCustomer && (currentCustomer.firstname + ' ' + currentCustomer.lastname)}}</span>
+                </div>
+                <div class="col-md-3">
+                  <span [ngClass]="assignPromoCard ? 'sp-selected' : 'sp'" [routerLink]="['/promocarddb/assignpromocard/',customerId]">Assign promo card</span>
+                </div>
+                <div class="col-md-3">
+                  <span [ngClass]="stampPromoCard ? 'sp-selected' : 'sp'" [routerLink]="['/promocarddb/stamppromocard/',customerId]">Stamp promo card</span>
+                </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Search -->
+        <div  class="col-md-2">
+          <mat-form-field appearance="standard">
+            <mat-label>Search</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="search"  (keyup)="applyFilter($event)" placeholder="Ex. promo title" #input>
+          </mat-form-field>
+        </div>
+
+        <div  class="col-md-2" style="margin-top: 15px;">
+          <!-- Create promo card btn -->
+          <mat-button-toggle-group  #group="matButtonToggleGroup" value="list"
+          appearance="legacy"
+          name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="list">
+              <mat-icon>view_list</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="grid">
+              <mat-icon>view_module</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="new" *ngIf="!isAdmin && !assignPromoCard && !stampPromoCard"  
+            mat-button routerLink = "/promocard/new" 
+            style="color:green">
+            <b>Create Promo card</b>
+            </mat-button-toggle>
+           
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <!-- List view -->
+      <div class="row"  *ngIf="group.value == 'list'">
+        <div class="col-md-4">
+          <mat-selection-list #promoCardSelected [multiple]="false"  >
+            <mat-list-option
+              (click)="getpromoCard(promoCardSelected.selectedOptions.selected[0]?.value.key)"
+              *ngFor="let promoCard of promoCardList, let i = index"
+              [selected]="promoCard && i == 0"
+              [value]="promoCard" >
+              <mat-icon mat-list-icon>stars</mat-icon>
+              <div mat-line>{{promoCard.title}}</div>
+              <div mat-line style="font-size:x-small;">
+                <b>Valid from :</b> {{promoCard.startDate  | date}} </div>
+              <div mat-line style="font-size:x-small;">
+                <b>Valid till :</b> {{promoCard.expiryDate | date}} </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+        <div class="col-md-7">
+          <p>
+            <promo-card [promoData]="promoCardObj" *ngIf="promoCardObj" [canEdit]="false" [action]="actionData"></promo-card>
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Grid view -->
+      <div *ngIf="group.value == 'grid'">
+          <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="45%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
+              <promo-card [promoData]="promoCard" *ngIf="promoCard" [canEdit]="false" [action]="actionData"></promo-card>
+            </div>
+          </div>
+      </div>
+
+</div>
+

@@ -1,0 +1,74 @@
+<!-- Default form register -->
+<div>
+    <mat-card>
+        <mat-card-title>Add shop outlets</mat-card-title>
+        <hr>
+         <mat-card-content>
+            <form [formGroup]="outletForm" (ngSubmit)="onSubmit()"> 
+                <div class="row">
+
+                    
+
+                    <div class="col-md-4">
+                        <!-- Search -->
+                    <div>
+                        <mat-form-field appearance="standard">
+                        <mat-label>Search</mat-label>
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input 
+                        matInput type="search"  
+                        (keyup)="applyFilter($event)" 
+                        placeholder="Search by street or zip code" 
+                        #input>
+                        </mat-form-field>
+                    </div>
+
+                        <mat-selection-list [multiple]="false"  >
+                          <mat-list-option 
+                            *ngFor="let outlet of outletList, let i = index"
+                            [value]="outlet" >
+                            <mat-icon mat-list-icon>location_on</mat-icon>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="listHeader1">{{outlet.address.block.toUpperCase() === 'NA' ? '' : outlet.address.block }} {{outlet.address.street}}</div>
+                                    <div mat-line>#{{outlet.address.level}}-{{outlet.address.unit}}</div>
+                                    <div mat-line style="font-size:x-small;">{{outlet.address.city}} Pin : {{outlet.address.zip}} </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div style="padding: 25px;">
+                                        <mat-icon color="warn" (click)="removeOutlet(outlet)">delete_forever</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          </mat-list-option>
+                        </mat-selection-list>
+                      </div>
+
+
+                    <div class="col-md-8">
+                        <div>
+                            <app-address [title]="addressTitle" [parentForm]="outletForm"></app-address>
+                        </div>
+
+                        <div class="div-app-button">
+                            <button class="app-button" [disabled]="!outletForm.valid" mat-stroked-button color="primary" type="submit" >
+                                Add 
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <hr>
+                        Terms of service  
+                        <p>By clicking
+                        <em>Register</em> you agree to our
+                        <a>terms of service</a>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>   
+<br>

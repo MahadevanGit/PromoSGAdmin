@@ -1,0 +1,55 @@
+<div class="form-group" [formGroup]="parentForm">
+
+    <div formGroupName="address" class="form-group">
+        <h2 class="formgroupheader">{{title}}</h2>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="block">Building/BLock </label>
+                <div class="form-group">
+                    <input placeholder="If no block number then type NA" id="block" type="text" formControlName="block" [class.is-invalid]="addressBlock.invalid && addressBlock.touched" class="form-control" required>
+                    <small  *ngIf="addressBlock.errors && addressBlock.invalid && addressBlock.touched" class="text-danger">Building/Block is required.</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="level">Level </label>
+                <div class="form-group">
+                    <input id="level" type="number" min="1" formControlName="level" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="unit">Unit </label>
+                <div class="form-group">
+                    <input id="unit" type="number" min="1" formControlName="unit" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        
+        <label for="street">Street </label>
+        <span [ngClass]="addressStreet.valid ? '' : 'requiredStar'">*</span>
+        <div class="form-group">
+            <input id="street" type="text" formControlName="street" class="form-control" [class.is-invalid]="addressStreet.invalid && addressStreet.touched" required>
+            <small *ngIf="addressStreet.errors && addressStreet.invalid && addressStreet.touched" class="text-danger">Street at least 2 characters required.</small>
+        </div>
+
+        <label for="city">City </label>
+        <span [ngClass]="addressCity.valid ? '' : 'requiredStar'">*</span>
+        <div class="form-group">
+            <input id="city" class="form-control" formControlName="city" [class.is-invalid]="addressCity.invalid && addressCity.touched" type="text" required>
+            <small *ngIf="addressCity.errors && addressCity.invalid && addressCity.touched" class="text-danger">City at least 2 characters required.</small>
+        </div>
+
+        <label for="zip">Zip Code </label>
+        <span [ngClass]="addressZip.valid ? '' : 'requiredStar'">*</span>
+        <div class="form-group">
+            <input id="zip" class="form-control" formControlName="zip" [class.is-invalid]="addressZip.invalid && addressZip.touched" type="text" required>
+            <small *ngIf="addressZip.errors && addressZip.invalid && addressZip.touched" class="text-danger">Zip code accepts only number and minimum length is 4 required.</small>
+        </div>
+
+    </div>
+
+
+</div>  
+
+

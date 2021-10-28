@@ -1,0 +1,28 @@
+<div>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <h2>Product image gallery</h2>
+    </div> -->
+    <div class="col-md-2">
+    <mat-button-toggle-group  #group="matButtonToggleGroup" value="list"
+      appearance="legacy"
+      name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="list" mat-button routerLink = "/image/list/" style="color:green">
+        <mat-icon>view_list</mat-icon><b> Product image gallery</b> 
+      </mat-button-toggle>
+      <mat-button-toggle *ngIf="!isAdmin" value="new" mat-button routerLink = "/image/upload/" style="color:green">
+        <mat-icon>add_box</mat-icon><b> Add image</b> 
+      </mat-button-toggle> 
+      <mat-button-toggle value="dashboard" mat-button routerLink = "/dashboard/" style="color:green">
+        <mat-icon>dashboard</mat-icon><b> Dashboard</b>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    </div>
+    
+    
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

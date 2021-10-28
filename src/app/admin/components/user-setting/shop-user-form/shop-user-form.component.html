@@ -1,0 +1,103 @@
+<!-- Default form register -->
+<div>
+    <mat-card>
+        <mat-card-title>Update</mat-card-title>
+        <hr>
+         <mat-card-content>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> 
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="formgroupheader">Shop info</h2>
+                        <label for="shopName">Shop Name</label>
+                        <span [ngClass]="shopName.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="shop-name" class="form-control" [class.is-invalid]="shopName.invalid && shopName.touched" type="text" formControlName="shopName" required>
+                            <small *ngIf="shopName.errors && shopName.invalid && shopName.touched" class="text-danger">Shop name at least 5 characters required.</small>
+                        </div>
+                    
+                        <label for="first-name">First Name </label>
+                        <span [ngClass]="firstName.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="first-name" class="form-control" [class.is-invalid]="firstName.invalid && firstName.touched" type="text" formControlName="firstName" required>
+                            <small *ngIf="firstName.errors && firstName.invalid && firstName.touched" class="text-danger">First name at least 2 characters required.</small>
+                        </div>
+                    
+                
+                        <label for="last-name">Last Name </label>
+                        <span [ngClass]="lastName.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="last-name" class="form-control" [class.is-invalid]="lastName.invalid && lastName.touched" type="text" formControlName="lastName" required>
+                            <small *ngIf="lastName.errors && lastName.invalid && lastName.touched" class="text-danger">Last name at least 2 characters required.</small>
+                        </div>
+
+                        <label for="telephone">Telephone </label>
+                        <span [ngClass]="telephone.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="telephone" class="form-control" [class.is-invalid]="telephone.invalid && telephone.touched" type="text" formControlName="telephone" required>
+                            <small *ngIf="telephone.errors && telephone.invalid && telephone.touched" class="text-danger">Telephone accepts only number and minimum length is 8 required.</small>
+                        </div>
+
+                        <label for="fax">Fax </label>
+                        <span [ngClass]="fax.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="fax" class="form-control" [class.is-invalid]="fax.invalid && fax.touched" type="text" formControlName="fax" required>
+                            <small *ngIf="fax.errors && fax.invalid && fax.touched" class="text-danger">Fax accepts only number and minimum length is 6 required.</small>
+                        </div>
+
+                        <label for="hotline">Hotline </label>
+                        <span [ngClass]="hotline.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group">
+                            <input id="hotline" class="form-control" [class.is-invalid]="hotline.invalid && hotline.touched" type="text" formControlName="hotline" required>
+                            <small *ngIf="hotline.errors && hotline.invalid && hotline.touched" class="text-danger">Hotline accepts only number and minimum length is 8 required.</small>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div>
+                            <app-address [parentForm]="profileForm"></app-address>
+                        </div>
+
+                        <div formGroupName="weblink" class="form-group">
+                            <div class="row">
+                                <div class="col-md-2"><h2 class="formgroupheader">Web link</h2></div>
+                                <div class="col-md-2">
+                                    <button class="formgroupheader" mat-button (click)="addWebLink()" [disabled]="addWebLinkDisable()" style="color: green;" type="button">Add another link</button>
+                                </div>
+                            </div>
+                            
+                            <div class="row weblink" *ngFor="let link of weblink.controls; let i=index">
+                              <!-- The repeated alias template -->
+                              <div class="col-md-10">
+                                <!-- <label for="link-{{ i }}">Link</label> -->
+                                <input id="link-{{ i }}" class="form-control" type="text" [formControlName]="i">
+                              </div>
+                              <div class="col-md-1">
+                                  <mat-icon class="app-button" color="warn"  type="button" (click)="removeWeblink(i)">delete_forever</mat-icon>
+                              </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+            
+     
+                    <div class="div-app-button">
+                        <button class="app-button" [disabled]="!profileForm.valid" mat-stroked-button color="primary" type="submit" >
+                            Update 
+                        </button>
+                    </div>
+
+                    <div>
+                        <hr>
+                        Terms of service  
+                        <p>By clicking
+                        <em>Register</em> you agree to our
+                        <a>terms of service</a>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>   
+<br>
