@@ -19,24 +19,22 @@ export class CategoryService {
 
   constructor(private db: AngularFireDatabase) {
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
-    this.itemsRef = db.list('/shop-user-content/' + this.userId + '/categories/',ref => {
-      return ref.orderByChild(this.orderBy)
-    });
+    
     // Use snapshotChanges().map() to store the key
-    this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ id: c.payload.key, ...c.payload.val() }))
-      )
-    );
+    // this.items = this.itemsRef.snapshotChanges().pipe(
+    //   map(changes => 
+    //     changes.map(c => ({ id: c.payload.key, ...c.payload.val() }))
+    //   )
+    // );
    }
 
-  get(userId: string): AngularFireList<any>  {
-    console.log('CategoryService ...')
-  // return this.db.list('/shop-user-content/' + userId + '/categories/',ref => {
-  //   return ref.orderByChild(this.orderBy)
-  // });
-  return this.itemsRef;
-  }
+  // get(userId: string): AngularFireList<any>  {
+  //   console.log('CategoryService ...')
+  // // return this.db.list('/shop-user-content/' + userId + '/categories/',ref => {
+  // //   return ref.orderByChild(this.orderBy)
+  // // });
+  // return this.itemsRef;
+  // }
 
   getItemsWithMap(_userId: string){
     this.itemsRef = this.db.list('/shop-user-content/' + _userId + '/categories/',ref => {
@@ -51,21 +49,30 @@ export class CategoryService {
   }
 
   addItem(category: any) {
+    this.itemsRef = this.db.list('/shop-user-content/' + this.userId + '/categories/',ref => {
+      return ref.orderByChild(this.orderBy)
+    });
     this.itemsRef.push(category);
   }
   updateItem(key: string, category: any) {
+    this.itemsRef = this.db.list('/shop-user-content/' + this.userId + '/categories/',ref => {
+      return ref.orderByChild(this.orderBy)
+    });
     this.itemsRef.update(key, category);
   }
-  deleteItem(key: string) {
-    this.itemsRef.remove(key);
-  }
-  deleteEverything() {
-    this.itemsRef.remove();
-  }
-  getItem(key: string){
-    return this.db.object('/shop-user-content/' + this.userId + '/categories/' + key);
-  }
+  // deleteItem(key: string) {
+  //   this.itemsRef.remove(key);
+  // }
+  // deleteEverything() {
+  //   this.itemsRef.remove();
+  // }
+  // getItem(key: string){
+  //   return this.db.object('/shop-user-content/' + this.userId + '/categories/' + key);
+  // }
   getItems(){
+    this.itemsRef = this.db.list('/shop-user-content/' + this.userId + '/categories/',ref => {
+      return ref.orderByChild(this.orderBy)
+    });
     return this.itemsRef;
   }
   getItemsByUserID(_userId: string){

@@ -42,13 +42,8 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy{
     private route: ActivatedRoute) { 
       this.auth_subscription = this.auth.appUser$.subscribe(_user=>{ this.isAdmin = _user.isAdmin })
       this.userId = this.route.snapshot.paramMap.get('userId');
-      //assign and stamp promo card to user
-      this.assignPromoCard = this.route.snapshot.url.find(x=>x.path == 'assignpromocard');
-      this.stampPromoCard = this.route.snapshot.url.find(x=>x.path == 'stamppromocard');
       this.customerId = this.route.snapshot.paramMap.get('customerId');
-      this.actionData = { 'assign' : this.assignPromoCard ? true : false,
-                          'stamp' : this.stampPromoCard ? true : false
-                        };
+      
 
     //   this.userContentServiceSubscription = this.userContentService
     //   .getItemsByCustomerId(this.customerId)
@@ -67,6 +62,12 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('userId');
+    //assign and stamp promo card to user
+    this.assignPromoCard = this.route.snapshot.url.find(x=>x.path == 'assignpromocard');
+    this.stampPromoCard = this.route.snapshot.url.find(x=>x.path == 'stamppromocard');
+    this.actionData = { 'assign' : this.assignPromoCard ? true : false,
+                        'stamp' : this.stampPromoCard ? true : false
+                      };
     this.applyFilter();
   }
 

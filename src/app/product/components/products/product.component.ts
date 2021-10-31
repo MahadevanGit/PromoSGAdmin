@@ -54,55 +54,80 @@ export class ProductComponent implements OnInit, OnDestroy{
     ) { 
   this.userId = this.route.snapshot.paramMap.get('userId');
   this.auth_subscription = this.auth.appUser$.subscribe(_user=>{ this.isAdmin = _user.isAdmin })
-
-  this.category_subscription = (!this.userId) 
-  ? 
-  this.categoryService
-  .getItems()
-  .valueChanges()
-  .subscribe((value)=>{
-    this.categories = value;
-  }) 
-  : 
-  this.category_subscription = this.categoryService
-  .getItemsByUserID(this.userId)
-  .subscribe((value)=>{
-    this.categories = value;
-  }) ;
-
-  this.subscription = (!this.userId) 
-  ? 
-  this.productService.items.subscribe((product)=> { 
-    product.forEach(
-      (p)=>{
-        this.categories.forEach(
-          (c)=>{
-            if(c.key === p.category)
-            p.category = c.value;
-          });
-        });
-    this.productDataSource = new MatTableDataSource(product);
-    this.productDataSource.paginator = this.paginator;
-  }) 
-  : 
-  this.productService.getItemsByUserID(this.userId).subscribe((product)=> { 
-    product.forEach(
-      (p)=>{
-        this.categories.forEach(
-          (c)=>{
-            if(c.key === p.category)
-            p.category = c.value;
-          });
-        });
-    this.productDataSource = new MatTableDataSource(product);
-    this.productDataSource.paginator = this.paginator;
-  });
 }
 
 
   ngOnInit(): void {
+    this.loadCategory();
+    this.loadProduct();
   }
-  
+
+  async loadCategory(): Promise<any> {
+    try {
+      console.log('loadCategory called');
+    (!this.userId) 
+    ? 
+    await this.categoryService
+    .getItems()
+    .valueChanges()
+    .subscribe((value)=>{
+      this.categories = value;
+    }) 
+    : 
+    //this is for aip-admin user
+    await this.categoryService
+    .getItemsByUserID(this.userId)
+    .subscribe((value)=>{
+      this.categories = value;
+    }) ;
+    } catch (error) {
+      console.log('Error at loadCategory')
+      console.log(error)
+    } finally{
+      console.log(this.categories)
+    }
+  }
+
+  async loadProduct(): Promise<any> {
+    try {
+      console.log('loadProduct called');
+    (!this.userId) 
+    ? 
+    await this.productService.getItemsByUserID().subscribe((product)=> { 
+      product.forEach(
+        (p)=>{
+          console.log(this.categories)
+          this.categories.forEach(
+            (c)=>{
+              if(c.key === p.category)
+              p.category = c.value;
+            });
+          });
+      this.productDataSource = new MatTableDataSource(product);
+      this.productDataSource.paginator = this.paginator;
+    }) 
+    : 
+    //this is for aip-admin user
+    await this.productService.getItemsByUserID(this.userId).subscribe((product)=> { 
+      product.forEach(
+        (p)=>{
+          console.log(this.categories)
+          this.categories.forEach(
+            (c)=>{
+              if(c.key === p.category)
+              p.category = c.value;
+            });
+          });
+      this.productDataSource = new MatTableDataSource(product);
+      this.productDataSource.paginator = this.paginator;
+    });
+    } catch (error) {
+      console.log('Error at loadProduct')
+      console.log(error)
+    }
+    
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.productDataSource.filter = filterValue.trim().toLowerCase();
@@ -129,9 +154,9 @@ export class ProductComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy is called from product components....')
-    this.subscription.unsubscribe();
-    this.auth_subscription.unsubscribe();
-    this.category_subscription.unsubscribe();
+    this.subscription && this.subscription.unsubscribe();
+    this.auth_subscription && this.auth_subscription.unsubscribe();
+    this.category_subscription && this.category_subscription.unsubscribe();
   }
 
 }
