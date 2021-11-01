@@ -9,6 +9,7 @@ import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from '../../../shared/services/auth.service';
 import { onMainContentChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'promoSg-bs-navbar',
@@ -31,15 +32,18 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
     public auth: AuthService,
     private router: Router,
     changeDetectorRef: ChangeDetectorRef,
-    private _sidenavService: SidenavService) {
-
+    private _sidenavService: SidenavService,
+    media: MediaMatcher) {
+      this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
     this.appUserSubscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
 
-    this.sideNavSubscription = this._sidenavService.sideNavState$.subscribe( res => {
-      console.log(res)
+    // this.sideNavSubscription = this._sidenavService.sideNavState$.subscribe( res => {
+    //   console.log(res)
       
-      this.onSideNavChange = res;
-    })
+    //   this.onSideNavChange = res;
+    //})
 
     // this.mobileQuery = media.matchMedia('(max-width: 600px)');
     // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -50,6 +54,7 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     console.log('ng on destroy from bs-navbar');
+    this.mobileQuery.removeListener(this._mobileQueryListener);
     this.appUserSubscription.unsubscribe();
     this.sideNavSubscription.unsubscribe();
   }

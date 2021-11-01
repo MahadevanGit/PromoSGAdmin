@@ -1,7 +1,23 @@
+<div class="nav-container" [class.nav-is-mobile]="mobileQuery.matches">
+  <promoSg-navbar-header [sidenav]="snav"></promoSg-navbar-header>
+  <mat-sidenav-container class="nav-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <promo-menu-left *ngIf="appUser"></promo-menu-left>
+    </mat-sidenav>
 
+    <mat-sidenav-content>
+      <div class="main_content">
+        <div style="padding-left: 30px;padding-right: 30px;padding-top: 10px;">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 
+<!-- 
 <div>
-
   <promoSg-navbar-header [sidenav]="snav"></promoSg-navbar-header>
 
   <mat-sidenav-container class="sidenav-container" >
@@ -16,7 +32,6 @@
         </div>
       </div>
     </mat-sidenav-content>
-  </mat-sidenav-container>
-
-</div>
+  </mat-sidenav-container> 
+</div> -->
 
