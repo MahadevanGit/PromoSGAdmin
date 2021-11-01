@@ -12,42 +12,39 @@
         </mat-card>
  </div>
 -->
-<div >
-
-
-    <div>
-            <div fxLayout="row wrap" fxLayoutGap="16px grid">
-              <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="30%" *ngFor="let user of appUserList">
-                <mat-card class="mat-elevation-z4" >
-                  <mat-card-header>
-                    <mat-card-title style="font-size:large;">{{user && user.shopname}}</mat-card-title>
-                  </mat-card-header>
-                  <hr>
-                  <!-- <img mat-card-image src="./../assets/images/mountains.jpg"> -->
-                  <mat-card-content>
-                    <h3>Set up the system by cliking the below button.</h3>
-                  </mat-card-content>
-
-                  <mat-card-actions>
-                    <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/customers'] : ['/customers/',user.userId]"   style="font-size:small;margin: 0 8px;"><mat-icon>person</mat-icon>Users</button>
-                    <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/promocarddb'] : ['/promocarddb/',user.userId]" style="font-size:small;"><mat-icon>stars</mat-icon>Promo cards</button>
-                    <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/products'] : ['/products/',user.userId]"   style="font-size:small;"><mat-icon>playlist_add</mat-icon>Products</button>          
-                    <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/image/list'] : ['/image/list/',user.userId]" style="font-size:small;"><mat-icon>image</mat-icon>Product-image</button>
-                  </mat-card-actions>
-
-                  <mat-card-footer>
-                    <div class="container">
-                      <hr>
-                            <p style="font-size:x-small;">RegisteredAt : {{user && user.registeredAt}}</p>
-                    </div>
-                    </mat-card-footer>
-
-                </mat-card>
-                
-              </div>
-            </div>
+<div>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="30%" *ngFor="let user of appUserList">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title style="font-size:large;">{{user && user.shopname}}</mat-card-title>
+        </mat-card-header>
+        <hr>
+        <!-- <img mat-card-image src="./../assets/images/mountains.jpg"> -->
+        <mat-card-content>
+          <h3>Set up the system by cliking the below button.</h3>
+        </mat-card-content>
+ 
+        <mat-card-actions>
+          <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/customers'] : ['/customers/',user.userId]"   style="font-size:small;margin: 0 8px;"><mat-icon>person</mat-icon>Users</button>
+          <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/promocarddb'] : ['/promocarddb/',user.userId]" style="font-size:small;"><mat-icon>stars</mat-icon>Promo cards</button>
+          <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/products'] : ['/products/',user.userId]"   style="font-size:small;"><mat-icon>playlist_add</mat-icon>Products</button>          
+          <button class="cllc"  mat-button [routerLink] ="(!isAdmin)? ['/image/list'] : ['/image/list/',user.userId]" style="font-size:small;"><mat-icon>image</mat-icon>Product-image</button>
+        </mat-card-actions>
+ 
+        <mat-card-footer>
+          <div class="container">
+            <hr>
+                  <p style="font-size:x-small;">RegisteredAt : {{user && user.registeredAt}}</p>
+          </div>
+          </mat-card-footer>
+ 
+      </mat-card>
+      
     </div>
+  </div>
+ </div>
 
-</div>
+
    
 
