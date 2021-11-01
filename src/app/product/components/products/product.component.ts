@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit, OnDestroy{
   }
 
   imageLoader = true;
-  subscription: Subscription
+  product_subscription: Subscription
   auth_subscription: Subscription
   category_subscription: Subscription
   userId: string;
@@ -65,7 +65,7 @@ export class ProductComponent implements OnInit, OnDestroy{
   async loadCategory(): Promise<any> {
     try {
       console.log('loadCategory called');
-    (!this.userId) 
+    this.category_subscription = (!this.userId) 
     ? 
     await this.categoryService
     .getItems()
@@ -91,7 +91,7 @@ export class ProductComponent implements OnInit, OnDestroy{
   async loadProduct(): Promise<any> {
     try {
       console.log('loadProduct called');
-    (!this.userId) 
+      this.product_subscription = (!this.userId) 
     ? 
     await this.productService.getItemsByUserID().subscribe((product)=> { 
       product.forEach(
@@ -108,7 +108,7 @@ export class ProductComponent implements OnInit, OnDestroy{
     }) 
     : 
     //this is for aip-admin user
-    await this.productService.getItemsByUserID(this.userId).subscribe((product)=> { 
+    this.product_subscription = await this.productService.getItemsByUserID(this.userId).subscribe((product)=> { 
       product.forEach(
         (p)=>{
           console.log(this.categories)
@@ -154,7 +154,7 @@ export class ProductComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy is called from product components....')
-    this.subscription && this.subscription.unsubscribe();
+    this.product_subscription && this.product_subscription.unsubscribe();
     this.auth_subscription && this.auth_subscription.unsubscribe();
     this.category_subscription && this.category_subscription.unsubscribe();
   }
