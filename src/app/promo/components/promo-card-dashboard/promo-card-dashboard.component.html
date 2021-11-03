@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mar-bot">
         <!-- Search -->
         <div  class="col-md-2">
           <mat-form-field appearance="standard">
@@ -55,7 +55,7 @@
 
       <!-- List view -->
       <div class="row"  *ngIf="group.value == 'list'">
-        <div class="col-md-4">
+        <div class="col-md-4 mar-bot">
           <mat-selection-list #promoCardSelected [multiple]="false"  >
             <mat-list-option
               (click)="getpromoCard(promoCardSelected.selectedOptions.selected[0]?.value.key)"
@@ -71,7 +71,7 @@
             </mat-list-option>
           </mat-selection-list>
         </div>
-        <div class="col-md-7 div-promo">
+        <div class="col-md-7 mar-bot">
           <p>
             <promo-card [promoData]="promoCardObj" *ngIf="promoCardObj" [canEdit]="false" [action]="actionData"></promo-card>
           </p>
