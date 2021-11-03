@@ -3,12 +3,13 @@
                  <mat-card>
                     <mat-card-title>
                       <div class="row">
-                        <div class="col" style="padding-top: 10px;">
+                        <div class="col" style="margin-top: 10px; padding-top: 0px;">
                           {{ promoData.title ?promoData.title : 'Promo card'}}
                         </div>
                         <div  class="col div-action-menu">
                           <button mat-icon-button [matMenuTriggerFor]="menu" 
-                          *ngIf="!canEdit && !isAdmin && (promoData.status && promoData.status === 'In-progress')">
+                          [disabled]="isMenuDisabled()"
+                          >
                             <mat-icon>more_vert</mat-icon>
                         </button>
                           <mat-menu #menu="matMenu">
@@ -22,9 +23,7 @@
                         </ng-template>
                         </div>
                       </div>
-
                     </mat-card-title>
-                        <hr>
                     <mat-card-content>
                         <div class="container">
                             <mat-progress-bar *ngIf="promoData.title && !promoData.promopoint"  mode="indeterminate"></mat-progress-bar>
@@ -36,11 +35,9 @@
                                     *ngIf="slot.key.toString().indexOf('Promo_') > -1; else takenTile;"
                                     (click) = "stampPromoCard ? addStampToCustomer(slot) : addPromoDescription(slot)">
                                     <div>
-                                      <p>
                                         {{getPromoValue(slot)}}
                                         <span class="span-badge">{{ promoSlot.key ? promoSlot.key : promoSlot.promotion }}</span> 
-                                        {{ promoSlot.value ? promoSlot.value : getPromoValueFromClaimed(promoSlot.claimed) }}
-                                      </p>
+                                        {{ (promoSlot.value ? promoSlot.value : getPromoValueFromClaimed(promoSlot.claimed))   | slice:0: 10 }}..
                                     </div> 
                                     </mat-grid-tile>
 
@@ -53,7 +50,7 @@
                                       <div>
                                         <p>
                                           <span class="span-badge">{{slot.key ? slot.value.key ? slot.value.key : slot.key : ''}}</span> 
-                                          {{slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : ''}} 
+                                          {{slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : ''}}
                                         </p>
                                       </div>
                                       </mat-grid-tile>
@@ -63,7 +60,7 @@
                                         <mat-grid-tile 
                                         [ngClass]="stampPromoCard ? 'mat-grid-promo-yellow-tile' : none"
                                         (click) = "stampPromoCard && addStampToCustomer(slot)">                                        
-                                        <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{slot.value.value}} </span>
+                                        <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{slot.value.value}}</span>
                                         </mat-grid-tile>
                                       </ng-template>
                                 </div>

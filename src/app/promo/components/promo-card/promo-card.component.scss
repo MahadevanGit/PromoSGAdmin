@@ -32,12 +32,13 @@
   background: rgb(73, 156, 91);
 }
 
-
-
-
 .mat-grid-tile, .mat-figure {
   background: rgb(156, 226, 171);
   border-radius: 15px;
+}
+
+.mat-card{
+  padding-top: 0px;
 }
 
 .span-dark-green{
@@ -68,5 +69,9 @@
   cursor: pointer;
   text-align: center;
   font-size: small;
+}
+
+.mar-bot{
+  margin-bottom: 20px;
 }
  
