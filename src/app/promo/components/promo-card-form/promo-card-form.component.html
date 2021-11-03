@@ -1,7 +1,7 @@
 <div>
 
       <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 mar-bot">
             <div>
               <mat-card>
                   <mat-card-title>{{promoCardKey ? 'Update Promo card' : 'Create Promo card' }} </mat-card-title>
@@ -133,7 +133,7 @@
             </div>
           </div>
 
-          <div class="col-md-5">
+          <div class="col-md-5 mar-bot">
               <promo-card [promoData]="promoCard" [canEdit]="true" #promoCardcomp (onAfterPromoGeneratedData)="GetpromoDataFromPromCardComp($event)"></promo-card>
           </div>
 
