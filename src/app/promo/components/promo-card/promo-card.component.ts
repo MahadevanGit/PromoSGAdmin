@@ -274,6 +274,10 @@ getProductList(){
   });
 }
 
+isMenuDisabled(){
+  return !(!this.canEdit && !this.isAdmin && (this.promoData.status && this.promoData.status === 'In-progress'));
+}
+
 ngOnDestroy(): void {
   this.subscription.unsubscribe();
   this.userContentServiceSubscription.unsubscribe();

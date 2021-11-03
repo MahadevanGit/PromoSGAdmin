@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ShopUserService } from 'src/app/shop.service';
 
@@ -15,7 +16,7 @@ import { ShopUserService } from 'src/app/shop.service';
 export class ShopUserFormComponent implements OnInit {
 
   error: string;
-  appUser: import("c:/AngularProjects/Promo/PromoSGAdmin/src/app/shared/models/user").AppUser;
+  appUser: AppUser;
   authSubscription: Subscription;
 
   get shopName(){
