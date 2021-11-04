@@ -67,14 +67,17 @@
                             </div>
                             
                             <div class="row weblink" *ngFor="let link of weblink.controls; let i=index">
-                              <!-- The repeated alias template -->
-                              <div class="col-md-10">
-                                <!-- <label for="link-{{ i }}">Link</label> -->
-                                <input id="link-{{ i }}" class="form-control" type="text" [formControlName]="i">
-                              </div>
-                              <div class="col-md-1">
-                                  <mat-icon class="app-button" color="warn"  type="button" (click)="removeWeblink(i)">delete_forever</mat-icon>
-                              </div>
+                                 
+                                    <div>
+                                        <div class="input-group">
+                                            <input id="link-{{ i }}" class="form-control" type="text" [formControlName]="i">
+                                            <div class="input-group-btn">
+                                              <!-- Buttons -->
+                                             <mat-icon class="app-button" color="warn"  type="button" (click)="removeWeblink(i)">delete_forever</mat-icon>
+                                            </div>
+                                          </div>
+                                    </div>
+                                 
                             </div>
                         </div>
 

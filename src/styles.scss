@@ -4,10 +4,47 @@
 // body {padding-top: 80px;}
 /* Importing Bootstrap SCSS file. */ 
 
- @import '~bootstrap/scss/bootstrap';
- @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// deeppurple-amber.css
+// indigo-pink.css
+// pink-bluegrey.css
+// purple-green.css
+
+@import '~bootstrap/scss/bootstrap';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    // background-image: url("gradient_bg.png");
+    // background-repeat: repeat-x;
+  }
+
+  .mat-toolbar{
+    background-image: url('/assets/images/Promo-sg-banner1.png');
+    //height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .mat-sidenav-content{
+    background-image: url('/assets/images/Promo-sg-bg1.png');
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
+//   div.footer {
+//     background: rgb(253, 253, 229);
+//   }
+
+
+  
+
 
 

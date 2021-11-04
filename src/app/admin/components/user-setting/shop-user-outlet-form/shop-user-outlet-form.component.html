@@ -9,7 +9,7 @@
 
                     
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mar-bot">
                         <!-- Search -->
                     <div>
                         <mat-form-field appearance="standard">
@@ -22,27 +22,19 @@
                         #input>
                         </mat-form-field>
                     </div>
-
-                        <mat-selection-list [multiple]="false"  >
-                          <mat-list-option 
-                            *ngFor="let outlet of outletList, let i = index"
-                            [value]="outlet" >
-                            <mat-icon mat-list-icon>location_on</mat-icon>
-                            <div class="row">
-                                <div class="col-md-9">
+                        <mat-list>
+                            <mat-list-item *ngFor="let outlet of outletList, let i = index">
+                                <mat-icon mat-list-icon>location_on</mat-icon>
+                                <div class="mat-item">
                                     <div class="listHeader1">{{outlet.address.block.toUpperCase() === 'NA' ? '' : outlet.address.block }} {{outlet.address.street}}</div>
                                     <div mat-line>#{{outlet.address.level}}-{{outlet.address.unit}}</div>
                                     <div mat-line style="font-size:x-small;">{{outlet.address.city}} Pin : {{outlet.address.zip}} </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div style="padding: 25px;">
-                                        <mat-icon color="warn" (click)="removeOutlet(outlet)">delete_forever</mat-icon>
-                                    </div>
+                                <div>
+                                    <mat-icon color="warn" (click)="removeOutlet(outlet)" type="button">delete_forever</mat-icon>
                                 </div>
-                            </div>
-                            
-                          </mat-list-option>
-                        </mat-selection-list>
+                            </mat-list-item>
+                          </mat-list>
                       </div>
 
 
