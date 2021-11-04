@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
   appAllUserSubscription: Subscription;
   localStorageMember = new LocalStorageMember();
   isAdmin: boolean = false;
-  imgSrc: string = '/assets/images/image-placeholder.png';
+  imgSrc: string = 'assets/images/image-placeholder.png';
   bgImgSrc: string = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
 
   constructor(private shopUserService: ShopUserService) {

@@ -79,7 +79,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
       this.selectedImage = event.target.files[0];
     }
     else {
-      this.imgSrc = '/assets/images/image_placeholder.jpg';
+      this.imgSrc = 'assets/images/image_placeholder.jpg';
       this.selectedImage = null;
     }
   }
@@ -117,7 +117,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
       imageUrl: '',
       category: ''
     });
-    this.imgSrc = '/assets/images/image_placeholder.jpg';
+    this.imgSrc = 'assets/images/image_placeholder.jpg';
     this.selectedImage = null;
     this.isSubmitted = false;
   }
