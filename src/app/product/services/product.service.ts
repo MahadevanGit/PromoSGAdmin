@@ -52,7 +52,6 @@ export class ProductService {
   getItemsByUserID(_userId?: string){
     _userId = _userId ? _userId : this.userId;
     this.itemsRef = this.db.list('/shop-user-content/' + _userId + '/products/');
-    console.log(this.itemsRef)
     this.items = this.itemsRef.snapshotChanges().pipe(
       map(changes => 
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))

@@ -36,8 +36,8 @@
                                     (click) = "stampPromoCard ? addStampToCustomer(slot) : addPromoDescription(slot)">
                                     <div>
                                         {{getPromoValue(slot)}}
-                                        <span class="span-badge">{{ promoSlot.key ? promoSlot.key : promoSlot.promotion }}</span> 
-                                        {{ (promoSlot.value ? promoSlot.value : getPromoValueFromClaimed(promoSlot.claimed))   | slice:0: 10 }}..
+                                        <span class="span-badge">{{ promoSlot.key ? promoSlot.key : slot.key }}</span> 
+                                        {{ (promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed))   | slice:0: 10 }}..
                                     </div> 
                                     </mat-grid-tile>
 
@@ -50,7 +50,7 @@
                                       <div>
                                         <p>
                                           <span class="span-badge">{{slot.key ? slot.value.key ? slot.value.key : slot.key : ''}}</span> 
-                                          {{slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : ''}}
+                                          {{ (slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : '')    | slice:0: 10 }}
                                         </p>
                                       </div>
                                       </mat-grid-tile>
@@ -60,7 +60,7 @@
                                         <mat-grid-tile 
                                         [ngClass]="stampPromoCard ? 'mat-grid-promo-yellow-tile' : none"
                                         (click) = "stampPromoCard && addStampToCustomer(slot)">                                        
-                                        <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{slot.value.value}}</span>
+                                        <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{ getInitialValue(slot.value.value,slot) }}</span>
                                         </mat-grid-tile>
                                       </ng-template>
                                 </div>
