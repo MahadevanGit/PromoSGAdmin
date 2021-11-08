@@ -165,8 +165,7 @@ addStampToCustomer(slot: KeyValue<string,string>){
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
-      if(result != 'cancel'){
-        let res = JSON.parse(result);
+      let res = (result != 'cancel' && result) ? JSON.parse(result) : result;
         this.promoData.modifiedBy = this.currentUserId; //From local storage
         this.promoData.modifiedDate = this.currentDate.toLocaleString();
         this.promoData.promoGrid.forEach((value)=>{
@@ -178,24 +177,20 @@ addStampToCustomer(slot: KeyValue<string,string>){
               product = p;
             })
             value.value.value = res.key.indexOf('Promo_')> -1 ? JSON.stringify({promotion:data.promotionValue,claimed: {key: product['key'],title:product['title']}}) : JSON.stringify({key: product['key'],title:product['title']});
-            console.log(value.value.value)
-            //value.value.value = JSON.stringify({key: product['key'],title:product['title']});
-            // if(res.key.indexOf('Promo_')> -1){
-            //   value.value.value = res.key.indexOf('Promo_')> -1 ? JSON.stringify({promotion:data.promotionValue,claimed: {key: product['key'],title:product['title']}}) : JSON.stringify({key: product['key'],title:product['title']});
-            //   console.log(value.value.value)
-            // }
           }
         })
+      if(result != 'cancel'){
         //console.log(this.promoData)
         this.userContentService.updateItem(this.promoData); 
       }
     })
 }
 
-  getProductByKey(productKey: string) {
+  getProductByKey(productKey: string): any {
     return this.productList && this.productList.forEach((p)=>{
-      if(p['key'] == productKey)
-      return p;
+      if(p['key'] == productKey){
+        return p;
+      }
     })
   }
 
@@ -269,7 +264,7 @@ getPromoValueFromClaimed(claimedObj: any){
 }
 
 getProductList(){
-  this.productService.items.subscribe((product)=> { 
+  this.productService.getItemsByUserID().subscribe((product)=> { 
   this.productList =   product ;
   });
 }
@@ -278,9 +273,25 @@ isMenuDisabled(){
   return !(!this.canEdit && !this.isAdmin && (this.promoData.status && this.promoData.status === 'In-progress'));
 }
 
+getInitialValue(slotValue,slot?){
+  return this.productList ?  this.getProductValueByKey(slotValue,slot) : this.getProductValueByKey(slotValue,slot);
+}
+
+getProductValueByKey(productKey,slot?) {
+  let prod; 
+  this.productList && this.productList.forEach((p)=>{
+    if(p['key'] == productKey){
+      prod = p;
+    }
+  })
+  return prod ? prod['title'] : slot ? slot.key : productKey;
+}
+
 ngOnDestroy(): void {
   this.subscription.unsubscribe();
   this.userContentServiceSubscription.unsubscribe();
 }
 
 }
+
+

@@ -21,7 +21,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     private productService: ProductService) 
     {
       if(data.isStampEntry){
-        this.productSubscription = this.productService.items.subscribe((product)=> { 
+        this.productSubscription = this.productService.getItemsByUserID().subscribe((product)=> { 
         this.productList =   product ;
         });
       }
