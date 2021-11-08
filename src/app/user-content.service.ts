@@ -31,8 +31,8 @@ export class UserContentService {
 
   addItem(promoCard: IPromotionCard) {
     this.db.object(this.pathRef + promoCard.key).set(promoCard);
-    
   }
+
   updateItem(promoCard: IPromotionCard) {
     try {
       this.db.object(this.pathRef + promoCard.key).update(promoCard);
@@ -50,9 +50,7 @@ export class UserContentService {
   }
 
   getItemsByCustomerId(_customerId: string){
-    console.log(_customerId);
     this.pathRef = '/' + this.usersUserContent + '/' + _customerId + '/' + this.userPromocards + '/' + this.shopUserId + '/';
-    console.log(this.pathRef);
     this.itemsRef = this.db.list(this.pathRef,ref => {
         return ref.orderByChild(this.orderBy)
       });

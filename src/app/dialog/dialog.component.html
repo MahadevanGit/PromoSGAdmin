@@ -39,24 +39,22 @@
         Add <b class="space"> {{data.slot.key}} </b> description</p>
     <div mat-dialog-content>
        <!-- <mat-form-field> -->
-       <mat-label>{{data.label}}</mat-label>
+       <!-- <mat-label>{{data.label}}</mat-label> -->
         
         <!-- <input matInput [(ngModel)]="data.slot.value.value"> -->
 
         <mat-label>Select product to stamp</mat-label>
-        <mat-select #imageUrl="ngModel" [(ngModel)]="data.slot.value.value"
-        name="imageUrl" id="imageUrl" class="form-control mb-4" required>
+        <mat-select #selectedProduct="ngModel" [(ngModel)]="data.slot.value.value" 
+        name="selectedProduct" id="imageUrl" class="form-control mb-4" required>
           <mat-option *ngFor="let product of productList" [value]="product.key">
             <img src='{{product.imageUrl}}' style="width: 75px;height:60px;padding: 10px;"> {{product.title}}
           </mat-option>
         </mat-select>
-        <small class="form-text text-danger mb-4" *ngIf="imageUrl.touched && imageUrl.invalid">
+        <small class="form-text text-danger mb-4" *ngIf="selectedProduct.touched && selectedProduct.invalid">
             <p>Product selection is required.</p> 
         </small>
       <!-- </mat-form-field> -->
 
- 
-    
     </div>
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close mat-dialog-close="{{ data.slot | json }}" cdkFocusInitial>Add</button>
