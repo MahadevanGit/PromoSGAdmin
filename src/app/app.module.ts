@@ -35,6 +35,7 @@ import { ImageComponent } from './images/image/image.component';
 import { ImageListComponent } from './images/image-list/image-list.component';
 import { ImagesComponent } from './images/images.component';
 import { ClientAuthGuard } from './shared/services/client-auth-guard.service';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ClientAuthGuard } from './shared/services/client-auth-guard.service';
     ImageComponent,
     ImageListComponent,
     ImagesComponent
-  ],
+    ],
   entryComponents:[DialogComponent],
   imports: [
     BrowserModule,
@@ -63,6 +64,7 @@ import { ClientAuthGuard } from './shared/services/client-auth-guard.service';
     AdminModule,
     ProductModule,
     PromoModule,
+    StatisticsModule,
     CustomerModule,
     CommonModule,
     FormsModule, // This module for template driven form //TODO: create common module and assign to all the component from common module

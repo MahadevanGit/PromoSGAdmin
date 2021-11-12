@@ -13,15 +13,19 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from '../admin/services/admin-auth-guard.service';
 import { ImageGalleryListComponent } from './components/image-gallery-list/image-gallery-list.component';
 import { AddressComponent } from './components/address/address.component';
+import { StackedHorizontalBarChartComponent } from './components/charts/stacked-horizontal-bar-chart/stacked-horizontal-bar-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     ImageUploadComponent,
     ImageGalleryListComponent,
-    AddressComponent
+    AddressComponent,
+    StackedHorizontalBarChartComponent
   ],
   imports: [
     CommonModule,
+    ChartsModule,
     PromosgMaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild([
@@ -36,11 +40,13 @@ import { AddressComponent } from './components/address/address.component';
   ],
   exports:[
     CommonModule,
+    ChartsModule,
     PromosgMaterialModule,
     ReactiveFormsModule,
     ImageUploadComponent,
     ImageGalleryListComponent,
-    AddressComponent
+    AddressComponent,
+    StackedHorizontalBarChartComponent
   ]
 
 })

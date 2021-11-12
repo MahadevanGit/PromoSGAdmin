@@ -32,7 +32,6 @@ import { PromoCardService } from './services/promo-card.service';
       {path:"promocard/new", component:PromoCardFormComponent,canActivate: [AuthGuard,ClientAuthGuard]},
       {path:"promocard/:key", component:PromoCardFormComponent,canActivate: [AuthGuard,ClientAuthGuard]},
       {path:"promocard/:userId/:key",component:PromoCardFormComponent,canActivate: [AuthGuard,AdminAuthGuard]}
-
     ]),
   ],
   providers: [
