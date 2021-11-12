@@ -19,6 +19,7 @@
           <button mat-button [routerLink] ="(!isAdmin)? ['/promocarddb'] : ['/promocarddb/',user.userId]" style="font-size:small;"><mat-icon>stars</mat-icon>Promo cards</button>
           <button mat-button [routerLink] ="(!isAdmin)? ['/products'] : ['/products/',user.userId]"   style="font-size:small;"><mat-icon>playlist_add</mat-icon>Products</button>          
           <button mat-button [routerLink] ="(!isAdmin)? ['/image/list'] : ['/image/list/',user.userId]" style="font-size:small;"><mat-icon>image</mat-icon>Product-image</button>
+          <button mat-button [routerLink] ="(!isAdmin)? ['/statisticsdbd'] : ['/statisticsdbd/',user.userId]" style="font-size:small;"><mat-icon>bar_chart</mat-icon>Statistics</button>
         </mat-card-actions>
  
         <mat-card-footer>
