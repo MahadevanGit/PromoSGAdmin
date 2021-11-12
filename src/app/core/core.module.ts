@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+//import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { PromosgMaterialModule } from '../shared/material/promosg-material/promosg-material.module';
+//import { PromosgMaterialModule } from '../shared/material/promosg-material/promosg-material.module';
 import { AuthGuard } from '../shared/services/auth-guard.service';
+import { SharedModule } from '../shared/shared.module';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,9 +28,10 @@ import { SidenavService } from './services/sidenav.service';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    PromosgMaterialModule,
+    // ReactiveFormsModule,
+    // PromosgMaterialModule,
     BrowserAnimationsModule,
+    SharedModule,
     RouterModule.forChild([
       {path: '', component: DashboardComponent,canActivate: [AuthGuard] },
       {path: 'login', component: LoginComponent },
