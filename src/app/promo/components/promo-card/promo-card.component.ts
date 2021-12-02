@@ -1,11 +1,13 @@
-import { KeyValue } from '@angular/common';
+import { formatDate, KeyValue } from '@angular/common';
 import { JsonpClientBackend } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/product/services/product.service';
-import { LocalStorageMember } from 'src/app/shared/models/common';
+import { ProductStatsService } from 'src/app/product/services/product.stats.service';
+import { JsonHelper, LocalStorageMember } from 'src/app/shared/models/common';
+import { ProductStats } from 'src/app/shared/models/product';
 import { UserContentService } from 'src/app/user-content.service';
 
 import { DialogComponent } from '../../../dialog/dialog.component';
@@ -30,10 +32,11 @@ export class PromoCardComponent implements OnChanges, OnDestroy{
   gridColumn: number = 6;
   userId: string;
   isAdmin: boolean = false;
-  currentDate: Date = new Date();
+  currentDate: Date;
   subscription: Subscription;
   currentUserId: string;
   localStorage = new LocalStorageMember();
+  productStatsObj: ProductStats;
 
   //assign promo card to user
   customerId: string;
@@ -51,6 +54,7 @@ export class PromoCardComponent implements OnChanges, OnDestroy{
     private promoCardService: PromoCardService,
     private userContentService: UserContentService,
     private productService: ProductService,
+    private productStatsService: ProductStatsService,
     private route: ActivatedRoute,
     private auth: AuthService
     ) {
@@ -140,6 +144,7 @@ public getGeneratedPromData(data): void {
 }
 
 addStampToCustomer(slot: KeyValue<string,string>){
+  this.currentDate = new Date();
   //TODO
   let previousAndNextSlots = this.getPreviousAndNextSolts(this.promoData.promoGrid,slot);
   let dialogNote = '';
@@ -165,13 +170,14 @@ addStampToCustomer(slot: KeyValue<string,string>){
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
+      let product;
       let res = (result != 'cancel' && result) ? JSON.parse(result) : result;
         this.promoData.modifiedBy = this.currentUserId; //From local storage
         this.promoData.modifiedDate = this.currentDate.toLocaleString();
         this.promoData.promoGrid.forEach((value)=>{
           if(value.key == res.key){
             value.key = 'Taken_' + res.key;
-            let product;
+            
             this.productList.forEach((p)=>{
               if(p['key'] == value.value.value)
               product = p;
@@ -180,8 +186,13 @@ addStampToCustomer(slot: KeyValue<string,string>){
           }
         })
       if(result != 'cancel'){
-        //console.log(this.promoData)
         this.userContentService.updateItem(this.promoData); 
+        this.productStatsObj = new ProductStats('','',{})
+        this.productStatsObj.productKey = product && product.key;
+        this.productStatsObj.customerKey = this.customerId;
+        this.productStatsObj.stats.purchaseDate =  JsonHelper.getDate(this.currentDate.toLocaleString(),'MM/dd/yyyy HH:mm:ss').toLocaleString();
+        this.productStatsObj.stats.qty = 1; //Product quantity
+        this.productStatsService.addItem(this.productStatsObj);
       }
     })
 }
@@ -219,6 +230,7 @@ delete(key: string){
 }
 
 publish(promoData: IPromotionCard){
+  this.currentDate = new Date();
   let data = {
     'title': 'Confirm', 
     'label':'Are you sure you want to publish this promotion card?',

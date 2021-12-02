@@ -21,7 +21,7 @@ export class UserContentService {
   usersUserContent: string = 'users-user-content';
   userPromocards: string = 'user-promocards'
   shopUserId: string;
-  pathRef: string;
+  pathRef: string ='';
   customerId: string;
 
   constructor(private db: AngularFireDatabase,
