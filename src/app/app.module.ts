@@ -79,7 +79,7 @@ import { StatisticsModule } from './statistics/statistics.module';
 
       {path: '**', component:PageNotFoundComponent}
       
-    ]),
+     ]),
   ],
 exports:[
 ],

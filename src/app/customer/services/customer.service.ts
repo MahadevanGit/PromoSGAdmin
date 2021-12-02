@@ -14,7 +14,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ShopCustomerService implements OnDestroy {
-  currentUser: User;
   subscription: Subscription;
   localStorageMember = new LocalStorageMember();
   userId: string;

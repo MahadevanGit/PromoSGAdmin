@@ -9,8 +9,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { ProductComponent } from './components/products/product.component';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
-
-
+import { ProductStatsService } from './services/product.stats.service';
 @NgModule({
   declarations: [],
   imports: [
@@ -26,6 +25,7 @@ import { ProductService } from './services/product.service';
   providers: [
     ProductService,
     CategoryService,
+    ProductStatsService,
   ],
 })
 export class ProductModule { }

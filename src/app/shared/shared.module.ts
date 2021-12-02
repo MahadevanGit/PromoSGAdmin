@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { RouterModule } from '@angular/router';
 
@@ -15,19 +15,22 @@ import { ImageGalleryListComponent } from './components/image-gallery-list/image
 import { AddressComponent } from './components/address/address.component';
 import { StackedHorizontalBarChartComponent } from './components/charts/stacked-horizontal-bar-chart/stacked-horizontal-bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { MultiSelectDdComponent } from './components/control/multi-select-dd/multi-select-dd.component';
 
 @NgModule({
   declarations: [
     ImageUploadComponent,
     ImageGalleryListComponent,
     AddressComponent,
-    StackedHorizontalBarChartComponent
+    StackedHorizontalBarChartComponent,
+    MultiSelectDdComponent
   ],
   imports: [
     CommonModule,
     ChartsModule,
     PromosgMaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild([
       {path:"image-upload",component:ImageUploadComponent,canActivate: [AuthGuard]},
     ]),
@@ -43,10 +46,12 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule,
     PromosgMaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     ImageUploadComponent,
     ImageGalleryListComponent,
     AddressComponent,
-    StackedHorizontalBarChartComponent
+    StackedHorizontalBarChartComponent,
+    MultiSelectDdComponent
   ]
 
 })
