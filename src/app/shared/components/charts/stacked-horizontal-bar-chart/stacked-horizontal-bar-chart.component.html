@@ -1,10 +1,18 @@
-<div class="chart">
+
+<div class="chart" *ngIf="(this.ProductStatsMode && this.ProductStatsMode.length>0); else elsTemplate;">
     <canvas baseChart
-    [datasets]="labelMFL"
-    [labels]="lineChartLabels"
+    [datasets]="ProductDetailsDataset"
+    [labels]="ProductStatsMode"
     [options]="lineChartOptions"
     [chartType]="ChartType"
+    [legend]="barChartLegend"
     (chartHover)="chartHovered($event)"
     (chartClick)="chartClicked($event)">
     </canvas>
 </div>
+
+<ng-template #elsTemplate>
+    <div class="chart">
+        There is no data to show for {{currentMonth}} month.
+    </div>
+</ng-template>

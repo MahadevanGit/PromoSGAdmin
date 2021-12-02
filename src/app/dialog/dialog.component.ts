@@ -63,7 +63,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   }
 
   getPromoValue(slot: any){
-    this.promoSlot = (slot.key.indexOf('Taken_Promo_')>-1) ? JSON.parse(slot.value.value) : slot.value;
+    this.promoSlot = ((slot && slot.key && slot.key.indexOf('Taken_Promo_'))>-1) ? JSON.parse(slot.value.value) : slot.value;
   }
 
   getPromoValueFromslot(slotObj: any){
