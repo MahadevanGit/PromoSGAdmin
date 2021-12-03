@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../../shared/models/product'
+import { IProduct } from '../../../shared/models/product'
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,7 +26,10 @@ import { CategoryService } from '../../services/category.service';
 
 export class ProductComponent implements OnInit, OnDestroy{
 
-  productDataSource: MatTableDataSource<Product>;
+  productDataSource: MatTableDataSource<IProduct>;
+  imageFolderName: string = '/product-imageDetails/';
+  imageRequestType: string =  'product'; //'usersetting';
+  rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
