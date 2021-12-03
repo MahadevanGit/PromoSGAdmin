@@ -11,7 +11,8 @@ import { MasterContentService } from 'src/app/shared/services/master-content.ser
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
-  styleUrls: ['./image-upload.component.scss']
+  styleUrls: ['./image-upload.component.scss'],
+  providers:[CategoryService,ImageService,MasterContentService,AuthService]
 })
 export class ImageUploadComponent implements OnInit, OnDestroy {
 
@@ -124,7 +125,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.auth_subscription.unsubscribe();
-    this.categorySubscription.unsubscribe();
+    // this.categorySubscription.unsubscribe();
   }
 
 }

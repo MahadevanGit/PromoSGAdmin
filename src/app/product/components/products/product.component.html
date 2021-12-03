@@ -1,15 +1,22 @@
 <div>
 
-    <div id="table">
-
-    <mat-button-toggle-group  #group="matButtonToggleGroup"
+     <mat-button-toggle-group  #group="matButtonToggleGroup"
         appearance="legacy"
         name="fontStyle" aria-label="Font Style">
       <mat-button-toggle value="new" *ngIf="!userId"  mat-button routerLink = "/product/new" style="color:green">
       <b>Create Product</b>
       </mat-button-toggle>
+      <mat-button-toggle value="image-form" *ngIf="!userId" mat-button style="color:green">
+        <mat-icon>add_box</mat-icon>
+        <b> Add image</b>
+      </mat-button-toggle>
+      <mat-button-toggle value="image-gallery" mat-button style="color:green">
+        <mat-icon>image</mat-icon>
+        <b> Go To Gallery</b>
+      </mat-button-toggle>
     </mat-button-toggle-group>
 
+    <div id="table" *ngIf="!(group.value == 'image-form') && !(group.value == 'image-gallery')">
         <mat-form-field appearance="standard">
             <mat-label>Search</mat-label>
             <mat-icon matPrefix>search</mat-icon>
@@ -88,4 +95,18 @@
     </div>
     
 </div>
+
+
+<div *ngIf="group.value == 'image-form'">
+    <app-image-upload 
+    [imageRequestType]='imageRequestType' 
+    [rootPath]='rootPath'>
+    </app-image-upload>
+  </div>
+  
+  <div *ngIf="group.value == 'image-gallery'">
+    <app-image-gallery-list 
+    [imageFolderName] = 'imageFolderName'>
+    </app-image-gallery-list>
+  </div>
 

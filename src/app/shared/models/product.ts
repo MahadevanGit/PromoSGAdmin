@@ -1,27 +1,27 @@
 import { formatDate } from "@angular/common";
 import { Inject } from "@angular/core";
 
-export interface Product {
+export interface IProduct {
     title: string;
     category: string;
     price: string;
     imageUrl: string;
   }
 
-export interface ProductStatistics {
+export interface IProductStatistics {
   productKey: string;
   customerKey: string;
-  stats: Stats;
+  stats: IStats;
 }
-export interface Stats {
+export interface IStats {
   purchaseDate: string;
   qty: number;
 }
 
-export class ProductStats implements ProductStatistics {
+export class ProductStats implements IProductStatistics {
   public productKey: string;
   public customerKey: string;
-  public stats: Stats;
+  public stats: IStats;
   public purchaseMonth: string;
   public purchaseYear: string;
   public qty: number;

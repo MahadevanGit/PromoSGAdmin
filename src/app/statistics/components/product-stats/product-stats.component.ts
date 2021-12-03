@@ -3,7 +3,7 @@ import { Component, Inject, Input, LOCALE_ID, OnChanges, OnInit, resolveForwardR
 import { ProductService } from 'src/app/product/services/product.service';
 import { ProductStatsService } from 'src/app/product/services/product.stats.service';
 import { JsonHelper } from 'src/app/shared/models/common';
-import { Product, ProductChart, ProductChartDetails, ProductStats } from 'src/app/shared/models/product';
+import { ProductChart, ProductChartDetails, ProductStats } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'app-product-stats',
