@@ -31,9 +31,6 @@ import { ShopUserService } from './shop.service';
 import { ShopCustomerService } from './customer/services/customer.service';
 import { UserContentService } from './user-content.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ImageComponent } from './images/image/image.component';
-import { ImageListComponent } from './images/image-list/image-list.component';
-import { ImagesComponent } from './images/images.component';
 import { ClientAuthGuard } from './shared/services/client-auth-guard.service';
 import { StatisticsModule } from './statistics/statistics.module';
 
@@ -43,10 +40,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     ProductComponent,
     ProductFormComponent,
     DialogComponent,
-    PageNotFoundComponent,
-    ImageComponent,
-    ImageListComponent,
-    ImagesComponent
+    PageNotFoundComponent
     ],
   entryComponents:[DialogComponent],
   imports: [
@@ -69,16 +63,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     CommonModule,
     FormsModule, // This module for template driven form //TODO: create common module and assign to all the component from common module
     RouterModule.forRoot([
-      {
-        path: 'image', component: ImagesComponent, children: [
-          { path: 'upload', component: ImageComponent,canActivate: [AuthGuard,ClientAuthGuard] },
-          { path: 'list', component: ImageListComponent,canActivate: [AuthGuard] },
-          { path: "list/:userId",component: ImageListComponent,canActivate: [AuthGuard,AdminAuthGuard] },
-        ]
-      },
-
       {path: '**', component:PageNotFoundComponent}
-      
      ]),
   ],
 exports:[
