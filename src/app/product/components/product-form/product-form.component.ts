@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
-import { LocalStorageMember } from '../../../shared/models/common';
+import { LocalStorageMember, MatMenuListItem } from '../../../shared/models/common';
 import 'rxjs/add/operator/take'
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { from, Subscription } from 'rxjs';
 import { KeyValue } from '@angular/common';
 import { ImageService } from 'src/app/shared/services/image.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'product-form',
@@ -16,7 +17,7 @@ import { ImageService } from 'src/app/shared/services/image.service';
   styleUrls: ['./product-form.component.scss'],
   providers:[CategoryService,ProductService,ImageService]
 })
-export class ProductFormComponent implements OnInit,OnDestroy {
+export class ProductFormComponent implements OnInit, OnDestroy {
 
   error: string;
   categorySubscription: Subscription;
@@ -28,9 +29,11 @@ export class ProductFormComponent implements OnInit,OnDestroy {
   selectedCategoryValue: string;
   product: any = {};
   imageList: any[];
-  productKey: string;
   isProductForm: boolean = true;
   userId: string;
+
+  @Input('productKey') productKey : string;
+  notificationMessage: string;
 
   constructor(
     private dialog: MatDialog,
@@ -51,33 +54,52 @@ export class ProductFormComponent implements OnInit,OnDestroy {
         this.categoryList.push(cat);});
     });
 
-    this.productKey = this.route.snapshot.paramMap.get('id');
     if(this.productKey) this.productService.getItem(this.productKey).valueChanges().take(1)
     .subscribe(
       (value)=>{
         this.product = value;
-        console.log(this.product)
+        this.getImageList(this.product['category'],false);
+      })
+
+      console.log(this.productKey)
+      
+  }
+
+  ngOnInit(): void {
+    console.log(this.productKey)
+    this.notificationMessage = "";
+    if(this.productKey) this.productService.getItem(this.productKey).valueChanges().take(1)
+    .subscribe(
+      (value)=>{
+        this.product = value;
         this.getImageList(this.product['category'],false);
       })
   }
-  
 
-  ngOnInit(): void {
-     
-  }
-
-  async onSubmit(productData) {
-
+  async onSubmit(productForm: NgForm) {
        try {
-         if(this.productKey)
-          await this.productService.updateItem(this.productKey,productData)
-         else
-          await this.productService.addItem(productData);
-         this.router.navigate(['/products']);
+         if(this.productKey){
+          await this.productService.updateItem(this.productKey,productForm.value)
+          this.notificationMessage = "Updated successfully.";
+         }
+         else{
+          await this.productService.addItem(productForm.value);
+          this.notificationMessage = "Added successfully.";
+         }
+
+        this.resetProductForm(productForm);
+        this.router.navigate(['/products']);
+
        } catch (e) {
+         this.notificationMessage = "Something went wrong.";
           //TODO: Need to check .. Currently could not catch exception
        }
   }
+
+  resetProductForm(productForm: NgForm) {
+    this.productKey = null;
+    productForm.resetForm();;
+  } 
 
   createOrUpdateCategory(){
     let categoryNameList = [] ;
@@ -125,7 +147,6 @@ export class ProductFormComponent implements OnInit,OnDestroy {
   }
 
   getImageList(_categoryKey: any,fromUI: boolean) {
-    console.log(fromUI)
     this.setCategoryValueByKey(_categoryKey);
     this.product['imageUrl'] = this.productKey && !fromUI ? this.product['imageUrl'] : '';
     this.imageSubscription = this.imageService
