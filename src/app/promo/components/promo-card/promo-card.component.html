@@ -1,94 +1,91 @@
 <div>
-            <div>
-                 <mat-card>
-                    <mat-card-title>
-                      <div class="row">
-                        <div class="col" style="margin-top: 10px; padding-top: 0px;">
-                          {{ promoData.title ?promoData.title : 'Promo card'}}
-                        </div>
-                        <div  class="col div-action-menu">
-                          <button mat-icon-button [matMenuTriggerFor]="menu" 
-                          [disabled]="isMenuDisabled()"
-                          >
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                          <mat-menu #menu="matMenu">
-                              <button type="button" mat-menu-item [routerLink]="['/promocard/',promoData.key]">Edit</button>
-                              <button type="button" mat-menu-item (click)="publish(promoData)">Publish</button>
-                              <button type="button" mat-menu-item (click)="delete(promoData.key)">Delete</button>
-                          </mat-menu>
-                          <span *ngIf="isPromoCardAssignedToCustomer ; else thisTemplate;" class="span-dark-green">Assigned</span>
-                          <ng-template #thisTemplate>
-                          <button mat-flat-button color="accent" *ngIf="assignPromoCard && action.assign" (click)="assignPromoCardToUser(promoData)">Assign</button>
-                        </ng-template>
-                        </div>
-                      </div>
-                    </mat-card-title>
-                    <mat-card-content>
-                        <div class="container">
-                            <mat-progress-bar *ngIf="promoData.title && !promoData.promopoint"  mode="indeterminate"></mat-progress-bar>
-                          <mat-grid-list [cols]="gridColumn" rowHeight="6:4">
-                                <div *ngFor="let slot of (promoData.promoGrid ? promoData.promoGrid : promogeneratedData);index as i">
-                                    <mat-grid-tile 
-                                    [ngClass]="stampPromoCard ? 'mat-grid-promo-dark-yellow-tile' : 'mat-grid-promo-tile'"  
-                                    [colspan]="2" 
-                                    *ngIf="slot.key.toString().indexOf('Promo_') > -1; else takenTile;"
-                                    (click) = "stampPromoCard ? addStampToCustomer(slot) : addPromoDescription(slot)">
-                                    <div>
-                                        {{getPromoValue(slot)}}
-                                        <span class="span-badge">{{ promoSlot.key ? promoSlot.key : slot.key }}</span> 
-                                        {{ (promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed))   | slice:0: 10 }}..
-                                    </div> 
-                                    </mat-grid-tile>
+  <div>
+    <mat-card>
+      <mat-card-title>
+        <div class="row">
+          <div class="col" style="margin-top: 10px; padding-top: 0px;">
+            {{ promoData.title ?promoData.title : 'Promo card'}}
+          </div>
+          <div class="col div-action-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu" [disabled]="isMenuDisabled()">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button type="button" mat-menu-item [routerLink]="['/promocard/',promoData.key]">Edit</button>
+              <button type="button" mat-menu-item (click)="publish(promoData)">Publish</button>
+              <button type="button" mat-menu-item (click)="delete(promoData.key)">Delete</button>
+            </mat-menu>
+            <span *ngIf="isPromoCardAssignedToCustomer ; else thisTemplate;" class="span-dark-green">Assigned</span>
+            <ng-template #thisTemplate>
+              <button mat-flat-button color="accent" *ngIf="assignPromoCard && action.assign"
+                (click)="assignPromoCardToUser(promoData)">Assign</button>
+            </ng-template>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="container">
+          <mat-progress-bar *ngIf="promoData.title && !promoData.promopoint" mode="indeterminate"></mat-progress-bar>
+          <mat-grid-list [cols]="gridColumn" rowHeight="6:4">
+            <div *ngFor="let slot of (promoData.promoGrid ? promoData.promoGrid : promogeneratedData);index as i">
+              <mat-grid-tile [ngClass]="stampPromoCard ? 'mat-grid-promo-dark-yellow-tile' : 'mat-grid-promo-tile'"
+                [colspan]="2" *ngIf="slot.key.toString().indexOf('Promo_') > -1; else takenTile;"
+                (click)="stampPromoCard ? addStampToCustomer(slot) : addPromoDescription(slot)">
+                <div>
+                  {{getPromoValue(slot)}}
+                  <span class="span-badge">{{ promoSlot.key ? promoSlot.key : slot.key }}</span>
+                  {{ (promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed))
+                  | slice:0: 10 }}..
+                </div>
+              </mat-grid-tile>
 
-                                    <ng-template #takenTile>
-                                      <mat-grid-tile
-                                      *ngIf="slot.key.toString().indexOf('Taken_') > -1 ; else initailTile; "
-                                      [ngClass]="stampPromoCard ? 'mat-grid-promo-dark-yellow-tile' : 'mat-grid-promo-tile'"  
-                                      [colspan]="1" 
-                                      (click) = "addStampToCustomer(slot)">
-                                      <div>
-                                        <p>
-                                          <span class="span-badge">{{slot.key ? slot.value.key ? slot.value.key : slot.key : ''}}</span> 
-                                          {{ (slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : '')    | slice:0: 10 }}
-                                        </p>
-                                      </div>
-                                      </mat-grid-tile>
-                                    </ng-template>
+              <ng-template #takenTile>
+                <mat-grid-tile *ngIf="slot.key.toString().indexOf('Taken_') > -1 ; else initailTile; "
+                  [ngClass]="stampPromoCard ? 'mat-grid-promo-dark-yellow-tile' : 'mat-grid-promo-tile'" [colspan]="1"
+                  (click)="addStampToCustomer(slot)">
+                  <div>
+                    <p>
+                      <span class="span-badge">{{slot.key ? slot.value.key ? slot.value.key : slot.key : ''}}</span>
+                      {{ (slot.value ? slot.value.value ? getPromoValueFromslot(slot.value.value) : slot.value : '') |
+                      slice:0: 10 }}
+                    </p>
+                  </div>
+                </mat-grid-tile>
+              </ng-template>
 
-                                    <ng-template #initailTile>
-                                        <mat-grid-tile 
-                                        [ngClass]="stampPromoCard ? 'mat-grid-promo-yellow-tile' : none"
-                                        (click) = "stampPromoCard && addStampToCustomer(slot)">                                        
-                                        <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{ getInitialValue(slot.value.value,slot) }}</span>
-                                        </mat-grid-tile>
-                                      </ng-template>
-                                </div>
-                              </mat-grid-list>
-                        </div>
-                    </mat-card-content>
+              <ng-template #initailTile>
+                <mat-grid-tile [ngClass]="stampPromoCard ? 'mat-grid-promo-yellow-tile' : none"
+                  (click)="stampPromoCard && addStampToCustomer(slot)">
+                  <span [ngClass]="stampPromoCard ? 'span-badge' : 'span-badge gr'">{{
+                    getInitialValue(slot.value.value,slot) }}</span>
+                </mat-grid-tile>
+              </ng-template>
+            </div>
+          </mat-grid-list>
+        </div>
+      </mat-card-content>
 
-                    <mat-card-footer>
-                      <div class="container row">
-                        <div class="col" *ngIf = "promoData.startDate">
-                          <p style="font-size:x-small;"><b>Valid from :</b> {{promoData.startDate  | date}}</p>
-                        </div>
-                        <div class="col" *ngIf = "promoData.expiryDate">
-                          <p style="font-size:x-small;"><b>Valid till :</b> {{promoData.expiryDate  | date}}</p>
-                        </div>
-                        <div class="col" *ngIf = "promoData.status">
-                          <p style="font-size:x-small;"><b>Status :</b> {{promoData.status}}</p>
-                        </div>
-                      </div>
-                      <!-- <div class="container" *ngIf = "promoData.startDate">
+      <mat-card-footer>
+        <div class="container row">
+          <div class="col" *ngIf="promoData.startDate">
+            <p style="font-size:x-small;"><b>Valid from :</b> {{promoData.startDate | date}}</p>
+          </div>
+          <div class="col" *ngIf="promoData.expiryDate">
+            <p style="font-size:x-small;"><b>Valid till :</b> {{promoData.expiryDate | date}}</p>
+          </div>
+          <div class="col" *ngIf="promoData.status">
+            <p style="font-size:x-small;"><b>Status :</b> {{promoData.status}}</p>
+          </div>
+        </div>
+        <!-- <div class="container" *ngIf = "promoData.startDate">
                         <hr>
                               <p style="font-size:x-small;"><b>Valid from :</b> {{promoData.startDate  | date}}</p>
                       </div>
                         <div class="container" *ngIf = "promoData.expiryDate">
                                 <p style="font-size:x-small;"><b>Valid till    :</b> {{promoData.expiryDate  | date}}</p>
                         </div> -->
-                    </mat-card-footer>
-                    
-                </mat-card> 
-         </div>
+      </mat-card-footer>
+
+    </mat-card>
+  </div>
 </div>

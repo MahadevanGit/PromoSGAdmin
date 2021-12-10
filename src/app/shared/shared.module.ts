@@ -16,6 +16,7 @@ import { AddressComponent } from './components/address/address.component';
 import { StackedHorizontalBarChartComponent } from './components/charts/stacked-horizontal-bar-chart/stacked-horizontal-bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { MultiSelectDdComponent } from './components/control/multi-select-dd/multi-select-dd.component';
+import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon-dd.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MultiSelectDdComponent } from './components/control/multi-select-dd/mul
     ImageGalleryListComponent,
     AddressComponent,
     StackedHorizontalBarChartComponent,
-    MultiSelectDdComponent
+    MultiSelectDdComponent,
+    MenuIconDdComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { MultiSelectDdComponent } from './components/control/multi-select-dd/mul
     ImageGalleryListComponent,
     AddressComponent,
     StackedHorizontalBarChartComponent,
-    MultiSelectDdComponent
+    MultiSelectDdComponent,
+    MenuIconDdComponent
   ]
 
 })
