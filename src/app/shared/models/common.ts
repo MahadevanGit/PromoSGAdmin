@@ -73,8 +73,13 @@ export class JsonHelper {
   static getDate(date: string,format: string){
     return new Date(formatDate(date.toLocaleString(),format,'en-US')).toLocaleString();
   }
+}
 
-  
-  
+export class MatMenuListItem {
+  menuLinkText: string;
+  menuLinkKey: string;
+  menuIcon: string;
+  isDisabled: boolean;
+  selected: boolean;
 }
 

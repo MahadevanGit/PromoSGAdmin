@@ -1,11 +1,4 @@
 <div>
-      <!-- navigate button  -->
-      <div>
-      <button class="back-btn" mat-button routerLink = "/products" style="color:green">
-        <mat-icon>arrow_back</mat-icon> 
-      </button>
-    </div>
-
       <div *ngIf="isProductForm">
         
         <ng-template #categoryListElseTemplate>
@@ -31,7 +24,7 @@
                         
           <div>
             <!-- Template driven form -->
-              <form action="#!" #f="ngForm"  (ngSubmit)="onSubmit(f.value)">
+              <form action="#!" #productFormTag="ngForm"  (ngSubmit)="onSubmit(productFormTag)">
                 
                       <label for="title">Title</label>
                       <div class="form-group">
@@ -116,15 +109,23 @@
                         </small>
                       <br>
                 
-                  <!-- Action button  -->
-                  <div class="ele-div">
-                      <button class="app-button" mat-stroked-button color="primary" type="submit" >
-                          Save   
+                  <!-- Action button {{productKey ? 'Update Product' : 'Create Product' }}  -->
+                  <div class="ele-div" *ngIf="!productKey; else elseActionTemplate;" >
+                      <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
+                          Save 
                       </button>  
-                      <button class="app-button" mat-stroked-button color="basic" routerLink = "/products">
-                        Cancel 
-                    </button>
+                      <button class="app-button" mat-stroked-button color="basic" type="button" (click)="resetProductForm(productFormTag)">
+                        Clear 
+                      </button>
+                      <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
                   </div>
+
+                  <ng-template #elseActionTemplate>
+                    <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
+                      Update   
+                    </button>
+                    <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
+                  </ng-template>
 
               </form>
               <!-- Default product form   -->
