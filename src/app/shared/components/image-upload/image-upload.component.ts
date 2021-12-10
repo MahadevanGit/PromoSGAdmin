@@ -44,9 +44,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
       this.auth_subscription = this.auth.appUser$.subscribe(_user=> { 
         this.isAdmin = _user.isAdmin;
         this.userId = _user.userId; 
-
-        console.log(this.imageRequestType)
-
+        
         this.categorySubscription = this.imageRequestType == 'product' && this.categoryService
         .getItemsWithMap(this.userId).subscribe((value)=>{
           this.categoryList = [];

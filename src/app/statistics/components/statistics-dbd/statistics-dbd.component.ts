@@ -10,7 +10,7 @@ import { JsonHelper } from 'src/app/shared/models/common';
 export class StatisticsDbdComponent implements OnInit {
 
   months: string[] = [];
-  monthsArr: string[] = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  monthsArr: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   defaultSelection: string[] = [];
   currentDate: string;
 
@@ -18,13 +18,13 @@ export class StatisticsDbdComponent implements OnInit {
 
   ngOnInit(): void {
     var d = new Date;
-    this.currentDate = formatDate(d,'MM/dd/yyyy','en-US');
+    this.currentDate = formatDate(d, 'MM/dd/yyyy', 'en-US');
     console.log(this.currentDate)
     let currentMonth = JsonHelper.getMonth(this.currentDate);
     this.defaultSelection.push(currentMonth);
   }
 
-  public GetSelectedValues(data: any):void {
+  public GetSelectedValues(data: any): void {
     //tested .. moth valus is coming here
     this.months = data == null ? [] : data;
   }

@@ -3,10 +3,11 @@
         <mat-tab-group>
             <mat-tab label="User"> User - Line chart in progress </mat-tab>
             <mat-tab label="PromoCard"> PromoCard - Bar chart in progress </mat-tab>
-            <mat-tab label="Product"> 
-                <div  class="mat-custom-body-content">
-                    <app-multi-select-dd [values]="monthsArr" [defaultSelection]="defaultSelection" (onAfterSelect)="GetSelectedValues($event)"></app-multi-select-dd>
-                    <app-product-stats [months]="months"></app-product-stats> 
+            <mat-tab label="Product">
+                <div class="mat-custom-body-content">
+                    <app-multi-select-dd [values]="monthsArr" [defaultSelection]="defaultSelection"
+                        (onAfterSelect)="GetSelectedValues($event)"></app-multi-select-dd>
+                    <app-product-stats [months]="months"></app-product-stats>
                 </div>
             </mat-tab>
         </mat-tab-group>

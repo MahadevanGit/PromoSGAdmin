@@ -26,7 +26,6 @@ export class ImageGalleryListComponent implements OnInit {
     private auth: AuthService,
     private route: ActivatedRoute) {
       this.shopUserId = this.route.snapshot.paramMap.get('userId'); // for promoSG admin user
-      console.log(this.shopUserId)
       this.auth_subscription = this.auth.appUser$.subscribe(_user=> { 
         this.isAdmin = _user.isAdmin;
       });
