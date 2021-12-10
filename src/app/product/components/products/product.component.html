@@ -1,6 +1,13 @@
 <div>
+    <!-- child component list 
+        1) app-menu-icon-dd
+        2) product-form
+        3) app-image-upload
+        4) app-image-gallery-list
+    -->
+
     <app-menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
-        (onAfterSelect)="GetSelectedValues($event)">
+        (onSelect)="onSelect($event)">
     </app-menu-icon-dd>
 
     <div id="table" *ngIf="selectedMenuItem == 'products'">
@@ -87,8 +94,8 @@
 
 
 
-    <div *ngIf="selectedMenuItem == 'product-form'"> <!-- (onComplete)="onChildComplete($event)"  -->
-        <product-form [productKey] ="selectedProductKey" ></product-form>
+    <div *ngIf="selectedMenuItem == 'product-form'">
+        <product-form #productFormComponent [productKey]="selectedProductKey" (amDone)="isProductFormDone($event)"></product-form>
     </div>
 
     <div *ngIf="selectedMenuItem == 'image-form'">

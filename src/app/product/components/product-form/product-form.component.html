@@ -24,7 +24,7 @@
                         
           <div>
             <!-- Template driven form -->
-              <form action="#!" #f="ngForm"  (ngSubmit)="onSubmit(f)">
+              <form action="#!" #productFormTag="ngForm"  (ngSubmit)="onSubmit(productFormTag)">
                 
                       <label for="title">Title</label>
                       <div class="form-group">
@@ -111,17 +111,17 @@
                 
                   <!-- Action button {{productKey ? 'Update Product' : 'Create Product' }}  -->
                   <div class="ele-div" *ngIf="!productKey; else elseActionTemplate;" >
-                      <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="f.status=='INVALID'">
+                      <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
                           Save 
                       </button>  
-                      <button class="app-button" mat-stroked-button color="basic" type="button" (click)="resetProductForm(f)">
+                      <button class="app-button" mat-stroked-button color="basic" type="button" (click)="resetProductForm(productFormTag)">
                         Clear 
                       </button>
                       <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
                   </div>
 
                   <ng-template #elseActionTemplate>
-                    <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="f.status=='INVALID'">
+                    <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
                       Update   
                     </button>
                     <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>

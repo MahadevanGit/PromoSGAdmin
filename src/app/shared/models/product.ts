@@ -2,11 +2,11 @@ import { formatDate } from "@angular/common";
 import { Inject } from "@angular/core";
 
 export interface IProduct {
-    title: string;
-    category: string;
-    price: string;
-    imageUrl: string;
-  }
+  title: string;
+  category: string;
+  price: string;
+  imageUrl: string;
+}
 
 export interface IProductStatistics {
   productKey: string;
@@ -27,7 +27,7 @@ export class ProductStats implements IProductStatistics {
   public qty: number;
 
 
-  constructor(_productKey,_customerKey,_stats) {
+  constructor(_productKey, _customerKey, _stats) {
     this.productKey = _productKey;
     this.customerKey = _customerKey;
     this.stats = _stats;
@@ -50,7 +50,7 @@ export class ProductChartDetails implements IProductChartDetails {
   public productName: string;
   public productCounts: number[];
 
-  constructor(_productName: string,_productCounts: number[]) {
+  constructor(_productName: string, _productCounts: number[]) {
     this.productName = _productName;
     this.productCounts = _productCounts;
   }
@@ -63,7 +63,7 @@ export class ProductChart implements IProductChart {
   public productDetails: ProductChartDetails[];
   public firstCopy: boolean;
 
-  constructor(_productStatsMode: string[],_productDetails: IProductChartDetails[],_firstCopy: boolean) {
+  constructor(_productStatsMode: string[], _productDetails: IProductChartDetails[], _firstCopy: boolean) {
     this.productStatsMode = _productStatsMode;
     this.productDetails = _productDetails;
     this.firstCopy = _firstCopy;
