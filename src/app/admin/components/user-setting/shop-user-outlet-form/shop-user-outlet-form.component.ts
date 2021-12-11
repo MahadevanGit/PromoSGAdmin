@@ -26,7 +26,6 @@ export class ShopUserOutletFormComponent implements OnInit {
       this.authSubscription = this.auth.appUser$.take(1).subscribe((user)=>{
         this.appUser = user;
         this.outletList = this.appUser['outletList']; //initial load
-        console.log(this.outletList)
       })
    }
 
@@ -52,7 +51,6 @@ export class ShopUserOutletFormComponent implements OnInit {
       return outlet.address.street.trim().toLocaleLowerCase().includes(filterValue.trim().toLocaleLowerCase())
             || outlet.address.zip.trim().toLocaleLowerCase().includes(filterValue.trim().toLocaleLowerCase());
     });
-    console.log(this.outletList)
   }
 
   // async onSubmit() {
