@@ -12,7 +12,7 @@ import { Shop } from './shared/models/shop';
 @Injectable({
   providedIn: 'root'
 })
-export class ShopUserService implements OnDestroy {
+export class ShopUserService {
 
   currentUser: Shop;
   localStorageMember = new LocalStorageMember();
@@ -20,9 +20,9 @@ export class ShopUserService implements OnDestroy {
   subscription: Subscription;
 
   constructor(private db: AngularFireDatabase) { }
-  
 
-  async save(Shop: any){
+
+  async save(Shop: any) {
     let userId = this.localStorageMember.get(this.localStorageMember.userId);
     console.log('userid from shop.service : ' + userId);
     try {
@@ -36,15 +36,14 @@ export class ShopUserService implements OnDestroy {
       })
     } catch (error) {
       console.log(error.message)
-    } finally{
+    } finally {
       //this.localStorageMember.clear();
     }
-    
+
   }
 
-  async update(userId: string,Shop: any){
+  async update(userId: string, Shop: any) {
     var tryerror;
-    console.log('userid from shop.service : ' + userId);
     try {
       this.db.object('/shops/' + userId).update({
         userId: userId,
@@ -64,35 +63,35 @@ export class ShopUserService implements OnDestroy {
     } catch (error) {
       console.log(error.message)
       tryerror = error;
-    } finally{
-      if(!tryerror)
-      console.log("Notifi: User details updated successfully.")
+    } finally {
+      if (!tryerror)
+        console.log("Notifi: User details updated successfully.")
       else
-      console.log("Notifi: Error occured when update user details.")
+        console.log("Notifi: Error occured when update user details.")
       //this.localStorageMember.clear();
     }
-    
+
   }
 
-  async updateByObject(userId: string,Shop: any){
+  async updateByObject(userId: string, Shop: any) {
     var tryerror;
     try {
       this.db.object('/shops/' + userId).update(Shop);
     } catch (error) {
       console.log(error.message)
       tryerror = error;
-    } finally{
-      if(!tryerror)
-      console.log("Notifi: User details updated successfully.")
+    } finally {
+      if (!tryerror)
+        console.log("Notifi: User details updated successfully.")
       else
-      console.log("Notifi: Error occured when update user details.")
+        console.log("Notifi: Error occured when update user details.")
       //this.localStorageMember.clear();
     }
-    
+
   }
 
   get(userId: string): Observable<any> {
-    
+
     // let obj = this.db.object('/users/' + userId).valueChanges().map(
     //   (value) => { 
     //     let val = value ? new AppUser(value['userId'],value['firstname'],value['lastname'],value['email'],value['registeredAt'],value['isAdmin']) : null;
@@ -100,20 +99,16 @@ export class ShopUserService implements OnDestroy {
     //   }
     // );
 
-  return this.db.object('/shops/' +  userId).valueChanges();
+    return this.db.object('/shops/' + userId).valueChanges();
   }
 
   getAllUser(): Observable<any> {
     return this.db.object('/shops').valueChanges();;
   }
 
-  ngOnDestroy(): void {
-    console.log('shop.service.ts : ngOnDestroy called..')
-    //this.subscription.unsubscribe();
-  }
-
- 
-
-
+  // ngOnDestroy(): void {
+  //   console.log('shop.service.ts : ngOnDestroy called..')
+  //   //this.subscription.unsubscribe();
+  // }
 }
 

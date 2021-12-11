@@ -95,7 +95,8 @@
 
 
     <div *ngIf="selectedMenuItem == 'product-form'">
-        <product-form #productFormComponent [productKey]="selectedProductKey" (amDone)="isProductFormDone($event)"></product-form>
+        <product-form #productFormComponent [productKey]="selectedProductKey" (amDone)="isProductFormDone($event)">
+        </product-form>
     </div>
 
     <div *ngIf="selectedMenuItem == 'image-form'">
