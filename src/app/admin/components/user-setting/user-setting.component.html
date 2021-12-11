@@ -1,9 +1,20 @@
 <div>
 
-<div>
-    <mat-button-toggle-group  #group="matButtonToggleGroup" value="personnel-form"
-    appearance="legacy"
-    name="fontStyle" aria-label="Font Style">
+  <!-- child component list 
+        1) app-menu-icon-dd
+        2) app-shop-user-form
+        3) app-shop-user-outlet-form
+        4) app-image-upload
+        5) app-image-gallery-list
+    -->
+
+  <app-menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
+    (onSelect)="onSelect($event)">
+  </app-menu-icon-dd>
+
+  <!-- <div>
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="personnel-form" appearance="legacy" name="fontStyle"
+      aria-label="Font Style">
       <mat-button-toggle value="personnel-form" mat-button style="color:green">
         <mat-icon>person</mat-icon>
         <b> Add company info</b>
@@ -21,28 +32,25 @@
         <b> Go To Gallery</b>
       </mat-button-toggle>
     </mat-button-toggle-group>
-</div>
+  </div> -->
 
-<div *ngIf="group.value == 'personnel-form'">
+  <div *ngIf="selectedMenuItem == 'personnel-form'">
     <app-shop-user-form></app-shop-user-form>
-</div>
+  </div>
 
-<div *ngIf="group.value == 'outlet-form'">
+  <div *ngIf="selectedMenuItem == 'outlet-form'">
     <app-shop-user-outlet-form></app-shop-user-outlet-form>
-</div>
+  </div>
 
-<div *ngIf="group.value == 'image-form'">
-  <app-image-upload 
-  [imageRequestType]='imageRequestType' 
-  [rootPath]='rootPath'
-  [imageListRoutePath]='imageListRoutePath'>
-  </app-image-upload>
-</div>
+  <div *ngIf="selectedMenuItem == 'image-form'">
+    <app-image-upload [imageRequestType]='imageRequestType' [rootPath]='rootPath'
+      [imageListRoutePath]='imageListRoutePath'>
+    </app-image-upload>
+  </div>
 
-<div *ngIf="group.value == 'image-gallery'">
-  <app-image-gallery-list 
-  [imageFolderName] = 'imageFolderName'>
-  </app-image-gallery-list>
-</div>
+  <div *ngIf="selectedMenuItem == 'image-gallery'">
+    <app-image-gallery-list [imageFolderName]='imageFolderName'>
+    </app-image-gallery-list>
+  </div>
 
 </div>

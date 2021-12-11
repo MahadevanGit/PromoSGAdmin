@@ -28,34 +28,34 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 })
 
 export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
-
-  menuListItems: MatMenuListItem[];
   productDataSource: MatTableDataSource<IProduct>;
   imageFolderName: string = '/product-imageDetails/';
   imageRequestType: string = 'product'; //'usersetting';
   rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
   @ViewChild(ProductFormComponent) productFormComponent: ProductFormComponent;
   selectedProductKey: string;
+  selectedMenuItem: string;
+  defaultSelection: MatMenuListItem;
+  menuListItems: MatMenuListItem[];
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (this.productDataSource && !this.productDataSource.sort) {
       this.productDataSource.sort = sort;
     }
   }
+  // MyNote: Table column disply by this sequence
+  productDisplayedColumns: string[] = ['image', 'title', 'category', 'price', 'action'];
+  isAdmin: boolean = false;
+  categories: any[];
 
   imageLoader = true;
   product_subscription: Subscription
   auth_subscription: Subscription
   category_subscription: Subscription
   userId: string;
-  selectedMenuItem: string;
-  defaultSelection: MatMenuListItem;
-  // MyNote: Table column disply by this sequence
-  productDisplayedColumns: string[] = ['image', 'title', 'category', 'price', 'action'];
-  isAdmin: boolean = false;
-  categories: any[];
+  
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.auth_subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
   }
   ngAfterViewChecked(): void {
-    this.cdr.detectChanges();
+    this.cdr.detectChanges(); // TODO: check this we are using in this component
   }
 
   async ngOnInit(): Promise<void> {
@@ -225,12 +225,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
     else
       this.loadMatMenuListItem();
-  }
-
-  testbtn() {
-    this.onSelect(this.menuListItems[1].menuLinkKey);
-    this.defaultSelection = this.menuListItems[1]
-    this.menuiconcomp.changeView(this.defaultSelection);
   }
 
   ngOnDestroy(): void {
