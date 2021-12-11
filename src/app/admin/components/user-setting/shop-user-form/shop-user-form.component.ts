@@ -50,7 +50,6 @@ export class ShopUserFormComponent implements OnInit {
     this.authSubscription = this.auth.appUser$.take(1).subscribe((user)=>{
       this.appUser = user;
       this.updateProfile(this.appUser);
-      console.log(this.fb)
     })
   }
     
@@ -76,29 +75,23 @@ export class ShopUserFormComponent implements OnInit {
   });
 
   ngOnInit() {
-    console.log(this.fb)
    }
 
   async onSubmit() {
     let userData = this.profileForm.value;
-    console.log(userData)
     userData['email'] = this.appUser['email'];
     userData['userId'] = this.appUser.userId;
     userData['registeredAt'] = this.appUser.registeredAt;
     userData['weblink'] = this.removeWeblinkIfEmpty(userData['weblink']);
-    console.log(this.appUser['address'])
+    userData['outletList'] = this.appUser['outletList'];
        try {
         this.shopUserService.update(this.appUser.userId,userData); //un-comment if u want to save 
-        this.router.navigate(['/usersetting']);
+        //this.router.navigate(['/usersetting']);
         //Show flash message .. successfully updated..
        } catch (e) {
           //TODO: Need to check .. Currently could not catch exception
        }
   }
-
-  
-
-  
 
   updateProfile(appUser) {
     if(appUser && !appUser['weblink'])

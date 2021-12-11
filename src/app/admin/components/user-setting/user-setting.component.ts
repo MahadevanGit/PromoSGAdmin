@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
+import { MatMenuListItem } from 'src/app/shared/models/common';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class UserSettingComponent implements OnInit {
 
-  imageRequestType: string =  'usersetting'; //'product';
+  imageRequestType: string = 'usersetting'; //'product';
   //imageListRoutePath: string = 'image-gallery'; //'/image/list';
   rootPath: string = 'shop-user-content/current-user-id/usersetting-imageDetails/';
   imageFolderName: string = '/usersetting-imageDetails/';
@@ -17,15 +19,73 @@ export class UserSettingComponent implements OnInit {
   userId: string;
   auth_subscription: Subscription;
   isAdmin: boolean;
-  
-  constructor(private auth: AuthService) { 
-    // this.auth_subscription = this.auth.appUser$.subscribe(_user=> { 
-    //   this.isAdmin = _user.isAdmin;
-    //   this.userId = _user.userId; 
-    // });
+
+  selectedMenuItem: string;
+  defaultSelection: MatMenuListItem;
+  menuListItems: MatMenuListItem[];
+
+  constructor(
+    public menuiconcomp: MenuIconDdComponent, // MyNote: This is child component injection way 1. way 2 is using @ViewChild.
+  ) {
   }
 
   ngOnInit(): void {
+    this.loadMatMenuListItem();
+  }
+
+  async loadMatMenuListItem() {
+    this.menuListItems = this.menuListItems = [
+      {
+        menuLinkText: 'Shop Information',
+        menuLinkKey: 'personnel-form',
+        menuIcon: 'shop',
+        isDisabled: false,
+        selected: true
+      },
+      {
+        menuLinkText: 'Add Outlets',
+        menuLinkKey: 'outlet-form',
+        menuIcon: 'add_location',
+        isDisabled: false,
+        selected: false
+      },
+      {
+        menuLinkText: 'Add Image',
+        menuLinkKey: 'image-form',
+        menuIcon: 'add_photo_alternate',
+        isDisabled: false,
+        selected: false
+      },
+      {
+        menuLinkText: 'Shop Image Gallery',
+        menuLinkKey: 'image-gallery',
+        menuIcon: 'collections',
+        isDisabled: false,
+        selected: false
+      }
+    ];
+    this.onChildComplete();
+  }
+
+  isProductFormDone(isProductFormDone: boolean) {
+    if (isProductFormDone)
+      this.onChildComplete();
+  }
+
+  public onSelect(menuLinkKey: string): void {
+    if (menuLinkKey == 'product-form') {
+    }
+    this.selectedMenuItem = menuLinkKey;
+  }
+
+  public onChildComplete(data?: any): void {
+    if (this.menuListItems) {
+      this.defaultSelection = this.menuListItems ? this.menuListItems[0] : null;
+      this.menuiconcomp.clickMenuItem(this.defaultSelection);
+      this.onSelect(this.defaultSelection.menuLinkKey);
+    }
+    else
+      this.loadMatMenuListItem();
   }
 
 }
