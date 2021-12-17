@@ -10,12 +10,17 @@
   border-radius: 50%;
 }
 
-.mat-icon {
-  vertical-align: text-bottom;
-  margin-left: 5px;
+span{
+    padding-left: 5px;
+}
+
+.sl {
+  background-color: #dadee2;
+  color: green;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
+  padding: 0px 10px;
 }
