@@ -1,4 +1,4 @@
-export interface Shop{
+export interface Shop {
     userId: string,
     shopname: string,
     firstName: string,
@@ -17,8 +17,8 @@ export class AppShopUser implements Shop {
     email: string;
     registeredAt: string;
     isAdmin: boolean;
-     
-    constructor(_userId,_shopname,_firstname,_lastname,_email,_registeredAt,_isAdmin) {
+
+    constructor(_userId, _shopname, _firstname, _lastname, _email, _registeredAt, _isAdmin) {
         this.userId = _userId;
         this.shopname = _shopname;
         this.firstName = _firstname;
@@ -27,5 +27,5 @@ export class AppShopUser implements Shop {
         this.registeredAt = _registeredAt;
         this.isAdmin = _isAdmin;
     }
-    
+
 }

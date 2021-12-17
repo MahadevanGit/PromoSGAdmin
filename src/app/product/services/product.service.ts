@@ -3,8 +3,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { LocalStorageMember } from '../../shared/models/common';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-
 @Injectable({
   providedIn: 'root'
 })

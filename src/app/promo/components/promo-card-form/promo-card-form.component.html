@@ -1,48 +1,49 @@
 <div>
 
-      <div class="row">
-          <div class="col-md-6 mar-bot">
+  <div class="row">
+    <div class="col-md-6 mar-bot">
+      <div>
+        <mat-card>
+          <mat-card-title>{{promoCardKey ? 'Update Promo card' : 'Create Promo card' }} </mat-card-title>
+          <hr>
+          <mat-card-content>
+
+
             <div>
-              <mat-card>
-                  <mat-card-title>{{promoCardKey ? 'Update Promo card' : 'Create Promo card' }} </mat-card-title>
-                  <hr>
-                  <mat-card-content>
-                      
-                        
-          <div>
-              <form action="#!" #f="ngForm"  (ngSubmit)="onSubmit(f.value,promoCard.startDate,promoCard.expiryDate)">
-                
-                      <label for="title">Title</label>
-                      <div class="form-group">
-                            <!-- Title   -->
-                          <input #title="ngModel" type="text" [(ngModel)]='promoCard && promoCard.title' name="title" id="title" class="form-control mb-4" required>
-                          
-                          <small class="form-text text-danger mb-4" *ngIf="title.touched && title.invalid">
-                              <p>title is required.</p> 
-                          </small>
-      
-                      </div>
-      
-                      <label for="slots">Slots</label>
-                      <div class="form-group">
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">No's</span>
-                          </div>
-                          <input #slots="ngModel" type="number" [(ngModel)]='promoCard && promoCard.slots' 
-                            name="slots" id="slots" class="form-control mb-4" required [min]="0">
-                            <!-- <div class="input-group-append">
+              <form action="#!" #f="ngForm" (ngSubmit)="onSubmit(f.value,promoCard.startDate,promoCard.expiryDate)">
+
+                <label for="title">Title</label>
+                <div class="form-group">
+                  <!-- Title   -->
+                  <input #title="ngModel" type="text" [(ngModel)]='promoCard && promoCard.title' name="title" id="title"
+                    class="form-control mb-4" required>
+
+                  <small class="form-text text-danger mb-4" *ngIf="title.touched && title.invalid">
+                    <p>title is required.</p>
+                  </small>
+
+                </div>
+
+                <label for="slots">Slots</label>
+                <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">No's</span>
+                    </div>
+                    <input #slots="ngModel" type="number" [(ngModel)]='promoCard && promoCard.slots' name="slots"
+                      id="slots" class="form-control mb-4" required [min]="0">
+                    <!-- <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                           </div> -->
-                        </div>
-      
-                        <small class="form-text text-danger mb-4" *ngIf="slots.touched && slots.invalid">
-                          <p *ngIf="slots.errors.required">Slots is required.</p> 
-                          <p *ngIf="slots.errors.min">Slots should be 0 or higher.</p> 
-                        </small>
-                      </div>
+                  </div>
 
-                      <!-- <label for="column">Column per row</label>
+                  <small class="form-text text-danger mb-4" *ngIf="slots.touched && slots.invalid">
+                    <p *ngIf="slots.errors.required">Slots is required.</p>
+                    <p *ngIf="slots.errors.min">Slots should be 0 or higher.</p>
+                  </small>
+                </div>
+
+                <!-- <label for="column">Column per row</label>
                       <div class="form-group">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -58,86 +59,86 @@
                           </small>
                         </div> -->
 
-                        <label for="promopoint">Apply promotion point</label>
-                      <div class="form-group">
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">No's</span>
-                          </div>
-                          <input #promopoint="ngModel" type="number" [(ngModel)]='promoCard && promoCard.promopoint' 
-                                  (change)="promoCardcomp.generatePromoData(promoCard)" name="promopoint" 
-                                    (keyup)="promoCardcomp.generatePromoData(promoCard)" 
-                                    id="promopoint" class="form-control mb-4" required [min]="0">
-                      <!-- <div class="input-group-append"> 
+                <label for="promopoint">Apply promotion point</label>
+                <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">No's</span>
+                    </div>
+                    <input #promopoint="ngModel" type="number" [(ngModel)]='promoCard && promoCard.promopoint'
+                      (change)="promoCardcomp.generatePromoData(promoCard)" name="promopoint"
+                      (keyup)="promoCardcomp.generatePromoData(promoCard)" id="promopoint" class="form-control mb-4"
+                      required [min]="0">
+                    <!-- <div class="input-group-append"> 
                             <span class="input-group-text">.00</span>
                           </div> -->
-                        </div>
-      
-                        <small class="form-text text-danger mb-4" *ngIf="promopoint.touched && promopoint.invalid">
-                          <p *ngIf="promopoint.errors.required">Promopoint is required.</p> 
-                          <p *ngIf="promopoint.errors.min">Promopoint should be 0 or higher.</p> 
-                        </small>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <label for="startDate">Start Date</label>
-                          <div >
-                              <mat-form-field appearance="fill" class="form-group" >
-                                  <mat-label>Choose promotion start date</mat-label>
-                                  <input id="startDate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dp3" 
-      
-                                  #startDate="ngModel" name="startDate" [(ngModel)]='promoCard && promoCard.startDate' disabled>
-                                  <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-                                  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-                                </mat-form-field>
-                        </div>
-                        </div>
-                        <div class="col">
-                          <label for="expiryDate">Expiry Date</label>
-                          <div >
-                              <mat-form-field appearance="fill" class="form-group">
-                                  <mat-label>Choose promotion expire date</mat-label>
-                                  <input id="expiryDate" matInput [min]="promoCard && promoCard.startDate" [max]="maxExpiryDate" [matDatepicker]="dp4"
-                                  #expiryDate="ngModel" name="expiryDate" [(ngModel)]='promoCard && promoCard.expiryDate' disabled>
-                                  <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
-                                  <mat-datepicker #dp4 disabled="false"></mat-datepicker>
-                                </mat-form-field>
-                        </div>
-        
-                        </div>
-                      </div>
-                      
+                  </div>
 
-                      
-                      <!-- <label for="imageUrl">Image URL</label>
+                  <small class="form-text text-danger mb-4" *ngIf="promopoint.touched && promopoint.invalid">
+                    <p *ngIf="promopoint.errors.required">Promopoint is required.</p>
+                    <p *ngIf="promopoint.errors.min">Promopoint should be 0 or higher.</p>
+                  </small>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="startDate">Start Date</label>
+                    <div>
+                      <mat-form-field appearance="fill" class="form-group">
+                        <mat-label>Choose promotion start date</mat-label>
+                        <input id="startDate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dp3"
+                          #startDate="ngModel" name="startDate" [(ngModel)]='promoCard && promoCard.startDate' disabled>
+                        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="expiryDate">Expiry Date</label>
+                    <div>
+                      <mat-form-field appearance="fill" class="form-group">
+                        <mat-label>Choose promotion expire date</mat-label>
+                        <input id="expiryDate" matInput [min]="promoCard && promoCard.startDate" [max]="maxExpiryDate"
+                          [matDatepicker]="dp4" #expiryDate="ngModel" name="expiryDate"
+                          [(ngModel)]='promoCard && promoCard.expiryDate' disabled>
+                        <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                        <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+                <!-- <label for="imageUrl">Image URL</label>
                       <div class="form-group">
                           <input type="imageUrl" #imageurl="ngModel"  [(ngModel)]='promoCard.imageUrl' name="imageUrl" id="imageUrl" class="form-control mb-4" >
                       </div>
                       <br> -->
-                
-                  <!-- Action button  -->
-                  <div class="ele-div">
-                      <button class="app-button" mat-stroked-button color="primary" type="submit" >
-                          Save   
-                      </button>  
-                      <button class="app-button" mat-stroked-button color="basic" type="button" routerLink = "/promocarddb">
-                        Cancel 
-                    </button>
-                  </div>
-      
+
+                <!-- Action button  -->
+                <div class="ele-div">
+                  <button class="app-button" mat-stroked-button color="primary" type="submit">
+                    Save
+                  </button>
+                  <button class="app-button" mat-stroked-button color="basic" type="button" routerLink="/promocarddb">
+                    Cancel
+                  </button>
+                </div>
+
               </form>
               <!-- Default promo card form   -->
-                    </div>
-                  </mat-card-content>
-              </mat-card>
             </div>
-          </div>
-
-          <div class="col-md-5 mar-bot">
-              <promo-card [promoData]="promoCard" [canEdit]="true" #promoCardcomp (onAfterPromoGeneratedData)="GetpromoDataFromPromCardComp($event)"></promo-card>
-          </div>
-
+          </mat-card-content>
+        </mat-card>
       </div>
+    </div>
+
+    <div class="col-md-5 mar-bot">
+      <promo-card [promoData]="promoCard" [canEdit]="true" #promoCardcomp
+        (onAfterPromoGeneratedData)="GetpromoDataFromPromCardComp($event)"></promo-card>
+    </div>
+
+  </div>
 
 </div>
-   

@@ -10,6 +10,7 @@ import { from, Subscription } from 'rxjs';
 import { KeyValue } from '@angular/common';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { NgForm } from '@angular/forms';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'product-form',
@@ -33,11 +34,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   userId: string;
 
   @Input('productKey') productKey: string;
-  @ViewChild("productFormTag") productForm: NgForm; //to select the form element inside .ts code
+  @ViewChild("productFormTag") productForm: NgForm; //to select the template driven form element inside .ts code
   notificationMessage: string;
   @Output() amDone = new EventEmitter<boolean>(false);
 
   constructor(
+    private loader: LoadingService,
     private dialog: MatDialog,
     private categoryService: CategoryService,
     private productService: ProductService,
@@ -88,15 +90,17 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   customInit(mode: any) {
     this.notificationMessage = "";
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
-    this.categorySubscription = this.categoryService
-      .getItemsWithMap(this.userId).subscribe((value) => {
-        this.categoryList = [];
-        this.categoryAllList = value;
-        value.forEach((cat) => {
-          if (cat['active'] == true)
-            this.categoryList.push(cat);
+    try {
+      this.loader.show();
+      this.categorySubscription = this.categoryService
+        .getItemsWithMap(this.userId).subscribe((value) => {
+          this.categoryList = [];
+          this.categoryAllList = value;
+          value.forEach((cat) => {
+            if (cat['active'] == true)
+              this.categoryList.push(cat);
+          });
         });
-      });
       if (mode == 'create') {
         this.productKey = null;
         this.productForm && this.productForm.resetForm();
@@ -108,10 +112,17 @@ export class ProductFormComponent implements OnInit, OnDestroy {
               this.getImageList(this.product['category'], false);
             })
       }
+    } catch (error) {
+
+    } finally {
+      this.loader.hide();
+    }
+
   }
 
   async onSubmit(productForm: NgForm) {
     try {
+      this.loader.show();
       if (this.productKey) {
         await this.productService.updateItem(this.productKey, productForm.value)
         this.notificationMessage = "Updated successfully.";
@@ -129,6 +140,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     } catch (e) {
       this.notificationMessage = "Something went wrong.";
       //TODO: Need to check .. Currently could not catch exception
+    } finally {
+      this.loader.hide();
     }
   }
 
@@ -179,10 +192,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
       if (result != 'cancel') {
+        this.loader.show();
         let updatedData = JSON.parse(result);
         updatedData.forEach(element => {
           this.categoryService.updateItem(element.id, element);
         });
+        this.loader.hide();
       }
     })
   }
@@ -190,14 +205,21 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   getImageList(_categoryKey: any, fromUI: boolean) {
     this.setCategoryValueByKey(_categoryKey);
     this.product['imageUrl'] = this.productKey && !fromUI ? this.product['imageUrl'] : '';
-    this.imageSubscription = this.imageService
-      .getImageListByCategory(this.userId, _categoryKey).take(1).subscribe((value) => {
-        this.imageList = [];
-        value.forEach((img) => {
-          Object.keys(img).length;
-          this.imageList.push(img)
+    try {
+      this.loader.show();
+      this.imageSubscription = this.imageService
+        .getImageListByCategory(this.userId, _categoryKey).take(1).subscribe((value) => {
+          this.imageList = [];
+          value.forEach((img) => {
+            Object.keys(img).length;
+            this.imageList.push(img)
+          });
         });
-      });
+    } catch (error) {
+    } finally {
+      this.loader.hide(500);
+    }
+
   }
 
   setCategoryValueByKey(_categoryKey: string): void {

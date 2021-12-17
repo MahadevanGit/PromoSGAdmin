@@ -25,7 +25,7 @@ export class MultiSelectDdComponent implements OnInit {
     this.onAfterSelect.emit(data);
   }
 
-  onChange(){
+  onChange() {
     this.getSelectedMonth(this.multiSelectDD.value);
   }
 

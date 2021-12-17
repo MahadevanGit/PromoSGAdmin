@@ -13,26 +13,26 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 
 export class NavbarHeaderComponent {
-  
+
   appUserSubscription: Subscription;
   appUser: AppUser;
   localStorageMember = new LocalStorageMember();
-  
+
   @Input() sidenav: MatSidenav
 
   constructor(public auth: AuthService,
     private router: Router) {
-      this.appUserSubscription = auth.appUser$.subscribe((appUser) => {
-        this.appUser = appUser;
-      });
-     }
+    this.appUserSubscription = auth.appUser$.subscribe((appUser) => {
+      this.appUser = appUser;
+    });
+  }
 
   ngOnDestroy(): void {
     this.appUserSubscription.unsubscribe();
-    
+
   }
 
-  logout(){
+  logout() {
     this.localStorageMember.clear();
     localStorage.clear();
     this.auth.logout();

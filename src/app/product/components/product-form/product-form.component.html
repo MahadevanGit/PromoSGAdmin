@@ -1,82 +1,86 @@
 <div>
-      <div *ngIf="isProductForm">
-        
-        <ng-template #categoryListElseTemplate>
-            <p> 
-              Please add category before create product.
-              <button mat-button (click)="createOrUpdateCategory()" style="color: green;">Create Category</button>
-            </p>
-        </ng-template>
+  <div *ngIf="isProductForm">
+
+    <ng-template #categoryListElseTemplate>
+      <p>
+        Please add category before create product.
+        <button mat-button (click)="createOrUpdateCategory()" style="color: green;">Create Category</button>
+      </p>
+    </ng-template>
 
 
 
-        <div  class="row"  *ngIf="categoryList && categoryList.length > 0; else categoryListElseTemplate;">
+    <div class="row" *ngIf="categoryList && categoryList.length > 0; else categoryListElseTemplate;">
 
-          <!--  -->
+      <!--  -->
 
-          <div class="col-md-6 mar-bot">
-            <div>
-              <mat-card>
-                  <mat-card-title>{{productKey ? 'Update Product' : 'Create Product' }} </mat-card-title>
-                  <hr>
-                  <mat-card-content>
-                      
-                        
-          <div>
-            <!-- Template driven form -->
-              <form action="#!" #productFormTag="ngForm"  (ngSubmit)="onSubmit(productFormTag)">
-                
-                      <label for="title">Title</label>
-                      <div class="form-group">
-                            <!-- First name   -->
-                          <input #title="ngModel" type="text" [(ngModel)]='product.title' name="title" id="title" class="form-control mb-4" required>
-                          
-                          <small class="form-text text-danger mb-4" *ngIf="title.touched && title.invalid">
-                              <p>title is required.</p> 
-                          </small>
+      <div class="col-md-6 mar-bot">
+        <div>
+          <mat-card>
+            <mat-card-title>{{productKey ? 'Update Product' : 'Create Product' }} </mat-card-title>
+            <hr>
+            <mat-card-content>
 
+
+              <div>
+                <!-- Template driven form -->
+                <form action="#!" #productFormTag="ngForm" (ngSubmit)="onSubmit(productFormTag)">
+
+                  <label for="title">Title</label>
+                  <div class="form-group">
+                    <!-- First name   -->
+                    <input #title="ngModel" type="text" [(ngModel)]='product.title' name="title" id="title"
+                      class="form-control mb-4" required>
+
+                    <small class="form-text text-danger mb-4" *ngIf="title.touched && title.invalid">
+                      <p>title is required.</p>
+                    </small>
+
+                  </div>
+
+                  <label for="price">Price</label>
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
                       </div>
-
-                      <label for="price">Price</label>
-                      <div class="form-group">
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                          </div>
-                          <input #price="ngModel" type="number" [(ngModel)]='product.price' name="price" id="price" class="form-control mb-4" required [min]="0">
+                      <input #price="ngModel" type="number" [(ngModel)]='product.price' name="price" id="price"
+                        class="form-control mb-4" required [min]="0">
                       <!-- <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                           </div> -->
-                          
-                        </div>
 
-                        <small class="form-text text-danger mb-4" *ngIf="price.touched && price.invalid">
-                          <p *ngIf="price.errors.required">Price is required.</p> 
-                          <p *ngIf="price.errors.min">Price should be 0 or higher.</p> 
-                        </small>
-                      </div>
-                      
+                    </div>
 
-                      <!-- Category   -->
-                      <p> 
-                        <button mat-button (click)="createOrUpdateCategory()" style="color: green;">To add more category</button>
-                        <button mat-button (click)="removeCategory()" style="color: rgb(240, 114, 131);">To active or in-active the category</button>
-                      </p>
-
-                      <mat-label>Category</mat-label>
-                        <mat-select #category="ngModel" [(ngModel)]='product.category' 
-                        (selectionChange)="getImageList(selectedCategory,true)" [(value)]="selectedCategory"
-                        name="category" id="category" class="form-control mb-4" required>
-                        <mat-option *ngFor="let c of categoryList" [value]="c.key">
-                          {{c.value}} 
-                        </mat-option>
-                      </mat-select>
-                        <small class="form-text text-danger mb-4" *ngIf="category.touched && category.invalid">
-                            <p>category is required.</p> 
-                        </small>
+                    <small class="form-text text-danger mb-4" *ngIf="price.touched && price.invalid">
+                      <p *ngIf="price.errors.required">Price is required.</p>
+                      <p *ngIf="price.errors.min">Price should be 0 or higher.</p>
+                    </small>
+                  </div>
 
 
-                      <!-- <label for="category">Category</label>
+                  <!-- Category   -->
+                  <p>
+                    <button mat-button (click)="createOrUpdateCategory()" style="color: green;">To add more
+                      category</button>
+                    <button mat-button (click)="removeCategory()" style="color: rgb(240, 114, 131);">To active or
+                      in-active the category</button>
+                  </p>
+
+                  <mat-label>Category</mat-label>
+                  <mat-select #category="ngModel" [(ngModel)]='product.category'
+                    (selectionChange)="getImageList(selectedCategory,true)" [(value)]="selectedCategory" name="category"
+                    id="category" class="form-control mb-4" required>
+                    <mat-option *ngFor="let c of categoryList" [value]="c.key">
+                      {{c.value}}
+                    </mat-option>
+                  </mat-select>
+                  <small class="form-text text-danger mb-4" *ngIf="category.touched && category.invalid">
+                    <p>category is required.</p>
+                  </small>
+
+
+                  <!-- <label for="category">Category</label>
                     <div class="form-group">
                         <select #category="ngModel" type="select" 
                         [(ngModel)]='product.category' name="category" id="category" (change)="getImageList(category.value)"
@@ -93,74 +97,78 @@
                     </div>
                       <br> -->
 
-                      <p> 
-                        <button type="button" mat-button style="color: green;" routerLink = "/image/upload/">To add more product image</button>
-                      </p>
+                  <p>
+                    <button type="button" mat-button style="color: green;" routerLink="/image/upload/">To add more
+                      product image</button>
+                  </p>
 
-                      <mat-label>Image</mat-label>
-                        <mat-select #imageUrl="ngModel" [(ngModel)]='product.imageUrl' 
-                        name="imageUrl" id="imageUrl" class="form-control mb-4" required>
-                        <mat-option *ngFor="let img of imageList" [value]="img.imageUrl">
-                          <img src='{{img.imageUrl}}' style="width: 75px;height:60px;padding: 10px;"> {{img.caption}}
-                        </mat-option>
-                      </mat-select>
-                        <small class="form-text text-danger mb-4" *ngIf="imageUrl.touched && imageUrl.invalid">
-                            <p>image is required.</p> 
-                        </small>
-                      <br>
-                
+                  <mat-label>Image</mat-label>
+                  <mat-select #imageUrl="ngModel" [(ngModel)]='product.imageUrl' name="imageUrl" id="imageUrl"
+                    class="form-control mb-4" required>
+                    <mat-option *ngFor="let img of imageList" [value]="img.imageUrl">
+                      <img src='{{img.imageUrl}}' style="width: 75px;height:60px;padding: 10px;"> {{img.caption}}
+                    </mat-option>
+                  </mat-select>
+                  <small class="form-text text-danger mb-4" *ngIf="imageUrl.touched && imageUrl.invalid">
+                    <p>image is required.</p>
+                  </small>
+                  <br>
+
                   <!-- Action button {{productKey ? 'Update Product' : 'Create Product' }}  -->
-                  <div class="ele-div" *ngIf="!productKey; else elseActionTemplate;" >
-                      <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
-                          Save 
-                      </button>  
-                      <button class="app-button" mat-stroked-button color="basic" type="button" (click)="resetProductForm(productFormTag)">
-                        Clear 
-                      </button>
-                      <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
+                  <div class="ele-div" *ngIf="!productKey; else elseActionTemplate;">
+                    <button class="app-button" mat-stroked-button color="primary" type="submit"
+                      [disabled]="productFormTag.status=='INVALID'">
+                      Save
+                    </button>
+                    <button class="app-button" mat-stroked-button color="basic" type="button"
+                      (click)="resetProductForm(productFormTag)">
+                      Clear
+                    </button>
+                    <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
                   </div>
 
                   <ng-template #elseActionTemplate>
-                    <button class="app-button" mat-stroked-button color="primary" type="submit" [disabled]="productFormTag.status=='INVALID'">
-                      Update   
+                    <button class="app-button" mat-stroked-button color="primary" type="submit"
+                      [disabled]="productFormTag.status=='INVALID'">
+                      Update
                     </button>
                     <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
                   </ng-template>
 
-              </form>
-              <!-- Default product form   -->
-          </div>
-                      
-                  </mat-card-content>
-              </mat-card>
-            </div>
-          </div>
-          <div class="col-md-6 mar-bot">
-            <div *ngIf="imageUrl.value">
-              <div>
-                <mat-card>
-                  <mat-card-header>
-                    <div mat-card-avatar>
-                      <img  mat-card-avatar [src]="imageUrl.value">
-                    </div>
-                    <mat-card-title>{{title.value}}</mat-card-title>
-                    <mat-card-subtitle>{{selectedCategoryValue}}</mat-card-subtitle>
-                  </mat-card-header>
-                    <img  mat-card-image [src]="imageUrl.value" style="height: 250px;">
-                    <mat-card-content>
-                        <div class="container">
-                                <p>{{price.value | currency:'USD':true}}</p>
-                        </div>
-                    </mat-card-content>
-                </mat-card>
+                </form>
+                <!-- Default product form   -->
               </div>
-            </div>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="col-md-6 mar-bot">
+        <div *ngIf="imageUrl.value">
+          <div>
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar>
+                  <img mat-card-avatar [src]="imageUrl.value">
+                </div>
+                <mat-card-title>{{title.value}}</mat-card-title>
+                <mat-card-subtitle>{{selectedCategoryValue}}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image [src]="imageUrl.value" style="height: 250px;">
+              <mat-card-content>
+                <div class="container">
+                  <p>{{price.value | currency:'USD':true}}</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
           </div>
         </div>
-          
       </div>
+    </div>
 
-      <!-- <div class="row" *ngIf="!isProductForm">
+  </div>
+
+  <!-- <div class="row" *ngIf="!isProductForm">
 
         <div>
           <p style="color: green;"> 
@@ -177,6 +185,5 @@
           </div> 
 
       </div> -->
- 
+
 </div>
-  

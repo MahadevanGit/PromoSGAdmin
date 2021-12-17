@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ShopUserService } from 'src/app/shop.service';
@@ -42,6 +43,7 @@ export class ShopUserFormComponent implements OnInit {
   }
   
     constructor(
+      private loader: LoadingService,
       private fb: FormBuilder,
       private router: Router,
       private auth: AuthService,
@@ -85,11 +87,14 @@ export class ShopUserFormComponent implements OnInit {
     userData['weblink'] = this.removeWeblinkIfEmpty(userData['weblink']);
     userData['outletList'] = this.appUser['outletList'];
        try {
+         this.loader.show();
         this.shopUserService.update(this.appUser.userId,userData); //un-comment if u want to save 
         //this.router.navigate(['/usersetting']);
         //Show flash message .. successfully updated..
        } catch (e) {
           //TODO: Need to check .. Currently could not catch exception
+       } finally{
+         this.loader.hide();
        }
   }
 

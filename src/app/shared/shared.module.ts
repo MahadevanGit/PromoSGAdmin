@@ -34,16 +34,16 @@ import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild([
-      {path:"image-upload",component:ImageUploadComponent,canActivate: [AuthGuard]},
+      { path: "image-upload", component: ImageUploadComponent, canActivate: [AuthGuard] },
     ]),
   ],
-  providers:[
+  providers: [
     AuthService,
     ClientAuthGuard,
     ImageService,
     MasterContentService,
   ],
-  exports:[
+  exports: [
     CommonModule,
     ChartsModule,
     PromosgMaterialModule,
