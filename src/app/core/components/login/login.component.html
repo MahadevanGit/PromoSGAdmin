@@ -1,56 +1,54 @@
- 
- 
-    <!-- Default form login -->
+<!-- Default form login -->
 
-    <div class="login-card-div">
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
-    <hr>
-    <mat-card-content>
-        <div class="container">
+<div class="login-card-div">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <hr>
+        <mat-card-content>
+            <div class="container">
+                <!-- Template driven form -->
+                <form action="#!" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
 
-            <form action="#!" #f="ngForm"  (ngSubmit)="login(f.value)">
-                 
                     <label for="email">E-mail</label>
                     <div class="form-group">
-                          <!-- E-mail   -->
-                        <input type="email" ngModel autocomplete="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" >
+                        <!-- E-mail   -->
+                        <input type="email" ngModel autocomplete="email" name="email" id="defaultRegisterFormEmail"
+                            class="form-control mb-4" required>
                     </div>
-        
+
                     <label for="password">Password</label>
                     <div class="form-group">
-                          <!-- Password   -->
-                        <input type="password" autocomplete="password" ngModel name="password" id="defaultRegisterFormPassword" class="form-control mb-4"
-                        aria-describedby="defaultRegisterFormPasswordHelpBlock" >
+                        <!-- Password   -->
+                        <input type="password" autocomplete="password" ngModel name="password"
+                            id="defaultRegisterFormPassword" class="form-control mb-4"
+                            aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                     </div>
-              
-                <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-danger mb-4" *ngIf="error">
-                  <p>{{ error }}</p>
-                </small>
-        
-               <!-- Sign up button   -->
-                <div class="ele-div">
-                    <!-- TODO: Need to implement this
+
+                    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-danger mb-4" *ngIf="error">
+                        <p>{{ error }}</p>
+                    </small>
+
+                    <!-- Sign up button   -->
+                    <div class="ele-div">
+                        <!-- TODO: Need to implement this
                      <button class="app-button"  mat-stroked-button color="primary" type="button" (click)="LoginWithGoogle()">
                         Google 
                    </button> -->
-                    <button class="app-button"  mat-stroked-button color="primary" type="submit">
-                        Login 
-                   </button>
-                    
-                   <button class="app-button" mat-stroked-button color="basic" routerLink = "/register">
-                       Register 
-                   </button>
-                </div>
-                
-                
-            </form>
-             <!-- Default form login   -->
-        </div>
-        
-         
-    </mat-card-content>
-</mat-card>
-    </div>
+                        <button class="app-button" [disabled]="loginForm.status=='INVALID'" mat-stroked-button
+                            color="primary" type="submit">
+                            Login
+                        </button>
 
-   
+                        <button class="app-button" type="button" mat-stroked-button color="basic"
+                            routerLink="/register">
+                            Register
+                        </button>
+                    </div>
+                </form>
+                <!-- Default form login   -->
+            </div>
+
+
+        </mat-card-content>
+    </mat-card>
+</div>

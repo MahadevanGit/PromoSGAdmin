@@ -14,6 +14,7 @@ import { CategoryService } from '../../services/category.service';
 import { MatMenuListItem } from 'src/app/shared/models/common';
 import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { LoadingService } from 'src/app/loading.service';
 
 
 
@@ -32,7 +33,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   imageFolderName: string = '/product-imageDetails/';
   imageRequestType: string = 'product'; //'usersetting';
   rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
-  
+
   @ViewChild(ProductFormComponent) productFormComponent: ProductFormComponent;
   selectedProductKey: string;
   selectedMenuItem: string;
@@ -55,8 +56,9 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   auth_subscription: Subscription
   category_subscription: Subscription
   userId: string;
-  
+
   constructor(
+    private loader: LoadingService,
     private productService: ProductService,
     private route: ActivatedRoute,
     private auth: AuthService,
@@ -68,6 +70,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.auth_subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
   }
+
   ngAfterViewChecked(): void {
     this.cdr.detectChanges(); // TODO: check this we are using in this component
   }
@@ -126,6 +129,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   async loadCategory(): Promise<any> {
+    this.loader.show();
     try {
       this.category_subscription = (!this.userId)
         ?
@@ -145,10 +149,12 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     } catch (error) {
       console.log(error)
     } finally {
+      this.loader.hide();
     }
   }
 
   async loadProduct(): Promise<any> {
+    this.loader.show();
     try {
       this.product_subscription = (!this.userId)
         ?
@@ -180,6 +186,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
         });
     } catch (error) {
       console.log(error)
+    } finally {
+      this.loader.hide();
     }
 
   }

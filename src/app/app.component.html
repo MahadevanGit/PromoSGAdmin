@@ -1,9 +1,13 @@
- 
 <promoSg-bs-navbar></promoSg-bs-navbar>
 <div>
   <router-outlet></router-outlet>
 </div>
 <div class="footer">
-V0.001  2021 <span>&copy;</span> Copy rights reserved by AIProton<span style="font-family: system-ui">&reg;</span>.
+  V0.001 2021 <span>&copy;</span> Copy rights reserved by AIProton<span style="font-family: system-ui">&reg;</span>.
 </div>
-
+<div class="container">
+  <ng-container *ngIf="loading$ | async">
+    <div class="overlay"></div>
+    <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50"></mat-progress-spinner>
+  </ng-container>
+</div>

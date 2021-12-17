@@ -39,6 +39,10 @@ body {
     background-size: cover;
   }
 
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: green;
+}
+
 //   div.footer {
 //     background: rgb(253, 253, 229);
 //   }

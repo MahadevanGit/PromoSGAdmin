@@ -11,16 +11,16 @@ export class AddressComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() title: string = "Address";
 
-  get addressBlock(){
+  get addressBlock() {
     return this.parentForm.get('address.block');
   }
-  get addressStreet(){
+  get addressStreet() {
     return this.parentForm.get('address.street');
   }
-  get addressCity(){
+  get addressCity() {
     return this.parentForm.get('address.city');
   }
-  get addressZip(){
+  get addressZip() {
     return this.parentForm.get('address.zip');
   }
 

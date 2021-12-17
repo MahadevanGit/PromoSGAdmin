@@ -1,4 +1,4 @@
-<div  *ngIf="this.data; else ediv;">
+<div *ngIf="this.data; else ediv;">
     <app-stacked-horizontal-bar-chart [chartdata]="this.data"></app-stacked-horizontal-bar-chart>
 </div>
 
@@ -6,4 +6,3 @@
 <ng-template #ediv>
     <div>Loading...</div>
 </ng-template>
-

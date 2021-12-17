@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ShopUserService } from 'src/app/shop.service';
@@ -19,7 +20,9 @@ export class ShopUserOutletFormComponent implements OnInit {
   outletList: any[];
   addressTitle: string = "Add outlet details"
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private loader: LoadingService,
+    private fb: FormBuilder,
     private router: Router,
     private auth: AuthService,
     private shopUserService: ShopUserService) {
@@ -85,6 +88,7 @@ export class ShopUserOutletFormComponent implements OnInit {
     }
 
   updateOutletList(outletList?: any[]){
+    this.loader.show();
     this.appUser['outletList'] = outletList ;
     try {
       this.shopUserService.updateByObject(this.appUser.userId,this.appUser); //un-comment if u want to save 
@@ -92,6 +96,8 @@ export class ShopUserOutletFormComponent implements OnInit {
       //Show flash message .. successfully updated..
      } catch (e) {
         //TODO: Need to check .. Currently could not catch exception
+     } finally {
+       this.loader.hide();
      }
   }
 

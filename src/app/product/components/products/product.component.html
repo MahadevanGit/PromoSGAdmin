@@ -87,12 +87,7 @@
             <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
         </div>
 
-
     </div>
-
-
-
-
 
     <div *ngIf="selectedMenuItem == 'product-form'">
         <product-form #productFormComponent [productKey]="selectedProductKey" (amDone)="isProductFormDone($event)">

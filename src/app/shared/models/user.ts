@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
     userId: string,
     firstName: string,
     lastName: string,
@@ -15,8 +15,8 @@ export class AppUser implements User {
     email: string;
     registeredAt: string;
     isAdmin: boolean;
-     
-    constructor(_userId,_firstname,_lastname,_email,_registeredAt,_isAdmin) {
+
+    constructor(_userId, _firstname, _lastname, _email, _registeredAt, _isAdmin) {
         this.userId = _userId;
         this.firstName = _firstname;
         this.lastName = _lastname;
@@ -24,5 +24,5 @@ export class AppUser implements User {
         this.registeredAt = _registeredAt;
         this.isAdmin = _isAdmin;
     }
-    
+
 }

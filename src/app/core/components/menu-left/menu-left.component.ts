@@ -18,7 +18,7 @@ interface Page {
   templateUrl: './menu-left.component.html',
   styleUrls: ['./menu-left.component.scss'],
   animations: [onSideNavChange, animateText],
-  providers:[AuthService]
+  providers: [AuthService]
 })
 export class MenuLeftComponent implements OnInit, OnDestroy {
 
@@ -35,25 +35,24 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
     public auth: AuthService,
     private router: Router) {
   }
-  
+
 
   ngOnInit() {
-    this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => 
-    {
+    this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => {
       this.appUser = appUser;
       this.personName = this.appUser && this.appUser.firstName ? this.appUser.firstName.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
       this.pages = [];
-      if(this.appUser){
-        let page: Page = {name: this.personName, link:'/usersetting', icon: 'person'};
+      if (this.appUser) {
+        let page: Page = { name: this.personName, link: '/usersetting', icon: 'person' };
         this.pages.push(page);
-        page = { name: 'Dashboard', link:'/dashboard', icon: 'dashboard' }
+        page = { name: 'Dashboard', link: '/dashboard', icon: 'dashboard' }
         this.pages.push(page);
-        if(this.appUser && this.appUser.isAdmin){
-          page = { name: 'Setting', link:'/adminsetting', icon: 'settings' }
-        this.pages.push(page);
+        if (this.appUser && this.appUser.isAdmin) {
+          page = { name: 'Setting', link: '/adminsetting', icon: 'settings' }
+          this.pages.push(page);
         }
       }
-      else{
+      else {
         this.pages = [];
       }
     });
@@ -62,20 +61,20 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   onSinenavToggle() {
     console.log('i am called')
     this.sideNavState = !this.sideNavState
-    
+
     setTimeout(() => {
       this.linkText = this.sideNavState;
     }, 200)
     this._sidenavService.sideNavState$.next(this.sideNavState)
   }
 
-  logout(){
+  logout() {
     this.localStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
     this.router.navigate(['/login']);
   }
-  
+
   ngOnDestroy(): void {
     this.appUserSubscription.unsubscribe();
   }
