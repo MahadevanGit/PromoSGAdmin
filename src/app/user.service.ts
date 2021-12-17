@@ -14,26 +14,26 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService implements OnDestroy {
-  
+
   currentUser: User;
   localStorageMember = new LocalStorageMember();
   subscription: Subscription;
   userId: string;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
-  userPath1:string = 'users';
+  userPath1: string = 'users';
 
   constructor(private db: AngularFireDatabase) {
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
     this.itemsRef = db.list('/' + this.userPath1 + '/');
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
+      map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     )
-   }
-  
+  }
+
 
   // This save method handle from PromoSG mobile app
   // async save(user: any){
@@ -52,11 +52,11 @@ export class UserService implements OnDestroy {
   //   } finally{
   //     this.localStorageMember.clear();
   //   }
-    
+
   // }
 
   getByUserId(userId: string): Observable<any> {
-  return this.db.object<any>('/' + this.userPath1 + '/' +  userId).valueChanges();
+    return this.db.object<any>('/' + this.userPath1 + '/' + userId).valueChanges();
   }
 
   getAllUser(): Observable<any> {

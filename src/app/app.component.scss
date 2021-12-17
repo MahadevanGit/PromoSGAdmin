@@ -1,7 +1,28 @@
-.footer{
+.footer {
     padding-right: 10px;
     padding-top: 10px;
     font-size: smaller;
     text-align: end;
     color: grey;
+}
+
+mat-progress-spinner {
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(1px);
 }

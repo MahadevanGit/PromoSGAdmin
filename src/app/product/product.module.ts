@@ -16,10 +16,10 @@ import { ProductStatsService } from './services/product.stats.service';
     CommonModule,
     PromosgMaterialModule,
     RouterModule.forChild([
-      {path:"product/new", component:ProductFormComponent,canActivate:[AuthGuard,ClientAuthGuard]},
-      {path:"product/:id", component:ProductFormComponent,canActivate:[AuthGuard,ClientAuthGuard]},
-      {path:"products/:userId", component:ProductComponent,canActivate:[AuthGuard,AdminAuthGuard]},
-      {path:"products", component:ProductComponent,canActivate:[AuthGuard,ClientAuthGuard]}
+      { path: "product/new", component: ProductFormComponent, canActivate: [AuthGuard, ClientAuthGuard] },
+      { path: "product/:id", component: ProductFormComponent, canActivate: [AuthGuard, ClientAuthGuard] },
+      { path: "products/:userId", component: ProductComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: "products", component: ProductComponent, canActivate: [AuthGuard, ClientAuthGuard] }
     ])
   ],
   providers: [

@@ -19,31 +19,31 @@ export class MasterContentService {
 
   constructor(private db: AngularFireDatabase) {
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
-    this.itemsRef = db.list('/master-content/image-categories/',ref => {
+    this.itemsRef = db.list('/master-content/image-categories/', ref => {
       return ref.orderByChild(this.orderBy)
     });
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
+      map(changes =>
         changes.map(c => ({ id: c.payload.key, ...c.payload.val() }))
       )
     );
-   }
-
-  get(userId: string): AngularFireList<any>  {
-    console.log('CategoryService ...')
-  // return this.db.list('/shop-user-content/' + userId + '/categories/',ref => {
-  //   return ref.orderByChild(this.orderBy)
-  // });
-  return this.itemsRef;
   }
 
-  getItemsWithMap(){
-    this.itemsRef = this.db.list('/master-content/image-categories/',ref => {
+  get(userId: string): AngularFireList<any> {
+    console.log('CategoryService ...')
+    // return this.db.list('/shop-user-content/' + userId + '/categories/',ref => {
+    //   return ref.orderByChild(this.orderBy)
+    // });
+    return this.itemsRef;
+  }
+
+  getItemsWithMap() {
+    this.itemsRef = this.db.list('/master-content/image-categories/', ref => {
       return ref.orderByChild(this.orderBy)
     });
     this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
+      map(changes =>
         changes.map(c => ({ id: c.payload.key, ...c.payload.val() }))
       )
     );
@@ -62,10 +62,10 @@ export class MasterContentService {
   deleteEverything() {
     this.itemsRef.remove();
   }
-  getItemByKey(key: string){
+  getItemByKey(key: string) {
     return this.db.object('/master-content/image-categories/' + key);
   }
-  getItems(){
+  getItems() {
     return this.itemsRef;
   }
 }

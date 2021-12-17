@@ -12,25 +12,24 @@ export class AuthGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private shopUserService: ShopUserService,
-    private router: Router) 
-    { }
+    private router: Router) { }
 
-    canActivate(route,state: RouterStateSnapshot){
-      return this.auth.user$.map(user => { //Check authentication
-        if(user){
-            this.shopUserService.get(user.uid).take(1).subscribe((value) => { //Check user exist in shops
-            if(value) return true; 
-            else{
-              this.router.navigate(['/login'],{queryParams: {returnUrl: state.url}});
-              return false;
-            }
-          })
-          return true;
-        }
-        else{
-          this.router.navigate(['/login'],{queryParams: {returnUrl: state.url}});
-          return false;
-        }
-      });
-    }
+  canActivate(route, state: RouterStateSnapshot) {
+    return this.auth.user$.map(user => { //Check authentication
+      if (user) {
+        this.shopUserService.get(user.uid).take(1).subscribe((value) => { //Check user exist in shops
+          if (value) return true;
+          else {
+            this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+            return false;
+          }
+        })
+        return true;
+      }
+      else {
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        return false;
+      }
+    });
+  }
 }

@@ -15,10 +15,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
   selector: 'promoSg-bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.scss'],
-  animations: [ onMainContentChange ],
-  providers:[AuthService]
+  animations: [onMainContentChange],
+  providers: [AuthService]
 })
-export class BsNavbarComponent implements OnInit, OnDestroy{
+export class BsNavbarComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -34,21 +34,21 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
     changeDetectorRef: ChangeDetectorRef,
     private _sidenavService: SidenavService,
     media: MediaMatcher) {
-      this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.appUserSubscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
 
     // this.sideNavSubscription = this._sidenavService.sideNavState$.subscribe( res => {
     //   console.log(res)
-      
+
     //   this.onSideNavChange = res;
     //})
 
     // this.mobileQuery = media.matchMedia('(max-width: 600px)');
     // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     // this.mobileQuery.addListener(this._mobileQueryListener);
-   }
+  }
   ngOnInit(): void {
   }
 
@@ -58,17 +58,17 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
     this.appUserSubscription.unsubscribe();
     this.sideNavSubscription.unsubscribe();
   }
-  
-  
- 
-  logout(){
+
+
+
+  logout() {
     this.localStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
     this.router.navigate(['/login']);
   }
 
-  
+
 
 }
 

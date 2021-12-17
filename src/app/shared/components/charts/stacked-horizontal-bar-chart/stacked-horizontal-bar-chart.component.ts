@@ -15,26 +15,26 @@ export class StackedHorizontalBarChartComponent implements OnInit, OnChanges {
   ProductDetailsDataset: any[];
   maxValue: number = 0;
   lineChartOptions: any;
-  _lineChartColors:Array<any> = [{
+  _lineChartColors: Array<any> = [{
     backgroundColor: 'red',
-     borderColor: 'red',
-     pointBackgroundColor: 'red',
-     pointBorderColor: 'red',
-     pointHoverBackgroundColor: 'red',
-     pointHoverBorderColor: 'red' 
-   }];
+    borderColor: 'red',
+    pointBackgroundColor: 'red',
+    pointBorderColor: 'red',
+    pointHoverBackgroundColor: 'red',
+    pointHoverBorderColor: 'red'
+  }];
   currentMonth: string;
   currentDate: string;
 
-  constructor(  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.ProductStatsMode = this.chartdata['productStatsMode'];
     this.ProductDetailsDataset = this.getProductDetailsDataSet(this.chartdata['productDetails']);
     this.maxValue = this.getMaxValue(this.chartdata['productDetails']);
     this.lineChartOptions = this.initialzeLineChartOptions(this.maxValue);
-    var _date = new Date; 
-    this.currentDate = formatDate(_date,'MM/dd/yyyy','en-US');
+    var _date = new Date;
+    this.currentDate = formatDate(_date, 'MM/dd/yyyy', 'en-US');
     this.currentMonth = JsonHelper.getMonth(this.currentDate);
   }
 
@@ -58,17 +58,17 @@ export class StackedHorizontalBarChartComponent implements OnInit, OnChanges {
   initialzeLineChartOptions(maxValue: number): any {
     return {
       responsive: true,
-      scales : {
+      scales: {
         yAxes: [{
           ticks: {
-            max : maxValue,
-            min : 0,
+            max: maxValue,
+            min: 0,
           }
         }],
         xAxes: [{
-          }],
+        }],
       },
-        plugins: {
+      plugins: {
         datalabels: {
           display: true,
           align: 'top',
@@ -87,14 +87,14 @@ export class StackedHorizontalBarChartComponent implements OnInit, OnChanges {
 
   getProductDetailsDataSet(ProductDetails: any) {
     var arr: any[] = [];
-    if(ProductDetails)
-    ProductDetails.forEach(ele => {
-      arr.push({
-        'data':ele['productCounts'],
-        'label':ele['productName']
+    if (ProductDetails)
+      ProductDetails.forEach(ele => {
+        arr.push({
+          'data': ele['productCounts'],
+          'label': ele['productName']
+        });
       });
-    });
-    
+
     return arr;
   }
 
@@ -102,8 +102,8 @@ export class StackedHorizontalBarChartComponent implements OnInit, OnChanges {
     var maxValue = 0;
     ProductDetails && ProductDetails.forEach(ele => {
       ele['productCounts'].forEach(n => {
-        if(maxValue <= n)
-        maxValue = n + 10;
+        if (maxValue <= n)
+          maxValue = n + 10;
       });
     });
     return maxValue;

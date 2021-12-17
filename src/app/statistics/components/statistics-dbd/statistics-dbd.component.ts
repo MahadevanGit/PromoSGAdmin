@@ -19,13 +19,11 @@ export class StatisticsDbdComponent implements OnInit {
   ngOnInit(): void {
     var d = new Date;
     this.currentDate = formatDate(d, 'MM/dd/yyyy', 'en-US');
-    console.log(this.currentDate)
     let currentMonth = JsonHelper.getMonth(this.currentDate);
     this.defaultSelection.push(currentMonth);
   }
 
   public GetSelectedValues(data: any): void {
-    //tested .. moth valus is coming here
     this.months = data == null ? [] : data;
   }
 

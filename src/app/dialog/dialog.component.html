@@ -3,26 +3,29 @@
   <div *ngIf="data.canEdit; else viewTemplate">
     <p mat-dialog-title>
       <mat-icon> {{data.matIcon}}</mat-icon>
-        Add <b class="space"> {{data.slot.key}} </b> description</p>
+      Add <b class="space"> {{data.slot.key}} </b> description
+    </p>
     <div mat-dialog-content>
-       <mat-form-field appearance="fill" >
+      <mat-form-field appearance="fill">
         <mat-label>{{data.label}}</mat-label>
         <input matInput [(ngModel)]="data.slot.value.value">
       </mat-form-field>
-    
+
     </div>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close mat-dialog-close="{key: {{data.slot.key}},value: {{data.slot.value}} }" cdkFocusInitial>Add</button>
+      <button mat-button mat-dialog-close mat-dialog-close="{key: {{data.slot.key}},value: {{data.slot.value}} }"
+        cdkFocusInitial>Add</button>
       <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
     </div>
   </div>
-  
+
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description</p>
+      <b class="space">{{data.slot.key}}</b> description
+    </p>
     <div mat-dialog-content>
-        <mat-label>{{data.slot.value.value}}</mat-label>
+      <mat-label>{{data.slot.value.value}}</mat-label>
     </div>
     <div mat-dialog-actions class="div-btn-actions">
       <button mat-button mat-dialog-close mat-dialog-close='true'>Close</button>
@@ -36,23 +39,24 @@
   <div *ngIf="data.canEdit; else viewTemplate">
     <p mat-dialog-title>
       <mat-icon> {{data.matIcon}}</mat-icon>
-        Add <b class="space"> {{data.slot.key}} </b> description</p>
+      Add <b class="space"> {{data.slot.key}} </b> description
+    </p>
     <div mat-dialog-content>
-       <!-- <mat-form-field> -->
-       <!-- <mat-label>{{data.label}}</mat-label> -->
-        
-        <!-- <input matInput [(ngModel)]="data.slot.value.value"> -->
+      <!-- <mat-form-field> -->
+      <!-- <mat-label>{{data.label}}</mat-label> -->
 
-        <mat-label>Select product to stamp</mat-label>
-        <mat-select #selectedProduct="ngModel" [(ngModel)]="data.slot.value.value" 
-        name="selectedProduct" id="imageUrl" class="form-control mb-4" required>
-          <mat-option *ngFor="let product of productList" [value]="product.key">
-            <img src='{{product.imageUrl}}' style="width: 75px;height:60px;padding: 10px;"> {{product.title}}
-          </mat-option>
-        </mat-select>
-        <small class="form-text text-danger mb-4" *ngIf="selectedProduct.touched && selectedProduct.invalid">
-            <p>Product selection is required.</p> 
-        </small>
+      <!-- <input matInput [(ngModel)]="data.slot.value.value"> -->
+
+      <mat-label>Select product to stamp</mat-label>
+      <mat-select #selectedProduct="ngModel" [(ngModel)]="data.slot.value.value" name="selectedProduct" id="imageUrl"
+        class="form-control mb-4" required>
+        <mat-option *ngFor="let product of productList" [value]="product.key">
+          <img src='{{product.imageUrl}}' style="width: 75px;height:60px;padding: 10px;"> {{product.title}}
+        </mat-option>
+      </mat-select>
+      <small class="form-text text-danger mb-4" *ngIf="selectedProduct.touched && selectedProduct.invalid">
+        <p>Product selection is required.</p>
+      </small>
       <!-- </mat-form-field> -->
 
     </div>
@@ -61,18 +65,20 @@
       <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
     </div>
   </div>
-  
+
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description</p>
+      <b class="space">{{data.slot.key}}</b> description
+    </p>
     <div mat-dialog-content>
-        <!-- <mat-label>{{data.slot.value ? data.slot.value.value ? data.slot.value.value : data.slot.value : 'none'}}</mat-label> -->
-        <mat-label>{{ promoSlot.value ? getPromoValueFromslot(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed) }} </mat-label>
-        <p *ngIf="data.note">
-          <small><b>Note : </b></small>
-          <small style="color:rgba(230, 46, 46, 0.952);">{{data.note}}</small>
-        </p>
+      <!-- <mat-label>{{data.slot.value ? data.slot.value.value ? data.slot.value.value : data.slot.value : 'none'}}</mat-label> -->
+      <mat-label>{{ promoSlot.value ? getPromoValueFromslot(promoSlot.value) :
+        getPromoValueFromClaimed(promoSlot.claimed) }} </mat-label>
+      <p *ngIf="data.note">
+        <small><b>Note : </b></small>
+        <small style="color:rgba(230, 46, 46, 0.952);">{{data.note}}</small>
+      </p>
     </div>
     <div mat-dialog-actions class="div-btn-actions">
       <button mat-button mat-dialog-close mat-dialog-close='true'>Close</button>
@@ -87,26 +93,30 @@
   <div *ngIf="data.canEdit; else viewTemplate">
     <p mat-dialog-title>
       <mat-icon> {{data.matIcon}}</mat-icon>
-        Add <b class="space"> {{data.slot.key}} </b> description</p>
+      Add <b class="space"> {{data.slot.key}} </b> description
+    </p>
     <div mat-dialog-content>
-       <mat-form-field appearance="fill" >
+      <mat-form-field appearance="fill">
         <mat-label>{{data.label}}</mat-label>
         <input matInput [(ngModel)]="data.slot.value" (focusout)="checkCategory(data.slot.value)">
       </mat-form-field>
-      <div *ngIf="errorMessage"><p><small style="color: red;">{{errorMessage}}</small></p></div>
+      <div *ngIf="errorMessage">
+        <p><small style="color: red;">{{errorMessage}}</small></p>
+      </div>
     </div>
     <div mat-dialog-actions>
       <button mat-raised-button mat-dialog-close mat-dialog-close="{{data.slot.value}}" [disabled]="canAdd">Add</button>
       <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
     </div>
   </div>
-  
+
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description</p>
+      <b class="space">{{data.slot.key}}</b> description
+    </p>
     <div mat-dialog-content>
-        <mat-label>{{data.slot.value}}</mat-label>
+      <mat-label>{{data.slot.value}}</mat-label>
     </div>
     <div mat-dialog-actions class="div-btn-actions">
       <button mat-button mat-dialog-close mat-dialog-close='true'>Close</button>
@@ -120,31 +130,33 @@
   <div *ngIf="data.canEdit; else viewTemplate">
     <p mat-dialog-title>
       <mat-icon style="color: red;"> {{data.matIcon}}</mat-icon>
-        Active or In-active <b class="space"> {{data.slot.key}} </b></p>
+      Active or In-active <b class="space"> {{data.slot.key}} </b>
+    </p>
     <div mat-dialog-content>
       <ul>
         <li *ngFor="let category of data.slot.existingData">
-          
-          <mat-checkbox class="example-margin" 
-          [(ngModel)]="category.active" 
-          [checked]="category.active"
-          [changed]="onCheckCategory(category)"> {{category.value}} </mat-checkbox>
+
+          <mat-checkbox class="example-margin" [(ngModel)]="category.active" [checked]="category.active"
+            [changed]="onCheckCategory(category)"> {{category.value}} </mat-checkbox>
         </li>
       </ul>
-      <div *ngIf="errorMessage"><p><small style="color: red;">{{errorMessage}}</small></p></div>
+      <div *ngIf="errorMessage">
+        <p><small style="color: red;">{{errorMessage}}</small></p>
+      </div>
     </div>
     <div mat-dialog-actions>
       <button mat-raised-button mat-dialog-close mat-dialog-close="{{ data.slot.existingData | json }}">Update</button>
       <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
     </div>
   </div>
-  
+
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description</p>
+      <b class="space">{{data.slot.key}}</b> description
+    </p>
     <div mat-dialog-content>
-        <mat-label>{{data.slot.value}}</mat-label>
+      <mat-label>{{data.slot.value}}</mat-label>
     </div>
     <div mat-dialog-actions class="div-btn-actions">
       <button mat-button mat-dialog-close mat-dialog-close='true'>Close</button>
@@ -156,18 +168,18 @@
 <!-- Confirm dialog start here -->
 <div *ngIf="data.isConfirmDialog">
   <p mat-dialog-title>
-    <mat-icon>{{data.matIcon}}</mat-icon> {{data.title}}</p>
+    <mat-icon>{{data.matIcon}}</mat-icon> {{data.title}}
+  </p>
   <div mat-dialog-content>
-    <mat-label >{{data.label}}</mat-label>
+    <mat-label>{{data.label}}</mat-label>
     <p *ngIf="data.note">
       <small><b>Note : </b></small>
       <small style="color:rgba(230, 46, 46, 0.952);">{{data.note}}</small>
     </p>
   </div>
   <div mat-dialog-actions>
-    <button mat-button mat-dialog-close mat-dialog-close = 'ok' cdkFocusInitial>{{data.actionbtnlabel}}</button>
-    <button mat-button mat-dialog-close mat-dialog-close = 'cancel' >Cancel</button>
+    <button mat-button mat-dialog-close mat-dialog-close='ok' cdkFocusInitial>{{data.actionbtnlabel}}</button>
+    <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
   </div>
 </div>
 <!-- Confirm dialog end here -->
-

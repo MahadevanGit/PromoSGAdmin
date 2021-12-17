@@ -33,7 +33,7 @@ import { UserContentService } from './user-content.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ClientAuthGuard } from './shared/services/client-auth-guard.service';
 import { StatisticsModule } from './statistics/statistics.module';
-
+import { LoadingService } from './loading.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +74,8 @@ exports:[
     UserService,
     ShopUserService,
     ShopCustomerService,
-    UserContentService
+    UserContentService,
+    LoadingService,
   ],
   bootstrap: [AppComponent]
 })

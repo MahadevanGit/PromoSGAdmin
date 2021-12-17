@@ -22,20 +22,20 @@ export class ShopCustomerService implements OnDestroy {
   shop_path1: string = 'shop-user-content';
   shop_path2: string = 'owned-users';
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private db: AngularFireDatabase) {
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
-    let pathRef = '/' + this.shop_path1 + '/' + this.userId + '/' + this.shop_path2 +'/' ;
+    let pathRef = '/' + this.shop_path1 + '/' + this.userId + '/' + this.shop_path2 + '/';
     this.itemsRef = db.list(pathRef);
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
+      map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
   }
 
-  getItemsByShopUserID(_shopUserId: string){
-    let pathRef = '/' + this.shop_path1 + '/' + _shopUserId + '/' + this.shop_path2 +'/';
+  getItemsByShopUserID(_shopUserId: string) {
+    let pathRef = '/' + this.shop_path1 + '/' + _shopUserId + '/' + this.shop_path2 + '/';
     this.itemsRef = this.db.list(pathRef);
     return this.itemsRef;
   }
