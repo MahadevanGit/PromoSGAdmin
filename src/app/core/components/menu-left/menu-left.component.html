@@ -14,9 +14,10 @@
     <div>
 
       <mat-nav-list *ngIf="appUser">
-        <a mat-list-item *ngFor="let page of pages" routerLink={{page.link}}>
-          <mat-icon style="padding-right:5px;">{{page?.icon}}</mat-icon>
-          <span [@animateText]="linkText ? 'show' : 'hide'">{{ page?.name }} </span>
+        <a mat-list-item *ngFor="let page of pages" routerLink={{page.link}} (click)="onClick(page)"
+          [ngClass]="page.selected ? 'sl' : ''">
+          <mat-icon>{{page?.icon}}</mat-icon>
+          <span [@animateText]="linkText ? 'show' : 'hide'">{{ page?.name }}</span>
         </a>
 
         <!-- <a mat-list-item routerLink="/login" (click)="logout()"><mat-icon>exit_to_app</mat-icon>
@@ -31,7 +32,7 @@
   </div>
 
   <!-- <span class="spacer"></span> -->
-  <div class="button-container" fxLayout="row" fxLayoutAlign="end center" style="padding: 0px 10px;">
+  <div class="button-container" fxLayout="row" fxLayoutAlign="end center">
     <button mat-icon-button (click)="onSinenavToggle()">
       <button mat-mini-fab color="">
         <mat-icon *ngIf="sideNavState">arrow_left</mat-icon>

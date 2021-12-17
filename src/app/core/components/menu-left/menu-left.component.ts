@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
 import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -11,6 +11,7 @@ interface Page {
   link: string;
   name: string;
   icon: string;
+  selected: boolean;
 }
 
 @Component({
@@ -36,19 +37,18 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
     private router: Router) {
   }
 
-
   ngOnInit() {
     this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => {
       this.appUser = appUser;
       this.personName = this.appUser && this.appUser.firstName ? this.appUser.firstName.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
       this.pages = [];
       if (this.appUser) {
-        let page: Page = { name: this.personName, link: '/usersetting', icon: 'person' };
+        let page: Page = { name: this.personName, link: '/usersetting', icon: 'person', selected: false };
         this.pages.push(page);
-        page = { name: 'Dashboard', link: '/dashboard', icon: 'dashboard' }
+        page = { name: 'Dashboard', link: '/dashboard', icon: 'dashboard', selected: false }
         this.pages.push(page);
         if (this.appUser && this.appUser.isAdmin) {
-          page = { name: 'Setting', link: '/adminsetting', icon: 'settings' }
+          page = { name: 'Setting', link: '/adminsetting', icon: 'settings', selected: false }
           this.pages.push(page);
         }
       }
@@ -59,13 +59,20 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   }
 
   onSinenavToggle() {
-    console.log('i am called')
     this.sideNavState = !this.sideNavState
-
     setTimeout(() => {
       this.linkText = this.sideNavState;
     }, 200)
     this._sidenavService.sideNavState$.next(this.sideNavState)
+  }
+
+  onClick(page: Page) {
+    this.pages && page && this.pages.forEach((p) => {
+      if (p.name == page.name)
+        p.selected = true;
+      else
+        p.selected = false;
+    })
   }
 
   logout() {

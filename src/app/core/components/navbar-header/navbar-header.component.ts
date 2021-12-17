@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -20,7 +20,8 @@ export class NavbarHeaderComponent {
 
   @Input() sidenav: MatSidenav
 
-  constructor(public auth: AuthService,
+  constructor(
+    public auth: AuthService,
     private router: Router) {
     this.appUserSubscription = auth.appUser$.subscribe((appUser) => {
       this.appUser = appUser;
@@ -29,7 +30,6 @@ export class NavbarHeaderComponent {
 
   ngOnDestroy(): void {
     this.appUserSubscription.unsubscribe();
-
   }
 
   logout() {

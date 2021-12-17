@@ -1,15 +1,15 @@
-import 'rxjs/add/operator/map';
-
+import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import 'rxjs/add/operator/map';
 import { LocalStorageMember } from 'src/app/shared/models/common';
 import { AppUser } from 'src/app/shared/models/user';
-
 import { AuthService } from '../../../shared/services/auth.service';
 import { onMainContentChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
-import { MediaMatcher } from '@angular/cdk/layout';
+
+
 
 @Component({
   selector: 'promoSg-bs-navbar',
@@ -49,6 +49,7 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
     // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     // this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
   ngOnInit(): void {
   }
 

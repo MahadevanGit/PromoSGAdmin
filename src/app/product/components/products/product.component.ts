@@ -1,20 +1,19 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { validateBasis } from '@angular/flex-layout';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { IProduct } from '../../../shared/models/product'
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { CategoryService } from '../../services/category.service';
-import { MatMenuListItem } from 'src/app/shared/models/common';
-import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
-import { ProductFormComponent } from '../product-form/product-form.component';
 import { LoadingService } from 'src/app/loading.service';
+import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
+import { MatMenuListItem } from 'src/app/shared/models/common';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { IProduct } from '../../../shared/models/product';
+import { CategoryService } from '../../services/category.service';
+import { ProductService } from '../../services/product.service';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 
 

@@ -1,6 +1,6 @@
 <div class="menu-div">
   <button mat-icon-button class="maticonbtn" [matMenuTriggerFor]="clickmenu">
-    <mat-icon class="maticon">{{currentMenuIcon}}</mat-icon>
+    <mat-icon class="maticon sl">{{currentMenuIcon}}</mat-icon>
     <!-- <mat-icon class="maticon-gr">{{currentMenuIcon}}</mat-icon> -->
   </button>
   <span>{{currentMenuText}}</span>
@@ -9,7 +9,7 @@
 <mat-menu #clickmenu="matMenu">
   <button mat-menu-item *ngFor="let item of menuListItems" (click)="clickMenuItem(item)" [disabled]="item.isDisabled"
     [ngClass]="item.selected ? 'sl' : ''">
-    <mat-icon>{{ item.menuIcon }}</mat-icon>
+    <mat-icon [ngClass]="item.selected ? 'sl' : ''">{{ item.menuIcon }}</mat-icon>
     <span> {{ item.menuLinkText }}</span>
   </button>
 </mat-menu>
