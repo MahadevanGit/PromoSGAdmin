@@ -5,7 +5,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
 
-import { AppUser, User } from './shared/models/user';
+import { AppUser, User } from '../models/user';
 import { map } from 'rxjs/operators';
 
 

@@ -83,3 +83,10 @@ export class MatMenuListItem {
   selected: boolean;
 }
 
+export enum FlashMessageType {
+  success = "success", 
+  info = "info", 
+  warning = "warning", 
+  danger = "danger"
+}
+

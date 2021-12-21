@@ -6,7 +6,7 @@ import { PromoCardService } from '../../services/promo-card.service';
 import { LocalStorageMember } from '../../../shared/models/common';
 import { IPromotionCard } from '../../models/promotioncard';
 import { ProductFormComponent } from 'src/app/product/components/product-form/product-form.component';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 @Component({
   selector: 'app-promo-card-form',
   templateUrl: './promo-card-form.component.html',

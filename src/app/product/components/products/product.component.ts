@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
 import { MatMenuListItem } from 'src/app/shared/models/common';
 import { AuthService } from 'src/app/shared/services/auth.service';

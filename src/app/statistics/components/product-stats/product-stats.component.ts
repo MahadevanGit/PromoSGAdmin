@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, Input, LOCALE_ID, OnChanges, OnInit, resolveForwardRef, SimpleChanges } from '@angular/core';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { ProductService } from 'src/app/product/services/product.service';
 import { ProductStatsService } from 'src/app/product/services/product.stats.service';
 import { JsonHelper } from 'src/app/shared/models/common';

@@ -6,6 +6,14 @@
     color: grey;
 }
 
+.mat-card-avatar {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
 mat-progress-spinner {
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -24,5 +32,9 @@ mat-progress-spinner {
     right: 0;
     position: absolute;
     z-index: 2;
-    backdrop-filter: blur(1px);
+    //method 1
+    //backdrop-filter: blur(1px);
+    //method 2
+    opacity: 0.6;
+    background-color: white;
 }

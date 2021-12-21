@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { LocalStorageMember } from '../app/shared/models/common';
-import { IPromotionCard } from './promo/models/promotioncard';
+import { LocalStorageMember } from '../models/common';
+import { IPromotionCard } from '../../promo/models/promotioncard';
 
 @Injectable({
   providedIn: 'root'
