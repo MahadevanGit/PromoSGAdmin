@@ -1,10 +1,9 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AppUser, User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserContentService } from 'src/app/user-content.service';
-import { UserService } from 'src/app/user.service';
+import { UserContentService } from 'src/app/shared/services/user-content.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { IPromotionCard } from '../../models/promotioncard';
 import { PromoCardService } from '../../services/promo-card.service';
 

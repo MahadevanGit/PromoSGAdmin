@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { LocalStorageMember } from 'src/app/shared/models/common';
 import { AppUser } from 'src/app/shared/models/user';
-import { ShopUserService } from 'src/app/shop.service';
+import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 @Component({
   selector: 'app-dashboard',

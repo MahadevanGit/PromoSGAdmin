@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ShopUserService } from 'src/app/shop.service';
+import { ShopUserService } from 'src/app/shared/services/shop.service';
 import { LocalStorageMember, Result } from '../models/common';
 import { AppUser } from '../models/user';
 import 'rxjs/add/operator/switchMap'

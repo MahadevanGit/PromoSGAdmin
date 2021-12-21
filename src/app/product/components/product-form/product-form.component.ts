@@ -10,7 +10,7 @@ import { from, Subscription } from 'rxjs';
 import { KeyValue } from '@angular/common';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { NgForm } from '@angular/forms';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'product-form',

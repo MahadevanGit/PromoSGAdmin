@@ -4,12 +4,13 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { ProductService } from 'src/app/product/services/product.service';
 import { ProductStatsService } from 'src/app/product/services/product.stats.service';
 import { JsonHelper, LocalStorageMember } from 'src/app/shared/models/common';
 import { ProductStats } from 'src/app/shared/models/product';
-import { UserContentService } from 'src/app/user-content.service';
+import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
+import { UserContentService } from 'src/app/shared/services/user-content.service';
 
 import { DialogComponent } from '../../../dialog/dialog.component';
 import { AuthService } from '../../../shared/services/auth.service';
@@ -52,6 +53,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private loader: LoadingService,
+    private flashMessageService: FlashMessageService,
     private dialog: MatDialog,
     private promoCardService: PromoCardService,
     private userContentService: UserContentService,
@@ -145,7 +147,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      // console.log(result);
     })
     this.getGeneratedPromData(this.promogeneratedData); //emitter
   }
@@ -182,7 +184,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
       let product;
-      let res = (result != 'cancel' && result) ? JSON.parse(result) : result;
+      let res = (result != 'cancel' && result != 'close' && result) ? JSON.parse(result) : result;
       this.promoData.modifiedBy = this.currentUserId; //From local storage
       this.promoData.modifiedDate = this.currentDate.toLocaleString();
       this.promoData.promoGrid.forEach((value) => {
@@ -196,7 +198,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
           value.value.value = res.key.indexOf('Promo_') > -1 ? JSON.stringify({ promotion: data.promotionValue, claimed: { key: product['key'], title: product['title'] } }) : JSON.stringify({ key: product['key'], title: product['title'] });
         }
       })
-      if (result != 'cancel') {
+      if (result != 'cancel' && result != 'close') {
         this.loader.show();
         this.userContentService.updateItem(this.promoData);
         this.loader.hide(100);
@@ -206,8 +208,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         this.productStatsObj.stats.purchaseDate = JsonHelper.getDate(this.currentDate.toLocaleString(), 'MM/dd/yyyy HH:mm:ss').toLocaleString();
         this.productStatsObj.stats.qty = 1; //Product quantity
         this.loader.show();
+        console.log(result);
         this.productStatsService.addItem(this.productStatsObj);
         this.loader.hide(100);
+        this.flashMessageService.success('Successfully stamped.')
       }
     })
   }
@@ -243,6 +247,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         this.loader.show();
         this.promoCardService.deleteItem(key);
         this.loader.hide(100);
+        this.flashMessageService.success('Successfully removed promo card.');
       }
 
     })
@@ -267,6 +272,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         this.loader.show();
         this.promoCardService.updateItem(promoData.key, promoData);
         this.loader.hide(100);
+        this.flashMessageService.success('Successfully published.');
       }
     })
   }
@@ -274,6 +280,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   assignPromoCardToUser(promoData: IPromotionCard) {
     this.loader.show();
     this.userContentService.addItem(promoData);
+    this.flashMessageService.success('Successfully assigned.')
     this.loader.hide(100);
   }
 

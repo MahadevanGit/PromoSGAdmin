@@ -1,13 +1,9 @@
-import 'rxjs/add/operator/map';
-
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
+import 'rxjs/add/operator/map';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-
-import { Shop } from './shared/models/shop';
-
-
+import { Shop } from '../models/shop';
 
 @Injectable({
   providedIn: 'root'

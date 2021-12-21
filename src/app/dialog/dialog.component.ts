@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { LoadingService } from '../loading.service';
+import { LoadingService } from '../core/services/loading.service';
 import { ProductService } from '../product/services/product.service';
 @Component({
   selector: 'app-dialog',
