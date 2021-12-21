@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuLeftComponent } from './components/menu-left/menu-left.component';
 import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoadingService } from './services/loading.service';
 import { SidenavService } from './services/sidenav.service';
 
 @NgModule({
@@ -42,10 +43,11 @@ import { SidenavService } from './services/sidenav.service';
   exports:[
     BsNavbarComponent,
     MenuLeftComponent,
-    NavbarHeaderComponent
+    NavbarHeaderComponent,
   ],
   providers:[
-    SidenavService
+    SidenavService,
+    LoadingService,
   ]
 })
 export class CoreModule { }

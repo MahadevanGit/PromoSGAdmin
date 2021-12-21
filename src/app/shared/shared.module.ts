@@ -17,6 +17,10 @@ import { StackedHorizontalBarChartComponent } from './components/charts/stacked-
 import { ChartsModule } from 'ng2-charts';
 import { MultiSelectDdComponent } from './components/control/multi-select-dd/multi-select-dd.component';
 import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon-dd.component';
+import { ShopUserService } from './services/shop.service';
+import { UserContentService } from './services/user-content.service';
+import { UserService } from './services/user.service';
+import { FlashMessageService } from './services/flash-message.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon
     ClientAuthGuard,
     ImageService,
     MasterContentService,
+    ShopUserService,
+    UserContentService,
+    UserService,
+    FlashMessageService
   ],
   exports: [
     CommonModule,

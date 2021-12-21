@@ -7,7 +7,7 @@ import { CategoryService } from 'src/app/product/services/category.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { MasterContentService } from 'src/app/shared/services/master-content.service';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-image-upload',

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { LocalStorageMember } from '../../models/common';
 import { AuthService } from '../../services/auth.service';
 import { ImageService } from '../../services/image.service';

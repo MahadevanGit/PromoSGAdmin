@@ -47,6 +47,35 @@ body {
 //     background: rgb(253, 253, 229);
 //   }
 
+// flash-message css start
+.success {
+  background: green;
+  color: white;
+}
+.info {
+  background: #2196f3;
+  color: white;
+}
+.warning {
+  background: #ff9800;
+  color: white;
+}
+.danger {
+  background: red;
+  color: white;
+}
+.mat-simple-snackbar-action button {
+  max-height: 36px;
+  min-width: 0;
+  color: rgb(207, 206, 206);
+  border-radius: 5%;
+}
+.mat-simple-snackbar-action button:hover {
+  color: black;
+}
+// flash-message css eng
+
+
 
   
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingService } from 'src/app/loading.service';
-import { ShopUserService } from 'src/app/shop.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
+import { ShopUserService } from 'src/app/shared/services/shop.service';
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({

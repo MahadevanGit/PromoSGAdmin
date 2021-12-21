@@ -5,9 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ShopCustomerService } from '../../services/customer.service';
-import { UserService } from '../../../user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-customer',
