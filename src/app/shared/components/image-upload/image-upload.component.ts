@@ -77,7 +77,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
     } catch (error) {
 
     } finally {
-      this.loader.hide(500);
+      this.loader.hide();
     }
   }
 

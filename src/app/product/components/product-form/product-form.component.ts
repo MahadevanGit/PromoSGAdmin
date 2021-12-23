@@ -88,6 +88,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   // }
 
   customInit(mode: any) {
+    console.log('customInit => ', mode)
     this.notificationMessage = "";
     this.userId = this.localStorageMember.get(this.localStorageMember.userId);
     try {
@@ -117,7 +118,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     } finally {
       this.loader.hide();
     }
-
   }
 
   async onSubmit(productForm: NgForm) {
@@ -151,8 +151,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   resetProductForm(productForm: NgForm) {
-    //this.productKey = null;
-    productForm.resetForm();;
+    productForm.resetForm();
   }
 
   createOrUpdateCategory() {
@@ -217,7 +216,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         });
     } catch (error) {
     } finally {
-      this.loader.hide(500);
+      this.loader.hide();
     }
 
   }

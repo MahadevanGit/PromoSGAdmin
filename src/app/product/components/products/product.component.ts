@@ -33,11 +33,15 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   imageRequestType: string = 'product'; //'usersetting';
   rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
 
+  //app-menu-icon-dd fields start
+  //optional
   @ViewChild(ProductFormComponent) productFormComponent: ProductFormComponent;
+  //required
   selectedProductKey: string;
   selectedMenuItem: string;
   defaultSelection: MatMenuListItem;
   menuListItems: MatMenuListItem[];
+  //app-menu-icon-dd fields end
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
@@ -115,8 +119,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     this.onChildComplete();
   }
-
-
 
   public onSelect(menuLinkKey: string): void {
     if (menuLinkKey == 'product-form') {
@@ -214,11 +216,13 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     })
   }
 
+  //ProductForm
   editProduct(productKey: string) {
     this.selectedProductKey = productKey;
     this.selectedMenuItem = this.menuListItems[1].menuLinkKey;
   }
-
+  
+  //ProductForm
   isProductFormDone(isProductFormDone: boolean) {
     if (isProductFormDone)
       this.onChildComplete();

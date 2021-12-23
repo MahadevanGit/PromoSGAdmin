@@ -18,6 +18,7 @@ export class LoadingService {
 
   async hide(ms?: number) {
     let _ms = ms ? ms : 1000;
+    // console.log(_ms);
     await this.delay(_ms);
     this._loading.next(false);
   }

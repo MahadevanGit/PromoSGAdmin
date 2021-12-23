@@ -56,7 +56,7 @@ export class ImageGalleryListComponent implements OnInit {
     } catch (error) {
 
     } finally {
-      this.loader.hide(500);
+      this.loader.hide();
     }
 
   }
