@@ -117,7 +117,7 @@ export class ProductStatsComponent implements OnInit, OnChanges {
         });
     } catch (error) {
     } finally {
-      this.loader.hide(500);
+      this.loader.hide();
     }
   }
 

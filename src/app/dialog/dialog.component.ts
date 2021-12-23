@@ -40,7 +40,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     } catch (error) {
 
     } finally {
-      this.loader.hide(10);
+      this.loader.hide();
     }
   }
 

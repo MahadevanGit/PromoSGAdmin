@@ -19,8 +19,6 @@ import { ShopUserOutletFormComponent } from './components/user-setting/shop-user
   
   ],
   imports: [
-    // CommonModule,
-    // PromosgMaterialModule,
     SharedModule,
     RouterModule.forChild([
       {path: 'usersetting', component: UserSettingComponent, canActivate: [AuthGuard]},

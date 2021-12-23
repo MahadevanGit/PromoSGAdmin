@@ -43,11 +43,10 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button type="button" mat-menu-item
-                                [routerLink]="['/promocarddb/assignpromocard/',row.key]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.key]">
                                 Assign Promotion card
                             </button>
-                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/stamppromocard/',row.key]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.key]">
                                 Make Stamp
                             </button>
                         </mat-menu>

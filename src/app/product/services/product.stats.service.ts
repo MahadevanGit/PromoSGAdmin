@@ -4,6 +4,7 @@ import { LocalStorageMember } from '../../shared/models/common';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductStats } from 'src/app/shared/models/product';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class ProductStatsService {
     this.shop_userId = this.localStorageMember.get(this.localStorageMember.userId);
    }
    
-  addItem(productStatsObj: ProductStats) {
+  async addItem(productStatsObj: ProductStats) {
     this.pathRef = this.shopUserContent + this.shop_userId + this.productStats;
 
     let finalRef = this.pathRef + productStatsObj['productKey'] + '/' + productStatsObj['customerKey']  + '/' ;
