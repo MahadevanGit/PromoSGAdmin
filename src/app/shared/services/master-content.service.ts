@@ -18,7 +18,7 @@ export class MasterContentService {
   orderBy: string = 'value';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     this.itemsRef = db.list('/master-content/image-categories/', ref => {
       return ref.orderByChild(this.orderBy)
     });

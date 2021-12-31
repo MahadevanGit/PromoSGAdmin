@@ -19,7 +19,7 @@ export class ShopUserService {
 
 
   async save(Shop: any) {
-    let userId = this.localStorageMember.get(this.localStorageMember.userId);
+    let userId = LocalStorageMember.get(LocalStorageMember.userId);
     console.log('userid from shop.service : ' + userId);
     try {
       this.db.object('/shops/' + userId).update({
@@ -33,7 +33,7 @@ export class ShopUserService {
     } catch (error) {
       console.log(error.message)
     } finally {
-      //this.localStorageMember.clear();
+      //LocalStorageMember.clear();
     }
 
   }
@@ -48,6 +48,8 @@ export class ShopUserService {
         lastname: Shop['lastName'],
         email: Shop['email'],
         telephone: Shop['telephone'],
+        shopLogo: Shop['shopLogo'],
+        shopPicture: Shop['shopPicture'],
         fax: Shop['fax'],
         hotline: Shop['hotline'],
         address: Shop['address'],
@@ -64,7 +66,7 @@ export class ShopUserService {
         console.log("Notifi: User details updated successfully.")
       else
         console.log("Notifi: Error occured when update user details.")
-      //this.localStorageMember.clear();
+      //LocalStorageMember.clear();
     }
 
   }
@@ -81,7 +83,7 @@ export class ShopUserService {
         console.log("Notifi: User details updated successfully.")
       else
         console.log("Notifi: Error occured when update user details.")
-      //this.localStorageMember.clear();
+      //LocalStorageMember.clear();
     }
 
   }

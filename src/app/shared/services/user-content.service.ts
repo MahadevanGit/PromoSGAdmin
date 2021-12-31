@@ -26,7 +26,7 @@ export class UserContentService {
 
   constructor(private db: AngularFireDatabase,
     private route: ActivatedRoute) {
-    this.shopUserId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.shopUserId = LocalStorageMember.get(LocalStorageMember.userId);
   }
 
   addItem(promoCard: IPromotionCard) {

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
-import { LocalStorageMember, MatMenuListItem } from '../../../shared/models/common';
+import { ImageDetailsFolder, LocalStorageMember, MatMenuListItem } from '../../../shared/models/common';
 import 'rxjs/add/operator/take'
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
@@ -37,6 +37,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   @ViewChild("productFormTag") productForm: NgForm; //to select the template driven form element inside .ts code
   notificationMessage: string;
   @Output() amDone = new EventEmitter<boolean>(false);
+  imageFolderName: string = '/product-imageDetails/';
 
   constructor(
     private loader: LoadingService,
@@ -48,7 +49,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
 
-    // this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    // this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     // this.categorySubscription = this.categoryService
     //   .getItemsWithMap(this.userId).subscribe((value) => {
     //     this.categoryList = [];
@@ -90,7 +91,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   customInit(mode: any) {
     console.log('customInit => ', mode)
     this.notificationMessage = "";
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     try {
       this.loader.show();
       this.categorySubscription = this.categoryService
@@ -207,7 +208,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     try {
       this.loader.show();
       this.imageSubscription = this.imageService
-        .getImageListByCategory(this.userId, _categoryKey).take(1).subscribe((value) => {
+        .getImageListByCategory(_categoryKey,ImageDetailsFolder.product,this.userId).take(1).subscribe((value) => {
           this.imageList = [];
           value.forEach((img) => {
             Object.keys(img).length;

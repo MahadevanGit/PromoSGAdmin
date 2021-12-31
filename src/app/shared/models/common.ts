@@ -7,24 +7,25 @@ export interface Result {
 export class LocalStorageMember {
 
   //Register variable here
-  returnUrl: string = 'returnUrl';
-  userId: string = 'userId';
+  static returnUrl: string = 'returnUrl';
+  static userId: string = 'userId';
 
   //Add localStorage variable value
-  add(key: string, value: string) {
+  static add(key: string, value: string) {
     localStorage.setItem(key, value);
   }
 
   //Get localStorage variable value
-  get(key: string): string {
+  static get(key: string): string {
     return localStorage.getItem(key);
   }
 
   //Clear registered variable here
-  clear() {
+  static clear() {
     localStorage.removeItem(this.returnUrl);
     localStorage.removeItem(this.userId);
   }
+  
 }
 
 export class JsonHelper {
@@ -89,4 +90,16 @@ export enum FlashMessageType {
   warning = "warning", 
   danger = "danger"
 }
+
+export enum ImageCategory {
+  profilelogo = "profileLogo", 
+  shoplogo = "shopLogo"
+}
+
+export enum ImageDetailsFolder {
+  product = "product-imageDetails", 
+  usersetting = "usersetting-imageDetails"
+}
+
+
 

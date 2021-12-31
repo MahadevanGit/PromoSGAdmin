@@ -24,7 +24,7 @@ export class UserService implements OnDestroy {
   userPath1: string = 'users';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     this.itemsRef = db.list('/' + this.userPath1 + '/');
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
@@ -37,7 +37,7 @@ export class UserService implements OnDestroy {
 
   // This save method handle from PromoSG mobile app
   // async save(user: any){
-  //   let userId = this.localStorageMember.get(this.localStorageMember.userId);
+  //   let userId = LocalStorageMember.get(LocalStorageMember.userId);
   //   console.log('userid from user.service : ' + userId);
   //   try {
   //     this.db.object('/users/' + userId).update({
@@ -50,7 +50,7 @@ export class UserService implements OnDestroy {
   //   } catch (error) {
   //     console.log(error.message)
   //   } finally{
-  //     this.localStorageMember.clear();
+  //     LocalStorageMember.clear();
   //   }
 
   // }

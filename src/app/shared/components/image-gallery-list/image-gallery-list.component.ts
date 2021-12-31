@@ -36,7 +36,7 @@ export class ImageGalleryListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     this.getImageList();
   }
 
@@ -44,13 +44,14 @@ export class ImageGalleryListComponent implements OnInit {
     try {
       this.loader.show();
       this.imageSubscription = this.imageService
-        .getAll(this.shopUserId ? this.shopUserId : this.userId, this.imageFolderName).subscribe((value) => {
+        .getAll(this.imageFolderName,this.shopUserId ? this.shopUserId : this.userId).subscribe((value) => {
           this.imageList = [];
           value.forEach((img) => {
             Object.keys(img).length;
             for (let i = 0; i < Object.keys(img).length; i++) {
               this.imageList.push(img[Object.keys(img)[i]]);
             }
+            console.log(this.imageList);
           });
         });
     } catch (error) {

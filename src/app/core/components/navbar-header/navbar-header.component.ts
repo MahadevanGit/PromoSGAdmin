@@ -33,7 +33,7 @@ export class NavbarHeaderComponent {
   }
 
   logout() {
-    this.localStorageMember.clear();
+    LocalStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
     this.router.navigate(['/login']);

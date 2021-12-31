@@ -30,7 +30,7 @@ export class LoginComponent {
       await this.auth.loginUser(userData).then(x => resp = x);
       if (resp && resp.success) {
         console.log(resp);
-        returnUrl = this.localStorageMember.get(this.localStorageMember.returnUrl);
+        returnUrl = LocalStorageMember.get(LocalStorageMember.returnUrl);
         this.flashMessage.success('You have logged in as ' + userData['email'])
         this.router.navigate([returnUrl]);
       }

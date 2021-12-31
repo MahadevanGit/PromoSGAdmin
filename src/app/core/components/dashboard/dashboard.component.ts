@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getAppUsers() {
     try {
       this.loader.show();
-      this.appUserSubscription = this.shopUserService.get(this.localStorageMember.get(this.localStorageMember.userId))
+      this.appUserSubscription = this.shopUserService.get(LocalStorageMember.get(LocalStorageMember.userId))
         .subscribe((value) => {
           if (value && value.isAdmin) {
             this.isAdmin = value.isAdmin;

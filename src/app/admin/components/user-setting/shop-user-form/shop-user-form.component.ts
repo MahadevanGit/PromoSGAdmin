@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { ImageCategory, ImageDetailsFolder, LocalStorageMember } from 'src/app/shared/models/common';
 import { AppUser } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
+import { ImageService } from 'src/app/shared/services/image.service';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 @Component({
   selector: 'app-shop-user-form',
   templateUrl: './shop-user-form.component.html',
   styleUrls: ['./shop-user-form.component.scss'],
-  providers:[AuthService]
+  providers: [AuthService, ShopUserService, ImageService]
 })
 
 export class ShopUserFormComponent implements OnInit {
@@ -20,56 +23,75 @@ export class ShopUserFormComponent implements OnInit {
   appUser: AppUser;
   authSubscription: Subscription;
 
-  get shopName(){
+
+  imageSubscription: Subscription;
+  shopUserId: string;
+  userId: any;
+  profileImageList: any[];
+  shopImageList: any[];
+
+  get shopName() {
     return this.profileForm.get('shopName');
-    }
-  get firstName(){
+  }
+  get firstName() {
     return this.profileForm.get('firstName');
-    }
-  get lastName(){
+  }
+  get lastName() {
     return this.profileForm.get('lastName');
-    }
-  get telephone(){
-      return this.profileForm.get('telephone');
-    }
-  get fax(){
-      return this.profileForm.get('fax');
-    }
-  get hotline(){
-      return this.profileForm.get('hotline');
-    }
+  }
+  get telephone() {
+    return this.profileForm.get('telephone');
+  }
+  get shopLogo() {
+    return this.profileForm.get('shopLogo');
+  }
+  get shopPicture() {
+    return this.profileForm.get('shopPicture');
+  }
+  get fax() {
+    return this.profileForm.get('fax');
+  }
+  get hotline() {
+    return this.profileForm.get('hotline');
+  }
   get weblink() {
     return this.profileForm.get('weblink') as FormArray;
   }
-  
-    constructor(
-      private loader: LoadingService,
-      private fb: FormBuilder,
-      private router: Router,
-      private auth: AuthService,
-      private shopUserService: ShopUserService
+
+  constructor(
+    private loader: LoadingService,
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    private shopUserService: ShopUserService,
+    private imageService: ImageService,
+    private route: ActivatedRoute,
+    private flashMessageService: FlashMessageService
   ) {
-    this.authSubscription = this.auth.appUser$.take(1).subscribe((user)=>{
+    this.shopUserId = this.route.snapshot.paramMap.get('userId'); // for promoSG admin user only
+    this.authSubscription = this.auth.appUser$.take(1).subscribe((user) => {
       this.appUser = user;
       this.updateProfile(this.appUser);
     })
   }
-    
+
 
   profileForm = this.fb.group({
-    shopName: ['', Validators.compose([Validators.required,Validators.minLength(5)])],
-    firstName: ['', Validators.compose([Validators.required,Validators.minLength(2)])],
-    lastName: ['', Validators.compose([Validators.required,Validators.minLength(2)])],
-    telephone: ['', Validators.compose([Validators.required,Validators.minLength(8),Validators.pattern("^[0-9]*$")])],
-    fax: ['', Validators.compose([Validators.required,Validators.minLength(6),Validators.pattern("^[0-9]*$")])],
-    hotline: ['', Validators.compose([Validators.required,Validators.minLength(8),Validators.pattern("^[0-9]*$")])],
+    shopName: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+    firstName: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+    lastName: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+    telephone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern("^[0-9]*$")])],
+    shopLogo: ['', Validators.compose([Validators.required])],
+    shopPicture: ['', Validators.compose([Validators.required])],
+    fax: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")])],
+    hotline: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern("^[0-9]*$")])],
     address: this.fb.group({
-      block: ['',Validators.compose([Validators.required,Validators.minLength(1)])],
+      block: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       level: [''],
       unit: [''],
-      street: ['',Validators.compose([Validators.required,Validators.minLength(2)])],
-      city: ['',Validators.compose([Validators.required,Validators.minLength(2)])],
-      zip: ['',Validators.compose([Validators.required,Validators.minLength(4),Validators.pattern("^[0-9]*$")])]
+      street: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      city: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      zip: ['', Validators.compose([Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")])]
     }),
     weblink: this.fb.array([
       this.fb.control('')
@@ -77,7 +99,11 @@ export class ShopUserFormComponent implements OnInit {
   });
 
   ngOnInit() {
-   }
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
+    this.getShoplogoImageList();
+    this.getProfilelogoImageList();
+  }
+  
 
   async onSubmit() {
     let userData = this.profileForm.value;
@@ -86,37 +112,41 @@ export class ShopUserFormComponent implements OnInit {
     userData['registeredAt'] = this.appUser.registeredAt;
     userData['weblink'] = this.removeWeblinkIfEmpty(userData['weblink']);
     userData['outletList'] = this.appUser['outletList'];
-       try {
-         this.loader.show();
-        this.shopUserService.update(this.appUser.userId,userData); //un-comment if u want to save 
-        //this.router.navigate(['/usersetting']);
-        //Show flash message .. successfully updated..
-       } catch (e) {
-          //TODO: Need to check .. Currently could not catch exception
-       } finally{
-         this.loader.hide();
-       }
+    console.log(userData);
+    try {
+      this.loader.show();
+      this.shopUserService.update(this.appUser.userId, userData); //un-comment if u want to save 
+      //this.router.navigate(['/usersetting']);
+      this.flashMessageService.success('Successfully updated.')
+    } catch (e) {
+      //TODO: Need to check .. Currently could not catch exception
+      this.flashMessageService.error('Something went wrong.')
+    } finally {
+      this.loader.hide();
+    }
   }
 
   updateProfile(appUser) {
-    if(appUser && !appUser['weblink'])
+    if (appUser && !appUser['weblink'])
       appUser['weblink'] = [];
     this.profileForm.patchValue({
       shopName: appUser ? appUser['shopname'] : '',
-      firstName: appUser ? appUser['firstname']: '',
-      lastName: appUser ? appUser['lastname']: '',
-      email: appUser ? appUser['email']: '',
-      telephone: appUser ? appUser['telephone']: '',
-      fax: appUser ? appUser['fax']: '',
-      hotline: appUser ? appUser['hotline']: '',
+      firstName: appUser ? appUser['firstname'] : '',
+      lastName: appUser ? appUser['lastname'] : '',
+      email: appUser ? appUser['email'] : '',
+      telephone: appUser ? appUser['telephone'] : '',
+      shopLogo: appUser ? appUser['shopLogo'] : '',
+      shopPicture: appUser ? appUser['shopPicture'] : '',
+      fax: appUser ? appUser['fax'] : '',
+      hotline: appUser ? appUser['hotline'] : '',
       weblink: appUser && appUser['weblink'] ? this.assignWebLink(appUser['weblink']) : '',
       address: {
-        block: appUser && appUser['address'] ? appUser['address']['block']: '',
-        level: appUser && appUser['address'] ? appUser['address']['level']: '',
-        unit: appUser && appUser['address'] ? appUser['address']['unit']: '',
-        street: appUser && appUser['address'] ? appUser['address']['street']: '',
-        city: appUser && appUser['address'] ? appUser['address']['city']: '',
-        zip: appUser && appUser['address'] ? appUser['address']['zip']: '',
+        block: appUser && appUser['address'] ? appUser['address']['block'] : '',
+        level: appUser && appUser['address'] ? appUser['address']['level'] : '',
+        unit: appUser && appUser['address'] ? appUser['address']['unit'] : '',
+        street: appUser && appUser['address'] ? appUser['address']['street'] : '',
+        city: appUser && appUser['address'] ? appUser['address']['city'] : '',
+        zip: appUser && appUser['address'] ? appUser['address']['zip'] : '',
       },
     });
   }
@@ -126,22 +156,22 @@ export class ShopUserFormComponent implements OnInit {
     this.weblink.push(this.fb.control(''));
   }
 
-  addWebLinkDisable(){
+  addWebLinkDisable() {
     var canAddWebLink = false;
     this.weblink.value.filter(function (el) {
-      if(el == null || el == '')
+      if (el == null || el == '')
         canAddWebLink = true;
     });
 
     return canAddWebLink;
   }
 
-  removeWeblink(control){
+  removeWeblink(control) {
     this.weblink.removeAt(control)
   }
 
   assignWebLink(weblink: any): any {
-    if(weblink && weblink.length > 0){
+    if (weblink && weblink.length > 0) {
       weblink.forEach(ele => {
         this.addWebLink();
       });
@@ -154,6 +184,43 @@ export class ShopUserFormComponent implements OnInit {
       return el != null && el != '';
     });
     return weblinkFilterd;
+  }
+
+  getShoplogoImageList() {
+    try {
+      this.loader.show();
+      this.imageSubscription = this.imageService
+      .getImageListByCategory(ImageCategory.shoplogo,ImageDetailsFolder.usersetting,this.userId).take(1).subscribe((value) => {
+        this.shopImageList = [];
+        value.forEach((img) => {
+          Object.keys(img).length;
+          this.shopImageList.push(img)
+        });
+      });
+    } catch (error) {
+
+    } finally {
+      this.loader.hide();
+    }
+
+  }
+
+  getProfilelogoImageList() {
+    try {
+      this.loader.show();
+      this.imageSubscription = this.imageService
+      .getImageListByCategory(ImageCategory.profilelogo,ImageDetailsFolder.usersetting,this.userId).take(1).subscribe((value) => {
+        this.profileImageList = [];
+        value.forEach((img) => {
+          Object.keys(img).length;
+          this.profileImageList.push(img)
+        });
+      });
+    } catch (error) {
+
+    } finally {
+      this.loader.hide();
+    }
   }
 
 }

@@ -76,7 +76,7 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.localStorageMember.clear();
+    LocalStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
     this.router.navigate(['/login']);
