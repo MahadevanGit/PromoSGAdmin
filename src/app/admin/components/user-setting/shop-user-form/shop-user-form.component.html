@@ -104,8 +104,11 @@
                                 required.</small>
                         </div>
 
+                        
+
                     </div>
                     <div class="col-md-6 mar-bot">
+                        
 
                         <div class="mar-bot">
                             <app-address [parentForm]="profileForm"></app-address>
@@ -137,6 +140,20 @@
                                 </div>
 
                             </div>
+                        </div>
+
+                        <label for="aboutShop">About shop </label>
+                        <span [ngClass]="aboutShop.valid ? '' : 'requiredStar'">*</span>
+                        <div  class="form-group textarea-wrapper">
+                                <textarea class="form-control" 
+                                maxlength="500"
+                                (ngModelChange)="onAboutShopChange(aboutShop.value)"
+                                placeholder="Leave a shop information"
+                                [class.is-invalid]="aboutShop.invalid && aboutShop.touched"
+                                formControlName="aboutShop"></textarea>
+                                <span class="remaning">{{remaningText}}/500</span>
+                              <small *ngIf="aboutShop.errors && aboutShop.invalid && aboutShop.touched"
+                                class="text-danger">Leave a shop information is required and minimum length is 50.</small>
                         </div>
 
                     </div>

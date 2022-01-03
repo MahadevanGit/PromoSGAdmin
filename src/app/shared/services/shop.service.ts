@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { LocalStorageMember } from 'src/app/shared/models/common';
+import { LocalStorageMember, Result } from 'src/app/shared/models/common';
 import { Shop } from '../models/shop';
 
 @Injectable({
@@ -11,6 +11,7 @@ import { Shop } from '../models/shop';
 export class ShopUserService {
 
   currentUser: Shop;
+  result: Result;
   localStorageMember = new LocalStorageMember();
 
   subscription: Subscription;
@@ -38,8 +39,9 @@ export class ShopUserService {
 
   }
 
-  async update(userId: string, Shop: any) {
+  async update(userId: string, Shop: any): Promise<Result> {
     var tryerror;
+    console.log(Shop)
     try {
       this.db.object('/shops/' + userId).update({
         userId: userId,
@@ -52,6 +54,7 @@ export class ShopUserService {
         shopPicture: Shop['shopPicture'],
         fax: Shop['fax'],
         hotline: Shop['hotline'],
+        aboutShop: Shop['aboutShop'],
         address: Shop['address'],
         weblink: Shop['weblink'],
         outletList: Shop['outletList'],
@@ -62,10 +65,15 @@ export class ShopUserService {
       console.log(error.message)
       tryerror = error;
     } finally {
-      if (!tryerror)
-        console.log("Notifi: User details updated successfully.")
-      else
+      if (!tryerror){
+        this.result = {message: "User details updated successfully.",success:true};
+        return this.result;
+      }
+      else{
         console.log("Notifi: Error occured when update user details.")
+        this.result = {message: "Error occured when update user details. Please contact admin with this details : " + "PromoSG(shop.service.ts) : " + tryerror,success:false};
+        return this.result;
+      }
       //LocalStorageMember.clear();
     }
 

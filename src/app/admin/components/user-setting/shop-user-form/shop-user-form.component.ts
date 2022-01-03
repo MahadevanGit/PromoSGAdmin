@@ -29,6 +29,7 @@ export class ShopUserFormComponent implements OnInit {
   userId: any;
   profileImageList: any[];
   shopImageList: any[];
+  remaningText: number = 0;
 
   get shopName() {
     return this.profileForm.get('shopName');
@@ -53,6 +54,9 @@ export class ShopUserFormComponent implements OnInit {
   }
   get hotline() {
     return this.profileForm.get('hotline');
+  }
+  get aboutShop() {
+    return this.profileForm.get('aboutShop');
   }
   get weblink() {
     return this.profileForm.get('weblink') as FormArray;
@@ -85,6 +89,7 @@ export class ShopUserFormComponent implements OnInit {
     shopPicture: ['', Validators.compose([Validators.required])],
     fax: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")])],
     hotline: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern("^[0-9]*$")])],
+    aboutShop: ['', Validators.compose([Validators.required, Validators.minLength(50), Validators.maxLength(500)])],
     address: this.fb.group({
       block: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       level: [''],
@@ -103,7 +108,7 @@ export class ShopUserFormComponent implements OnInit {
     this.getShoplogoImageList();
     this.getProfilelogoImageList();
   }
-  
+
 
   async onSubmit() {
     let userData = this.profileForm.value;
@@ -115,15 +120,24 @@ export class ShopUserFormComponent implements OnInit {
     console.log(userData);
     try {
       this.loader.show();
-      this.shopUserService.update(this.appUser.userId, userData); //un-comment if u want to save 
+      var result = this.shopUserService.update(this.appUser.userId, userData); //un-comment if u want to save 
       //this.router.navigate(['/usersetting']);
-      this.flashMessageService.success('Successfully updated.')
     } catch (e) {
       //TODO: Need to check .. Currently could not catch exception
       this.flashMessageService.error('Something went wrong.')
     } finally {
+      if ((await result).success) {
+        this.flashMessageService.success((await result).message);
+      } else {
+        this.flashMessageService.error((await result).message);
+      }
+
       this.loader.hide();
     }
+  }
+
+  onAboutShopChange(text: String) {
+    this.remaningText = text ? text.length : 0;
   }
 
   updateProfile(appUser) {
@@ -139,6 +153,7 @@ export class ShopUserFormComponent implements OnInit {
       shopPicture: appUser ? appUser['shopPicture'] : '',
       fax: appUser ? appUser['fax'] : '',
       hotline: appUser ? appUser['hotline'] : '',
+      aboutShop: appUser ? appUser['aboutShop'] : '',
       weblink: appUser && appUser['weblink'] ? this.assignWebLink(appUser['weblink']) : '',
       address: {
         block: appUser && appUser['address'] ? appUser['address']['block'] : '',
@@ -190,13 +205,13 @@ export class ShopUserFormComponent implements OnInit {
     try {
       this.loader.show();
       this.imageSubscription = this.imageService
-      .getImageListByCategory(ImageCategory.shoplogo,ImageDetailsFolder.usersetting,this.userId).take(1).subscribe((value) => {
-        this.shopImageList = [];
-        value.forEach((img) => {
-          Object.keys(img).length;
-          this.shopImageList.push(img)
+        .getImageListByCategory(ImageCategory.shoplogo, ImageDetailsFolder.usersetting, this.userId).take(1).subscribe((value) => {
+          this.shopImageList = [];
+          value.forEach((img) => {
+            Object.keys(img).length;
+            this.shopImageList.push(img)
+          });
         });
-      });
     } catch (error) {
 
     } finally {
@@ -209,13 +224,13 @@ export class ShopUserFormComponent implements OnInit {
     try {
       this.loader.show();
       this.imageSubscription = this.imageService
-      .getImageListByCategory(ImageCategory.profilelogo,ImageDetailsFolder.usersetting,this.userId).take(1).subscribe((value) => {
-        this.profileImageList = [];
-        value.forEach((img) => {
-          Object.keys(img).length;
-          this.profileImageList.push(img)
+        .getImageListByCategory(ImageCategory.profilelogo, ImageDetailsFolder.usersetting, this.userId).take(1).subscribe((value) => {
+          this.profileImageList = [];
+          value.forEach((img) => {
+            Object.keys(img).length;
+            this.profileImageList.push(img)
+          });
         });
-      });
     } catch (error) {
 
     } finally {

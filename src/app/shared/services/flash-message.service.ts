@@ -21,7 +21,7 @@ export class FlashMessageService {
   }
 
   error(message: string) {
-    this.open(message,FlashMessageType.danger);
+    this.open(message,FlashMessageType.danger,1000000);
   }
 
   success(message: string) {
@@ -29,19 +29,19 @@ export class FlashMessageService {
   }
 
   info(message: string) {
-    this.open(message,FlashMessageType.info);
+    this.open(message,FlashMessageType.info,5000);
   }
 
   warn(message: string) {
-    this.open(message,FlashMessageType.warning);
+    this.open(message,FlashMessageType.warning,5000);
   }
 
 
-  private open(message: string, type: FlashMessageType) {
+  private open(message: string, type: FlashMessageType, _duration?: number) {
     let config = new MatSnackBarConfig();
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.duration : 0;
+    config.duration = this.setAutoHide && !_duration ? this.duration : _duration;
     config.panelClass = this.addExtraClass ? [type.toString()] : undefined;
     this._snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }

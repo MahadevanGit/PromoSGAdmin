@@ -26,6 +26,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   userId: string;
   shopCustomerList: any[] = [];
   customerList: any[] = [];
+  imgSrc = 'assets/images/image-placeholder.png';
 
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (this.customerDataSource && !this.customerDataSource.sort) {
@@ -33,7 +34,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
     }
   }
   //table column disply by this sequence
-  customerDisplayedColumns: string[] = ['firstname', 'email', 'action'];
+  customerDisplayedColumns: string[] = ['image','firstname', 'email', 'action'];
   constructor(
     private loader: LoadingService,
     private customerService: ShopCustomerService,

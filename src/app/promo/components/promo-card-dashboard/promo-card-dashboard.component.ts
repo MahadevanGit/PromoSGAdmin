@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { MatMenuListItem } from 'src/app/shared/models/common';
@@ -65,7 +65,8 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
     private promoCardService: PromoCardService,
     private userContentService: UserContentService,
     private userService: UserService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
     this.auth_subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.customerId = this.route.snapshot.paramMap.get('customerId');
@@ -100,6 +101,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
     this.applyFilter();
   }
 
+  // Promo card dash board / Create view
   loadMatMenuListItemForDB() {
     this.menuListItemsForDB = this.menuListItemsForDB = [
       {
@@ -142,6 +144,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
     this.applyFilter();
   }
 
+  // Assign / Stamp Promo card view
   loadMatMenuListItem() {
     this.menuListItems = this.menuListItems = [
       {
@@ -155,6 +158,13 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
         menuLinkText: 'Stamp promo card',
         menuLinkKey: 'stamp-promo-card',
         menuIcon: 'star',
+        isDisabled: false,
+        selected: false
+      },
+      {
+        menuLinkText: 'Customer',
+        menuLinkKey: 'customer',
+        menuIcon: 'people',
         isDisabled: false,
         selected: false
       }
@@ -173,6 +183,9 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
 
   public onSelect(menuLinkKey: string): void {
     this.selectedMenuItem = menuLinkKey;
+    //route to customer
+    if(this.selectedMenuItem == 'customer')
+    this.router.navigate(['/customers']);
     this.assignPromoCard = this.selectedMenuItem == 'assign-promo-card' ? this.selectedMenuItem : undefined;
     this.stampPromoCard = this.selectedMenuItem == 'stamp-promo-card' ? this.selectedMenuItem : undefined;
     this.actionData = {

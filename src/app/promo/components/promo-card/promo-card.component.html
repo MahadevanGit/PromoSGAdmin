@@ -19,7 +19,7 @@
             </mat-menu>
             <span *ngIf="isPromoCardAssignedToCustomer ; else thisTemplate;" class="span-dark-green">Assigned</span>
             <ng-template #thisTemplate>
-              <button mat-flat-button color="accent" *ngIf="isPromoCardAssignedToCustomer && assignPromoCard && action.assign"
+              <button mat-flat-button color="accent" *ngIf="!isPromoCardAssignedToCustomer && assignPromoCard && action.assign"
                 (click)="assignPromoCardToUser(promoData)">Assign</button>
             </ng-template>
           </div>
