@@ -31,7 +31,7 @@
                         </div>
                         <div [hidden]="imageLoader">
                             <img class="img-td" src='{{row.photoURL? row.photoURL : imgSrc}}' [hidden]="imageLoader"
-                            (load)="this.imageLoader = false;">
+                                (load)="this.imageLoader = false;">
                         </div>
                     </td>
                 </ng-container>

@@ -65,13 +65,13 @@ export class ShopUserService {
       console.log(error.message)
       tryerror = error;
     } finally {
-      if (!tryerror){
-        this.result = {message: "User details updated successfully.",success:true};
+      if (!tryerror) {
+        this.result = { message: "User details updated successfully.", success: true };
         return this.result;
       }
-      else{
+      else {
         console.log("Notifi: Error occured when update user details.")
-        this.result = {message: "Error occured when update user details. Please contact admin with this details : " + "PromoSG(shop.service.ts) : " + tryerror,success:false};
+        this.result = { message: "Error occured when update user details. Please contact admin with this details : " + "PromoSG(shop.service.ts) : " + tryerror, success: false };
         return this.result;
       }
       //LocalStorageMember.clear();

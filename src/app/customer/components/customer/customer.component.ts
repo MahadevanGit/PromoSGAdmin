@@ -34,7 +34,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
     }
   }
   //table column disply by this sequence
-  customerDisplayedColumns: string[] = ['image','firstname', 'email', 'action'];
+  customerDisplayedColumns: string[] = ['image', 'firstname', 'email', 'action'];
   constructor(
     private loader: LoadingService,
     private customerService: ShopCustomerService,

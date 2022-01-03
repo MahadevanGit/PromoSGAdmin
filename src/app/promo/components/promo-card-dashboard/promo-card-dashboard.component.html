@@ -16,7 +16,8 @@
     </div>
 
     <div *ngIf="selectedMenuItemForDB == 'promoCard-form'">
-      <promo-card-form #promoCardFormComponent [promoCardKey]="selectedPromoCardKey" (amDone)="isPromoCardFormDone($event)">
+      <promo-card-form #promoCardFormComponent [promoCardKey]="selectedPromoCardKey"
+        (amDone)="isPromoCardFormDone($event)">
       </promo-card-form>
     </div>
 

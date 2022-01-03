@@ -82,7 +82,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.customerAct = this.route.snapshot.url.find(x => x.path == 'customer-act');
 
-    if(this.customerAct){
+    if (this.customerAct) {
       // Assign / Stamp Promo card view
       this.loadMatMenuListItem();
     }
@@ -135,9 +135,9 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
     if (menuLinkKey == 'promoCard-form') {
       this.promoCardFormComponent && this.promoCardFormComponent.customInit('create');
       this.selectedMenuItemForDB = null;
-        this.editPromoCard(this.selectedPromoCardKey ? this.selectedPromoCardKey : null);
+      this.editPromoCard(this.selectedPromoCardKey ? this.selectedPromoCardKey : null);
     }
-    else{
+    else {
       this.selectedPromoCardKey = null;
     }
     this.selectedMenuItemForDB = menuLinkKey;
@@ -184,8 +184,8 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   public onSelect(menuLinkKey: string): void {
     this.selectedMenuItem = menuLinkKey;
     //route to customer
-    if(this.selectedMenuItem == 'customer')
-    this.router.navigate(['/customers']);
+    if (this.selectedMenuItem == 'customer')
+      this.router.navigate(['/customers']);
     this.assignPromoCard = this.selectedMenuItem == 'assign-promo-card' ? this.selectedMenuItem : undefined;
     this.stampPromoCard = this.selectedMenuItem == 'stamp-promo-card' ? this.selectedMenuItem : undefined;
     this.actionData = {

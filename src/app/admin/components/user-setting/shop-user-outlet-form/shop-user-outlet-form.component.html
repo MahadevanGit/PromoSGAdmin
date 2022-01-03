@@ -3,39 +3,39 @@
     <mat-card>
         <mat-card-title>Add shop outlets</mat-card-title>
         <hr>
-         <mat-card-content>
-            <form [formGroup]="outletForm" (ngSubmit)="onSubmit()"> 
+        <mat-card-content>
+            <form [formGroup]="outletForm" (ngSubmit)="onSubmit()">
                 <div class="row">
 
-                    
+
 
                     <div class="col-md-4 mar-bot">
                         <!-- Search -->
-                    <div>
-                        <mat-form-field appearance="standard">
-                        <mat-label>Search</mat-label>
-                        <mat-icon matPrefix>search</mat-icon>
-                        <input 
-                        matInput type="search"  
-                        (keyup)="applyFilter($event)" 
-                        placeholder="Search by street or zip code" 
-                        #input>
-                        </mat-form-field>
-                    </div>
+                        <div>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Search</mat-label>
+                                <mat-icon matPrefix>search</mat-icon>
+                                <input matInput type="search" (keyup)="applyFilter($event)"
+                                    placeholder="Search by street or zip code" #input>
+                            </mat-form-field>
+                        </div>
                         <mat-list>
                             <mat-list-item *ngFor="let outlet of outletList, let i = index">
                                 <mat-icon mat-list-icon>location_on</mat-icon>
                                 <div class="mat-item">
-                                    <div class="listHeader1">{{outlet.address.block.toUpperCase() === 'NA' ? '' : outlet.address.block }} {{outlet.address.street}}</div>
+                                    <div class="listHeader1">{{outlet.address.block.toUpperCase() === 'NA' ? '' :
+                                        outlet.address.block }} {{outlet.address.street}}</div>
                                     <div mat-line>#{{outlet.address.level}}-{{outlet.address.unit}}</div>
-                                    <div mat-line style="font-size:x-small;">{{outlet.address.city}} Pin : {{outlet.address.zip}} </div>
+                                    <div mat-line style="font-size:x-small;">{{outlet.address.city}} Pin :
+                                        {{outlet.address.zip}} </div>
                                 </div>
                                 <div>
-                                    <mat-icon color="warn" (click)="removeOutlet(outlet)" type="button">delete_forever</mat-icon>
+                                    <mat-icon color="warn" (click)="removeOutlet(outlet)" type="button">delete_forever
+                                    </mat-icon>
                                 </div>
                             </mat-list-item>
-                          </mat-list>
-                      </div>
+                        </mat-list>
+                    </div>
 
 
                     <div class="col-md-8">
@@ -44,23 +44,24 @@
                         </div>
 
                         <div class="div-app-button">
-                            <button class="app-button" [disabled]="!outletForm.valid" mat-stroked-button color="primary" type="submit" >
-                                Add 
+                            <button class="app-button" [disabled]="!outletForm.valid" mat-stroked-button color="primary"
+                                type="submit">
+                                Add
                             </button>
                         </div>
 
                     </div>
 
-                    <div>
+                    <!-- <div>
                         <hr>
                         Terms of service  
                         <p>By clicking
                         <em>Register</em> you agree to our
                         <a>terms of service</a>
-                    </div>
+                    </div> -->
                 </div>
             </form>
         </mat-card-content>
     </mat-card>
-</div>   
+</div>
 <br>

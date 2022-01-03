@@ -221,7 +221,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.selectedProductKey = productKey;
     this.selectedMenuItem = this.menuListItems[1].menuLinkKey;
   }
-  
+
   //ProductForm
   isProductFormDone(isProductFormDone: boolean) {
     if (isProductFormDone)
