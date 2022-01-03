@@ -21,6 +21,7 @@ body {
 
   .mat-toolbar{
     background-image: url('assets/images/Promo-sg-banner1.png');
+    color: white;
     //height: 100%;
 
     /* Center and scale the image nicely */
@@ -30,7 +31,7 @@ body {
   }
 
   .mat-sidenav-content{
-    background-image: url('assets/images/Promo-sg-bg1.png');
+    // background-image: url('assets/images/Promo-sg-bg1.png');
     height: 100%;
 
     /* Center and scale the image nicely */
@@ -43,9 +44,9 @@ body {
     stroke: green;
 }
 
-//   div.footer {
-//     background: rgb(253, 253, 229);
-//   }
+  // div.footer {
+  //   background: rgb(253, 253, 229);
+  // }
 
 // flash-message css start
 .success {
