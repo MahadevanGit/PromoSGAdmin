@@ -145,7 +145,7 @@
                         <label for="aboutShop">About shop </label>
                         <span [ngClass]="aboutShop.valid ? '' : 'requiredStar'">*</span>
                         <div  class="form-group textarea-wrapper">
-                                <textarea class="form-control" 
+                                <textarea class="form-control ta-height" 
                                 maxlength="500"
                                 (ngModelChange)="onAboutShopChange(aboutShop.value)"
                                 placeholder="Leave a shop information"
