@@ -8,6 +8,7 @@ import { ShopCustomerService } from '../../services/customer.service';
 import { UserService } from '../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { Convert } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-customer',
@@ -69,20 +70,22 @@ export class CustomerComponent implements OnInit, OnDestroy {
             this.shopCustomerList = customer;
           })
 
-
-      this.user_subscription = this.userService.items.subscribe((user) => {
+      this.user_subscription = this.userService.getAllUser().subscribe((users) => {
         this.customerList = [];
-        user.forEach(
+        // users object from firebase is key and user object
+        // we have to use Object calss to get only values [Object.values]
+        // for get keys only [Object.keys]
+        Object.values(users).forEach(
           (u) => {
             this.shopCustomerList.forEach(
               (c) => {
-                if (c === u.key)
+                if (c == u.uid)
                   this.customerList.push(u)
               });
           });
         this.customerDataSource = new MatTableDataSource(this.customerList);
         this.customerDataSource.paginator = this.paginator;
-      });
+      })
 
     } catch (error) {
 

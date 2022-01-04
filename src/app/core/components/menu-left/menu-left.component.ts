@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { animateText, onSideNavChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
@@ -24,7 +24,7 @@ interface Page {
 export class MenuLeftComponent implements OnInit, OnDestroy {
 
   appUserSubscription: Subscription;
-  appUser: AppUser;
+  appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
   personName: string;
   public sideNavState: boolean = false;
@@ -40,7 +40,7 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => {
       this.appUser = appUser;
-      this.personName = this.appUser && this.appUser.firstName ? this.appUser.firstName.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
+      this.personName = this.appUser && this.appUser.firstname ? this.appUser.firstname.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
       this.pages = [];
       if (this.appUser) {
         let page: Page = { name: this.personName, link: '/usersetting', icon: 'person', selected: false };

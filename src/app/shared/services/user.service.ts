@@ -4,9 +4,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-
-import { AppUser, User } from '../models/user';
 import { map } from 'rxjs/operators';
+import { User } from '../models/user'
 
 
 
@@ -15,7 +14,6 @@ import { map } from 'rxjs/operators';
 })
 export class UserService implements OnDestroy {
 
-  currentUser: User;
   localStorageMember = new LocalStorageMember();
   subscription: Subscription;
   userId: string;
@@ -25,13 +23,15 @@ export class UserService implements OnDestroy {
 
   constructor(private db: AngularFireDatabase) {
     this.userId = LocalStorageMember.get(LocalStorageMember.userId);
-    this.itemsRef = db.list('/' + this.userPath1 + '/');
+
+    // this.itemsRef = db.list<User>('/' + this.userPath1 + '/');
     // Use snapshotChanges().map() to store the key
-    this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    )
+    // this.items = this.itemsRef.snapshotChanges().pipe(
+    //   map(changes =>
+    //     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+    //   )
+    // )
+
   }
 
 
@@ -55,12 +55,12 @@ export class UserService implements OnDestroy {
 
   // }
 
-  getByUserId(userId: string): Observable<any> {
-    return this.db.object<any>('/' + this.userPath1 + '/' + userId).valueChanges();
+  getByUserId(userId: string): Observable<User> {
+    return this.db.object<User>('/' + this.userPath1 + '/' + userId).valueChanges();
   }
 
-  getAllUser(): Observable<any> {
-    return this.db.object('/' + this.userPath1).valueChanges();;
+  getAllUser(): Observable<User[]> {
+    return this.db.object<User[]>('/' + this.userPath1).valueChanges();
   }
 
   ngOnDestroy(): void {

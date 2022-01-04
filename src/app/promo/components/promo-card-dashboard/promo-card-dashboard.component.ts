@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { MatMenuListItem } from 'src/app/shared/models/common';
+import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserContentService } from 'src/app/shared/services/user-content.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -34,7 +35,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   userContentServiceSubscription: Subscription;
   customerAssignedPromoCardList: IPromotionCard[] = [];
   isPromoCardAssignedToCustomer: boolean = false;
-  currentCustomer: any;
+  currentCustomer: User;
 
   //app-menu-icon-dd fields start
   //required

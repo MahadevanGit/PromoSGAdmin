@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { ImageCategory, ImageDetailsFolder, LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
 import { ImageService } from 'src/app/shared/services/image.service';
@@ -20,7 +20,7 @@ import { ShopUserService } from 'src/app/shared/services/shop.service';
 export class ShopUserFormComponent implements OnInit {
 
   error: string;
-  appUser: AppUser;
+  appUser: ShopUser;
   authSubscription: Subscription;
 
 

@@ -19,7 +19,7 @@
                 <!-- ID Column -->
                 <ng-container matColumnDef="key">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                    <td mat-cell *matCellDef="let row"> {{row.key}} </td>
+                    <td mat-cell *matCellDef="let row"> {{row.uid}} </td>
                 </ng-container>
 
                 <!-- Image Column -->
@@ -57,10 +57,10 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.key]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.uid]">
                                 Assign Promotion card
                             </button>
-                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.key]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.uid]">
                                 Make Stamp
                             </button>
                         </mat-menu>

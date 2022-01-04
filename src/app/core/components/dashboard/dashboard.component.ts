@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { ShopUserService } from 'src/app/shared/services/shop.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  appUser: AppUser;
+  appUser: ShopUser;
   appUserObject: any;
   appUserList: any[] = [];
   appUserSubscription: Subscription;
@@ -33,18 +33,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   getAppUsers() {
+    console.log('Verify this method..');
     try {
       this.loader.show();
-      this.appUserSubscription = this.shopUserService.get(LocalStorageMember.get(LocalStorageMember.userId))
+      this.appUserSubscription = this.shopUserService.getShopUserById(LocalStorageMember.get(LocalStorageMember.userId))
         .subscribe((value) => {
           if (value && value.isAdmin) {
             this.isAdmin = value.isAdmin;
             this.appUserList = [];
             this.appAllUserSubscription = this.shopUserService
-              .getAllUser()
+              .getAllShopUser()
               .subscribe((value) => {
                 Object.values(value).forEach(appUser => {
-                  if (!appUser['isAdmin'])
+                  console.log(appUser)
+                  if (!appUser.isAdmin)
                     this.appUserList.push(appUser)
                 })
               });

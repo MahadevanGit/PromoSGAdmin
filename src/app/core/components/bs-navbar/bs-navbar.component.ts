@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from '../../../shared/services/auth.service';
 import { onMainContentChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
@@ -24,7 +24,7 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
   appUserSubscription: Subscription;
   sideNavSubscription: Subscription;
-  appUser: AppUser;
+  appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
   public onSideNavChange: boolean;
 

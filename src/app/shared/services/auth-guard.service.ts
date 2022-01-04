@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route, state: RouterStateSnapshot) {
     return this.auth.user$.map(user => { //Check authentication
       if (user) {
-        this.shopUserService.get(user.uid).take(1).subscribe((value) => { //Check user exist in shops
+        this.shopUserService.getShopUserById(user.uid).take(1).subscribe((value) => { //Check user exist in shops
           if (value) return true;
           else {
             this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });

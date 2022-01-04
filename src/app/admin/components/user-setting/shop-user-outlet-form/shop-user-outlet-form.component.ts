@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 
@@ -15,7 +15,7 @@ import { ShopUserService } from 'src/app/shared/services/shop.service';
 export class ShopUserOutletFormComponent implements OnInit {
 
   error: string;
-  appUser: AppUser;
+  appUser: ShopUser;
   authSubscription: Subscription;
   outletList: any[];
   addressTitle: string = "Add outlet details"
@@ -28,6 +28,7 @@ export class ShopUserOutletFormComponent implements OnInit {
     private shopUserService: ShopUserService) {
       this.authSubscription = this.auth.appUser$.take(1).subscribe((user)=>{
         this.appUser = user;
+        console.log(this.appUser)
         this.outletList = this.appUser['outletList']; //initial load
       })
    }

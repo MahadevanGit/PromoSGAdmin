@@ -4,7 +4,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 
-import { User } from '../../shared/models/user';
 import { LocalStorageMember } from '../../shared/models/common';
 import { map } from 'rxjs/operators';
 

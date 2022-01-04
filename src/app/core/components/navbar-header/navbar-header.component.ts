@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class NavbarHeaderComponent {
 
   appUserSubscription: Subscription;
-  appUser: AppUser;
+  appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
 
   @Input() sidenav: MatSidenav

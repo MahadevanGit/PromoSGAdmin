@@ -3,14 +3,13 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { LocalStorageMember, Result } from 'src/app/shared/models/common';
-import { Shop } from '../models/shop';
+import { ShopUser } from '../models/shop';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopUserService {
 
-  currentUser: Shop;
   result: Result;
   localStorageMember = new LocalStorageMember();
 
@@ -19,7 +18,7 @@ export class ShopUserService {
   constructor(private db: AngularFireDatabase) { }
 
 
-  async save(Shop: any) {
+  async save(Shop: ShopUser) {
     let userId = LocalStorageMember.get(LocalStorageMember.userId);
     console.log('userid from shop.service : ' + userId);
     try {
@@ -39,12 +38,12 @@ export class ShopUserService {
 
   }
 
-  async update(userId: string, Shop: any): Promise<Result> {
+  async update(shopId: string, Shop: any): Promise<Result> {
     var tryerror;
     console.log(Shop)
     try {
-      this.db.object('/shops/' + userId).update({
-        userId: userId,
+      this.db.object('/shops/' + shopId).update({
+        userId: shopId,
         shopname: Shop['shopName'],
         firstname: Shop['firstName'],
         lastname: Shop['lastName'],
@@ -79,10 +78,10 @@ export class ShopUserService {
 
   }
 
-  async updateByObject(userId: string, Shop: any) {
+  async updateByObject(shopId: string, Shop: any) {
     var tryerror;
     try {
-      this.db.object('/shops/' + userId).update(Shop);
+      this.db.object('/shops/' + shopId).update(Shop);
     } catch (error) {
       console.log(error.message)
       tryerror = error;
@@ -96,7 +95,7 @@ export class ShopUserService {
 
   }
 
-  get(userId: string): Observable<any> {
+  getShopUserById(shopId: string): Observable<ShopUser> {
 
     // let obj = this.db.object('/users/' + userId).valueChanges().map(
     //   (value) => { 
@@ -105,11 +104,14 @@ export class ShopUserService {
     //   }
     // );
 
-    return this.db.object('/shops/' + userId).valueChanges();
+    // return this.db.object('/shops/' + userId).valueChanges();
+
+    return this.db.object<ShopUser>('/shops/' + shopId).valueChanges();
+    
   }
 
-  getAllUser(): Observable<any> {
-    return this.db.object('/shops').valueChanges();;
+  getAllShopUser(): Observable<ShopUser[]> {
+    return this.db.object<ShopUser[]>('/shops').valueChanges();;
   }
 
   // ngOnDestroy(): void {
