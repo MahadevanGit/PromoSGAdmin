@@ -33,8 +33,8 @@ import { StatisticsModule } from './statistics/statistics.module';
     ProductFormComponent,
     DialogComponent,
     PageNotFoundComponent
-    ],
-  entryComponents:[DialogComponent],
+  ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     NgbModule,
@@ -55,11 +55,11 @@ import { StatisticsModule } from './statistics/statistics.module';
     CommonModule,
     FormsModule, // This module for template driven form //TODO: create common module and assign to all the component from common module
     RouterModule.forRoot([
-      {path: '**', component:PageNotFoundComponent}
-     ]),
+      { path: '**', component: PageNotFoundComponent }
+    ]),
   ],
-exports:[
-],
+  exports: [
+  ],
   providers: [
     AuthGuard,
     AdminAuthGuard,

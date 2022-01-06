@@ -37,16 +37,16 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   isPromoCardAssignedToCustomer: boolean = false;
   currentCustomer: User;
 
-  //app-menu-icon-dd fields start
+  //menu-icon-dd fields start
   //required
   selectedProductKey: string;
   selectedMenuItem: string;
   defaultSelection: MatMenuListItem;
   menuListItems: MatMenuListItem[];
   customerAct: UrlSegment;
-  //app-menu-icon-dd fields end
+  //menu-icon-dd fields end
 
-  //app-menu-icon-dd ForDB fields start
+  //menu-icon-dd ForDB fields start
   //optional
   @ViewChild(PromoCardFormComponent) promoCardFormComponent: PromoCardFormComponent;
   selectedPromoCardKey: string;
@@ -56,7 +56,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   defaultSelectionForDB: MatMenuListItem;
   menuListItemsForDB: MatMenuListItem[];
   customerActForDB: UrlSegment;
-  //app-menu-icon-dd fields end
+  //menu-icon-dd fields end
 
 
   constructor(

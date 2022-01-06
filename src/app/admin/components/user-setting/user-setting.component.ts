@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
 import { MatMenuListItem } from 'src/app/shared/models/common';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -11,13 +12,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class UserSettingComponent implements OnInit {
 
+  appUser: ShopUser;
+
   imageRequestType: string = 'usersetting'; //'product';
   //imageListRoutePath: string = 'image-gallery'; //'/image/list';
   rootPath: string = 'shop-user-content/current-user-id/usersetting-imageDetails/';
   imageFolderName: string = '/usersetting-imageDetails/';
 
   userId: string;
-  auth_subscription: Subscription;
+  authSubscription: Subscription;
   isAdmin: boolean;
 
   selectedMenuItem: string;
@@ -26,7 +29,11 @@ export class UserSettingComponent implements OnInit {
 
   constructor(
     public menuiconcomp: MenuIconDdComponent, // MyNote: This is child component injection way 1. way 2 is using @ViewChild.
+    private auth: AuthService
   ) {
+    this.authSubscription = this.auth.appUser$.take(1).subscribe((user) => {
+      this.appUser = user;
+    });
   }
 
   ngOnInit(): void {
@@ -46,6 +53,13 @@ export class UserSettingComponent implements OnInit {
         menuLinkText: 'Add Outlets',
         menuLinkKey: 'outlet-form',
         menuIcon: 'add_location',
+        isDisabled: false,
+        selected: false
+      },
+      {
+        menuLinkText: 'Add Terms & Con',
+        menuLinkKey: 'tc-form',
+        menuIcon: 'add_box',
         isDisabled: false,
         selected: false
       },

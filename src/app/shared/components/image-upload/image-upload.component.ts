@@ -8,19 +8,21 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { MasterContentService } from 'src/app/shared/services/master-content.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { ShopUser } from '../../models/shop';
 
 @Component({
-  selector: 'app-image-upload',
+  selector: 'image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.scss'],
   providers: [CategoryService, ImageService, MasterContentService, AuthService]
 })
 export class ImageUploadComponent implements OnInit, OnDestroy {
 
+  @Input("shopUser") shopUser: ShopUser;
+
   imgSrc: string;
   selectedImage: any = null;
   isSubmitted: boolean = false;
-  auth_subscription: Subscription;
   isAdmin: boolean = false;
   userId: string;
   categoryList: any[] = [];
@@ -40,18 +42,20 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
     private loader: LoadingService,
     private storage: AngularFireStorage,
     private imgService: ImageService,
-    private auth: AuthService,
     private categoryService: CategoryService,
     private masterService: MasterContentService) {
   }
 
   ngOnInit() {
     this.resetForm();
-    this.auth_subscription = this.auth.appUser$.subscribe(_user => {
-      this.isAdmin = _user.isAdmin;
-      this.userId = _user.userId;
-      this.getCategoryList();
-    });
+    this.isAdmin = this.shopUser.isAdmin;
+    this.userId = this.shopUser.userId;
+    this.getCategoryList();
+    // this.auth_subscription = this.auth.appUser$.subscribe(_user => {
+    //   this.isAdmin = _user.isAdmin;
+    //   this.userId = _user.userId;
+    //   this.getCategoryList();
+    // });
   }
 
   getCategoryList() {
@@ -136,7 +140,6 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.auth_subscription.unsubscribe();
     // this.categorySubscription.unsubscribe();
   }
 

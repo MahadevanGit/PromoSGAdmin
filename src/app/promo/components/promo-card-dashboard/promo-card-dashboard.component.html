@@ -1,18 +1,18 @@
 <div>
 
   <div *ngIf="!isAdmin && (customerAct && customerAct.path == 'customer-act')">
-    <app-menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
+    <menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
       (onSelect)="onSelect($event)">
-    </app-menu-icon-dd>
+    </menu-icon-dd>
   </div>
 
   <div class="row mar-bot">
     <!-- Create promo card btn -->
 
     <div *ngIf="!isAdmin && !(customerAct && customerAct.path == 'customer-act')">
-      <app-menu-icon-dd [menuListItems]='menuListItemsForDB'
+      <menu-icon-dd [menuListItems]='menuListItemsForDB'
         [defaultSelection]='defaultSelectionForDB && defaultSelectionForDB' (onSelect)="onSelectForDB($event)">
-      </app-menu-icon-dd>
+      </menu-icon-dd>
     </div>
 
     <div *ngIf="selectedMenuItemForDB == 'promoCard-form'">

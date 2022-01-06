@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 @Component({
-  selector: 'app-shop-user-outlet-form',
+  selector: 'shop-user-outlet-form',
   templateUrl: './shop-user-outlet-form.component.html',
   styleUrls: ['./shop-user-outlet-form.component.scss']
 })
 export class ShopUserOutletFormComponent implements OnInit {
 
+  @Input("shopUser") shopUser: ShopUser;
+
   error: string;
   appUser: ShopUser;
-  authSubscription: Subscription;
   outletList: any[];
   addressTitle: string = "Add outlet details"
 
@@ -26,11 +26,6 @@ export class ShopUserOutletFormComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private shopUserService: ShopUserService) {
-      this.authSubscription = this.auth.appUser$.take(1).subscribe((user)=>{
-        this.appUser = user;
-        console.log(this.appUser)
-        this.outletList = this.appUser['outletList']; //initial load
-      })
    }
 
    outletForm = this.fb.group({
@@ -45,6 +40,8 @@ export class ShopUserOutletFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.appUser = this.shopUser;
+    this.outletList = this.appUser['outletList']; //initial load
     this.applyFilter();
   }
 

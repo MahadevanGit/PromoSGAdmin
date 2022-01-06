@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { ImageCategory, ImageDetailsFolder, LocalStorageMember } from 'src/app/shared/models/common';
@@ -11,7 +11,7 @@ import { ImageService } from 'src/app/shared/services/image.service';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 @Component({
-  selector: 'app-shop-user-form',
+  selector: 'shop-user-form',
   templateUrl: './shop-user-form.component.html',
   styleUrls: ['./shop-user-form.component.scss'],
   providers: [AuthService, ShopUserService, ImageService]
@@ -19,11 +19,11 @@ import { ShopUserService } from 'src/app/shared/services/shop.service';
 
 export class ShopUserFormComponent implements OnInit {
 
+  @Input("shopUser") shopUser: ShopUser;
+
   error: string;
   appUser: ShopUser;
   authSubscription: Subscription;
-
-
   imageSubscription: Subscription;
   shopUserId: string;
   userId: any;
@@ -65,18 +65,17 @@ export class ShopUserFormComponent implements OnInit {
   constructor(
     private loader: LoadingService,
     private fb: FormBuilder,
-    private router: Router,
-    private auth: AuthService,
     private shopUserService: ShopUserService,
     private imageService: ImageService,
     private route: ActivatedRoute,
     private flashMessageService: FlashMessageService
   ) {
     this.shopUserId = this.route.snapshot.paramMap.get('userId'); // for promoSG admin user only
-    this.authSubscription = this.auth.appUser$.take(1).subscribe((user) => {
-      this.appUser = user;
-      this.updateProfile(this.appUser);
-    })
+    // delete later : code changed on 06/01/2022
+    // this.authSubscription = this.auth.appUser$.take(1).subscribe((user) => {
+    //   this.appUser = user;
+    //   this.updateProfile(this.appUser);
+    // })
   }
 
 
@@ -104,6 +103,8 @@ export class ShopUserFormComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.appUser = this.shopUser;
+    this.updateProfile(this.appUser);
     this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     this.getShoplogoImageList();
     this.getProfilelogoImageList();
@@ -117,7 +118,6 @@ export class ShopUserFormComponent implements OnInit {
     userData['registeredAt'] = this.appUser.registeredAt;
     userData['weblink'] = this.removeWeblinkIfEmpty(userData['weblink']);
     userData['outletList'] = this.appUser['outletList'];
-    console.log(userData);
     try {
       this.loader.show();
       var result = this.shopUserService.update(this.appUser.userId, userData); //un-comment if u want to save 

@@ -14,6 +14,7 @@ import { IProduct } from '../../../shared/models/product';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { ShopUser } from 'src/app/shared/models/shop';
 
 
 
@@ -33,7 +34,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   imageRequestType: string = 'product'; //'usersetting';
   rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
 
-  //app-menu-icon-dd fields start
+  //menu-icon-dd fields start
   //optional
   @ViewChild(ProductFormComponent) productFormComponent: ProductFormComponent;
   //required
@@ -41,7 +42,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   selectedMenuItem: string;
   defaultSelection: MatMenuListItem;
   menuListItems: MatMenuListItem[];
-  //app-menu-icon-dd fields end
+  //menu-icon-dd fields end
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
@@ -51,7 +52,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
   // MyNote: Table column disply by this sequence
   productDisplayedColumns: string[] = ['image', 'title', 'category', 'price', 'action'];
-  isAdmin: boolean = false;
   categories: any[];
 
   imageLoader = true;
@@ -59,6 +59,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   auth_subscription: Subscription
   category_subscription: Subscription
   userId: string;
+  appUser: ShopUser;
 
   constructor(
     private loader: LoadingService,
@@ -71,7 +72,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     private cdr: ChangeDetectorRef,
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
-    this.auth_subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
+    this.auth_subscription = this.auth.appUser$.subscribe(user => { this.appUser = user; })
   }
 
   ngAfterViewChecked(): void {
