@@ -1,19 +1,20 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { validateBasis } from '@angular/flex-layout';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { IProduct } from '../../../shared/models/product'
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { CategoryService } from '../../services/category.service';
-import { MatMenuListItem } from 'src/app/shared/models/common';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { MenuIconDdComponent } from 'src/app/shared/components/control/menu-icon-dd/menu-icon-dd.component';
+import { MatMenuListItem } from 'src/app/shared/models/common';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { IProduct } from '../../../shared/models/product';
+import { CategoryService } from '../../services/category.service';
+import { ProductService } from '../../services/product.service';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { ShopUser } from 'src/app/shared/models/shop';
 
 
 
@@ -32,12 +33,16 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   imageFolderName: string = '/product-imageDetails/';
   imageRequestType: string = 'product'; //'usersetting';
   rootPath: string = 'shop-user-content/current-user-id/product-imageDetails/';
-  
+
+  //menu-icon-dd fields start
+  //optional
   @ViewChild(ProductFormComponent) productFormComponent: ProductFormComponent;
+  //required
   selectedProductKey: string;
   selectedMenuItem: string;
   defaultSelection: MatMenuListItem;
   menuListItems: MatMenuListItem[];
+  //menu-icon-dd fields end
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
@@ -47,7 +52,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
   // MyNote: Table column disply by this sequence
   productDisplayedColumns: string[] = ['image', 'title', 'category', 'price', 'action'];
-  isAdmin: boolean = false;
   categories: any[];
 
   imageLoader = true;
@@ -55,8 +59,10 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   auth_subscription: Subscription
   category_subscription: Subscription
   userId: string;
-  
+  appUser: ShopUser;
+
   constructor(
+    private loader: LoadingService,
     private productService: ProductService,
     private route: ActivatedRoute,
     private auth: AuthService,
@@ -66,8 +72,9 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     private cdr: ChangeDetectorRef,
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
-    this.auth_subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
+    this.auth_subscription = this.auth.appUser$.subscribe(user => { this.appUser = user; })
   }
+
   ngAfterViewChecked(): void {
     this.cdr.detectChanges(); // TODO: check this we are using in this component
   }
@@ -114,8 +121,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.onChildComplete();
   }
 
-
-
   public onSelect(menuLinkKey: string): void {
     if (menuLinkKey == 'product-form') {
       this.productFormComponent && this.productFormComponent.customInit('create');
@@ -126,6 +131,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   async loadCategory(): Promise<any> {
+    this.loader.show();
     try {
       this.category_subscription = (!this.userId)
         ?
@@ -145,10 +151,12 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     } catch (error) {
       console.log(error)
     } finally {
+      this.loader.hide();
     }
   }
 
   async loadProduct(): Promise<any> {
+    this.loader.show();
     try {
       this.product_subscription = (!this.userId)
         ?
@@ -180,6 +188,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
         });
     } catch (error) {
       console.log(error)
+    } finally {
+      this.loader.hide();
     }
 
   }
@@ -207,11 +217,13 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewChecked {
     })
   }
 
+  //ProductForm
   editProduct(productKey: string) {
     this.selectedProductKey = productKey;
     this.selectedMenuItem = this.menuListItems[1].menuLinkKey;
   }
 
+  //ProductForm
   isProductFormDone(isProductFormDone: boolean) {
     if (isProductFormDone)
       this.onChildComplete();

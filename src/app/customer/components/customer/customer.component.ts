@@ -1,21 +1,22 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ShopCustomerService } from '../../services/customer.service';
-import { UserService } from '../../../user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
+import { Convert } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss'],
-  providers:[UserService,ShopCustomerService]
+  providers: [UserService, ShopCustomerService]
 })
-export class CustomerComponent implements OnInit,OnDestroy {
+export class CustomerComponent implements OnInit, OnDestroy {
   customerDataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   subscription: Subscription;
@@ -24,57 +25,73 @@ export class CustomerComponent implements OnInit,OnDestroy {
   user_subscription: Subscription;
   isAdmin: boolean = false;
   userId: string;
-  shopCustomerList: any[] = []; 
+  shopCustomerList: any[] = [];
   customerList: any[] = [];
-  
+  imgSrc = 'assets/images/image-placeholder.png';
+
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (this.customerDataSource && !this.customerDataSource.sort) {
-        this.customerDataSource.sort = sort;
+      this.customerDataSource.sort = sort;
     }
   }
   //table column disply by this sequence
-  customerDisplayedColumns: string[] = ['firstname','email', 'action'];  
+  customerDisplayedColumns: string[] = ['image', 'firstname', 'email', 'action'];
   constructor(
+    private loader: LoadingService,
     private customerService: ShopCustomerService,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private userService: UserService,
-    private dialog: MatDialog){
-      this.userId = this.route.snapshot.paramMap.get('userId');
-      this.auth_subscription = this.auth.appUser$.subscribe(_user=> { 
-        this.isAdmin = _user.isAdmin;
-        this.userId = _user.userId; })
-
-      this.customer_subscription = (!this.userId) 
-      ? this.customerService.itemsRef
-      .valueChanges()
-      .subscribe((customer)=> { 
-        this.shopCustomerList = customer;
-      }) 
-      :
-      this.customerService.getItemsByShopUserID(this.userId)
-      .valueChanges()
-      .subscribe((customer)=> { 
-        this.shopCustomerList = customer;
-      })
-
-
-      this.user_subscription = this.userService.items.subscribe((user)=>{
-        this.customerList = [];
-        user.forEach(
-          (u)=>{
-            this.shopCustomerList.forEach(
-              (c)=>{
-                if(c === u.key)
-                this.customerList.push(u)
-              });
-            });
-        this.customerDataSource = new MatTableDataSource(this.customerList);
-        this.customerDataSource.paginator = this.paginator;
-      });
-     } 
+    private userService: UserService) {
+    this.userId = this.route.snapshot.paramMap.get('userId');
+  }
 
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    try {
+      this.loader.show();
+      this.auth_subscription = this.auth.appUser$.subscribe(_user => {
+        this.isAdmin = _user.isAdmin;
+        this.userId = _user.userId;
+      })
+
+      this.customer_subscription = (!this.userId)
+        ? this.customerService.itemsRef
+          .valueChanges()
+          .subscribe((customer) => {
+            this.shopCustomerList = customer;
+          })
+        :
+        this.customerService.getItemsByShopUserID(this.userId)
+          .valueChanges()
+          .subscribe((customer) => {
+            this.shopCustomerList = customer;
+          })
+
+      this.user_subscription = this.userService.getAllUser().subscribe((users) => {
+        this.customerList = [];
+        // users object from firebase is key and user object
+        // we have to use Object calss to get only values [Object.values]
+        // for get keys only [Object.keys]
+        Object.values(users).forEach(
+          (u) => {
+            this.shopCustomerList.forEach(
+              (c) => {
+                if (c == u.uid)
+                  this.customerList.push(u)
+              });
+          });
+        this.customerDataSource = new MatTableDataSource(this.customerList);
+        this.customerDataSource.paginator = this.paginator;
+      })
+
+    } catch (error) {
+
+    } finally {
+      this.loader.hide();
+    }
   }
 
   applyFilter(event: Event) {
@@ -85,8 +102,8 @@ export class CustomerComponent implements OnInit,OnDestroy {
     }
   }
 
-  delete(id){
-
+  delete(id) {
+    // TO DO
   }
 
   ngOnDestroy(): void {

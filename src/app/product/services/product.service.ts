@@ -3,8 +3,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { LocalStorageMember } from '../../shared/models/common';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +16,7 @@ export class ProductService {
   orderBy: string = 'value';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     
     // Use snapshotChanges().map() to store the key
     // this.items = this.itemsRef.snapshotChanges().pipe(

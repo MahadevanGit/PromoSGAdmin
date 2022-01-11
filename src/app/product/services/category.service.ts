@@ -18,7 +18,7 @@ export class CategoryService {
   orderBy: string = 'value';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     
     // Use snapshotChanges().map() to store the key
     // this.items = this.itemsRef.snapshotChanges().pipe(

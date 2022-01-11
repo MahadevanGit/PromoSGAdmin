@@ -1,33 +1,45 @@
-  mat-card {
-      width: 450px;
-  }
+mat-card {
+  width: 450px;
+}
 
-  .spinner{
-    margin-left: 50%;
-  }
+.spinner {
+  margin-left: 50%;
+}
 
-  .app-button {
-    border: 1px thin currentColor;
-    padding: 0 15px;
-    line-height: 34px;
-    margin-right: 20px;
-  }
+.app-button {
+  border: 1px thin currentColor;
+  padding: 0 15px;
+  line-height: 34px;
+  margin-right: 20px;
+}
 
-  //table
+//table
 
-  table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
+table {
+  width: 100%;
+}
 
-  mat-button-toggle-group{
-    margin-bottom: 20px;
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+mat-button-toggle-group {
+  margin-bottom: 20px;
+}
+
+.img-td {
+  width: 75px;
+  height: 60px;
+  padding: 10px;
+}
+
+.img-td-spin {
+  float: left;
+  padding: 10px;
 }

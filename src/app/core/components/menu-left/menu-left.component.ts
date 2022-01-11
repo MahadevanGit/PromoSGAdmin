@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LocalStorageMember } from 'src/app/shared/models/common';
-import { AppUser } from 'src/app/shared/models/user';
+import { ShopUser } from 'src/app/shared/models/shop';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { animateText, onSideNavChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
@@ -11,6 +11,7 @@ interface Page {
   link: string;
   name: string;
   icon: string;
+  selected: boolean;
 }
 
 @Component({
@@ -18,12 +19,12 @@ interface Page {
   templateUrl: './menu-left.component.html',
   styleUrls: ['./menu-left.component.scss'],
   animations: [onSideNavChange, animateText],
-  providers:[AuthService]
+  providers: [AuthService]
 })
 export class MenuLeftComponent implements OnInit, OnDestroy {
 
   appUserSubscription: Subscription;
-  appUser: AppUser;
+  appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
   personName: string;
   public sideNavState: boolean = false;
@@ -35,47 +36,52 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
     public auth: AuthService,
     private router: Router) {
   }
-  
 
   ngOnInit() {
-    this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => 
-    {
+    this.appUserSubscription = this.auth.appUser$.subscribe((appUser) => {
       this.appUser = appUser;
-      this.personName = this.appUser && this.appUser.firstName ? this.appUser.firstName.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
+      this.personName = this.appUser && this.appUser.firstname ? this.appUser.firstname.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
       this.pages = [];
-      if(this.appUser){
-        let page: Page = {name: this.personName, link:'/usersetting', icon: 'person'};
+      if (this.appUser) {
+        let page: Page = { name: this.personName, link: '/usersetting', icon: 'person', selected: false };
         this.pages.push(page);
-        page = { name: 'Dashboard', link:'/dashboard', icon: 'dashboard' }
+        page = { name: 'Dashboard', link: '/dashboard', icon: 'dashboard', selected: false }
         this.pages.push(page);
-        if(this.appUser && this.appUser.isAdmin){
-          page = { name: 'Setting', link:'/adminsetting', icon: 'settings' }
-        this.pages.push(page);
+        if (this.appUser && this.appUser.isAdmin) {
+          page = { name: 'Setting', link: '/adminsetting', icon: 'settings', selected: false }
+          this.pages.push(page);
         }
       }
-      else{
+      else {
         this.pages = [];
       }
     });
   }
 
   onSinenavToggle() {
-    console.log('i am called')
     this.sideNavState = !this.sideNavState
-    
     setTimeout(() => {
       this.linkText = this.sideNavState;
     }, 200)
     this._sidenavService.sideNavState$.next(this.sideNavState)
   }
 
-  logout(){
-    this.localStorageMember.clear();
+  onClick(page: Page) {
+    this.pages && page && this.pages.forEach((p) => {
+      if (p.name == page.name)
+        p.selected = true;
+      else
+        p.selected = false;
+    })
+  }
+
+  logout() {
+    LocalStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
     this.router.navigate(['/login']);
   }
-  
+
   ngOnDestroy(): void {
     this.appUserSubscription.unsubscribe();
   }

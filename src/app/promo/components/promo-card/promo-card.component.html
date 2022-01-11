@@ -11,13 +11,16 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button type="button" mat-menu-item [routerLink]="['/promocard/',promoData.key]">Edit</button>
+              <!-- <button type="button" mat-menu-item [routerLink]="['/promocard/',promoData.key]">Edit</button> -->
+              <!-- <button type="button" mat-menu-item [routerLink]="['/promocarddb/promocard/',promoData.key]">Edit</button> -->
+              <button type="button" mat-menu-item (click)="editPromoCard(promoData.key)">Edit</button>
               <button type="button" mat-menu-item (click)="publish(promoData)">Publish</button>
               <button type="button" mat-menu-item (click)="delete(promoData.key)">Delete</button>
             </mat-menu>
             <span *ngIf="isPromoCardAssignedToCustomer ; else thisTemplate;" class="span-dark-green">Assigned</span>
             <ng-template #thisTemplate>
-              <button mat-flat-button color="accent" *ngIf="assignPromoCard && action.assign"
+              <button mat-flat-button color="accent"
+                *ngIf="!isPromoCardAssignedToCustomer && assignPromoCard && action.assign"
                 (click)="assignPromoCardToUser(promoData)">Assign</button>
             </ng-template>
           </div>
@@ -26,7 +29,7 @@
       <mat-card-content>
         <div class="container">
           <mat-progress-bar *ngIf="promoData.title && !promoData.promopoint" mode="indeterminate"></mat-progress-bar>
-          <mat-grid-list [cols]="gridColumn" rowHeight="6:4">
+          <mat-grid-list *ngIf="promoData.title" [cols]="gridColumn" rowHeight="6:4">
             <div *ngFor="let slot of (promoData.promoGrid ? promoData.promoGrid : promogeneratedData);index as i">
               <mat-grid-tile [ngClass]="stampPromoCard ? 'mat-grid-promo-dark-yellow-tile' : 'mat-grid-promo-tile'"
                 [colspan]="2" *ngIf="slot.key.toString().indexOf('Promo_') > -1; else takenTile;"
@@ -35,7 +38,7 @@
                   {{getPromoValue(slot)}}
                   <span class="span-badge">{{ promoSlot.key ? promoSlot.key : slot.key }}</span>
                   {{ (promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed))
-                  | slice:0: 10 }}..
+                  | slice:0: 10 }}
                 </div>
               </mat-grid-tile>
 

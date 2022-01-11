@@ -8,9 +8,9 @@ describe('StackedHorizontalBarChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StackedHorizontalBarChartComponent ]
+      declarations: [StackedHorizontalBarChartComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

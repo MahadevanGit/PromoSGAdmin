@@ -1,13 +1,7 @@
-
 <div class="chart" *ngIf="(this.ProductStatsMode && this.ProductStatsMode.length>0); else elsTemplate;">
-    <canvas baseChart
-    [datasets]="ProductDetailsDataset"
-    [labels]="ProductStatsMode"
-    [options]="lineChartOptions"
-    [chartType]="ChartType"
-    [legend]="barChartLegend"
-    (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)">
+    <canvas baseChart [datasets]="ProductDetailsDataset" [labels]="ProductStatsMode" [options]="lineChartOptions"
+        [chartType]="ChartType" [legend]="barChartLegend" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
     </canvas>
 </div>
 

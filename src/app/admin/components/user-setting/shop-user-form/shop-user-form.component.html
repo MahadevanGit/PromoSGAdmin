@@ -50,6 +50,39 @@
                                 required.</small>
                         </div>
 
+                        <div class="form-group mat-form">
+                            <!-- <mat-form-field> -->
+                            <mat-label>Select shop logo</mat-label>
+                            <span [ngClass]="shopLogo.valid ? '' : 'requiredStar'">*</span>
+                            <mat-select formControlName="shopLogo" name="selectedImage" id="imageUrl"
+                                class="form-control mb-4" required>
+                                <mat-option *ngFor="let image of shopImageList" [value]="image.imageUrl">
+                                    <img src='{{image.imageUrl}}' style="width: 75px;height:60px;padding: 10px;">
+                                    {{image.caption}}
+                                </mat-option>
+                            </mat-select>
+                            <small class="form-text text-danger mb-4" *ngIf="shopLogo.touched && shopLogo.invalid">
+                                <p>Shop logo selection is required.</p>
+                            </small>
+                        </div>
+
+                        <div class="form-group mat-form">
+                            <!-- <mat-form-field> [todo : create shoppicture category] -->
+                            <mat-label>Select shop picture</mat-label>
+                            <span [ngClass]="shopPicture.valid ? '' : 'requiredStar'">*</span>
+                            <mat-select formControlName="shopPicture" name="selectedImage" id="imageUrl"
+                                class="form-control mb-4" required>
+                                <mat-option *ngFor="let image of profileImageList" [value]="image.imageUrl">
+                                    <img src='{{image.imageUrl}}' style="width: 75px;height:60px;padding: 10px;">
+                                    {{image.caption}}
+                                </mat-option>
+                            </mat-select>
+                            <small class="form-text text-danger mb-4"
+                                *ngIf="shopPicture.touched && shopPicture.invalid">
+                                <p>Shop logo selection is required.</p>
+                            </small>
+                        </div>
+
                         <label for="fax">Fax </label>
                         <span [ngClass]="fax.valid ? '' : 'requiredStar'">*</span>
                         <div class="form-group">
@@ -70,11 +103,14 @@
                                 required.</small>
                         </div>
 
+
+
                     </div>
                     <div class="col-md-6 mar-bot">
 
+
                         <div class="mar-bot">
-                            <app-address [parentForm]="profileForm"></app-address>
+                            <address [parentForm]="profileForm"></address>
                         </div>
 
                         <div formGroupName="weblink" class="form-group">
@@ -105,6 +141,20 @@
                             </div>
                         </div>
 
+                        <label for="aboutShop">About shop </label>
+                        <span [ngClass]="aboutShop.valid ? '' : 'requiredStar'">*</span>
+                        <div class="form-group textarea-wrapper">
+                            <textarea class="form-control ta-height" maxlength="500"
+                                (ngModelChange)="onAboutShopChange(aboutShop.value)"
+                                placeholder="Leave a shop information"
+                                [class.is-invalid]="aboutShop.invalid && aboutShop.touched"
+                                formControlName="aboutShop"></textarea>
+                            <span class="remaning">{{remaningText}}/500</span>
+                            <small *ngIf="aboutShop.errors && aboutShop.invalid && aboutShop.touched"
+                                class="text-danger">Leave a shop information is required and minimum length is
+                                50.</small>
+                        </div>
+
                     </div>
 
 
@@ -115,14 +165,16 @@
                             Update
                         </button>
                     </div>
-
+                    <!--
                     <div>
-                        <hr>
-                        Terms of service
+                        
+                            <hr>
+                             Terms of service
                         <p>By clicking
                             <em>Register</em> you agree to our
-                            <a>terms of service</a>
+                            <a>terms of service</a> 
                     </div>
+                    -->
                 </div>
             </form>
         </mat-card-content>

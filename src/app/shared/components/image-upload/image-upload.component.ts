@@ -7,19 +7,22 @@ import { CategoryService } from 'src/app/product/services/category.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { MasterContentService } from 'src/app/shared/services/master-content.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
+import { ShopUser } from '../../models/shop';
 
 @Component({
-  selector: 'app-image-upload',
+  selector: 'image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.scss'],
-  providers:[CategoryService,ImageService,MasterContentService,AuthService]
+  providers: [CategoryService, ImageService, MasterContentService, AuthService]
 })
 export class ImageUploadComponent implements OnInit, OnDestroy {
+
+  @Input("shopUser") shopUser: ShopUser;
 
   imgSrc: string;
   selectedImage: any = null;
   isSubmitted: boolean = false;
-  auth_subscription: Subscription;
   isAdmin: boolean = false;
   userId: string;
   categoryList: any[] = [];
@@ -36,38 +39,50 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
   categorySubscription: Subscription;
 
   constructor(
-    private storage: AngularFireStorage, 
+    private loader: LoadingService,
+    private storage: AngularFireStorage,
     private imgService: ImageService,
-    private auth: AuthService,
     private categoryService: CategoryService,
-    private masterService: MasterContentService) { 
-      this.auth_subscription = this.auth.appUser$.subscribe(_user=> { 
-        this.isAdmin = _user.isAdmin;
-        this.userId = _user.userId; 
-        
-        this.categorySubscription = this.imageRequestType == 'product' && this.categoryService
-        .getItemsWithMap(this.userId).subscribe((value)=>{
-          this.categoryList = [];
-          value.forEach((cat) => {
-            if(cat['active']==true) 
-            this.categoryList.push(cat);});
-        });
-
-        this.categorySubscription = this.imageRequestType == 'usersetting' && this.masterService
-        .getItemsWithMap().subscribe((value)=>{
-          this.categoryList = [];
-          value.forEach((cat) => {
-            if(cat['active']==true) 
-            this.categoryList.push(cat);});
-        });
-      
-      });
-        
-        
+    private masterService: MasterContentService) {
   }
 
   ngOnInit() {
     this.resetForm();
+    this.isAdmin = this.shopUser.isAdmin;
+    this.userId = this.shopUser.userId;
+    this.getCategoryList();
+    // this.auth_subscription = this.auth.appUser$.subscribe(_user => {
+    //   this.isAdmin = _user.isAdmin;
+    //   this.userId = _user.userId;
+    //   this.getCategoryList();
+    // });
+  }
+
+  getCategoryList() {
+    try {
+      this.loader.show();
+      this.categorySubscription = this.imageRequestType == 'product' && this.categoryService
+        .getItemsWithMap(this.userId).subscribe((value) => {
+          this.categoryList = [];
+          value.forEach((cat) => {
+            if (cat['active'] == true)
+              this.categoryList.push(cat);
+          });
+        });
+
+      this.categorySubscription = this.imageRequestType == 'usersetting' && this.masterService
+        .getItemsWithMap().subscribe((value) => {
+          this.categoryList = [];
+          value.forEach((cat) => {
+            if (cat['active'] == true)
+              this.categoryList.push(cat);
+          });
+        });
+    } catch (error) {
+
+    } finally {
+      this.loader.hide();
+    }
   }
 
   showPreview(event: any) {
@@ -84,25 +99,28 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(formValue) {
-    console.log('onsubmit called')
-    this.isSubmitted = true;
-    if (this.formTemplate.valid) {
-      console.log(this.rootPath);
-      var rootPath = this.rootPath.replace('current-user-id',this.userId);
-      rootPath = `${rootPath}${formValue.category}`;
-      console.log(rootPath);
-      var filePath = rootPath + `/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-      const fileRef = this.storage.ref(filePath);
-      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            formValue['imageUrl'] = url;
-            this.imgService.insertImageDetails(rootPath,formValue);
-            this.resetForm();
+    try {
+      this.isSubmitted = true;
+      if (this.formTemplate.valid) {
+        this.loader.show();
+        var rootPath = this.rootPath.replace('current-user-id', this.userId);
+        rootPath = `${rootPath}${formValue.category}`;
+        var filePath = rootPath + `/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              formValue['imageUrl'] = url;
+              this.imgService.insertImageDetails(rootPath, formValue);
+              this.resetForm();
+            })
           })
-        })
-      ).subscribe();
-     }
+        ).subscribe();
+      }
+    } catch (error) {
+    } finally {
+      this.loader.hide();
+    }
   }
 
   get formControls() {
@@ -122,7 +140,6 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.auth_subscription.unsubscribe();
     // this.categorySubscription.unsubscribe();
   }
 

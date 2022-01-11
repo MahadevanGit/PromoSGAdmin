@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(public loader: LoadingService) { }
   title = 'PromoSGAdmin';
+  loading$ = this.loader.loading$;
+  imgSrc: string = 'assets/images/ai_icon1.png';
 }

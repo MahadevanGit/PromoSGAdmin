@@ -1,20 +1,16 @@
-import 'rxjs/add/operator/map';
-
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
-import { LocalStorageMember } from 'src/app/shared/models/common';
-
-import { Shop } from './shared/models/shop';
-
-
+import 'rxjs/add/operator/map';
+import { LocalStorageMember, Result } from 'src/app/shared/models/common';
+import { ShopUser } from '../models/shop';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopUserService {
 
-  currentUser: Shop;
+  result: Result;
   localStorageMember = new LocalStorageMember();
 
   subscription: Subscription;
@@ -22,8 +18,8 @@ export class ShopUserService {
   constructor(private db: AngularFireDatabase) { }
 
 
-  async save(Shop: any) {
-    let userId = this.localStorageMember.get(this.localStorageMember.userId);
+  async save(Shop: ShopUser) {
+    let userId = LocalStorageMember.get(LocalStorageMember.userId);
     console.log('userid from shop.service : ' + userId);
     try {
       this.db.object('/shops/' + userId).update({
@@ -37,23 +33,27 @@ export class ShopUserService {
     } catch (error) {
       console.log(error.message)
     } finally {
-      //this.localStorageMember.clear();
+      //LocalStorageMember.clear();
     }
 
   }
 
-  async update(userId: string, Shop: any) {
+  async update(shopId: string, Shop: any): Promise<Result> {
     var tryerror;
+    console.log(Shop)
     try {
-      this.db.object('/shops/' + userId).update({
-        userId: userId,
+      this.db.object('/shops/' + shopId).update({
+        userId: shopId,
         shopname: Shop['shopName'],
         firstname: Shop['firstName'],
         lastname: Shop['lastName'],
         email: Shop['email'],
         telephone: Shop['telephone'],
+        shopLogo: Shop['shopLogo'],
+        shopPicture: Shop['shopPicture'],
         fax: Shop['fax'],
         hotline: Shop['hotline'],
+        aboutShop: Shop['aboutShop'],
         address: Shop['address'],
         weblink: Shop['weblink'],
         outletList: Shop['outletList'],
@@ -64,19 +64,24 @@ export class ShopUserService {
       console.log(error.message)
       tryerror = error;
     } finally {
-      if (!tryerror)
-        console.log("Notifi: User details updated successfully.")
-      else
+      if (!tryerror) {
+        this.result = { message: "User details updated successfully.", success: true };
+        return this.result;
+      }
+      else {
         console.log("Notifi: Error occured when update user details.")
-      //this.localStorageMember.clear();
+        this.result = { message: "Error occured when update user details. Please contact admin with this details : " + "PromoSG(shop.service.ts) : " + tryerror, success: false };
+        return this.result;
+      }
+      //LocalStorageMember.clear();
     }
 
   }
 
-  async updateByObject(userId: string, Shop: any) {
+  async updateByObject(shopId: string, Shop: any) {
     var tryerror;
     try {
-      this.db.object('/shops/' + userId).update(Shop);
+      this.db.object('/shops/' + shopId).update(Shop);
     } catch (error) {
       console.log(error.message)
       tryerror = error;
@@ -85,12 +90,12 @@ export class ShopUserService {
         console.log("Notifi: User details updated successfully.")
       else
         console.log("Notifi: Error occured when update user details.")
-      //this.localStorageMember.clear();
+      //LocalStorageMember.clear();
     }
 
   }
 
-  get(userId: string): Observable<any> {
+  getShopUserById(shopId: string): Observable<ShopUser> {
 
     // let obj = this.db.object('/users/' + userId).valueChanges().map(
     //   (value) => { 
@@ -99,11 +104,14 @@ export class ShopUserService {
     //   }
     // );
 
-    return this.db.object('/shops/' + userId).valueChanges();
+    // return this.db.object('/shops/' + userId).valueChanges();
+
+    return this.db.object<ShopUser>('/shops/' + shopId).valueChanges();
+
   }
 
-  getAllUser(): Observable<any> {
-    return this.db.object('/shops').valueChanges();;
+  getAllShopUser(): Observable<ShopUser[]> {
+    return this.db.object<ShopUser[]>('/shops').valueChanges();;
   }
 
   // ngOnDestroy(): void {

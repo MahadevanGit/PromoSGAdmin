@@ -1,16 +1,17 @@
 <div>
 
   <!-- child component list 
-        1) app-menu-icon-dd
-        2) app-shop-user-form
-        3) app-shop-user-outlet-form
-        4) app-image-upload
-        5) app-image-gallery-list
+        1) menu-icon-dd
+        2) shop-user-form
+        3) shop-user-outlet-form
+        4) shop-user-tc-form
+        5) image-upload
+        6) image-gallery-list
     -->
 
-  <app-menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
+  <menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
     (onSelect)="onSelect($event)">
-  </app-menu-icon-dd>
+  </menu-icon-dd>
 
   <!-- <div>
     <mat-button-toggle-group #group="matButtonToggleGroup" value="personnel-form" appearance="legacy" name="fontStyle"
@@ -34,23 +35,27 @@
     </mat-button-toggle-group>
   </div> -->
 
-  <div *ngIf="selectedMenuItem == 'personnel-form'">
-    <app-shop-user-form></app-shop-user-form>
+  <div *ngIf="selectedMenuItem == 'personnel-form' && appUser">
+    <shop-user-form [shopUser]="appUser"></shop-user-form>
   </div>
 
-  <div *ngIf="selectedMenuItem == 'outlet-form'">
-    <app-shop-user-outlet-form></app-shop-user-outlet-form>
+  <div *ngIf="selectedMenuItem == 'outlet-form'  && appUser">
+    <shop-user-outlet-form [shopUser]="appUser"></shop-user-outlet-form>
   </div>
 
-  <div *ngIf="selectedMenuItem == 'image-form'">
-    <app-image-upload [imageRequestType]='imageRequestType' [rootPath]='rootPath'
+  <div *ngIf="selectedMenuItem == 'tc-form' && appUser">
+    <shop-user-tc-form [shopUser]="appUser"></shop-user-tc-form>
+  </div>
+
+  <div *ngIf="selectedMenuItem == 'image-form' && appUser">
+    <image-upload [shopUser]="appUser" [imageRequestType]='imageRequestType' [rootPath]='rootPath'
       [imageListRoutePath]='imageListRoutePath'>
-    </app-image-upload>
+    </image-upload>
   </div>
 
   <div *ngIf="selectedMenuItem == 'image-gallery'">
-    <app-image-gallery-list [imageFolderName]='imageFolderName'>
-    </app-image-gallery-list>
+    <image-gallery-list [shopUser]="appUser" [imageFolderName]='imageFolderName'>
+    </image-gallery-list>
   </div>
 
 </div>

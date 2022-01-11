@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { LocalStorageMember } from '../app/shared/models/common';
-import { IPromotionCard } from './promo/models/promotioncard';
+import { LocalStorageMember } from '../models/common';
+import { IPromotionCard } from '../../promo/models/promotioncard';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +21,13 @@ export class UserContentService {
   usersUserContent: string = 'users-user-content';
   userPromocards: string = 'user-promocards'
   shopUserId: string;
-  pathRef: string ='';
+  pathRef: string = '';
   customerId: string;
 
   constructor(private db: AngularFireDatabase,
     private route: ActivatedRoute) {
-      this.shopUserId = this.localStorageMember.get(this.localStorageMember.userId);
-   }
+    this.shopUserId = LocalStorageMember.get(LocalStorageMember.userId);
+  }
 
   addItem(promoCard: IPromotionCard) {
     this.db.object(this.pathRef + promoCard.key).set(promoCard);
@@ -41,21 +41,21 @@ export class UserContentService {
     }
   }
 
-  getItem(key: string,userId?: string){
+  getItem(key: string, userId?: string) {
     //return this.db.object<IPromotionCard>('/shop-user-content/' + (userId ? userId : this.userId) + '/promocards/' + key);
   }
-  
-  getItems(){
+
+  getItems() {
     return this.itemsRef;
   }
 
-  getItemsByCustomerId(_customerId: string){
+  getItemsByCustomerId(_customerId: string) {
     this.pathRef = '/' + this.usersUserContent + '/' + _customerId + '/' + this.userPromocards + '/' + this.shopUserId + '/';
-    this.itemsRef = this.db.list(this.pathRef,ref => {
-        return ref.orderByChild(this.orderBy)
-      });
+    this.itemsRef = this.db.list(this.pathRef, ref => {
+      return ref.orderByChild(this.orderBy)
+    });
     this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
+      map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );

@@ -17,6 +17,11 @@ import { StackedHorizontalBarChartComponent } from './components/charts/stacked-
 import { ChartsModule } from 'ng2-charts';
 import { MultiSelectDdComponent } from './components/control/multi-select-dd/multi-select-dd.component';
 import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon-dd.component';
+import { ShopUserService } from './services/shop.service';
+import { UserContentService } from './services/user-content.service';
+import { UserService } from './services/user.service';
+import { FlashMessageService } from './services/flash-message.service';
+import { TcComponent } from './components/tc/tc.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon
     AddressComponent,
     StackedHorizontalBarChartComponent,
     MultiSelectDdComponent,
-    MenuIconDdComponent
+    MenuIconDdComponent,
+    TcComponent
   ],
   imports: [
     CommonModule,
@@ -34,16 +40,20 @@ import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild([
-      {path:"image-upload",component:ImageUploadComponent,canActivate: [AuthGuard]},
+      { path: "image-upload", component: ImageUploadComponent, canActivate: [AuthGuard] },
     ]),
   ],
-  providers:[
+  providers: [
     AuthService,
     ClientAuthGuard,
     ImageService,
     MasterContentService,
+    ShopUserService,
+    UserContentService,
+    UserService,
+    FlashMessageService
   ],
-  exports:[
+  exports: [
     CommonModule,
     ChartsModule,
     PromosgMaterialModule,
@@ -52,6 +62,7 @@ import { MenuIconDdComponent } from './components/control/menu-icon-dd/menu-icon
     ImageUploadComponent,
     ImageGalleryListComponent,
     AddressComponent,
+    TcComponent,
     StackedHorizontalBarChartComponent,
     MultiSelectDdComponent,
     MenuIconDdComponent

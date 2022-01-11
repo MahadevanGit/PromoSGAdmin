@@ -1,5 +1,5 @@
 .sidenav_container {
-  min-width: 60px; 
+  min-width: 60px;
   height: calc(100vh - 200px);
 }
 
@@ -10,14 +10,17 @@
   border-radius: 50%;
 }
 
-  .mat-icon {
-    vertical-align: text-bottom;
-    margin-left: 5px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-  }
-      
-  
+span{
+    padding-left: 5px;
+}
+
+.sl {
+  background-color: #dadee2;
+  color: green;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding: 0px 10px;
+}

@@ -1,0 +1,28 @@
+<div class="form-group" [formGroup]="parentForm">
+
+    <div formGroupName="tc" class="form-group">
+        <h2 class="formgroupheader">{{title}}</h2>
+
+        <label for="tcText">Text </label>
+        <span [ngClass]="tcText.valid ? '' : 'requiredStar'">*</span>
+        <div class="form-group mar-bot">
+            <input id="tcText" type="text" formControlName="text" class="form-control"
+                [class.is-invalid]="tcText.invalid && tcText.touched" required>
+            <small *ngIf="tcText.errors && tcText.invalid && tcText.touched" class="text-danger">Text at least 5
+                characters required.</small>
+        </div>
+
+        <div class="row mar-bot">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <mat-checkbox id="active" formControlName="isActive">Active</mat-checkbox>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>

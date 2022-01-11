@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'admin-setting',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSettingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loader: LoadingService,) { }
 
   ngOnInit(): void {
   }

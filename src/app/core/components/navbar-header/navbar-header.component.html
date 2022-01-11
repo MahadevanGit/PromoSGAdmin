@@ -1,17 +1,19 @@
-  <div fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-    <ng-template #initailToolbar>
-        <mat-toolbar class="nav-toolbar">
-          <h1 class="nav-app-name"><mat-icon>stars</mat-icon>  PromoSG</h1>
-        </mat-toolbar>
-      </ng-template>
-    <mat-toolbar class="nav-toolbar" *ngIf="appUser ; else initailToolbar;">
-    <button *ngIf="appUser" mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <h1 class="nav-app-name">PromoSG - {{ appUser.shopname }}</h1>
-      <span class="toolbar-spacer"></span>
-      <button *ngIf="appUser" mat-icon-button [routerLink]="['/login']" (click)="logout()" mat-button >
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
+<div fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <ng-template #initailToolbar>
+    <mat-toolbar class="nav-toolbar">
+      <h1 class="nav-app-name">
+        <mat-icon class="align-icon-text">stars</mat-icon> PromoSG
+      </h1>
     </mat-toolbar>
-  </div>
+  </ng-template>
+  <mat-toolbar class="nav-toolbar" *ngIf="appUser ; else initailToolbar;">
+    <button *ngIf="appUser" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="nav-app-name">PromoSG - {{ appUser.shopname }}</h1>
+    <span class="toolbar-spacer"></span>
+    <button *ngIf="appUser" mat-icon-button [routerLink]="['/login']" (click)="logout()" mat-button>
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
