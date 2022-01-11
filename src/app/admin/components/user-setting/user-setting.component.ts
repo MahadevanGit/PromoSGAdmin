@@ -94,7 +94,7 @@ export class UserSettingComponent implements OnInit {
 
   public onChildComplete(data?: any): void {
     if (this.menuListItems) {
-      this.defaultSelection = this.menuListItems ? this.menuListItems[2] : null;
+      this.defaultSelection = this.menuListItems ? this.menuListItems[0] : null;
       this.menuiconcomp.clickMenuItem(this.defaultSelection);
       this.onSelect(this.defaultSelection.menuLinkKey);
     }
