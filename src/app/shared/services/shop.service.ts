@@ -107,7 +107,7 @@ export class ShopUserService {
     // return this.db.object('/shops/' + userId).valueChanges();
 
     return this.db.object<ShopUser>('/shops/' + shopId).valueChanges();
-    
+
   }
 
   getAllShopUser(): Observable<ShopUser[]> {

@@ -47,7 +47,7 @@ export class UserSettingComponent implements OnInit {
         menuLinkKey: 'personnel-form',
         menuIcon: 'shop',
         isDisabled: false,
-        selected: true
+        selected: false
       },
       {
         menuLinkText: 'Add Outlets',
@@ -61,7 +61,7 @@ export class UserSettingComponent implements OnInit {
         menuLinkKey: 'tc-form',
         menuIcon: 'add_box',
         isDisabled: false,
-        selected: false
+        selected: true
       },
       {
         menuLinkText: 'Add Image',
@@ -94,7 +94,7 @@ export class UserSettingComponent implements OnInit {
 
   public onChildComplete(data?: any): void {
     if (this.menuListItems) {
-      this.defaultSelection = this.menuListItems ? this.menuListItems[0] : null;
+      this.defaultSelection = this.menuListItems ? this.menuListItems[2] : null;
       this.menuiconcomp.clickMenuItem(this.defaultSelection);
       this.onSelect(this.defaultSelection.menuLinkKey);
     }

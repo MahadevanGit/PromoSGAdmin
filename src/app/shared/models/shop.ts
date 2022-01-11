@@ -8,36 +8,48 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface ShopUser {
-    aboutShop:    string;
-    address:      Address;
-    email:        string;
-    fax:          string;
-    firstname:    string;
-    hotline:      string;
-    isAdmin:      boolean;
-    lastname:     string;
-    modifiedAt:   string;
-    outletList:   OutletList[];
+    aboutShop: string;
+    address: Address;
+    email: string;
+    fax: string;
+    firstname: string;
+    hotline: string;
+    isAdmin: boolean;
+    lastname: string;
+    modifiedAt: string;
+    outletList: OutletList[];
     registeredAt: string;
-    shopLogo:     string;
-    shopPicture:  string;
-    shopname:     string;
-    telephone:    string;
-    userId:       string;
-    weblink:      string[];
+    shopLogo: string;
+    shopPicture: string;
+    shopname: string;
+    telephone: string;
+    termsAndCondition: TermsAndCondition[];
+    userId: string;
+    weblink: string[];
 }
 
 export interface Address {
-    block:  string;
-    city:   string;
-    level:  number;
+    block: string;
+    city: string;
+    level: number;
     street: string;
-    unit:   number;
-    zip:    string;
+    unit: number;
+    zip: string;
 }
 
 export interface OutletList {
     address: Address;
+}
+
+export interface TermsAndCondition {
+    tc: Tc;
+}
+
+export interface Tc {
+    isActive: boolean;
+    modifiedAt: string;
+    modifiedBy: string;
+    text: string;
 }
 
 // Converts JSON strings to/from your types
@@ -56,7 +68,7 @@ function invalidValue(typ: any, val: any, key: any = ''): never {
     if (key) {
         throw Error(`Invalid value for key "${key}". Expected type ${JSON.stringify(typ)} but got ${JSON.stringify(val)}`);
     }
-    throw Error(`Invalid value ${JSON.stringify(val)} for type ${JSON.stringify(typ)}`, );
+    throw Error(`Invalid value ${JSON.stringify(val)} for type ${JSON.stringify(typ)}`,);
 }
 
 function jsonToJSProps(typ: any): any {
@@ -90,7 +102,7 @@ function transform(val: any, typ: any, getProps: any, key: any = ''): any {
             const typ = typs[i];
             try {
                 return transform(val, typ, getProps);
-            } catch (_) {}
+            } catch (_) { }
         }
         return invalidValue(typs, val);
     }
@@ -147,9 +159,9 @@ function transform(val: any, typ: any, getProps: any, key: any = ''): any {
     if (Array.isArray(typ)) return transformEnum(typ, val);
     if (typeof typ === "object") {
         return typ.hasOwnProperty("unionMembers") ? transformUnion(typ.unionMembers, val)
-            : typ.hasOwnProperty("arrayItems")    ? transformArray(typ.arrayItems, val)
-            : typ.hasOwnProperty("props")         ? transformObject(getProps(typ), typ.additional, val)
-            : invalidValue(typ, val);
+            : typ.hasOwnProperty("arrayItems") ? transformArray(typ.arrayItems, val)
+                : typ.hasOwnProperty("props") ? transformObject(getProps(typ), typ.additional, val)
+                    : invalidValue(typ, val);
     }
     // Numbers can be parsed by Date but shouldn't be.
     if (typ === Date && typeof val !== "number") return transformDate(val);
@@ -201,6 +213,7 @@ const typeMap: any = {
         { json: "shopPicture", js: "shopPicture", typ: "" },
         { json: "shopname", js: "shopname", typ: "" },
         { json: "telephone", js: "telephone", typ: "" },
+        { json: "termsAndCondition", js: "termsAndCondition", typ: a(r("TermsAndCondition")) },
         { json: "userId", js: "userId", typ: "" },
         { json: "weblink", js: "weblink", typ: a("") },
     ], false),
@@ -214,5 +227,14 @@ const typeMap: any = {
     ], false),
     "OutletList": o([
         { json: "address", js: "address", typ: r("Address") },
+    ], false),
+    "TermsAndCondition": o([
+        { json: "tc", js: "tc", typ: r("Tc") },
+    ], false),
+    "Tc": o([
+        { json: "isActive", js: "isActive", typ: true },
+        { json: "modifiedAt", js: "modifiedAt", typ: "" },
+        { json: "modifiedBy", js: "modifiedBy", typ: "" },
+        { json: "text", js: "text", typ: "" },
     ], false),
 };

@@ -37,13 +37,11 @@ export class ImageService {
   }
 
   insertImageDetails(rootPath, imageDetails) {
-    console.log(rootPath);
     this.imageDetailList = this.db.list(rootPath);
     this.imageDetailList.push(imageDetails);
   }
 
   getAll(_foldername: string, _userId?: string, ) {
-    console.log(_foldername)
     this.itemsRef = this.db.list('/shop-user-content/' + (_userId ? _userId : this.userId) + _foldername, ref => {
       return ref;
     });
@@ -56,11 +54,9 @@ export class ImageService {
   }
 
   getImageListByCategory(_categoryKey: string,_imageFolderName: string,_userId?: string) {
-    console.log(_categoryKey,_imageFolderName,this.userId);
     if (!_categoryKey)
       return Observable.of(null);
     var path = '/shop-user-content/' + (_userId ? _userId : this.userId) + '/' + _imageFolderName + '/' + _categoryKey + '/' ;
-    console.log(path);
     this.itemsRef = this.db.list(path, ref => {
       return ref;
     });

@@ -18,7 +18,7 @@ export class ImageGalleryListComponent implements OnInit {
   imageSubscription: Subscription;
   userId: string;
   shopUserId: string;
-  
+
   @Input('imageFolderName') imageFolderName: string;
   @Input("shopUser") shopUser: ShopUser;
 
@@ -42,7 +42,7 @@ export class ImageGalleryListComponent implements OnInit {
     try {
       this.loader.show();
       this.imageSubscription = this.imageService
-        .getAll(this.imageFolderName,this.shopUserId ? this.shopUserId : this.userId).subscribe((value) => {
+        .getAll(this.imageFolderName, this.shopUserId ? this.shopUserId : this.userId).subscribe((value) => {
           this.imageList = [];
           value.forEach((img) => {
             Object.keys(img).length;

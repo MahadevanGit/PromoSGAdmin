@@ -1,1 +1,56 @@
-<p>shop-user-tc-form works!</p>
+<!-- Default form register -->
+<div>
+    <mat-card>
+        <mat-card-title>Add Terms & Condition </mat-card-title>
+        <hr>
+        <mat-card-content>
+            <form [formGroup]="tcForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-5 mar-bot">
+                        <!-- Search -->
+                        <div>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Search</mat-label>
+                                <mat-icon matPrefix>search</mat-icon>
+                                <input matInput type="search" (keyup)="applyFilter($event)" placeholder="Search by text"
+                                    #input>
+                            </mat-form-field>
+                        </div>
+                        <mat-list>
+                            <mat-list-item style="height:auto;overflow-wrap: break-word;"
+                                *ngFor="let tc of tcList, let i = index">
+
+                                <span [ngClass]="tc.tc.isActive ? 'active' : 'inActive'">
+                                    <mat-icon mat-list-icon>done</mat-icon>
+                                </span>
+                                <div class="mat-item mar-bot">
+                                    <div>{{tc.tc.text}}</div>
+                                </div>
+                                <div>
+                                    <mat-icon class="remove-btn" (click)="removeTc(tc)" type="button">delete_forever
+                                    </mat-icon>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+
+
+                    <div class="col-md-7">
+                        <div>
+                            <tc [title]="tcTitle" [parentForm]="tcForm"></tc>
+                        </div>
+
+                        <div class="div-app-button">
+                            <button class="app-button" [disabled]="!tcForm.valid" mat-stroked-button color="primary"
+                                type="submit">
+                                Add
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<br>
