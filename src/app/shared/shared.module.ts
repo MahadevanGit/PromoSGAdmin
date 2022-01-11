@@ -21,6 +21,7 @@ import { ShopUserService } from './services/shop.service';
 import { UserContentService } from './services/user-content.service';
 import { UserService } from './services/user.service';
 import { FlashMessageService } from './services/flash-message.service';
+import { TcComponent } from './components/tc/tc.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FlashMessageService } from './services/flash-message.service';
     AddressComponent,
     StackedHorizontalBarChartComponent,
     MultiSelectDdComponent,
-    MenuIconDdComponent
+    MenuIconDdComponent,
+    TcComponent
   ],
   imports: [
     CommonModule,
@@ -60,6 +62,7 @@ import { FlashMessageService } from './services/flash-message.service';
     ImageUploadComponent,
     ImageGalleryListComponent,
     AddressComponent,
+    TcComponent,
     StackedHorizontalBarChartComponent,
     MultiSelectDdComponent,
     MenuIconDdComponent

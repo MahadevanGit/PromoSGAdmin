@@ -9,7 +9,7 @@ import { MatMenuListItem } from 'src/app/shared/models/common';
 })
 
 @Component({
-  selector: 'app-menu-icon-dd',
+  selector: 'menu-icon-dd',
   templateUrl: './menu-icon-dd.component.html',
   styleUrls: ['./menu-icon-dd.component.scss']
 })

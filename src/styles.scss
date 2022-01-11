@@ -21,6 +21,7 @@ body {
 
   .mat-toolbar{
     background-image: url('assets/images/Promo-sg-banner1.png');
+    color: white;
     //height: 100%;
 
     /* Center and scale the image nicely */
@@ -30,7 +31,7 @@ body {
   }
 
   .mat-sidenav-content{
-    background-image: url('assets/images/Promo-sg-bg1.png');
+    // background-image: url('assets/images/Promo-sg-bg1.png');
     height: 100%;
 
     /* Center and scale the image nicely */
@@ -43,38 +44,42 @@ body {
     stroke: green;
 }
 
-//   div.footer {
-//     background: rgb(253, 253, 229);
-//   }
+  // div.footer {
+  //   background-image: url('assets/images/Promo-sg-banner1.png');
+  // }
 
 // flash-message css start
 .success {
   background: green;
   color: white;
+  overflow-wrap: anywhere;
 }
 .info {
   background: #2196f3;
   color: white;
+  overflow-wrap: anywhere;
 }
 .warning {
-  background: #ff9800;
+  background: hsl(36, 100%, 50%);
   color: white;
+  overflow-wrap: anywhere;
 }
 .danger {
   background: red;
   color: white;
+  overflow-wrap: anywhere;
 }
 .mat-simple-snackbar-action button {
-  max-height: 36px;
+  max-height: 26px;
   min-width: 0;
-  color: rgb(207, 206, 206);
+  color: white;
   border-radius: 5%;
 }
 .mat-simple-snackbar-action button:hover {
-  color: black;
+  background-color: black;
 }
-// flash-message css eng
 
+// flash-message css eng
 
 
   

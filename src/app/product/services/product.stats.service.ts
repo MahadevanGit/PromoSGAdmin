@@ -4,6 +4,7 @@ import { LocalStorageMember } from '../../shared/models/common';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductStats } from 'src/app/shared/models/product';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 @Injectable({
@@ -11,7 +12,6 @@ import { ProductStats } from 'src/app/shared/models/product';
 })
 export class ProductStatsService {
 
-  localStorageMember = new LocalStorageMember();
   shop_userId;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -24,10 +24,10 @@ export class ProductStatsService {
   pathRef: string ='';
 
   constructor(private db: AngularFireDatabase) {
-    this.shop_userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.shop_userId = LocalStorageMember.get(LocalStorageMember.userId);
    }
    
-  addItem(productStatsObj: ProductStats) {
+  async addItem(productStatsObj: ProductStats) {
     this.pathRef = this.shopUserContent + this.shop_userId + this.productStats;
 
     let finalRef = this.pathRef + productStatsObj['productKey'] + '/' + productStatsObj['customerKey']  + '/' ;

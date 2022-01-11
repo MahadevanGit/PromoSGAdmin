@@ -1,6 +1,5 @@
-import { formatDate, KeyValue } from '@angular/common';
-import { JsonpClientBackend } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { KeyValue } from '@angular/common';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,12 +10,11 @@ import { JsonHelper, LocalStorageMember } from 'src/app/shared/models/common';
 import { ProductStats } from 'src/app/shared/models/product';
 import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
 import { UserContentService } from 'src/app/shared/services/user-content.service';
-
 import { DialogComponent } from '../../../dialog/dialog.component';
 import { AuthService } from '../../../shared/services/auth.service';
 import { IPromotionCard } from '../../models/promotioncard';
 import { PromoCardService } from '../../services/promo-card.service';
-
+import { PromoCardDashboardComponent } from '../promo-card-dashboard/promo-card-dashboard.component';
 
 @Component({
   selector: 'promo-card',
@@ -30,6 +28,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   @Input('canEdit') canEdit: boolean;
   @Input('action') action: any;
   @Output() onAfterPromoGeneratedData = new EventEmitter<any>();
+  // @ViewChild(PromoCardDashboardComponent) promoCardDashboardComponent: PromoCardDashboardComponent;
   promogeneratedData: KeyValue<string, KeyValue<string, string>>[] = [];
   gridColumn: number = 6;
   userId: string;
@@ -37,16 +36,15 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   currentDate: Date;
   subscription: Subscription;
   currentUserId: string;
-  localStorage = new LocalStorageMember();
   productStatsObj: ProductStats;
 
   //assign promo card to user
   customerId: string;
-  assignPromoCard: any;
   userContentServiceSubscription: Subscription;
   productSubscription: Subscription;
   customerAssignedPromoCardList: IPromotionCard[] = [];
   isPromoCardAssignedToCustomer: boolean = false;
+  assignPromoCard: any;
   stampPromoCard: any;
   promoSlot: any;
   productList: any[];
@@ -59,16 +57,17 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     private userContentService: UserContentService,
     private productService: ProductService,
     private productStatsService: ProductStatsService,
+    public promoCardDashboardComponent: PromoCardDashboardComponent, // MyNote: This is child component injection way 1. way 2 is using @ViewChild.
     private route: ActivatedRoute,
     private auth: AuthService
   ) {
     //this.userId = this.route.snapshot.paramMap.get('userId');
-    this.currentUserId = this.localStorage.get(this.localStorage.userId);
+    this.currentUserId = LocalStorageMember.get(LocalStorageMember.userId);
     this.subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
     this.promogeneratedData = this.promoData && this.promoData.promoGrid ? this.promoData.promoGrid : [];
     //assign promo card to user
-    this.assignPromoCard = this.route.snapshot.url.find(x => x.path == 'assignpromocard');
-    this.stampPromoCard = this.route.snapshot.url.find(x => x.path == 'stamppromocard');
+    // this.assignPromoCard = this.route.snapshot.url.find(x => x.path == 'assignpromocard');
+    // this.stampPromoCard = this.route.snapshot.url.find(x => x.path == 'stamppromocard');
     this.customerId = this.route.snapshot.paramMap.get('customerId');
   }
 
@@ -89,16 +88,25 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         })
     } catch (error) {
     } finally {
-      this.loader.hide(100);
+      this.loader.hide();
     }
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.changCustomerAct(changes);
     this.isPromoCardAssignedToCustomer = false;
     this.customerAssignedPromoCardList.forEach(element => {
-      if (element.key == changes.promoData.currentValue.key) this.isPromoCardAssignedToCustomer = true;
+      if (changes.promoData && (element.key == changes.promoData.currentValue.key)) 
+          this.isPromoCardAssignedToCustomer = true;
     });
+  }
+  
+  changCustomerAct(changes: SimpleChanges) {
+    if (changes && changes.action && (changes.action.currentValue)) {
+        this.assignPromoCard = changes.action.currentValue.assign ? true : false;
+        this.stampPromoCard = changes.action.currentValue.stamp ? true : false;
+    }
   }
 
   generatePromoData(parentPromoData) {
@@ -147,7 +155,6 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(result);
     })
     this.getGeneratedPromData(this.promogeneratedData); //emitter
   }
@@ -182,7 +189,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
       'note': dialogNote
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       let product;
       let res = (result != 'cancel' && result != 'close' && result) ? JSON.parse(result) : result;
       this.promoData.modifiedBy = this.currentUserId; //From local storage
@@ -199,19 +206,14 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         }
       })
       if (result != 'cancel' && result != 'close') {
-        this.loader.show();
         this.userContentService.updateItem(this.promoData);
-        this.loader.hide(100);
         this.productStatsObj = new ProductStats('', '', {})
         this.productStatsObj.productKey = product && product.key;
         this.productStatsObj.customerKey = this.customerId;
         this.productStatsObj.stats.purchaseDate = JsonHelper.getDate(this.currentDate.toLocaleString(), 'MM/dd/yyyy HH:mm:ss').toLocaleString();
         this.productStatsObj.stats.qty = 1; //Product quantity
-        this.loader.show();
-        console.log(result);
-        this.productStatsService.addItem(this.productStatsObj);
-        this.loader.hide(100);
-        this.flashMessageService.success('Successfully stamped.')
+        await this.productStatsService.addItem(this.productStatsObj);
+        this.flashMessageService.success('Successfully stamped.');
       }
     })
   }
@@ -232,6 +234,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
   }
 
+  editPromoCard(key: string){
+    this.promoCardDashboardComponent && this.promoCardDashboardComponent.editPromoCard(key);
+  }
+
   delete(key: string) {
     let data = {
       'title': 'Confirm',
@@ -242,11 +248,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result == 'ok') {
         this.loader.show();
         this.promoCardService.deleteItem(key);
-        this.loader.hide(100);
+        this.loader.hide();
         this.flashMessageService.success('Successfully removed promo card.');
       }
 
@@ -271,7 +276,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
         promoData.status = 'Published'; //In-progress,Published
         this.loader.show();
         this.promoCardService.updateItem(promoData.key, promoData);
-        this.loader.hide(100);
+        this.loader.hide();
         this.flashMessageService.success('Successfully published.');
       }
     })
@@ -281,7 +286,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     this.loader.show();
     this.userContentService.addItem(promoData);
     this.flashMessageService.success('Successfully assigned.')
-    this.loader.hide(100);
+    this.loader.hide();
   }
 
   getPromoValue(slot: any) {
@@ -312,7 +317,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
       });
     } catch (error) {
     } finally {
-      this.loader.hide(100);
+      this.loader.hide();
     }
   }
 
@@ -340,5 +345,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   }
 
 }
+
+
 
 

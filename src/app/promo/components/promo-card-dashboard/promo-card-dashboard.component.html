@@ -1,52 +1,28 @@
 <div>
 
-
-  <div class="row">
-
-    <div class="col-md-12">
-      <!-- breadcrumb -->
-      <div class="col-md-12 ">
-        <div class="col-md-10 row breadcrumb" *ngIf="!isAdmin && (assignPromoCard || stampPromoCard)">
-          <div class="col-md-4">
-            <span>{{currentCustomer && (currentCustomer.firstname + ' ' + currentCustomer.lastname)}}</span>
-          </div>
-          <div class="col-md-3">
-            <span [ngClass]="assignPromoCard ? 'sp-selected' : 'sp'"
-              [routerLink]="['/promocarddb/assignpromocard/',customerId]">Assign promo card</span>
-          </div>
-          <div class="col-md-3">
-            <span [ngClass]="stampPromoCard ? 'sp-selected' : 'sp'"
-              [routerLink]="['/promocarddb/stamppromocard/',customerId]">Stamp promo card</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div *ngIf="!isAdmin && (customerAct && customerAct.path == 'customer-act')">
+    <menu-icon-dd [menuListItems]='menuListItems' [defaultSelection]='defaultSelection && defaultSelection'
+      (onSelect)="onSelect($event)">
+    </menu-icon-dd>
   </div>
 
   <div class="row mar-bot">
+    <!-- Create promo card btn -->
 
-    <!-- Menu -->
-    <div style="margin-top: 15px;">
-      <!-- Create promo card btn -->
-      <mat-button-toggle-group #group="matButtonToggleGroup" value="grid" appearance="legacy" name="fontStyle"
-        aria-label="Font Style">
-        <!-- <mat-button-toggle value="list"> // List view temporarely removed. If need uncomment this
-              <mat-icon>view_list</mat-icon>
-            </mat-button-toggle> -->
-        <mat-button-toggle value="grid">
-          <mat-icon>view_module</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="new" *ngIf="!isAdmin && !assignPromoCard && !stampPromoCard" mat-button
-          routerLink="/promocard/new" style="color:green">
-          <b>Create Promo card ....</b>
-        </mat-button-toggle>
+    <div *ngIf="!isAdmin && !(customerAct && customerAct.path == 'customer-act')">
+      <menu-icon-dd [menuListItems]='menuListItemsForDB'
+        [defaultSelection]='defaultSelectionForDB && defaultSelectionForDB' (onSelect)="onSelectForDB($event)">
+      </menu-icon-dd>
+    </div>
 
-      </mat-button-toggle-group>
+    <div *ngIf="selectedMenuItemForDB == 'promoCard-form'">
+      <promo-card-form #promoCardFormComponent [promoCardKey]="selectedPromoCardKey"
+        (amDone)="isPromoCardFormDone($event)">
+      </promo-card-form>
     </div>
 
     <!-- Search -->
-    <div class="col-md-6">
+    <div *ngIf="selectedMenuItemForDB == 'promoCard'">
       <mat-form-field appearance="standard">
         <mat-label>Search</mat-label>
         <mat-icon matPrefix>search</mat-icon>
@@ -56,7 +32,7 @@
   </div>
 
   <!-- List view -->
-  <div class="row" *ngIf="group.value == 'list'">
+  <!-- <div class="row" *ngIf="group.value == 'list'">
     <div class="col-md-4 mar-bot">
       <mat-selection-list #promoCardSelected [multiple]="false">
         <mat-list-option (click)="getpromoCard(promoCardSelected.selectedOptions.selected[0]?.value.key)"
@@ -78,11 +54,14 @@
         </promo-card>
       </p>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- Grid view -->
-  <div *ngIf="group.value == 'grid'">
+  <!-- <div *ngIf="group.value == 'grid'"> -->
+  <!-- <div *ngIf="!isAdmin && (customerAct && customerAct.path == 'customer-act')"> -->
+  <!-- *ngIf="selectedMenuItemForDB == 'promoCard'" -->
+  <div *ngIf="selectedMenuItemForDB != 'promoCard-form'">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div fxFlex="45%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
         <promo-card [promoData]="promoCard" *ngIf="promoCard" [canEdit]="false" [action]="actionData"></promo-card>

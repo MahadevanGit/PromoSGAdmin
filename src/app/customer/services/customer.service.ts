@@ -4,7 +4,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, Subscription } from 'rxjs';
 
-import { User } from '../../shared/models/user';
 import { LocalStorageMember } from '../../shared/models/common';
 import { map } from 'rxjs/operators';
 
@@ -23,7 +22,7 @@ export class ShopCustomerService implements OnDestroy {
   shop_path2: string = 'owned-users';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     let pathRef = '/' + this.shop_path1 + '/' + this.userId + '/' + this.shop_path2 + '/';
     this.itemsRef = db.list(pathRef);
     // Use snapshotChanges().map() to store the key

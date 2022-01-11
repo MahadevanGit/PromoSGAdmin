@@ -4,13 +4,14 @@
     <div class="col-md-6 mar-bot">
       <div>
         <mat-card>
-          <mat-card-title>{{promoCardKey ? 'Update Promo card' : 'Create Promo card' }} </mat-card-title>
+          <mat-card-title>{{promoCardKey ? 'Update Promo card' : 'Create Promo card' }}</mat-card-title>
           <hr>
           <mat-card-content>
 
 
             <div>
-              <form action="#!" #f="ngForm" (ngSubmit)="onSubmit(f.value,promoCard.startDate,promoCard.expiryDate)">
+              <form action="#!" #promoCardFormTag="ngForm"
+                (ngSubmit)="onSubmit(promoCardFormTag.value,promoCard.startDate,promoCard.expiryDate)">
 
                 <label for="title">Title</label>
                 <div class="form-group">
@@ -118,11 +119,13 @@
 
                 <!-- Action button  -->
                 <div class="ele-div">
-                  <button class="app-button" mat-stroked-button color="primary" type="submit">
-                    Save
+                  <button class="app-button" mat-stroked-button color="primary" type="submit"
+                    [disabled]="promoCardFormTag.status=='INVALID' || (promoCard.startDate && promoCard.expiryDate ? false : true )">
+                    {{promoCardKey ? 'Update' : 'Save' }}  
                   </button>
-                  <button class="app-button" mat-stroked-button color="basic" type="button" routerLink="/promocarddb">
-                    Cancel
+                  <button *ngIf="!promoCardKey" class="app-button" mat-stroked-button color="basic" type="button" 
+                  (click)="resetPromoCardForm(promoCardFormTag)">
+                    Clear
                   </button>
                 </div>
 
@@ -136,7 +139,7 @@
 
     <div class="col-md-5 mar-bot">
       <promo-card [promoData]="promoCard" [canEdit]="true" #promoCardcomp
-        (onAfterPromoGeneratedData)="GetpromoDataFromPromCardComp($event)"></promo-card>
+        (onAfterPromoGeneratedData)="GetpromoDataFromPromoCardComp($event)"></promo-card>
     </div>
 
   </div>
