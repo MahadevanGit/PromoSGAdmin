@@ -1,0 +1,57 @@
+.listHeader1 {
+  padding-top: 10px;
+  font-weight: 500;
+}
+
+label {
+  margin: 0.5em 0;
+}
+
+.requiredStar {
+  color: red;
+  margin-left: 2px;
+}
+
+.mat-list-base {
+  height: 300px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.div-app-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.app-button {
+  border: 1px thin currentColor;
+  padding: 0 15px;
+  line-height: 34px;
+  margin-right: 20px;
+}
+
+.mar-bot {
+  margin-bottom: 20px;
+}
+
+.mat-item {
+  width: 500px;
+}
+
+.active {
+  color: green;
+  font-weight: bolder;
+  width: auto;
+}
+
+.inActive {
+  color: rgb(206, 195, 195);
+}
+
+.remove-btn{
+  color: red;
+  padding-left: 10px;
+}

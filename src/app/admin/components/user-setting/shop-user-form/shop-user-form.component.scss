@@ -1,34 +1,34 @@
+.formgroupheader {
+  margin-top: 10px;
+}
 
-  .formgroupheader{
-    margin-top: 10px;
-     
-  }
-  
-  label {
-    margin: .5em 0;
-  }
+label {
+  margin: 0.5em 0;
+}
 
-  .requiredStar{
-    color: red;
-    margin-left: 2px;
-  }
+.mat-form {
+  padding-top: 10px;
+}
 
+.requiredStar {
+  color: red;
+  margin-left: 2px;
+}
 
 //   mat-card {
 //       width: 450px;
 //       margin-bottom: 30px;
 //   }
 
-  .div-app-button{
-    margin-top: 20px;
-    text-align: center;
-  }
+.div-app-button {
+  margin-top: 20px;
+  text-align: center;
+}
 
-  .weblink{
-    margin: .5em 0;
-  }
+.weblink {
+  margin: 0.5em 0;
+}
 
-  
 .app-button {
   border: 1px thin currentColor;
   padding: 0 15px;
@@ -36,6 +36,21 @@
   margin-right: 20px;
 }
 
-.mar-bot{
+.remaning {
+  position: absolute;
+  right: 0px;
+  font-size: 10px;
+  color: grey;
+}
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.ta-height {
+  height: 170px;
+}
+
+.mar-bot {
   margin-bottom: 20px;
 }

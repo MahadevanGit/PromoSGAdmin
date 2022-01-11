@@ -10,7 +10,6 @@ import { IPromotionCard } from '../models/promotioncard';
 })
 export class PromoCardService {
 
-  localStorageMember = new LocalStorageMember();
   userId;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -18,7 +17,7 @@ export class PromoCardService {
   orderBy: string = 'modifiedDate';
 
   constructor(private db: AngularFireDatabase) {
-    this.userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     this.itemsRef = db.list('/shop-user-content/' + this.userId + '/promocards/',ref => {
       return ref.orderByChild(this.orderBy)
     });

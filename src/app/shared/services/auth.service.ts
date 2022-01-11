@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 import { LocalStorageMember, Result } from '../models/common';
-import { AppUser } from '../models/user';
+import { ShopUser } from '../models/shop';
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/observable/of'
 
@@ -25,12 +25,12 @@ export class AuthService {
     this.user$ = this.afAuth.authState;
   }
 
-  get appUser$(): Observable<AppUser> {
+  get appUser$(): Observable<ShopUser> {
     return this.user$
       .switchMap(
         user => {
           if (user) {
-            return this.shopUserService.get(user.uid)
+            return this.shopUserService.getShopUserById(user.uid);
           }
           return Observable.of(null);
         });
@@ -43,7 +43,7 @@ export class AuthService {
       this.result.success = true;
       this.result.message = 'Successfully registered.';
       let userId = (await this.afAuth.currentUser).uid;
-      this.localStorageMember.add(this.localStorageMember.userId, userId); //This is need for save the user data with google user id 
+      LocalStorageMember.add(LocalStorageMember.userId, userId); //This is need for save the user data with google user id 
       return this.result;
     } catch (error) {
       //TODO: Need to check .. Currently could not catch exception
@@ -56,7 +56,7 @@ export class AuthService {
   async loginUser(userData: any) {
     try {
       let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/dashboard';
-      this.localStorageMember.add(this.localStorageMember.returnUrl, returnUrl);
+      LocalStorageMember.add(LocalStorageMember.returnUrl, returnUrl);
 
       try {
         await this.afAuth.signInWithEmailAndPassword(userData.email, userData.password)
@@ -66,7 +66,7 @@ export class AuthService {
         return this.result;
       }
       let userId = (await this.afAuth.currentUser).uid;
-      this.localStorageMember.add(this.localStorageMember.userId, userId); //This is need for save the user data with google user id 
+      LocalStorageMember.add(LocalStorageMember.userId, userId); //This is need for save the user data with google user id 
       this.result.success = true;
       this.result.message = 'Successfully logged in.';
       return this.result;
@@ -84,7 +84,7 @@ export class AuthService {
   }
 
   logout() {
-    this.localStorageMember.clear();
+    LocalStorageMember.clear();
     this.afAuth.signOut();
   }
 

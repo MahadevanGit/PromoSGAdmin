@@ -25,7 +25,6 @@ export class PromoCardFormComponent implements OnInit {
   //promoCardKey: string;
   currentDate: Date = new Date();
   currentUserId: string;
-  localStorage = new LocalStorageMember();
 
   @Input('promoCardKey') promoCardKey: string;
   @ViewChild("promoCardFormTag") promoCardForm: NgForm; //to select the template driven form element inside .ts code
@@ -44,7 +43,7 @@ export class PromoCardFormComponent implements OnInit {
     this.maxDate = new Date(currentYear + 2, 11, 31);
     this.maxExpiryDate = new Date(currentYear + 2, 11, 31);
     // this.promoCardKey = this.route.snapshot.paramMap.get('key');
-    this.currentUserId = this.localStorage.get(this.localStorage.userId);
+    this.currentUserId = LocalStorageMember.get(LocalStorageMember.userId);
   }
 
   ngOnInit(): void {

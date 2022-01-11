@@ -12,7 +12,6 @@ import { async } from 'rxjs/internal/scheduler/async';
 })
 export class ProductStatsService {
 
-  localStorageMember = new LocalStorageMember();
   shop_userId;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -25,7 +24,7 @@ export class ProductStatsService {
   pathRef: string ='';
 
   constructor(private db: AngularFireDatabase) {
-    this.shop_userId = this.localStorageMember.get(this.localStorageMember.userId);
+    this.shop_userId = LocalStorageMember.get(LocalStorageMember.userId);
    }
    
   async addItem(productStatsObj: ProductStats) {

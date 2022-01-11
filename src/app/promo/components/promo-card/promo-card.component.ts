@@ -36,7 +36,6 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   currentDate: Date;
   subscription: Subscription;
   currentUserId: string;
-  localStorage = new LocalStorageMember();
   productStatsObj: ProductStats;
 
   //assign promo card to user
@@ -63,7 +62,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     private auth: AuthService
   ) {
     //this.userId = this.route.snapshot.paramMap.get('userId');
-    this.currentUserId = this.localStorage.get(this.localStorage.userId);
+    this.currentUserId = LocalStorageMember.get(LocalStorageMember.userId);
     this.subscription = this.auth.appUser$.subscribe(_user => { this.isAdmin = _user.isAdmin })
     this.promogeneratedData = this.promoData && this.promoData.promoGrid ? this.promoData.promoGrid : [];
     //assign promo card to user
