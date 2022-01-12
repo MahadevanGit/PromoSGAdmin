@@ -5,7 +5,7 @@
         <mat-card-title>Login</mat-card-title>
         <hr>
         <mat-card-content>
-            <div class="container">
+             
                 <!-- Template driven form -->
                 <form action="#!" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
 
@@ -29,24 +29,33 @@
                     </small>
 
                     <!-- Sign up button   -->
-                    <div class="ele-div">
-                        <!-- TODO: Need to implement this
-                     <button class="app-button"  mat-stroked-button color="primary" type="button" (click)="LoginWithGoogle()">
-                        Google 
-                   </button> -->
-                        <button class="app-button" [disabled]="loginForm.status=='INVALID'" mat-stroked-button
-                            color="primary" type="submit">
+
+                    <div class="div-app-button">
+                        <button class="app-btn-green" [disabled]="loginForm.status=='INVALID'" mat-flat-button
+                            type="submit">
                             Login
                         </button>
 
-                        <button class="app-button" type="button" mat-stroked-button color="basic"
+                        <button class="app-btn-clear" type="button" mat-flat-button
                             routerLink="/register">
                             Register
                         </button>
                     </div>
+
+                    <!-- <div class="ele-div">
+                        <button class="app-button" [disabled]="loginForm.status=='INVALID'" mat-flat-button
+                            color="primary" type="submit">
+                            Login
+                        </button>
+
+                        <button class="app-button" type="button" mat-flat-button
+                            routerLink="/register">
+                            Register
+                        </button>
+                    </div> -->
                 </form>
                 <!-- Default form login   -->
-            </div>
+             
 
 
         </mat-card-content>

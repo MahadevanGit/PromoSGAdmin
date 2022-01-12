@@ -10,6 +10,47 @@
   margin-right: 20px;
 }
 
+.app-btn-green{
+  background-color: green;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.app-btn-clear{
+  background-color: rgb(228, 226, 226);
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+.app-btn-grey-green{
+  background-color: rgb(228, 226, 226);;
+  color: green;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.app-btn-grey-red{
+  background-color: rgb(228, 226, 226);;
+  color: red;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.div-app-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .mat-grid-tile,
 .mat-figure {
   background: rgb(156, 226, 171);

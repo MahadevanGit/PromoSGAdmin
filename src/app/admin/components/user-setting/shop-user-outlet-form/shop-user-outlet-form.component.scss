@@ -1,19 +1,38 @@
 
-  .listHeader1{
-    padding-top: 10px;
-    font-weight: 500;
-  }
 
-  label {
-    margin: .5em 0;
-  }
+.listHeader1 {
+  padding-top: 10px;
+  font-weight: 500;
+}
 
-  .requiredStar{
-    color: red;
-    margin-left: 2px;
-  }
+label {
+  margin: 0.5em 0;
+}
 
-.mat-list-base{
+.requiredStar {
+  color: red;
+  margin-left: 2px;
+}
+
+.app-btn-green{
+  background-color: green;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.app-btn-clear{
+  background-color: rgb(228, 226, 226);
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+.mat-list-base {
   height: 300px;
   width: auto;
   overflow: auto;
@@ -24,12 +43,11 @@
   width: 100%;
 }
 
-  .div-app-button{
-    margin-top: 20px;
-    text-align: center;
-  }
+.div-app-button {
+  margin-top: 20px;
+  text-align: center;
+}
 
-  
 .app-button {
   border: 1px thin currentColor;
   padding: 0 15px;
@@ -37,10 +55,10 @@
   margin-right: 20px;
 }
 
-.mar-bot{
+.mar-bot {
   margin-bottom: 20px;
 }
 
-.mat-item{
-  width: 250px;
+.mat-item {
+  width: -webkit-fill-available;
 }

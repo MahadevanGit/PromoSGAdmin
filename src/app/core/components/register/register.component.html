@@ -57,23 +57,27 @@
                 </div>
 
                 <div class="div-app-button">
-                    <button class="app-button" [disabled]="!profileForm.valid" mat-stroked-button color="primary"
+                    
+                </div>
+
+                <div class="div-app-button">
+                    <button class="app-btn-green" [disabled]="!profileForm.valid" mat-flat-button 
                         type="submit">
                         Register
                     </button>
 
-                    <button class="app-button" mat-stroked-button color="basic" routerLink="/login">
+                    <button class="app-btn-clear" mat-flat-button routerLink="/login">
                         Login
                     </button>
                 </div>
 
-                <div>
+                <!-- <div>
                     <hr>
                     Terms of service
                     <p>By clicking
                         <em>Register</em> you agree to our
                         <a>terms of service</a>
-                </div>
+                </div> -->
 
             </form>
 

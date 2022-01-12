@@ -1,13 +1,15 @@
 <!-- Default form register -->
 <div>
     <mat-card>
-        <mat-card-title>Update</mat-card-title>
-        <hr>
+        <!-- <mat-card-title>Update</mat-card-title> -->
         <mat-card-content>
             <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-6 mar-bot">
-                        <h2 class="formgroupheader">Shop info</h2>
+                        <div class="sub-header-div">
+                            <span>Shop info</span>
+                        </div>
+
                         <label for="shopName">Shop Name</label>
                         <span [ngClass]="shopName.valid ? '' : 'requiredStar'">*</span>
                         <div class="form-group">
@@ -114,19 +116,11 @@
                         </div>
 
                         <div formGroupName="weblink" class="form-group">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h2 class="formgroupheader">Web link</h2>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="formgroupheader" mat-button (click)="addWebLink()"
-                                        [disabled]="addWebLinkDisable()" style="color: green;" type="button">Add another
-                                        link</button>
-                                </div>
+                            <div class="sub-header-div">
+                                <span>Web link</span>
                             </div>
 
                             <div class="row weblink" *ngFor="let link of weblink.controls; let i=index">
-
                                 <div>
                                     <div class="input-group">
                                         <input id="link-{{ i }}" class="form-control" type="text" [formControlName]="i">
@@ -137,8 +131,20 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+
+                                
+
+                        </div>
+
+                        <div class="add-web-btn">
+                            <button mat-flat-button class="app-btn-green" (click)="addWebLink()"
+                                [disabled]="addWebLinkDisable()" type="button">Add more web link</button>
+                        </div>
+
+                        <br><br><br>
+                        <div class="sub-header-div">
+                            <span>About shop </span>
                         </div>
 
                         <label for="aboutShop">About shop </label>
@@ -160,21 +166,11 @@
 
 
                     <div class="div-app-button">
-                        <button class="app-button" [disabled]="!profileForm.valid" mat-stroked-button color="primary"
+                        <button mat-flat-button class="app-btn-green" [disabled]="!profileForm.valid"
                             type="submit">
                             Update
                         </button>
                     </div>
-                    <!--
-                    <div>
-                        
-                            <hr>
-                             Terms of service
-                        <p>By clicking
-                            <em>Register</em> you agree to our
-                            <a>terms of service</a> 
-                    </div>
-                    -->
                 </div>
             </form>
         </mat-card-content>
