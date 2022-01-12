@@ -1,5 +1,5 @@
 .register-card-div {
-  margin-top: 25px;
+  margin-top: 75px;
   align-content: center;
   display: flex;
   justify-content: center;
@@ -14,9 +14,29 @@ label {
   margin-left: 2px;
 }
 
-mat-card {
-  width: 450px;
-  margin-bottom: 30px;
+.app-button {
+  border: 1px thin currentColor;
+  padding: 0 15px;
+  line-height: 34px;
+  margin-right: 20px;
+}
+
+.app-btn-green{
+  background-color: green;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.app-btn-clear{
+  background-color: rgb(228, 226, 226);
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 10px;
+  margin-right: 0px;
 }
 
 .div-app-button {
@@ -24,9 +44,4 @@ mat-card {
   text-align: center;
 }
 
-.app-button {
-  border: 1px thin currentColor;
-  padding: 0 15px;
-  line-height: 34px;
-  margin-right: 20px;
-}
+

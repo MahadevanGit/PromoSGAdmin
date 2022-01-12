@@ -1,14 +1,10 @@
 <!-- Default form register -->
 <div>
     <mat-card>
-        <mat-card-title>Add shop outlets</mat-card-title>
-        <hr>
+        <!-- <mat-card-title>Add shop outlets</mat-card-title> -->
         <mat-card-content>
             <form [formGroup]="outletForm" (ngSubmit)="onSubmit()">
                 <div class="row">
-
-
-
                     <div class="col-md-4 mar-bot">
                         <!-- Search -->
                         <div>
@@ -20,7 +16,7 @@
                             </mat-form-field>
                         </div>
                         <mat-list>
-                            <mat-list-item *ngFor="let outlet of outletList, let i = index">
+                            <mat-list-item style="height:auto;overflow-wrap: break-word;" *ngFor="let outlet of outletList, let i = index">
                                 <mat-icon mat-list-icon>location_on</mat-icon>
                                 <div class="mat-item">
                                     <div class="listHeader1">{{outlet.address.block.toUpperCase() === 'NA' ? '' :
@@ -44,7 +40,7 @@
                         </div>
 
                         <div class="div-app-button">
-                            <button class="app-button" [disabled]="!outletForm.valid" mat-stroked-button color="primary"
+                            <button mat-flat-button class="app-btn-green" [disabled]="!outletForm.valid" 
                                 type="submit">
                                 Add
                             </button>
