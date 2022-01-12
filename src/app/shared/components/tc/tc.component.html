@@ -1,7 +1,9 @@
 <div class="form-group" [formGroup]="parentForm">
 
     <div formGroupName="tc" class="form-group">
-        <h2 class="formgroupheader">{{title}}</h2>
+        <div class="sub-header-div">
+            <span>{{title}}</span>
+        </div>
 
         <label for="tcText">Text </label>
         <span [ngClass]="tcText.valid ? '' : 'requiredStar'">*</span>

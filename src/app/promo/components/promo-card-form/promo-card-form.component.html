@@ -118,16 +118,16 @@
                       <br> -->
 
                 <!-- Action button  -->
-                <div class="ele-div">
-                  <button class="app-button" mat-stroked-button color="primary" type="submit"
+                <div class="div-app-button">
+                  <button class="app-btn-green" mat-flat-button type="submit"
                     [disabled]="promoCardFormTag.status=='INVALID' || (promoCard.startDate && promoCard.expiryDate ? false : true )">
                     {{promoCardKey ? 'Update' : 'Save' }}  
                   </button>
-                  <button *ngIf="!promoCardKey" class="app-button" mat-stroked-button color="basic" type="button" 
+                  <button *ngIf="!promoCardKey" class="app-btn-clear" mat-flat-button type="button" 
                   (click)="resetPromoCardForm(promoCardFormTag)">
                     Clear
                   </button>
-                </div>
+              </div>
 
               </form>
               <!-- Default promo card form   -->
