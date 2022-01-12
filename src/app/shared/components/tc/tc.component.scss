@@ -6,3 +6,20 @@
 .mar-bot {
   margin-bottom: 20px;
 }
+
+.sub-header-div {
+  background-color: rgb(243, 242, 242);
+  margin-bottom: 20px;
+  padding: 10px;
+  padding-left: 0px;
+  border-left-color: green;
+  border-left-style: outset;
+}
+
+.sub-header-div > span {
+  font-weight: 500;
+  margin-left: 20px;
+  font-size: 18px;
+  color: green;
+  display: inline;
+}

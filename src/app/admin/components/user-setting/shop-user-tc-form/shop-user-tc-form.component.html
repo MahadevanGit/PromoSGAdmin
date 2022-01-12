@@ -1,8 +1,7 @@
 <!-- Default form register -->
 <div>
     <mat-card>
-        <mat-card-title>Add Terms & Condition </mat-card-title>
-        <hr>
+        <!-- <mat-card-title>Add Terms & Condition </mat-card-title> -->
         <mat-card-content>
             <form [formGroup]="tcForm" (ngSubmit)="onSubmit()">
                 <div class="row">
@@ -17,14 +16,14 @@
                             </mat-form-field>
                         </div>
                         <mat-list>
-                            <mat-list-item style="height:auto;overflow-wrap: break-word;"
+                            <mat-list-item style="height:auto;overflow-wrap: break-word;padding-top: 10px;"
                                 *ngFor="let tc of tcList, let i = index">
 
-                                <span [ngClass]="tc.tc.isActive ? 'active' : 'inActive'">
-                                    <mat-icon mat-list-icon>done</mat-icon>
-                                </span>
-                                <div class="mat-item mar-bot">
-                                    <div>{{tc.tc.text}}</div>
+                                
+                                    <mat-icon mat-list-icon [ngClass]="tc.tc.isActive ? 'active' : 'inActive'" >done</mat-icon>
+                             
+                                <div class="mat-item">
+                                     {{tc.tc.text}}
                                 </div>
                                 <div>
                                     <mat-icon class="remove-btn" (click)="removeTc(tc)" type="button">delete_forever
@@ -41,7 +40,7 @@
                         </div>
 
                         <div class="div-app-button">
-                            <button class="app-button" [disabled]="!tcForm.valid" mat-stroked-button color="primary"
+                            <button class="app-btn-green" [disabled]="!tcForm.valid" mat-flat-button 
                                 type="submit">
                                 Add
                             </button>

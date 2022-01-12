@@ -2,17 +2,15 @@
   <div *ngIf="isProductForm">
 
     <ng-template #categoryListElseTemplate>
-      <p>
+      <div class="div-app-button">
         Please add category before create product.
-        <button mat-button (click)="createOrUpdateCategory()" style="color: green;">Create Category</button>
-      </p>
+        <button mat-flat-button class="app-btn-green" (click)="createOrUpdateCategory()" type="button">
+          Create Category
+        </button>
+      </div>
     </ng-template>
 
-
-
     <div class="row" *ngIf="categoryList && categoryList.length > 0; else categoryListElseTemplate;">
-
-      <!--  -->
 
       <div class="col-md-6 mar-bot">
         <div>
@@ -61,9 +59,10 @@
 
                   <!-- Category   -->
                   <p>
-                    <button mat-button (click)="createOrUpdateCategory()" style="color: green;">To add more
+                    <button mat-flat-button (click)="createOrUpdateCategory()" [disabled]="productKey" class="app-btn-grey-green">To add more
                       category</button>
-                    <button mat-button (click)="removeCategory()" style="color: rgb(240, 114, 131);">To active or
+                    <button mat-flat-button (click)="removeCategory()" [disabled]="productKey" type="button" class="app-btn-grey-red">To active
+                      or
                       in-active the category</button>
                   </p>
 
@@ -98,7 +97,8 @@
                       <br> -->
 
                   <p>
-                    <button type="button" mat-button style="color: green;" routerLink="/image/upload/">To add more
+                    <button type="button" mat-flat-button class="app-btn-grey-green" [disabled]="productKey" routerLink="/image/upload/">To add
+                      more
                       product image</button>
                   </p>
 
@@ -115,24 +115,30 @@
                   <br>
 
                   <!-- Action button {{productKey ? 'Update Product' : 'Create Product' }}  -->
-                  <div class="ele-div" *ngIf="!productKey; else elseActionTemplate;">
-                    <button class="app-button" mat-stroked-button color="primary" type="submit"
+                  <div class="div-app-button" *ngIf="!productKey; else elseActionTemplate;">
+
+                    <button class="app-btn-green" mat-flat-button type="submit"
                       [disabled]="productFormTag.status=='INVALID'">
                       Save
                     </button>
-                    <button class="app-button" mat-stroked-button color="basic" type="button"
+                    <button class="app-btn-clear" mat-flat-button type="button"
                       (click)="resetProductForm(productFormTag)">
                       Clear
                     </button>
                     <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
+
                   </div>
 
+
                   <ng-template #elseActionTemplate>
-                    <button class="app-button" mat-stroked-button color="primary" type="submit"
-                      [disabled]="productFormTag.status=='INVALID'">
-                      Update
-                    </button>
-                    <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
+                    <div class="div-app-button">
+                      <button class="app-btn-green" mat-flat-button type="submit"
+                        [disabled]="productFormTag.status=='INVALID'">
+                        Update
+                      </button>
+                      <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
+                    </div>
+
                   </ng-template>
 
                 </form>

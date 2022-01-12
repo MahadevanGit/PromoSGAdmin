@@ -10,15 +10,31 @@ label {
   padding-top: 10px;
 }
 
+.sub-header-div {
+  background-color: rgb(243, 242, 242);
+  margin-bottom: 20px;
+  padding: 10px;
+  padding-left: 0px;
+  border-left-color: green;
+  border-left-style: outset;
+}
+
+.sub-header-div > span {
+  font-weight: 500;
+  margin-left: 20px;
+  font-size: 18px;
+  color: green;
+  display: inline;
+}
+
+.add-web-btn{
+  float: right;
+}
+
 .requiredStar {
   color: red;
   margin-left: 2px;
 }
-
-//   mat-card {
-//       width: 450px;
-//       margin-bottom: 30px;
-//   }
 
 .div-app-button {
   margin-top: 20px;
@@ -34,6 +50,24 @@ label {
   padding: 0 15px;
   line-height: 34px;
   margin-right: 20px;
+}
+
+.app-btn-green{
+  background-color: green;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.app-btn-clear{
+  background-color: rgb(228, 226, 226);
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 10px;
+  margin-right: 0px;
 }
 
 .remaning {
