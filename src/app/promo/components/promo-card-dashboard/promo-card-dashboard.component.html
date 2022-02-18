@@ -63,7 +63,7 @@
   <!-- *ngIf="selectedMenuItemForDB == 'promoCard'" -->
   <div *ngIf="selectedMenuItemForDB != 'promoCard-form'">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div fxFlex="45%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
+      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
         <promo-card [promoData]="promoCard" *ngIf="promoCard" [canEdit]="false" [action]="actionData"></promo-card>
       </div>
     </div>
