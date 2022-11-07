@@ -1,0 +1,1 @@
+window.PRSGA_VERSION = "2022.100.07";

@@ -74,6 +74,10 @@ export class JsonHelper {
   static getDate(date: string, format: string) {
     return new Date(formatDate(date.toLocaleString(), format, 'en-US')).toLocaleString();
   }
+
+  static getLimitedChar(value: string,limit: number): string{
+    return value && value.length > limit ? value.substring(0,limit) + '..' : value;
+  }
 }
 
 export class MatMenuListItem {

@@ -1,0 +1,5 @@
+Remove all Product-stats for one user from Firebase. Example user is : XYZ
+steps 
+1,Delete the shop-user-content / Product-stats tree in Firebase
+2,Delete the shop-user-content / Promocards tree in Firebase
+3,Go to users-user-content / under all the user / delete user-promocards / XYZ list

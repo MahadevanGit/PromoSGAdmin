@@ -27,13 +27,14 @@
                     </div>
 
                     <label for="category">Category</label>
+                    <!-- <mat-label>Image</mat-label> -->
                     <div class="form-group">
-                        <select #category formControlName="category" type="select" class="form-control mb-4" required>
-                            <option></option>
-                            <option *ngFor="let c of categoryList" [value]="c.key">
+                        <mat-select #category formControlName="category" class="form-control mb-4" required>
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let c of categoryList" [value]="c.key">
                                 {{c.value}}
-                            </option>
-                        </select>
+                            </mat-option>
+                        </mat-select>
                         <small class="form-text text-danger mb-4"
                             *ngIf="isSubmitted && formControls.category.errors?.required">
                             <p>category is required.</p>

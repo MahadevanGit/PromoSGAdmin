@@ -1,0 +1,24 @@
+
+  {
+     "rules": {
+      "$docname": {
+        // promsg admin user can read all the data
+        ".read": "auth != null 
+        					&& ( ($docname=='master-content' 
+        							|| $docname=='users' 
+        							|| $docname=='users-user-content' ) 
+                  || (auth.token.email == 'rainbow.iad.maha@gmail.com' 
+                  		&& auth.uid == 'FiStU0uWqFWZ5ayhCKXW768HuAr2') ) ",
+        ".write": "$docname == 'shops'
+        					||(auth != null  
+                  && ($docname=='users-user-content' && auth.uid != null)) ",
+          "$uid": {
+        // registered shops only can view and read data
+        // rules for : $docname/$uid/**
+    		// example 	 : shop-user-content/JV2VSkY2l8YYh1GDNCC6F24dwnz1/**
+        ".read": "auth != null && $uid === auth.uid",
+        ".write": "auth != null && $uid === auth.uid"
+      }
+    },
+  }
+}

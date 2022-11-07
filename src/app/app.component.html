@@ -3,8 +3,8 @@
   <router-outlet></router-outlet>
 </div>
 <div class="footer">
-  V0.001 2022 <span>&copy;</span> Copy rights reserved by <img mat-card-avatar [src]="imgSrc">Proton<span
-    style="font-family: system-ui">&reg;</span>.
+  <span>&copy;</span> Copy rights reserved by <img mat-card-avatar [src]="imgSrc">Proton<span
+    style="font-family: system-ui">&reg;</span>. | Version {{version}}
 </div>
 <div class="container">
   <ng-container *ngIf="loading$ | async">

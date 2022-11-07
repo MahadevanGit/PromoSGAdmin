@@ -1,0 +1,2029 @@
+{
+  "master-content" : {
+    "image-categories" : [ null, {
+      "active" : true,
+      "key" : "shopLogo",
+      "value" : "Shop logo"
+    }, {
+      "active" : true,
+      "key" : "profileLogo",
+      "value" : "Profile Logo"
+    } ]
+  },
+  "shop-user-content" : {
+    "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+      "categories" : {
+        "-MgnO6jVh458BbmRS84t" : {
+          "active" : true,
+          "id" : "-MgnO6jVh458BbmRS84t",
+          "key" : "fruits",
+          "value" : "Fruits"
+        },
+        "-MgnOEfb48DehjldKfTJ" : {
+          "active" : true,
+          "id" : "-MgnOEfb48DehjldKfTJ",
+          "key" : "fruitwithwhitepearl",
+          "value" : "Fruit with white pearl"
+        },
+        "-MgnOIYiLGmE2-D3ZpBC" : {
+          "active" : true,
+          "id" : "-MgnOIYiLGmE2-D3ZpBC",
+          "key" : "fruitwithbrownpearl",
+          "value" : "Fruit with brown pearl"
+        },
+        "-MgnOLtQFwpnoQ2_iBs7" : {
+          "active" : true,
+          "id" : "-MgnOLtQFwpnoQ2_iBs7",
+          "key" : "fruitwithmilk",
+          "value" : "Fruit with milk"
+        },
+        "-MnH5vtAYsFvzk6A9apw" : {
+          "active" : true,
+          "id" : "-MnH5vtAYsFvzk6A9apw",
+          "key" : "badam",
+          "value" : "Badam"
+        },
+        "-MoJl1TtWx6UuHwiJKs4" : {
+          "active" : true,
+          "key" : "milkshake",
+          "value" : "Milk shake"
+        }
+      },
+      "owned-users" : [ null, "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" ],
+      "product-imageDetails" : {
+        "badam" : {
+          "-MnZW5SbpAw4A2zyytWm" : {
+            "caption" : "Red sky",
+            "category" : "badam",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Fbadam%2F3C328470-15BD-41A2-A677-4C17CE9EF36F_1635921453510?alt=media&token=c59e128c-3aaf-447b-ba8d-1990c8d492fb"
+          }
+        },
+        "fruits" : {
+          "-MjwUUoOtIq9RyJpU6Zu" : {
+            "caption" : "Pomegrant",
+            "category" : "fruits",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2Fpomegrant_1632028719019?alt=media&token=0579222d-08e1-44b4-b2ac-caf089433196"
+          },
+          "-MjwUa3wegXBJiZDgVIu" : {
+            "caption" : "Mango",
+            "category" : "fruits",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2FMango_1632028745129?alt=media&token=7bce3222-7fc5-4413-8b99-9f2a6c10f82b"
+          },
+          "-MoIsfGkIEMIq-EV5sIZ" : {
+            "caption" : "Dark space",
+            "category" : "fruits",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2FF00D58C9-2A52-4155-A85C-7E28D5A28267_1636716163090?alt=media&token=e9b7b06a-787b-4762-a2ce-43ff66a2e36c"
+          }
+        },
+        "fruitwithbrownpearl" : {
+          "-MjwUhlZc5UrfsqZ-olG" : {
+            "caption" : "Strawberries",
+            "category" : "fruitwithbrownpearl",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruitwithbrownpearl%2Fstrawberries_1632028772516?alt=media&token=d5422712-8dcf-4085-8bed-a7a9680e655a"
+          }
+        },
+        "fruitwithmilk" : {
+          "-Mn58eKm2jpROJvSHvYU" : {
+            "caption" : "Batam",
+            "category" : "fruitwithmilk",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruitwithmilk%2FCE843D53-F2ED-49F8-82B5-86EC39879397_1635411992087?alt=media&token=b6d9ff17-640e-4c34-ba0d-d84e558a4ebd"
+          }
+        },
+        "milkshake" : {
+          "-MoJlV9OLWk0aiVmdC_N" : {
+            "caption" : "Oreo milk shake",
+            "category" : "milkshake",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Fmilkshake%2F0EF691BD-C694-4210-9483-E25F5428B41C_1636731060055?alt=media&token=68b34fb0-572b-44c1-9574-c5170af3fb4d"
+          }
+        }
+      },
+      "products" : {
+        "-MgnOV1jIevTCfQrOY7T" : {
+          "category" : "fruits",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2FMango_1632028745129?alt=media&token=7bce3222-7fc5-4413-8b99-9f2a6c10f82b",
+          "price" : 16,
+          "title" : "Mango juice"
+        },
+        "-MgnOe6eAR5uVXCYsRrh" : {
+          "category" : "fruitwithbrownpearl",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruitwithbrownpearl%2Fstrawberries_1632028772516?alt=media&token=d5422712-8dcf-4085-8bed-a7a9680e655a",
+          "price" : 10,
+          "title" : "Strawberries with brown pearl juice"
+        },
+        "-MoJld0MxfD2i_58viCA" : {
+          "category" : "milkshake",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Fmilkshake%2F0EF691BD-C694-4210-9483-E25F5428B41C_1636731060055?alt=media&token=68b34fb0-572b-44c1-9574-c5170af3fb4d",
+          "price" : 3,
+          "title" : "Oreo milk shake"
+        }
+      },
+      "products-stats" : {
+        "-MgnOV1jIevTCfQrOY7T" : {
+          "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : [ null, {
+            "purchaseDate" : "12/19/2021, 1:16:10 PM",
+            "qty" : 1
+          }, {
+            "purchaseDate" : "9/25/2021, 1:16:10 PM",
+            "qty" : 2
+          }, {
+            "purchaseDate" : "9/19/2021, 1:16:10 PM",
+            "qty" : 3
+          } ]
+        },
+        "-MoJjmXkwFDyFFKI1mb0" : {
+          "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+            "-Moc4awDYYpyPG5j9-Vd" : {
+              "customerKey" : "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2",
+              "productKey" : "-MoJjmXkwFDyFFKI1mb0",
+              "stats" : {
+                "purchaseDate" : "11/16/2021, 5:31:31 PM",
+                "qty" : 1
+              }
+            },
+            "-Moc4ljecwPYIBo529Zf" : {
+              "customerKey" : "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2",
+              "productKey" : "-MoJjmXkwFDyFFKI1mb0",
+              "stats" : {
+                "purchaseDate" : "11/16/2021, 5:31:31 PM",
+                "qty" : 1
+              }
+            }
+          }
+        }
+      },
+      "promocards" : {
+        "-MjwU0y6EoZEjcSFnX8F" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "9/19/2021, 1:16:10 PM",
+          "expiryDate" : "2022-10-01T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MjwU0y6EoZEjcSFnX8F",
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "9/19/2021, 1:21:35 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "One dark mocco coffee with pearl"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "One golden mocco coffee free"
+            }
+          } ],
+          "promopoint" : 5,
+          "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "publishedDate" : "9/19/2021, 1:25:38 PM",
+          "slots" : 10,
+          "startDate" : "2021-09-18T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Dark mocha coffee"
+        },
+        "-MjwnbbBTt4BfIm9aWlC" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "9/19/2021, 2:45:43 PM",
+          "expiryDate" : "2021-09-29T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MjwnbbBTt4BfIm9aWlC",
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "9/19/2021, 2:51:21 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "points credited "
+            }
+          } ],
+          "promopoint" : 3,
+          "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "publishedDate" : "9/19/2021, 2:52:19 PM",
+          "slots" : 3,
+          "startDate" : "2021-09-19T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "green tea promotion"
+        },
+        "-MnBZ_IfwNKhBPFwpPLC" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "29/10/2021, 11:00:52 PM",
+          "expiryDate" : "2021-11-27T16:00:00.000Z",
+          "isActive" : true,
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "11/15/2021, 4:57:06 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "Promo_3",
+            "value" : {
+              "key" : "Promo_3",
+              "value" : "Promotion"
+            }
+          } ],
+          "promopoint" : 2,
+          "slots" : 6,
+          "startDate" : "2021-10-28T16:00:00.000Z",
+          "status" : "In-progress",
+          "title" : "Gitpromo "
+        },
+        "-MnBdqiuyHoMeH-odP2b" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "29/10/2021, 11:24:29 PM",
+          "expiryDate" : "2021-11-17T16:00:00.000Z",
+          "isActive" : true,
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "11/3/2021, 1:40:59 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion 5 star"
+            }
+          } ],
+          "promopoint" : 5,
+          "slots" : 5,
+          "startDate" : "2021-10-29T16:00:00.000Z",
+          "status" : "In-progress",
+          "title" : "Promo 5 star"
+        },
+        "-MnBe12_98tvJZhO0g3N" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "29/10/2021, 11:24:59 PM",
+          "expiryDate" : "2021-11-09T16:00:00.000Z",
+          "isActive" : true,
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "11/3/2021, 1:37:11 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion"
+            }
+          } ],
+          "promopoint" : 2,
+          "slots" : 2,
+          "startDate" : "2021-10-29T16:00:00.000Z",
+          "status" : "In-progress",
+          "title" : "Promo 2"
+        },
+        "-MnBeTzKmjvcRxeoh8xF" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "29/10/2021, 11:26:50 PM",
+          "expiryDate" : "2021-11-29T16:00:00.000Z",
+          "isActive" : true,
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "01/11/2021, 6:59:27 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion"
+            }
+          } ],
+          "promopoint" : 1,
+          "slots" : 1,
+          "startDate" : "2021-10-30T16:00:00.000Z",
+          "status" : "In-progress",
+          "title" : "Promo 1"
+        },
+        "-MnBeetNpIL3_RMCIUab" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "29/10/2021, 11:28:12 PM",
+          "expiryDate" : "2021-11-29T16:00:00.000Z",
+          "isActive" : true,
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "12/11/2021, 11:17:05 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion one"
+            }
+          } ],
+          "promopoint" : 3,
+          "slots" : 3,
+          "startDate" : "2021-10-31T16:00:00.000Z",
+          "status" : "In-progress",
+          "title" : "Promo 3"
+        },
+        "-MoJjmXkwFDyFFKI1mb0" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "12/11/2021, 11:22:12 PM",
+          "expiryDate" : "2021-12-11T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MoJjmXkwFDyFFKI1mb0",
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "12/11/2021, 11:23:51 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "1 free ice cream"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "3 free ice cream"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "Promo_3",
+            "value" : {
+              "key" : "Promo_3",
+              "value" : "Cheese cake"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "Promo_4",
+            "value" : {
+              "key" : "Promo_4",
+              "value" : "Chocolate milk shake"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_5",
+            "value" : {
+              "key" : "Promo_5",
+              "value" : "Waffle"
+            }
+          } ],
+          "promopoint" : 2,
+          "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "publishedDate" : "12/11/2021, 11:25:29 PM",
+          "slots" : 10,
+          "startDate" : "2021-11-12T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Oreo milk shake promo"
+        }
+      },
+      "usersetting-imageDetails" : {
+        "profileLogo" : {
+          "-MlL5rKCD_6tE_oxQWig" : {
+            "caption" : "Flight",
+            "category" : "profileLogo",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fusersetting-imageDetails%2FprofileLogo%2Fflight4_1633532211821?alt=media&token=842b6345-eb5f-4f0f-864f-cf1b765ef9e5"
+          }
+        },
+        "shopLogo" : {
+          "-MkMxUupVEBJ3dLfVj1w" : {
+            "caption" : "Strawberries1",
+            "category" : "shopLogo",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fusersetting-imageDetails%2FshopLogo%2Fstrawberries_1632489567533?alt=media&token=3761d016-9c68-44cd-aac8-dd3a692a0fd4"
+          }
+        }
+      }
+    },
+    "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+      "categories" : {
+        "-MgnPQh9cW6QpQiIg_Ur" : {
+          "active" : true,
+          "id" : "-MgnPQh9cW6QpQiIg_Ur",
+          "key" : "haircut",
+          "value" : "Hair cut"
+        },
+        "-MgnPUEtCQbceMT-D-im" : {
+          "active" : true,
+          "id" : "-MgnPUEtCQbceMT-D-im",
+          "key" : "facial",
+          "value" : "Facial"
+        },
+        "-MgnPZK1CMNF5A1WmzAF" : {
+          "active" : true,
+          "id" : "-MgnPZK1CMNF5A1WmzAF",
+          "key" : "haircolouring",
+          "value" : "Hair colouring"
+        }
+      },
+      "owned-users" : [ "CMF6i1jIueVu4XH4oRlReDFb0tq2", "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" ],
+      "product-imageDetails" : {
+        "facial" : {
+          "-MjwYXZU-BYcim4WzRg-" : {
+            "caption" : "Facial style 1",
+            "category" : "facial",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Ffacial%2Fflight2_1632029779851?alt=media&token=120e6dda-31b2-41e1-bfdf-64cedc0a65b2"
+          }
+        },
+        "haircolouring" : {
+          "-MjwYgYHMjIEoMjrf7zk" : {
+            "caption" : "Hair coloring style 1",
+            "category" : "haircolouring",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircolouring%2Fflight3_1632029820570?alt=media&token=7e518f30-669d-436f-83ca-4e80f66d6984"
+          }
+        },
+        "haircut" : {
+          "-MjwYQbNisuWo-uH2rVp" : {
+            "caption" : "Hair cut style 1",
+            "category" : "haircut",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232"
+          }
+        }
+      },
+      "products" : {
+        "-MgnPrffV8JCzqW3Sf5W" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 5,
+          "title" : "junior hair cut"
+        },
+        "-MgnPv_nVYQsznrPb5gI" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 10,
+          "title" : "Adult hair cut"
+        },
+        "-MgnPzRf0KPxK95aJNb9" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 8,
+          "title" : "Senior hair cut"
+        },
+        "-Mjwa47Yp-Edvi0lDd1K" : {
+          "category" : "facial",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Ffacial%2Fflight2_1632029779851?alt=media&token=120e6dda-31b2-41e1-bfdf-64cedc0a65b2",
+          "price" : 5,
+          "title" : "Facial "
+        }
+      },
+      "products-stats" : {
+        "-MgnPrffV8JCzqW3Sf5W" : {
+          "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+            "-MpQI5EhPf6ib8dCp1Hq" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "productKey" : "-MgnPrffV8JCzqW3Sf5W",
+              "stats" : {
+                "purchaseDate" : "10/26/2021, 4:11:08 PM",
+                "qty" : 1
+              }
+            }
+          },
+          "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+            "-MpQNB8bwV0kTlUjFb3b" : {
+              "customerKey" : "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2",
+              "productKey" : "-MgnPrffV8JCzqW3Sf5W",
+              "stats" : {
+                "purchaseDate" : "11/26/2021, 4:33:23 PM\"",
+                "qty" : 3
+              }
+            }
+          }
+        },
+        "-MgnPv_nVYQsznrPb5gI" : {
+          "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+            "-MpQI8ZZLLHt3vAmz2bH" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "productKey" : "-MgnPv_nVYQsznrPb5gI",
+              "stats" : {
+                "purchaseDate" : "11/26/2021, 4:11:14 PM",
+                "qty" : 1
+              }
+            },
+            "-MpezvdTiOW3i2azl8FA" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "local" : "en-US",
+              "productKey" : "-MgnPv_nVYQsznrPb5gI",
+              "stats" : {
+                "purchaseDate" : "11/29/2021, 5:21:19 PM",
+                "qty" : 1
+              }
+            }
+          },
+          "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+            "-MpQNCYCKUJ-r25LjDDD" : {
+              "customerKey" : "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2",
+              "productKey" : "-MgnPv_nVYQsznrPb5gI",
+              "stats" : {
+                "purchaseDate" : "11/27/2021, 5:55:29 PM",
+                "qty" : 2
+              }
+            },
+            "-MpQNCYCKUJ-r25LjTmb" : {
+              "customerKey" : "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2",
+              "productKey" : "-MgnPv_nVYQsznrPb5gI",
+              "stats" : {
+                "purchaseDate" : "11/26/2021, 4:33:29 PM",
+                "qty" : 1
+              }
+            }
+          }
+        },
+        "-MgnPzRf0KPxK95aJNb9" : {
+          "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+            "-MpQIMng0s7BmbvcUohy" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "productKey" : "-MgnPzRf0KPxK95aJNb9",
+              "stats" : {
+                "purchaseDate" : "11/26/2021, 4:12:21 PM",
+                "qty" : 1
+              }
+            }
+          }
+        },
+        "-Mjwa47Yp-Edvi0lDd1K" : {
+          "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+            "-MpQIOU10dwUjWk0XRTL" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "productKey" : "-Mjwa47Yp-Edvi0lDd1K",
+              "stats" : {
+                "purchaseDate" : "11/26/2021, 4:12:26 PM",
+                "qty" : 1
+              }
+            },
+            "-MpVDWDocNulMEAnr9Y8" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "local" : "en-US",
+              "productKey" : "-Mjwa47Yp-Edvi0lDd1K",
+              "stats" : {
+                "purchaseDate" : "8/27/2021, 3:09:14 PM",
+                "qty" : 1
+              }
+            },
+            "-MpVlx8RSlpPXjr_ZZK1" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "local" : "en-US",
+              "productKey" : "-Mjwa47Yp-Edvi0lDd1K",
+              "stats" : {
+                "purchaseDate" : "11/27/2021, 5:44:03 PM",
+                "qty" : 1
+              }
+            },
+            "-MpVmHWG2XOkYghOCk_w" : {
+              "customerKey" : "CMF6i1jIueVu4XH4oRlReDFb0tq2",
+              "local" : "en-US",
+              "productKey" : "-Mjwa47Yp-Edvi0lDd1K",
+              "stats" : {
+                "purchaseDate" : "9/27/2021, 5:45:19 PM",
+                "qty" : 5
+              }
+            }
+          }
+        }
+      },
+      "promocards" : {
+        "-MjwTRWWarMMefwNOr9K" : {
+          "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "createdDate" : "9/19/2021, 1:13:00 PM",
+          "expiryDate" : "2022-11-09T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MjwTRWWarMMefwNOr9K",
+          "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "modifiedDate" : "9/19/2021, 1:37:30 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "One hair cut price off"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "Two hair cut price off"
+            }
+          } ],
+          "promopoint" : 5,
+          "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "publishedDate" : "9/19/2021, 1:38:06 PM",
+          "slots" : 10,
+          "startDate" : "2021-09-18T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Hair cut 1 year promotion"
+        },
+        "-MnzaRW4G2OID8c3Ty2O" : {
+          "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "createdDate" : "11/8/2021, 8:49:55 PM",
+          "expiryDate" : "Tue Nov 30 2021",
+          "isActive" : true,
+          "key" : "-MnzaRW4G2OID8c3Ty2O",
+          "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "modifiedDate" : "11/8/2021, 8:49:55 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "Promo_3",
+            "value" : {
+              "key" : "Promo_3",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "Promo_4",
+            "value" : {
+              "key" : "Promo_4",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_5",
+            "value" : {
+              "key" : "Promo_5",
+              "value" : "Promotion"
+            }
+          }, {
+            "key" : "11",
+            "value" : {
+              "key" : "11",
+              "value" : "11"
+            }
+          }, {
+            "key" : "12",
+            "value" : {
+              "key" : "12",
+              "value" : "12"
+            }
+          }, {
+            "key" : "Promo_6",
+            "value" : {
+              "key" : "Promo_6",
+              "value" : "Promotion"
+            }
+          } ],
+          "promopoint" : 2,
+          "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "publishedDate" : "11/8/2021, 8:50:40 PM",
+          "slots" : 12,
+          "startDate" : "Mon Nov 08 2021",
+          "status" : "Published",
+          "title" : "Facial promo"
+        },
+        "-MpQJ8esZWWP2ZnYCuSI" : {
+          "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "createdDate" : "11/26/2021, 4:15:19 PM",
+          "expiryDate" : "2021-12-30T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MpQJ8esZWWP2ZnYCuSI",
+          "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "modifiedDate" : "11/26/2021, 4:16:03 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "One cut"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "One cut"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "Promo_3",
+            "value" : {
+              "key" : "Promo_3",
+              "value" : "One cut"
+            }
+          } ],
+          "promopoint" : 2,
+          "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "publishedDate" : "11/26/2021, 4:26:44 PM",
+          "slots" : 6,
+          "startDate" : "2021-11-25T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Junior hair cut promo"
+        }
+      },
+      "usersetting-imageDetails" : {
+        "shopLogo" : {
+          "-MnBHjSe698oLlb3tf_t" : {
+            "caption" : "Sun rise cut",
+            "category" : "shopLogo",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fusersetting-imageDetails%2FshopLogo%2Fflight3_1635515035808?alt=media&token=7fe2542d-8ef2-40eb-8006-14bc4fcf4b94"
+          }
+        }
+      }
+    }
+  },
+  "shops" : {
+    "FiStU0uWqFWZ5ayhCKXW768HuAr2" : {
+      "email" : "rainbow.iad.maha@gmail.com",
+      "firstname" : "Mahadevan",
+      "isAdmin" : true,
+      "lastname" : "Annamalai",
+      "registeredAt" : "8/11/2021, 11:40:03 AM",
+      "shopname" : "Promo-Admin",
+      "userId" : "FiStU0uWqFWZ5ayhCKXW768HuAr2"
+    },
+    "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+      "address" : {
+        "block" : "235",
+        "city" : "Singapore",
+        "level" : 10,
+        "street" : "Bukit batok street 33",
+        "unit" : 234,
+        "zip" : "650319"
+      },
+      "email" : "gomathikannadhasan@gmail.com",
+      "fax" : "00123456",
+      "firstname" : "Gomathi",
+      "hotline" : "12345678",
+      "lastname" : "Mahadevan",
+      "modifiedAt" : "10/18/2021, 3:22:53 PM",
+      "outletList" : [ {
+        "address" : {
+          "block" : "13",
+          "city" : "Singapore",
+          "level" : 1,
+          "street" : "Upper changi road",
+          "unit" : 55,
+          "zip" : "560313"
+        }
+      }, {
+        "address" : {
+          "block" : "2315",
+          "city" : "Singapore",
+          "level" : 1,
+          "street" : "Bedok north ave 3",
+          "unit" : 25,
+          "zip" : "652315"
+        }
+      }, {
+        "address" : {
+          "block" : "330",
+          "city" : "Singapore",
+          "level" : 2,
+          "street" : "Changi business park",
+          "unit" : 33,
+          "zip" : "650330"
+        }
+      }, {
+        "address" : {
+          "block" : "196",
+          "city" : "Singapore",
+          "level" : 1,
+          "street" : "Woodlands street 32",
+          "unit" : 19,
+          "zip" : "670032"
+        }
+      }, {
+        "address" : {
+          "block" : "130",
+          "city" : "Singapore",
+          "level" : 1,
+          "street" : "Tampines ave 5",
+          "unit" : 25,
+          "zip" : "752130"
+        }
+      }, {
+        "address" : {
+          "block" : "na",
+          "city" : "Singapore",
+          "level" : 9,
+          "street" : "Bukit timah road",
+          "unit" : 23,
+          "zip" : "650001"
+        }
+      }, {
+        "address" : {
+          "block" : "289",
+          "city" : "Singapore",
+          "level" : 9,
+          "street" : "Bukit batok west street 71",
+          "unit" : 25,
+          "zip" : "650289"
+        }
+      }, {
+        "address" : {
+          "block" : "2035",
+          "city" : "Singapore",
+          "level" : 9,
+          "street" : "Outlet street 1",
+          "unit" : 289,
+          "zip" : "650319"
+        }
+      } ],
+      "registeredAt" : "7/22/2021, 4:03:55 PM",
+      "shopname" : "iJuice pte ltd",
+      "telephone" : "3456789876",
+      "userId" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+      "weblink" : [ "https://www.google.com/", "https://www.facebook.com/", "Twitter", "Ownpage" ]
+    },
+    "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+      "address" : {
+        "block" : "2035",
+        "city" : "Singapore",
+        "level" : 12,
+        "street" : "Tampines ave 5",
+        "unit" : 23,
+        "zip" : "752035"
+      },
+      "email" : "ms.acc.maha@hotmail.com",
+      "fax" : "00123456",
+      "firstname" : "Gomathi",
+      "hotline" : "12345678",
+      "lastname" : "Mahadevan",
+      "modifiedAt" : "9/19/2021, 1:50:14 PM",
+      "outletList" : [ {
+        "address" : {
+          "block" : "2035",
+          "city" : "singapore",
+          "level" : 9,
+          "street" : "123 Woodlands street 42",
+          "unit" : 343,
+          "zip" : "650319"
+        }
+      }, {
+        "address" : {
+          "block" : "235A",
+          "city" : "Singapore",
+          "level" : 10,
+          "street" : "Woodlands avenue 5",
+          "unit" : 232,
+          "zip" : "540300"
+        }
+      }, {
+        "address" : {
+          "block" : "11",
+          "city" : "Singapore",
+          "level" : 1,
+          "street" : "Horbour front avenue 5",
+          "unit" : 22,
+          "zip" : "650011"
+        }
+      } ],
+      "registeredAt" : "7/22/2021, 12:11:56 AM",
+      "shopname" : "Snip garden pte ltd",
+      "telephone" : "3456789876",
+      "userId" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+      "weblink" : [ "https://www.google.com/", "https://www.facebook.com/" ]
+    }
+  },
+  "users" : {
+    "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+      "active" : true,
+      "email" : "realuser002@gmail.com",
+      "firstname" : "RealUser002",
+      "lastname" : "System"
+    },
+    "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+      "active" : true,
+      "email" : "realuser001@gmail.com",
+      "firstname" : "RealUser001",
+      "lastname" : "System"
+    }
+  },
+  "users-user-content" : {
+    "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+      "accepted-shops" : [ "JV2VSkY2l8YYh1GDNCC6F24dwnz1", "kIymReCs2ScZl4AynmqWKXQBl0E2" ],
+      "user-promocards" : {
+        "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+          "id" : "vla"
+        },
+        "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+          "-MjwTRWWarMMefwNOr9K" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "9/19/2021, 1:13:00 PM",
+            "expiryDate" : "2022-11-09T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwTRWWarMMefwNOr9K",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "11/27/2021, 5:44:03 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_4",
+              "value" : {
+                "key" : "4",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_5",
+              "value" : {
+                "key" : "5",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"One hair cut price off\",\"claimed\":{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_6",
+              "value" : {
+                "key" : "6",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_7",
+              "value" : {
+                "key" : "7",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_8",
+              "value" : {
+                "key" : "8",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_9",
+              "value" : {
+                "key" : "9",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_10",
+              "value" : {
+                "key" : "10",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "{\"promotion\":\"Two hair cut price off\",\"claimed\":{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}}"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "9/19/2021, 1:38:06 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Hair cut 1 year promotion"
+          },
+          "-MnzaRW4G2OID8c3Ty2O" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "11/8/2021, 8:49:55 PM",
+            "expiryDate" : "Tue Nov 30 2021",
+            "isActive" : true,
+            "key" : "-MnzaRW4G2OID8c3Ty2O",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "11/29/2021, 5:21:19 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_4",
+              "value" : {
+                "key" : "4",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_5",
+              "value" : {
+                "key" : "5",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_6",
+              "value" : {
+                "key" : "6",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_Promo_3",
+              "value" : {
+                "key" : "Promo_3",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}}"
+              }
+            }, {
+              "key" : "7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "Promo_4",
+              "value" : {
+                "key" : "Promo_4",
+                "value" : "Promotion"
+              }
+            }, {
+              "key" : "9",
+              "value" : {
+                "key" : "9",
+                "value" : "9"
+              }
+            }, {
+              "key" : "10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Promo_5",
+              "value" : {
+                "key" : "Promo_5",
+                "value" : "Promotion"
+              }
+            }, {
+              "key" : "11",
+              "value" : {
+                "key" : "11",
+                "value" : "11"
+              }
+            }, {
+              "key" : "12",
+              "value" : {
+                "key" : "12",
+                "value" : "12"
+              }
+            }, {
+              "key" : "Promo_6",
+              "value" : {
+                "key" : "Promo_6",
+                "value" : "Promotion"
+              }
+            } ],
+            "promopoint" : 2,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "11/8/2021, 8:50:40 PM",
+            "slots" : 12,
+            "startDate" : "Mon Nov 08 2021",
+            "status" : "Published",
+            "title" : "Facial promo"
+          }
+        }
+      }
+    },
+    "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+      "accepted-shops" : [ "kIymReCs2ScZl4AynmqWKXQBl0E2", "JV2VSkY2l8YYh1GDNCC6F24dwnz1" ],
+      "user-promocards" : {
+        "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+          "-MjwU0y6EoZEjcSFnX8F" : {
+            "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "createdDate" : "9/19/2021, 1:16:10 PM",
+            "expiryDate" : "2022-10-01T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwU0y6EoZEjcSFnX8F",
+            "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "modifiedDate" : "12/11/2021, 11:16:13 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "2"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_4",
+              "value" : {
+                "key" : "4",
+                "value" : "{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}"
+              }
+            }, {
+              "key" : "Taken_5",
+              "value" : {
+                "key" : "5",
+                "value" : "{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"-MgnOV1jIevTCfQrOY7T\",\"claimed\":{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}}"
+              }
+            }, {
+              "key" : "Taken_6",
+              "value" : {
+                "key" : "6",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "Taken_8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "Taken_9",
+              "value" : {
+                "key" : "9",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Taken_Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "{\"promotion\":\"One golden mocco coffee free\",\"claimed\":{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}}"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "publishedDate" : "9/19/2021, 1:25:38 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Dark mocha coffee"
+          },
+          "-MjwnbbBTt4BfIm9aWlC" : {
+            "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "createdDate" : "9/19/2021, 2:45:43 PM",
+            "expiryDate" : "2021-09-29T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwnbbBTt4BfIm9aWlC",
+            "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "modifiedDate" : "12/11/2021, 11:15:49 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"points credited \",\"claimed\":{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}}"
+              }
+            } ],
+            "promopoint" : 3,
+            "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "publishedDate" : "9/19/2021, 2:52:19 PM",
+            "slots" : 3,
+            "startDate" : "2021-09-19T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "green tea promotion"
+          },
+          "-MoJjmXkwFDyFFKI1mb0" : {
+            "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "createdDate" : "12/11/2021, 11:22:12 PM",
+            "expiryDate" : "2021-12-11T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MoJjmXkwFDyFFKI1mb0",
+            "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "modifiedDate" : "11/16/2021, 5:12:35 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnOV1jIevTCfQrOY7T\",\"title\":\"Mango juice\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-MoJld0MxfD2i_58viCA\",\"title\":\"Oreo milk shake\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"1 free ice cream\",\"claimed\":{\"key\":\"-MoJld0MxfD2i_58viCA\",\"title\":\"Oreo milk shake\"}}"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "4",
+              "value" : {
+                "key" : "4",
+                "value" : "4"
+              }
+            }, {
+              "key" : "Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "3 free ice cream"
+              }
+            }, {
+              "key" : "5",
+              "value" : {
+                "key" : "5",
+                "value" : "5"
+              }
+            }, {
+              "key" : "6",
+              "value" : {
+                "key" : "6",
+                "value" : "6"
+              }
+            }, {
+              "key" : "Promo_3",
+              "value" : {
+                "key" : "Promo_3",
+                "value" : "Cheese cake"
+              }
+            }, {
+              "key" : "7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "Promo_4",
+              "value" : {
+                "key" : "Promo_4",
+                "value" : "Chocolate milk shake"
+              }
+            }, {
+              "key" : "9",
+              "value" : {
+                "key" : "9",
+                "value" : "9"
+              }
+            }, {
+              "key" : "10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Promo_5",
+              "value" : {
+                "key" : "Promo_5",
+                "value" : "Waffle"
+              }
+            } ],
+            "promopoint" : 2,
+            "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "publishedDate" : "12/11/2021, 11:25:29 PM",
+            "slots" : 10,
+            "startDate" : "2021-11-12T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Oreo milk shake promo"
+          }
+        },
+        "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+          "-MjwTRWWarMMefwNOr9K" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "9/19/2021, 1:13:00 PM",
+            "expiryDate" : "2022-11-09T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwTRWWarMMefwNOr9K",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "11/10/2021, 2:34:39 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : "-MgnPzRf0KPxK95aJNb9"
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_4",
+              "value" : {
+                "key" : "4",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_5",
+              "value" : {
+                "key" : "5",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"-MgnPv_nVYQsznrPb5gI\",\"claimed\":{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_6",
+              "value" : {
+                "key" : "6",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_7",
+              "value" : {
+                "key" : "7",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_8",
+              "value" : {
+                "key" : "8",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_9",
+              "value" : {
+                "key" : "9",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_10",
+              "value" : {
+                "key" : "10",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "{\"promotion\":\"-MgnPzRf0KPxK95aJNb9\",\"claimed\":{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}}"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "9/19/2021, 1:38:06 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Hair cut 1 year promotion"
+          },
+          "-MnzaRW4G2OID8c3Ty2O" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "11/8/2021, 8:49:55 PM",
+            "expiryDate" : "Tue Nov 30 2021",
+            "isActive" : true,
+            "key" : "-MnzaRW4G2OID8c3Ty2O",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "11/23/2021, 10:29:43 AM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "{\"promotion\":\"-MgnPv_nVYQsznrPb5gI\",\"claimed\":{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_4",
+              "value" : {
+                "key" : "4",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_5",
+              "value" : {
+                "key" : "5",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_6",
+              "value" : {
+                "key" : "6",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_3",
+              "value" : {
+                "key" : "Promo_3",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}}"
+              }
+            }, {
+              "key" : "Taken_7",
+              "value" : {
+                "key" : "7",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_8",
+              "value" : {
+                "key" : "8",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_4",
+              "value" : {
+                "key" : "Promo_4",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}}"
+              }
+            }, {
+              "key" : "Taken_9",
+              "value" : {
+                "key" : "9",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_10",
+              "value" : {
+                "key" : "10",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_Promo_5",
+              "value" : {
+                "key" : "Promo_5",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}}"
+              }
+            }, {
+              "key" : "Taken_11",
+              "value" : {
+                "key" : "11",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_12",
+              "value" : {
+                "key" : "12",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "Taken_Promo_6",
+              "value" : {
+                "key" : "Promo_6",
+                "value" : "{\"promotion\":\"Promotion\",\"claimed\":{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}}"
+              }
+            } ],
+            "promopoint" : 2,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "11/8/2021, 8:50:40 PM",
+            "slots" : 12,
+            "startDate" : "Mon Nov 08 2021",
+            "status" : "Published",
+            "title" : "Facial promo"
+          },
+          "-MpQJ8esZWWP2ZnYCuSI" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "11/26/2021, 4:15:19 PM",
+            "expiryDate" : "2021-12-30T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MpQJ8esZWWP2ZnYCuSI",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "11/26/2021, 4:33:29 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-MgnPv_nVYQsznrPb5gI\",\"title\":\"Adult hair cut\"}"
+              }
+            }, {
+              "key" : "Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "One cut"
+              }
+            }, {
+              "key" : "3",
+              "value" : {
+                "key" : "3",
+                "value" : "3"
+              }
+            }, {
+              "key" : "4",
+              "value" : {
+                "key" : "4",
+                "value" : "4"
+              }
+            }, {
+              "key" : "Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "One cut"
+              }
+            }, {
+              "key" : "5",
+              "value" : {
+                "key" : "5",
+                "value" : "5"
+              }
+            }, {
+              "key" : "6",
+              "value" : {
+                "key" : "6",
+                "value" : "6"
+              }
+            }, {
+              "key" : "Promo_3",
+              "value" : {
+                "key" : "Promo_3",
+                "value" : "One cut"
+              }
+            } ],
+            "promopoint" : 2,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "11/26/2021, 4:26:44 PM",
+            "slots" : 6,
+            "startDate" : "2021-11-25T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Junior hair cut promo"
+          }
+        }
+      }
+    }
+  }
+}

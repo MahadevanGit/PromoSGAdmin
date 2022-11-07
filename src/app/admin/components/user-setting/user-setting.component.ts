@@ -57,7 +57,7 @@ export class UserSettingComponent implements OnInit {
         selected: false
       },
       {
-        menuLinkText: 'Add Terms & Con',
+        menuLinkText: 'Add Terms & Condition',
         menuLinkKey: 'tc-form',
         menuIcon: 'add_box',
         isDisabled: false,

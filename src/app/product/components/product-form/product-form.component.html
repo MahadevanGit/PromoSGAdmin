@@ -15,8 +15,8 @@
       <div class="col-md-6 mar-bot">
         <div>
           <mat-card>
-            <mat-card-title>{{productKey ? 'Update Product' : 'Create Product' }} </mat-card-title>
-            <hr>
+            <!-- <mat-card-title>{{productKey ? 'Update Product' : 'Create Product' }} </mat-card-title>
+            <hr> -->
             <mat-card-content>
 
 
@@ -59,11 +59,10 @@
 
                   <!-- Category   -->
                   <p>
-                    <button mat-flat-button (click)="createOrUpdateCategory()" [disabled]="productKey" class="app-btn-grey-green">To add more
-                      category</button>
-                    <button mat-flat-button (click)="removeCategory()" [disabled]="productKey" type="button" class="app-btn-grey-red">To active
-                      or
-                      in-active the category</button>
+                    <button mat-flat-button (click)="createOrUpdateCategory()" [disabled]="productKey" type="button" 
+                    class="app-btn-grey-green">To add more category</button>
+                    <button mat-flat-button (click)="removeCategory()" [disabled]="productKey" type="button" 
+                    class="app-btn-grey-red">To active or in-active the category</button>
                   </p>
 
                   <mat-label>Category</mat-label>
@@ -96,11 +95,12 @@
                     </div>
                       <br> -->
 
-                  <p>
-                    <button type="button" mat-flat-button class="app-btn-grey-green" [disabled]="productKey" routerLink="/image/upload/">To add
-                      more
-                      product image</button>
-                  </p>
+                  <!-- Temporarelt removed. Photo can add from Add image inside menu dd icon -->
+                  <!-- <p> 
+                    <button type="button" mat-flat-button class="app-btn-grey-green" [disabled]="productKey" routerLink="/image-upload/">
+                      To add more product image
+                      </button>
+                  </p> -->
 
                   <mat-label>Image</mat-label>
                   <mat-select #imageUrl="ngModel" [(ngModel)]='product.imageUrl' name="imageUrl" id="imageUrl"
@@ -125,8 +125,6 @@
                       (click)="resetProductForm(productFormTag)">
                       Clear
                     </button>
-                    <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
-
                   </div>
 
 
@@ -136,7 +134,6 @@
                         [disabled]="productFormTag.status=='INVALID'">
                         Update
                       </button>
-                      <span class="notification" *ngIf="notificationMessage">{{notificationMessage}}</span>
                     </div>
 
                   </ng-template>

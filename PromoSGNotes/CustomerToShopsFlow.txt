@@ -1,0 +1,10 @@
+1)Customer register through PromoSG mobile app [PromoSG Mobile].
+2)Once he register he can view all the shops available in the PromoSG-Admin [PromoSG Mobile].
+3)Customer need to accept the shop first to get promo card from shops in PromoSG-Admin [PromoSG Mobile].
+when customer accept the shop system will insert the ids in 'shop-user-content/shopid/owned-customer' 
+and 'users-user-content/userid/accepted-shops' table [PromoSG App].
+4)Once accept the shop by customer then shop owner can see the customer in thier dashboard User-Tab [PromoSG-Admin]. done
+In this time customer will get access to see the shops products details and outlets details [PromoSG Mobile].
+5)Now shop owner can assign the published promotion card to thier customer [PromoSG-Admin]. done
+6)Once shop owner assign the card then customer can view the promotion details and history of the 
+product purchase details.[PromoSG Mobile].

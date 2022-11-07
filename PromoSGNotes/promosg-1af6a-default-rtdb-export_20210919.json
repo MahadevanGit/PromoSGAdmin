@@ -1,0 +1,680 @@
+{
+  "master-content" : {
+    "image-categories" : [ null, {
+      "active" : true,
+      "key" : "logo",
+      "value" : "Shop logo"
+    } ]
+  },
+  "shop-user-content" : {
+    "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+      "categories" : {
+        "-MgnO6jVh458BbmRS84t" : {
+          "active" : true,
+          "key" : "fruits",
+          "value" : "Fruits"
+        },
+        "-MgnOEfb48DehjldKfTJ" : {
+          "active" : true,
+          "key" : "fruitwithwhitepearl",
+          "value" : "Fruit with white pearl"
+        },
+        "-MgnOIYiLGmE2-D3ZpBC" : {
+          "active" : true,
+          "key" : "fruitwithbrownpearl",
+          "value" : "Fruit with brown pearl"
+        },
+        "-MgnOLtQFwpnoQ2_iBs7" : {
+          "active" : true,
+          "key" : "fruitwithmilk",
+          "value" : "Fruit with milk"
+        }
+      },
+      "owned-users" : [ null, "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" ],
+      "product-imageDetails" : {
+        "fruits" : {
+          "-MjwUUoOtIq9RyJpU6Zu" : {
+            "caption" : "Pomegrant",
+            "category" : "fruits",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2Fpomegrant_1632028719019?alt=media&token=0579222d-08e1-44b4-b2ac-caf089433196"
+          },
+          "-MjwUa3wegXBJiZDgVIu" : {
+            "caption" : "Mango",
+            "category" : "fruits",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2FMango_1632028745129?alt=media&token=7bce3222-7fc5-4413-8b99-9f2a6c10f82b"
+          }
+        },
+        "fruitwithbrownpearl" : {
+          "-MjwUhlZc5UrfsqZ-olG" : {
+            "caption" : "Strawberries",
+            "category" : "fruitwithbrownpearl",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruitwithbrownpearl%2Fstrawberries_1632028772516?alt=media&token=d5422712-8dcf-4085-8bed-a7a9680e655a"
+          }
+        }
+      },
+      "products" : {
+        "-MgnOV1jIevTCfQrOY7T" : {
+          "category" : "fruits",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruits%2FMango_1632028745129?alt=media&token=7bce3222-7fc5-4413-8b99-9f2a6c10f82b",
+          "price" : 5,
+          "title" : "Mango juice"
+        },
+        "-MgnOe6eAR5uVXCYsRrh" : {
+          "category" : "fruitwithbrownpearl",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FJV2VSkY2l8YYh1GDNCC6F24dwnz1%2Fproduct-imageDetails%2Ffruitwithbrownpearl%2Fstrawberries_1632028772516?alt=media&token=d5422712-8dcf-4085-8bed-a7a9680e655a",
+          "price" : 10,
+          "title" : "Strawberries with brown pearl juice"
+        }
+      },
+      "promocards" : {
+        "-MjwU0y6EoZEjcSFnX8F" : {
+          "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "createdDate" : "9/19/2021, 1:16:10 PM",
+          "expiryDate" : "2022-10-01T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MjwU0y6EoZEjcSFnX8F",
+          "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "modifiedDate" : "9/19/2021, 1:21:35 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "One dark mocco coffee with pearl"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "One golden mocco coffee free"
+            }
+          } ],
+          "promopoint" : 5,
+          "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+          "publishedDate" : "9/19/2021, 1:25:38 PM",
+          "slots" : 10,
+          "startDate" : "2021-09-18T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Dark mocha coffee"
+        }
+      }
+    },
+    "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+      "categories" : {
+        "-MgnPQh9cW6QpQiIg_Ur" : {
+          "active" : true,
+          "id" : "-MgnPQh9cW6QpQiIg_Ur",
+          "key" : "haircut",
+          "value" : "Hair cut"
+        },
+        "-MgnPUEtCQbceMT-D-im" : {
+          "active" : true,
+          "id" : "-MgnPUEtCQbceMT-D-im",
+          "key" : "facial",
+          "value" : "Facial"
+        },
+        "-MgnPZK1CMNF5A1WmzAF" : {
+          "active" : true,
+          "id" : "-MgnPZK1CMNF5A1WmzAF",
+          "key" : "haircolouring",
+          "value" : "Hair colouring"
+        }
+      },
+      "owned-users" : [ "CMF6i1jIueVu4XH4oRlReDFb0tq2", "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" ],
+      "product-imageDetails" : {
+        "facial" : {
+          "-MjwYXZU-BYcim4WzRg-" : {
+            "caption" : "Facial style 1",
+            "category" : "facial",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Ffacial%2Fflight2_1632029779851?alt=media&token=120e6dda-31b2-41e1-bfdf-64cedc0a65b2"
+          }
+        },
+        "haircolouring" : {
+          "-MjwYgYHMjIEoMjrf7zk" : {
+            "caption" : "Hair coloring style 1",
+            "category" : "haircolouring",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircolouring%2Fflight3_1632029820570?alt=media&token=7e518f30-669d-436f-83ca-4e80f66d6984"
+          }
+        },
+        "haircut" : {
+          "-MjwYQbNisuWo-uH2rVp" : {
+            "caption" : "Hair cut style 1",
+            "category" : "haircut",
+            "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232"
+          }
+        }
+      },
+      "products" : {
+        "-MgnPrffV8JCzqW3Sf5W" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 5,
+          "title" : "junior hair cut"
+        },
+        "-MgnPv_nVYQsznrPb5gI" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 10,
+          "title" : "Adult hair cut"
+        },
+        "-MgnPzRf0KPxK95aJNb9" : {
+          "category" : "haircut",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Fhaircut%2Fflight1_1632029750894?alt=media&token=aa8eb916-1069-4941-a9b1-0be407f54232",
+          "price" : 8,
+          "title" : "Senior hair cut"
+        },
+        "-Mjwa47Yp-Edvi0lDd1K" : {
+          "category" : "facial",
+          "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/promosg-1af6a.appspot.com/o/shop-user-content%2FkIymReCs2ScZl4AynmqWKXQBl0E2%2Fproduct-imageDetails%2Ffacial%2Fflight2_1632029779851?alt=media&token=120e6dda-31b2-41e1-bfdf-64cedc0a65b2",
+          "price" : 5,
+          "title" : "Facial "
+        }
+      },
+      "promocards" : {
+        "-MjwTRWWarMMefwNOr9K" : {
+          "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "createdDate" : "9/19/2021, 1:13:00 PM",
+          "expiryDate" : "2022-11-09T16:00:00.000Z",
+          "isActive" : true,
+          "key" : "-MjwTRWWarMMefwNOr9K",
+          "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "modifiedDate" : "9/19/2021, 1:37:30 PM",
+          "promoGrid" : [ {
+            "key" : "1",
+            "value" : {
+              "key" : "1",
+              "value" : "1"
+            }
+          }, {
+            "key" : "2",
+            "value" : {
+              "key" : "2",
+              "value" : "2"
+            }
+          }, {
+            "key" : "3",
+            "value" : {
+              "key" : "3",
+              "value" : "3"
+            }
+          }, {
+            "key" : "4",
+            "value" : {
+              "key" : "4",
+              "value" : "4"
+            }
+          }, {
+            "key" : "5",
+            "value" : {
+              "key" : "5",
+              "value" : "5"
+            }
+          }, {
+            "key" : "Promo_1",
+            "value" : {
+              "key" : "Promo_1",
+              "value" : "One hair cut price off"
+            }
+          }, {
+            "key" : "6",
+            "value" : {
+              "key" : "6",
+              "value" : "6"
+            }
+          }, {
+            "key" : "7",
+            "value" : {
+              "key" : "7",
+              "value" : "7"
+            }
+          }, {
+            "key" : "8",
+            "value" : {
+              "key" : "8",
+              "value" : "8"
+            }
+          }, {
+            "key" : "9",
+            "value" : {
+              "key" : "9",
+              "value" : "9"
+            }
+          }, {
+            "key" : "10",
+            "value" : {
+              "key" : "10",
+              "value" : "10"
+            }
+          }, {
+            "key" : "Promo_2",
+            "value" : {
+              "key" : "Promo_2",
+              "value" : "Two hair cut price off"
+            }
+          } ],
+          "promopoint" : 5,
+          "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+          "publishedDate" : "9/19/2021, 1:38:06 PM",
+          "slots" : 10,
+          "startDate" : "2021-09-18T16:00:00.000Z",
+          "status" : "Published",
+          "title" : "Hair cut 1 year promotion"
+        }
+      }
+    }
+  },
+  "shops" : {
+    "FiStU0uWqFWZ5ayhCKXW768HuAr2" : {
+      "email" : "rainbow.iad.maha@gmail.com",
+      "firstname" : "Mahadevan",
+      "isAdmin" : true,
+      "lastname" : "Annamalai",
+      "registeredAt" : "8/11/2021, 11:40:03 AM",
+      "shopname" : "Promo-Admin",
+      "userId" : "FiStU0uWqFWZ5ayhCKXW768HuAr2"
+    },
+    "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+      "address" : {
+        "block" : "235A",
+        "city" : "Singapore",
+        "level" : 2,
+        "street" : "Bukit batok street 33",
+        "unit" : 234,
+        "zip" : "650319"
+      },
+      "email" : "gomathikannadhasan@gmail.com",
+      "fax" : "00123456",
+      "firstname" : "Gomathi",
+      "hotline" : "12345678",
+      "lastname" : "Mahadevan",
+      "modifiedAt" : "9/19/2021, 1:34:12 PM",
+      "registeredAt" : "7/22/2021, 4:03:55 PM",
+      "shopname" : "iJuice pte ltd",
+      "telephone" : "3456789876",
+      "userId" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+      "weblink" : [ "https://www.google.com/", "https://www.facebook.com/" ]
+    },
+    "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+      "address" : {
+        "block" : "2035",
+        "city" : "Singapore",
+        "level" : 12,
+        "street" : "Tampines ave 5",
+        "unit" : 23,
+        "zip" : "752035"
+      },
+      "email" : "ms.acc.maha@hotmail.com",
+      "fax" : "00123456",
+      "firstname" : "Gomathi",
+      "hotline" : "12345678",
+      "lastname" : "Mahadevan",
+      "modifiedAt" : "9/19/2021, 1:50:14 PM",
+      "registeredAt" : "7/22/2021, 12:11:56 AM",
+      "shopname" : "Snip garden pte ltd",
+      "telephone" : "3456789876",
+      "userId" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+      "weblink" : [ "https://www.google.com/", "https://www.facebook.com/" ]
+    }
+  },
+  "users" : {
+    "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+      "active" : true,
+      "email" : "realuser002@gmail.com",
+      "firstname" : "RealUser002",
+      "lastname" : "System"
+    },
+    "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+      "active" : true,
+      "email" : "realuser001@gmail.com",
+      "firstname" : "RealUser001",
+      "lastname" : "System"
+    }
+  },
+  "users-user-content" : {
+    "CMF6i1jIueVu4XH4oRlReDFb0tq2" : {
+      "accepted-shops" : [ "JV2VSkY2l8YYh1GDNCC6F24dwnz1", "kIymReCs2ScZl4AynmqWKXQBl0E2" ],
+      "user-promocards" : {
+        "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+          "id" : "vla"
+        },
+        "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+          "-MjwTRWWarMMefwNOr9K" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "9/19/2021, 1:13:00 PM",
+            "expiryDate" : "2022-11-09T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwTRWWarMMefwNOr9K",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "9/19/2021, 1:48:32 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnPzRf0KPxK95aJNb9\",\"title\":\"Senior hair cut\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "{\"key\":\"-Mjwa47Yp-Edvi0lDd1K\",\"title\":\"Facial \"}"
+              }
+            }, {
+              "key" : "3",
+              "value" : {
+                "key" : "3",
+                "value" : "3"
+              }
+            }, {
+              "key" : "4",
+              "value" : {
+                "key" : "4",
+                "value" : "4"
+              }
+            }, {
+              "key" : "5",
+              "value" : {
+                "key" : "5",
+                "value" : "5"
+              }
+            }, {
+              "key" : "Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "One hair cut price off"
+              }
+            }, {
+              "key" : "6",
+              "value" : {
+                "key" : "6",
+                "value" : "6"
+              }
+            }, {
+              "key" : "7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "9",
+              "value" : {
+                "key" : "9",
+                "value" : "9"
+              }
+            }, {
+              "key" : "10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "Two hair cut price off"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "9/19/2021, 1:38:06 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Hair cut 1 year promotion"
+          }
+        }
+      }
+    },
+    "a4hK2ubl7mSL0CBQ2yTPcf6XFAa2" : {
+      "accepted-shops" : [ "kIymReCs2ScZl4AynmqWKXQBl0E2" ],
+      "user-promocards" : {
+        "JV2VSkY2l8YYh1GDNCC6F24dwnz1" : {
+          "-MjwU0y6EoZEjcSFnX8F" : {
+            "createdBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "createdDate" : "9/19/2021, 1:16:10 PM",
+            "expiryDate" : "2022-10-01T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwU0y6EoZEjcSFnX8F",
+            "modifiedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "modifiedDate" : "9/19/2021, 1:28:18 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "Taken_2",
+              "value" : {
+                "key" : "2",
+                "value" : "2"
+              }
+            }, {
+              "key" : "Taken_3",
+              "value" : {
+                "key" : "3",
+                "value" : "{\"key\":\"-MgnOe6eAR5uVXCYsRrh\",\"title\":\"Strawberries with brown pearl juice\"}"
+              }
+            }, {
+              "key" : "4",
+              "value" : {
+                "key" : "4",
+                "value" : "4"
+              }
+            }, {
+              "key" : "5",
+              "value" : {
+                "key" : "5",
+                "value" : "5"
+              }
+            }, {
+              "key" : "Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "One dark mocco coffee with pearl"
+              }
+            }, {
+              "key" : "6",
+              "value" : {
+                "key" : "6",
+                "value" : "6"
+              }
+            }, {
+              "key" : "7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "9",
+              "value" : {
+                "key" : "9",
+                "value" : "9"
+              }
+            }, {
+              "key" : "10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "One golden mocco coffee free"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "JV2VSkY2l8YYh1GDNCC6F24dwnz1",
+            "publishedDate" : "9/19/2021, 1:25:38 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Dark mocha coffee"
+          }
+        },
+        "kIymReCs2ScZl4AynmqWKXQBl0E2" : {
+          "-MjwTRWWarMMefwNOr9K" : {
+            "createdBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "createdDate" : "9/19/2021, 1:13:00 PM",
+            "expiryDate" : "2022-11-09T16:00:00.000Z",
+            "isActive" : true,
+            "key" : "-MjwTRWWarMMefwNOr9K",
+            "modifiedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "modifiedDate" : "9/19/2021, 1:43:52 PM",
+            "promoGrid" : [ {
+              "key" : "Taken_1",
+              "value" : {
+                "key" : "1",
+                "value" : "{\"key\":\"-MgnPrffV8JCzqW3Sf5W\",\"title\":\"junior hair cut\"}"
+              }
+            }, {
+              "key" : "2",
+              "value" : {
+                "key" : "2",
+                "value" : "2"
+              }
+            }, {
+              "key" : "3",
+              "value" : {
+                "key" : "3",
+                "value" : "3"
+              }
+            }, {
+              "key" : "4",
+              "value" : {
+                "key" : "4",
+                "value" : "4"
+              }
+            }, {
+              "key" : "5",
+              "value" : {
+                "key" : "5",
+                "value" : "5"
+              }
+            }, {
+              "key" : "Promo_1",
+              "value" : {
+                "key" : "Promo_1",
+                "value" : "One hair cut price off"
+              }
+            }, {
+              "key" : "6",
+              "value" : {
+                "key" : "6",
+                "value" : "6"
+              }
+            }, {
+              "key" : "7",
+              "value" : {
+                "key" : "7",
+                "value" : "7"
+              }
+            }, {
+              "key" : "8",
+              "value" : {
+                "key" : "8",
+                "value" : "8"
+              }
+            }, {
+              "key" : "9",
+              "value" : {
+                "key" : "9",
+                "value" : "9"
+              }
+            }, {
+              "key" : "10",
+              "value" : {
+                "key" : "10",
+                "value" : "10"
+              }
+            }, {
+              "key" : "Promo_2",
+              "value" : {
+                "key" : "Promo_2",
+                "value" : "Two hair cut price off"
+              }
+            } ],
+            "promopoint" : 5,
+            "publishedBy" : "kIymReCs2ScZl4AynmqWKXQBl0E2",
+            "publishedDate" : "9/19/2021, 1:38:06 PM",
+            "slots" : 10,
+            "startDate" : "2021-09-18T16:00:00.000Z",
+            "status" : "Published",
+            "title" : "Hair cut 1 year promotion"
+          }
+        }
+      }
+    }
+  }
+}
