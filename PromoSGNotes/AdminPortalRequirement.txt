@@ -1,0 +1,41 @@
+Do it step by step if any change then add the comments and continue the devlopment....
+
+https://material.angular.io/assets/img/examples/shiba2.jpg
+
+PromoSG Admin requirement
+=============================
+Create admin login page
+------------------------
+1)OverAll admin login
+2)Clinet admin login
+3)OverAll admin 
+This admin can see all the clients and its functioanlity
+4)Clinet admin
+This admin can see only thier profile and its functioanlity
+5)Admin login by username and password for now. - Done
+In future admin can login by username and email id with password + OTP
+6)After successful login go to Dashboard - Done
+
+Create Dashboard page
+------------------------
+In the Dashboard there is two views
+1)OverAll admin view
+Show all the client with cards
+Each clients card contains the details of the promotion cards 
+
+2)Clinet admin view
+Show all the promotion with cards
+Each promotion card contains the details of the customers 
+
+Client-Admin functionality :
+==============================
+1)Admin can able to CURD - promotion card and save 
+2)Saved promotion card Admin can published 
+3)More than one promotion card can published at a time.
+4)Admin can see all the customer list belongs to the promotion card and check 
+6)Admin can able to select any customer from the list and add or edit the promo stampping 
+
+Product model:
+Category : food, Hair cut, Travel, Education
+Type : food > Juice,IceCream, Bubble tea, etc  ; Hair cut > nothing ; Travel > Cycle, Car, Bike ; Education > Books, Online class
+

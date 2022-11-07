@@ -1,0 +1,8 @@
+1) need to add product drop down list
+inside update promotion pop up
+sample url is : http://localhost:4200/promocard/-MjwU0y6EoZEjcSFnX8F
+
+2)bug at Assign stamping
+a)need to fix add button disabled when assign stamp if product without product 
+selection in drop down
+b)need to skip ID load in to slot when select the porduct from the dropdown before add button click
