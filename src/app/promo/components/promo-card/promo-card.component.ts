@@ -339,6 +339,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     return prod ? prod['title'] : slot ? slot.key : productKey;
   }
 
+  getLimitedChar(value: string,limit: number){
+    return JsonHelper.getLimitedChar(value,limit);
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.userContentServiceSubscription.unsubscribe();

@@ -35,7 +35,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   @Input('productKey') productKey: string;
   @ViewChild("productFormTag") productForm: NgForm; //to select the template driven form element inside .ts code
-  notificationMessage: string;
   @Output() amDone = new EventEmitter<boolean>(false);
   imageFolderName: string = '/product-imageDetails/';
 
@@ -90,7 +89,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   customInit(mode: any) {
     console.log('customInit => ', mode)
-    this.notificationMessage = "";
     this.userId = LocalStorageMember.get(LocalStorageMember.userId);
     try {
       this.loader.show();
@@ -126,12 +124,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.loader.show();
       if (this.productKey) {
         await this.productService.updateItem(this.productKey, productForm.value)
-        this.notificationMessage = "Updated successfully.";
         this._amDone(true); //emitter
       }
       else {
         await this.productService.addItem(productForm.value);
-        this.notificationMessage = "Added successfully.";
         this._amDone(true); //emitter
       }
 
@@ -139,7 +135,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       //this.router.navigate(['/products']);
 
     } catch (e) {
-      this.notificationMessage = "Something went wrong.";
       //TODO: Need to check .. Currently could not catch exception
     } finally {
       this.loader.hide();

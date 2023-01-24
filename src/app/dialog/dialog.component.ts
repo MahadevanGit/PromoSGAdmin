@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { LoadingService } from '../core/services/loading.service';
 import { ProductService } from '../product/services/product.service';
 @Component({
   selector: 'app-dialog',
@@ -18,7 +17,6 @@ export class DialogComponent implements OnInit, OnDestroy {
   productSubscription: Subscription;
 
   constructor(
-    private loader: LoadingService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productService: ProductService) {
 
@@ -31,7 +29,6 @@ export class DialogComponent implements OnInit, OnDestroy {
 
   getProductList() {
     try {
-      this.loader.show();
       if (this.data.isStampEntry) {
         this.productSubscription = this.productService.getItemsByUserID().subscribe((product) => {
           this.productList = product;
@@ -40,7 +37,6 @@ export class DialogComponent implements OnInit, OnDestroy {
     } catch (error) {
 
     } finally {
-      this.loader.hide();
     }
   }
 
