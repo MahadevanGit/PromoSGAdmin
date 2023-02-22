@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { ShopUserService } from 'src/app/shared/services/shop.service';
 import { AuthService } from '../../../shared/services/auth.service';
+import { ShopUser } from './../../../shared/models/shop';
 
 @Component({
   selector: 'app-register',
@@ -61,7 +62,7 @@ export class RegisterComponent {
       await this.auth.registerUser(userData).then(x => resp = x);
 
       if (resp && resp.success) {
-        this.shopUserService.save(userData);
+        this.shopUserService.save(userData as ShopUser);
         this.router.navigate(['/dashboard']);
       }
       this.error = resp.message;

@@ -147,7 +147,7 @@ export class ShopUserFormComponent implements OnInit {
       shopName: appUser ? appUser['shopname'] : '',
       firstName: appUser ? appUser['firstname'] : '',
       lastName: appUser ? appUser['lastname'] : '',
-      email: appUser ? appUser['email'] : '',
+      // email: appUser ? appUser['email'] : '',
       telephone: appUser ? appUser['telephone'] : '',
       shopLogo: appUser ? appUser['shopLogo'] : '',
       shopPicture: appUser ? appUser['shopPicture'] : '',
