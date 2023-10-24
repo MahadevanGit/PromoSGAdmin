@@ -3,8 +3,8 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { LocalStorageMember } from 'src/app/shared/models/common';
-import { ShopUser } from 'src/app/shared/models/shop';
+import { LocalStorageMember } from '../../../shared/models/common';
+import { ShopUser } from '../../../shared/models/shop'
 import { AuthService } from '../../../shared/services/auth.service';
 import { onMainContentChange } from '../../animations/animations';
 import { SidenavService } from '../../services/sidenav.service';
