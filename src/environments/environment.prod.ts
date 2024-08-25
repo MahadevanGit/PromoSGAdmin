@@ -1,5 +1,6 @@
+// when deploy in to github modify production flag to true
 export const environment = {
-  production: true,
+  production: false,
   firebase:{
     apiKey: "AIzaSyB7vuwtA-q0sLFhb5ECYpzIZi7c1Tru7r4",
     authDomain: "promosg-1af6a.firebaseapp.com",

@@ -22,7 +22,7 @@
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description
+      <b class="space">{{data.slot.key}}</b> description5
     </p>
     <div mat-dialog-content>
       <mat-label>{{data.slot.value.value}}</mat-label>
@@ -61,7 +61,7 @@
 
     </div>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close mat-dialog-close="{{ data.slot | json }}" cdkFocusInitial>Add</button>
+      <button mat-button mat-dialog-close mat-dialog-close={{sendData(data)}} cdkFocusInitial>Add</button>
       <button mat-button mat-dialog-close mat-dialog-close='cancel'>Cancel</button>
     </div>
   </div>
@@ -69,12 +69,12 @@
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description
+      <b class="space">{{data.slot.key}}</b> description2
     </p>
     <div mat-dialog-content>
       <!-- <mat-label>{{data.slot.value ? data.slot.value.value ? data.slot.value.value : data.slot.value : 'none'}}</mat-label> -->
       <mat-label>{{ promoSlot.value ? getPromoValueFromslot(promoSlot.value) :
-        getPromoValueFromClaimed(promoSlot.claimed) }} </mat-label>
+        getPromoValueFromClaimed(promoSlot) }} </mat-label>
       <p *ngIf="data.note">
         <small><b>Note : </b></small>
         <small style="color:rgba(230, 46, 46, 0.952);">{{data.note}}</small>
@@ -113,7 +113,7 @@
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description
+      <b class="space">{{data.slot.key}}</b> description3
     </p>
     <div mat-dialog-content>
       <mat-label>{{data.slot.value}}</mat-label>
@@ -153,7 +153,7 @@
   <ng-template #viewTemplate>
     <p mat-dialog-title>
       <mat-icon> info</mat-icon>
-      <b class="space">{{data.slot.key}}</b> description
+      <b class="space">{{data.slot.key}}</b> description1
     </p>
     <div mat-dialog-content>
       <mat-label>{{data.slot.value}}</mat-label>

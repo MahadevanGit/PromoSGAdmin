@@ -165,7 +165,6 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
 
   addStampToCustomer(slot: KeyValue<string, string>) {
     this.currentDate = new Date();
-    //TODO
     let previousAndNextSlots = this.getPreviousAndNextSolts(this.promoData.promoGrid, slot);
     let dialogNote = '';
     this.canEdit = slot.key.indexOf('Taken_') > -1 ? false : true;
@@ -202,15 +201,19 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
             if (p['key'] == value.value.value)
               product = p;
           })
-          value.value.value = res.key.indexOf('Promo_') > -1 ? JSON.stringify({ promotion: data.promotionValue, claimed: { key: product['key'], title: product['title'] } }) : JSON.stringify({ key: product['key'], title: product['title'] });
+          value.value.value = res.key.indexOf('Promo_') > -1 
+          ? JSON.stringify({ promotion: data.promotionValue, purchased: { purchased: product } }) 
+          : JSON.stringify({  purchased: product });
         }
       })
       if (result != 'cancel' && result != 'close') {
         this.userContentService.updateItem(this.promoData);
+
+        //this is for show statictis of the sold product 
         this.productStatsObj = new ProductStats('', '', {})
         this.productStatsObj.productKey = product && product.key;
         this.productStatsObj.customerKey = this.customerId;
-        this.productStatsObj.stats.purchaseDate = JsonHelper.getDate(this.currentDate.toLocaleString(), 'MM/dd/yyyy HH:mm:ss').toLocaleString();
+        this.productStatsObj.stats.purchaseDate = this.currentDate.toLocaleString();
         this.productStatsObj.stats.qty = 1; //Product quantity
         await this.productStatsService.addItem(this.productStatsObj);
         this.flashMessageService.success('Successfully stamped.');
@@ -301,11 +304,17 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     return "";
   }
 
-  getPromoValueFromClaimed(claimedObj: any) {
-    if (typeof (claimedObj) != 'string') {
-      return claimedObj['title']
+  getPromoValueFromClaimed(promoSlot: any) {
+    //TODO : purchased product storing data structure modified on 25-08-2024
+    //Delete all the data from firebase and keep only 
+    //return obj['purchased']['title'];
+    if(typeof (promoSlot) != 'string' && promoSlot['claimed']){
+      let title = promoSlot['claimed']['title'];
+      return title;
+    }else if(typeof (promoSlot) != 'string' && promoSlot['purchased']){
+      let title = promoSlot['purchased']['purchased']['title'];
+      return title;
     }
-
     return "";
   }
 

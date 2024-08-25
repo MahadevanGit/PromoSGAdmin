@@ -5,7 +5,10 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
+  console.log("production mode is true...")
   enableProdMode();
+}else{
+  console.log("production mode is false...")
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

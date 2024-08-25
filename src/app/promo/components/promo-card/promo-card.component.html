@@ -37,7 +37,7 @@
                 <div>
                   {{getPromoValue(slot)}}
                   <span class="span-badge">{{ promoSlot.key ? promoSlot.key : slot.key }}</span>
-                  {{ getLimitedChar((promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot.claimed)),10)}} 
+                  {{ getLimitedChar((promoSlot.value ? getInitialValue(promoSlot.value) : getPromoValueFromClaimed(promoSlot)),10)}} 
                 </div>
               </mat-grid-tile>
 

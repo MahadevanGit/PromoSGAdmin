@@ -35,7 +35,6 @@ export class DialogComponent implements OnInit, OnDestroy {
         });
       }
     } catch (error) {
-
     } finally {
     }
   }
@@ -78,11 +77,18 @@ export class DialogComponent implements OnInit, OnDestroy {
       this.promoSlot = "TODO ";
   }
 
+  sendData(data: any) {
+    return JSON.stringify(data.slot);
+  }
+
   getPromoValueFromslot(slotObj: any) {
     //TODO : have to change this logic slotObj.indexOf('{')
     if (slotObj && slotObj.indexOf('{') > -1) {
       let obj = JSON.parse(slotObj);
-      return obj['title'];
+      //TODO : purchased product storing data structure modified on 25-08-2024
+      //Delete all the data from firebase and keep only 
+      //return obj['purchased']['title'];
+      return obj['purchased'] ? obj['purchased']['title'] : obj['title'];
     }
     else if (typeof (slotObj) == 'string') {
       return slotObj;
@@ -90,11 +96,17 @@ export class DialogComponent implements OnInit, OnDestroy {
     return "";
   }
 
-  getPromoValueFromClaimed(claimedObj: any) {
-    if (typeof (claimedObj) != 'string') {
-      return claimedObj['title']
+  getPromoValueFromClaimed(promoSlot: any) {
+    //TODO : purchased product storing data structure modified on 25-08-2024
+      //Delete all the data from firebase and keep only 
+      //return obj['purchased']['title'];
+    if (typeof (promoSlot) != 'string' && promoSlot['purchased']) {
+      let title = promoSlot['purchased']['purchased']['title']
+      return title
+    } else if (typeof (promoSlot) != 'string' && promoSlot['claimed']) {
+      let title = promoSlot['claimed']['title']
+      return title
     }
-
     return "";
   }
 
@@ -102,5 +114,4 @@ export class DialogComponent implements OnInit, OnDestroy {
     if (this.productSubscription)
       this.productSubscription.unsubscribe();
   }
-
 }
