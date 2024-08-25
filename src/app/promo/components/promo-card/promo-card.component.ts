@@ -1,4 +1,4 @@
-import { KeyValue } from '@angular/common';
+import { DatePipe, KeyValue } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { IPromotionCard } from '../../models/promotioncard';
 import { PromoCardService } from '../../services/promo-card.service';
 import { PromoCardDashboardComponent } from '../promo-card-dashboard/promo-card-dashboard.component';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 
 @Component({
   selector: 'promo-card',
@@ -202,7 +203,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
               product = p;
           })
           value.value.value = res.key.indexOf('Promo_') > -1 
-          ? JSON.stringify({ promotion: data.promotionValue, purchased: { purchased: product } }) 
+          ? JSON.stringify( { purchased: product }) 
           : JSON.stringify({  purchased: product });
         }
       })
@@ -299,7 +300,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   getPromoValueFromslot(slotObj: any) {
     if (slotObj != 'Taken' && slotObj) {
       let obj = JSON.parse(slotObj);
-      return obj['title'];
+      return obj['purchased']['title'];
     }
     return "";
   }
@@ -312,7 +313,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
       let title = promoSlot['claimed']['title'];
       return title;
     }else if(typeof (promoSlot) != 'string' && promoSlot['purchased']){
-      let title = promoSlot['purchased']['purchased']['title'];
+      let title = promoSlot['purchased']['title'];
       return title;
     }
     return "";
@@ -350,6 +351,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
 
   getLimitedChar(value: string,limit: number){
     return JsonHelper.getLimitedChar(value,limit);
+  }
+
+  getFormattedDate(value: Date){
+    return JsonHelper.getFormattedDate(value,'dd-MMM-YYYY');
   }
 
   ngOnDestroy(): void {

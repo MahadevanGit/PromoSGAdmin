@@ -101,7 +101,7 @@ export class DialogComponent implements OnInit, OnDestroy {
       //Delete all the data from firebase and keep only 
       //return obj['purchased']['title'];
     if (typeof (promoSlot) != 'string' && promoSlot['purchased']) {
-      let title = promoSlot['purchased']['purchased']['title']
+      let title = promoSlot['purchased']['title']
       return title
     } else if (typeof (promoSlot) != 'string' && promoSlot['claimed']) {
       let title = promoSlot['claimed']['title']
