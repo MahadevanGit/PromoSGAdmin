@@ -7,7 +7,7 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 import { ProductService } from 'src/app/product/services/product.service';
 import { ProductStatsService } from 'src/app/product/services/product.stats.service';
 import { JsonHelper, LocalStorageMember } from 'src/app/shared/models/common';
-import { ProductStats } from 'src/app/shared/models/product';
+import { IProduct, IProductPurchasedInfo, ProductStats } from 'src/app/shared/models/product';
 import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
 import { UserContentService } from 'src/app/shared/services/user-content.service';
 import { DialogComponent } from '../../../dialog/dialog.component';
@@ -48,7 +48,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   assignPromoCard: any;
   stampPromoCard: any;
   promoSlot: any;
-  productList: any[];
+  productList: IProduct[] =[];
 
   constructor(
     private loader: LoadingService,
@@ -98,15 +98,15 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     this.changCustomerAct(changes);
     this.isPromoCardAssignedToCustomer = false;
     this.customerAssignedPromoCardList.forEach(element => {
-      if (changes.promoData && (element.key == changes.promoData.currentValue.key)) 
-          this.isPromoCardAssignedToCustomer = true;
+      if (changes.promoData && (element.key == changes.promoData.currentValue.key))
+        this.isPromoCardAssignedToCustomer = true;
     });
   }
-  
+
   changCustomerAct(changes: SimpleChanges) {
     if (changes && changes.action && (changes.action.currentValue)) {
-        this.assignPromoCard = changes.action.currentValue.assign ? true : false;
-        this.stampPromoCard = changes.action.currentValue.stamp ? true : false;
+      this.assignPromoCard = changes.action.currentValue.assign ? true : false;
+      this.stampPromoCard = changes.action.currentValue.stamp ? true : false;
     }
   }
 
@@ -190,7 +190,9 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(async result => {
-      let product;
+      let productPurchasedInfo: IProductPurchasedInfo;
+      productPurchasedInfo = {purchased: { category: "",key:"", title: "", price: "", imageUrl: ""},
+                                purchasedDate : ""};
       let res = (result != 'cancel' && result != 'close' && result) ? JSON.parse(result) : result;
       this.promoData.modifiedBy = this.currentUserId; //From local storage
       this.promoData.modifiedDate = this.currentDate.toLocaleString();
@@ -199,12 +201,12 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
           value.key = 'Taken_' + res.key;
 
           this.productList.forEach((p) => {
-            if (p['key'] == value.value.value)
-              product = p;
+            console.log(p);
+            if (p.key === value.value.value)
+              productPurchasedInfo.purchased = p;
+            productPurchasedInfo.purchasedDate = this.currentDate.toLocaleString();
           })
-          value.value.value = res.key.indexOf('Promo_') > -1 
-          ? JSON.stringify( { purchased: product }) 
-          : JSON.stringify({  purchased: product });
+          value.value.value = JSON.stringify(productPurchasedInfo);
         }
       })
       if (result != 'cancel' && result != 'close') {
@@ -212,7 +214,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
 
         //this is for show statictis of the sold product 
         this.productStatsObj = new ProductStats('', '', {})
-        this.productStatsObj.productKey = product && product.key;
+        this.productStatsObj.productKey = productPurchasedInfo.purchased && productPurchasedInfo.purchased.key;
         this.productStatsObj.customerKey = this.customerId;
         this.productStatsObj.stats.purchaseDate = this.currentDate.toLocaleString();
         this.productStatsObj.stats.qty = 1; //Product quantity
@@ -238,7 +240,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     };
   }
 
-  editPromoCard(key: string){
+  editPromoCard(key: string) {
     this.promoCardDashboardComponent && this.promoCardDashboardComponent.editPromoCard(key);
   }
 
@@ -297,10 +299,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     this.promoSlot = (slot.key.indexOf('Taken_Promo_') > -1) ? JSON.parse(slot.value.value) : slot.value;
   }
 
-  getPromoValueFromslot(slotObj: any) {
-    if (slotObj != 'Taken' && slotObj) {
-      let obj = JSON.parse(slotObj);
-      return obj['purchased']['title'];
+  getPromoValueFromslot(slotObj: IProductPurchasedInfo) {
+    console.log(slotObj)
+    if (slotObj && slotObj.purchased) {
+      return slotObj.purchased.title;
     }
     return "";
   }
@@ -309,10 +311,10 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     //TODO : purchased product storing data structure modified on 25-08-2024
     //Delete all the data from firebase and keep only 
     //return obj['purchased']['title'];
-    if(typeof (promoSlot) != 'string' && promoSlot['claimed']){
+    if (typeof (promoSlot) != 'string' && promoSlot['claimed']) {
       let title = promoSlot['claimed']['title'];
       return title;
-    }else if(typeof (promoSlot) != 'string' && promoSlot['purchased']){
+    } else if (typeof (promoSlot) != 'string' && promoSlot['purchased']) {
       let title = promoSlot['purchased']['title'];
       return title;
     }
@@ -322,7 +324,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   getProductList() {
     try {
       this.loader.show();
-      this.productService.getItemsByUserID().subscribe((product) => {
+      this.productService.getItemsByUserID().subscribe((product: IProduct[]) => {
         this.productList = product;
       });
     } catch (error) {
@@ -349,12 +351,12 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     return prod ? prod['title'] : slot ? slot.key : productKey;
   }
 
-  getLimitedChar(value: string,limit: number){
-    return JsonHelper.getLimitedChar(value,limit);
+  getLimitedChar(value: string, limit: number) {
+    return JsonHelper.getLimitedChar(value, limit);
   }
 
-  getFormattedDate(value: Date){
-    return JsonHelper.getFormattedDate(value,'dd-MMM-YYYY');
+  getFormattedDate(value: Date) {
+    return JsonHelper.getFormattedDate(value, 'dd-MMM-YYYY');
   }
 
   ngOnDestroy(): void {

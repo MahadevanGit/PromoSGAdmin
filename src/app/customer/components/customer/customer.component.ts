@@ -77,8 +77,10 @@ export class CustomerComponent implements OnInit, OnDestroy {
         // for get keys only [Object.keys]
         Object.values(users).forEach(
           (u) => {
+            console.log(u)
             this.shopCustomerList.forEach(
               (c) => {
+                console.log(c)
                 if (c == u.uid)
                   this.customerList.push(u)
               });

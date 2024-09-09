@@ -12,6 +12,7 @@
 
     <div class="row" *ngIf="categoryList && categoryList.length > 0; else categoryListElseTemplate;">
 
+      <!-- product details -->
       <div class="col-md-6 mar-bot">
         <div>
           <mat-card>
@@ -146,6 +147,7 @@
           </mat-card>
         </div>
       </div>
+      <!-- preview of the product -->
       <div class="col-md-6 mar-bot">
         <div *ngIf="imageUrl.value">
           <div>
@@ -157,11 +159,11 @@
                 <mat-card-title>{{title.value}}</mat-card-title>
                 <mat-card-subtitle>{{selectedCategoryValue}}</mat-card-subtitle>
               </mat-card-header>
-              <img mat-card-image [src]="imageUrl.value" style="height: 250px;">
+              <div class="container">
+                <img mat-card-image [src]="imageUrl.value">
+              </div>
               <mat-card-content>
-                <div class="container">
-                  <p>{{price.value | currency:'USD':true}}</p>
-                </div>
+                <p>{{price.value | currency:'USD':true}}</p>
               </mat-card-content>
             </mat-card>
           </div>
@@ -170,23 +172,4 @@
     </div>
 
   </div>
-
-  <!-- <div class="row" *ngIf="!isProductForm">
-
-        <div>
-          <p style="color: green;"> 
-            <button mat-button (click)="createOrUpdateCategory()">Create Product</button>
-              </p>
-      </div>
-
-          <div class="col-md-6">
-            <p>Category</p>
-          </div>
-
-          <div class="col-md-6"> 
-            <p>Category</p>
-          </div> 
-
-      </div> -->
-
 </div>

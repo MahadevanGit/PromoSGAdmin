@@ -6,3 +6,9 @@ sample url is : http://localhost:4200/promocard/-MjwU0y6EoZEjcSFnX8F
 a)need to fix add button disabled when assign stamp if product without product 
 selection in drop down
 b)need to skip ID load in to slot when select the porduct from the dropdown before add button click
+
+3)need to add image upload navigation link when creating product like adding category
+
+4)when new user register need to get the user insert all the settings value before create product.
+
+5)Shop information saving logic should change.
