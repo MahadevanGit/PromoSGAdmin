@@ -7,6 +7,7 @@ export interface IProduct {
   key: string;
   price: string;
   title: string;
+  note: string;
 }
 
 export interface IProductPurchasedInfo {

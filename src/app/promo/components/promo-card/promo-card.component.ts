@@ -191,7 +191,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
     let dialogRef = this.dialog.open(DialogComponent, { data: data });
     dialogRef.afterClosed().subscribe(async result => {
       let productPurchasedInfo: IProductPurchasedInfo;
-      productPurchasedInfo = {purchased: { category: "",key:"", title: "", price: "", imageUrl: ""},
+      productPurchasedInfo = {purchased: { category: "",key:"", title: "", price: "", imageUrl: "", note: ""},
                                 purchasedDate : ""};
       let res = (result != 'cancel' && result != 'close' && result) ? JSON.parse(result) : result;
       this.promoData.modifiedBy = this.currentUserId; //From local storage

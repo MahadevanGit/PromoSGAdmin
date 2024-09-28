@@ -11,6 +11,7 @@ import { KeyValue } from '@angular/common';
 import { ImageService } from 'src/app/shared/services/image.service';
 import { NgForm } from '@angular/forms';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { IProduct, IProductChart } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'product-form',
@@ -47,45 +48,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) {
-
-    // this.userId = LocalStorageMember.get(LocalStorageMember.userId);
-    // this.categorySubscription = this.categoryService
-    //   .getItemsWithMap(this.userId).subscribe((value) => {
-    //     this.categoryList = [];
-    //     this.categoryAllList = value;
-    //     value.forEach((cat) => {
-    //       if (cat['active'] == true)
-    //         this.categoryList.push(cat);
-    //     });
-    //   });
-
-    // if (this.productKey) this.productService.getItem(this.productKey).valueChanges().take(1)
-    //   .subscribe(
-    //     (value) => {
-    //       this.product = value;
-    //       this.getImageList(this.product['category'], false);
-    //     })
-
   }
 
   ngOnInit(): void {
     this.customInit('');
   }
-
-  // customInit(mode: any) {
-  //   this.notificationMessage = "";
-  //   if (mode == 'create') {
-  //     this.productKey = null;
-  //     this.productForm && this.productForm.resetForm();
-  //   } else if (this.productKey) {
-  //     this.productService.getItem(this.productKey).valueChanges().take(1)
-  //       .subscribe(
-  //         (value) => {
-  //           this.product = value;
-  //           this.getImageList(this.product['category'], false);
-  //         })
-  //   }
-  // }
 
   customInit(mode: any) {
     console.log('customInit => ', mode)
@@ -120,14 +87,18 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   async onSubmit(productForm: NgForm) {
+
+    let mapppedProduct : IProduct = this.mapProduct(this.productKey, productForm.value);
+    console.log(mapppedProduct);
     try {
       this.loader.show();
       if (this.productKey) {
-        await this.productService.updateItem(this.productKey, productForm.value)
+        console.log(productForm.value)
+        await this.productService.updateItem(this.productKey, mapppedProduct)
         this._amDone(true); //emitter
       }
       else {
-        await this.productService.addItem(productForm.value);
+        await this.productService.addItem(mapppedProduct);
         this._amDone(true); //emitter
       }
 
@@ -224,9 +195,21 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  mapProduct(productKey: string, value: any) : IProduct {
+    let product : IProduct = {key:"",title:"",category:"",price:"",imageUrl:"",note:""}
+
+    product.key = productKey;
+    product.title = value["title"];
+    product.category = value["category"];
+    product.price = value["price"];
+    product.imageUrl = value["imageUrl"];
+    product.note = value["note"];
+
+    return product;
+  }
+
   ngOnDestroy(): void {
     this.categorySubscription.unsubscribe();
   }
-
 
 }
