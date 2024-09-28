@@ -12,6 +12,7 @@
 
     <div class="row" *ngIf="categoryList && categoryList.length > 0; else categoryListElseTemplate;">
 
+      <!-- product details -->
       <div class="col-md-6 mar-bot">
         <div>
           <mat-card>
@@ -26,7 +27,7 @@
 
                   <label for="title">Title</label>
                   <div class="form-group">
-                    <!-- First name   -->
+                    <!-- Title   -->
                     <input #title="ngModel" type="text" [(ngModel)]='product.title' name="title" id="title"
                       class="form-control mb-4" required>
 
@@ -36,6 +37,7 @@
 
                   </div>
 
+                  <!-- Price   -->
                   <label for="price">Price</label>
                   <div class="form-group">
                     <div class="input-group mb-3">
@@ -44,12 +46,7 @@
                       </div>
                       <input #price="ngModel" type="number" [(ngModel)]='product.price' name="price" id="price"
                         class="form-control mb-4" required [min]="0">
-                      <!-- <div class="input-group-append">
-                            <span class="input-group-text">.00</span>
-                          </div> -->
-
                     </div>
-
                     <small class="form-text text-danger mb-4" *ngIf="price.touched && price.invalid">
                       <p *ngIf="price.errors.required">Price is required.</p>
                       <p *ngIf="price.errors.min">Price should be 0 or higher.</p>
@@ -59,10 +56,10 @@
 
                   <!-- Category   -->
                   <p>
-                    <button mat-flat-button (click)="createOrUpdateCategory()" [disabled]="productKey" type="button" 
-                    class="app-btn-grey-green">To add more category</button>
-                    <button mat-flat-button (click)="removeCategory()" [disabled]="productKey" type="button" 
-                    class="app-btn-grey-red">To active or in-active the category</button>
+                    <button mat-flat-button (click)="createOrUpdateCategory()" [disabled]="productKey" type="button"
+                      class="app-btn-grey-green">To add more category</button>
+                    <button mat-flat-button (click)="removeCategory()" [disabled]="productKey" type="button"
+                      class="app-btn-grey-red">To active or in-active the category</button>
                   </p>
 
                   <mat-label>Category</mat-label>
@@ -102,6 +99,7 @@
                       </button>
                   </p> -->
 
+                  <!-- Image   -->
                   <mat-label>Image</mat-label>
                   <mat-select #imageUrl="ngModel" [(ngModel)]='product.imageUrl' name="imageUrl" id="imageUrl"
                     class="form-control mb-4" required>
@@ -112,6 +110,15 @@
                   <small class="form-text text-danger mb-4" *ngIf="imageUrl.touched && imageUrl.invalid">
                     <p>image is required.</p>
                   </small>
+
+                  <label for="note">Note</label>
+                  <div class="form-group">
+                    <!-- Note   -->
+                    <textarea #note="ngModel" type="text" [(ngModel)]='product.note' name="note" id="note"
+                      placeholder="note is optional" class="form-control mb-4">
+                    </textarea>
+                  </div>
+
                   <br>
 
                   <!-- Action button {{productKey ? 'Update Product' : 'Create Product' }}  -->
@@ -146,6 +153,7 @@
           </mat-card>
         </div>
       </div>
+      <!-- preview of the product -->
       <div class="col-md-6 mar-bot">
         <div *ngIf="imageUrl.value">
           <div>
@@ -157,11 +165,11 @@
                 <mat-card-title>{{title.value}}</mat-card-title>
                 <mat-card-subtitle>{{selectedCategoryValue}}</mat-card-subtitle>
               </mat-card-header>
-              <img mat-card-image [src]="imageUrl.value" style="height: 250px;">
+              <div class="container">
+                <img mat-card-image [src]="imageUrl.value">
+              </div>
               <mat-card-content>
-                <div class="container">
-                  <p>{{price.value | currency:'USD':true}}</p>
-                </div>
+                <p>{{price.value | currency:'USD':true}}</p>
               </mat-card-content>
             </mat-card>
           </div>
@@ -170,23 +178,4 @@
     </div>
 
   </div>
-
-  <!-- <div class="row" *ngIf="!isProductForm">
-
-        <div>
-          <p style="color: green;"> 
-            <button mat-button (click)="createOrUpdateCategory()">Create Product</button>
-              </p>
-      </div>
-
-          <div class="col-md-6">
-            <p>Category</p>
-          </div>
-
-          <div class="col-md-6"> 
-            <p>Category</p>
-          </div> 
-
-      </div> -->
-
 </div>

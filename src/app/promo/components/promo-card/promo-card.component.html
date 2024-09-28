@@ -69,8 +69,8 @@
       <mat-card-footer>
         <div class="container row">
           <div class="col-md-8" *ngIf="promoData.startDate">
-            <p style="font-size:x-small;"><b>Valid : </b> from  {{promoData.startDate | date}} 
-              to {{ promoData.expiryDate && promoData.expiryDate | date}}</p>
+            <p style="font-size:x-small;"><b>Valid : </b> from  {{getFormattedDate(promoData.startDate)}} 
+              to {{ promoData.expiryDate && getFormattedDate(promoData.expiryDate)}}</p>
           </div>
           <div class="col-md-4" *ngIf="promoData.status">
             <p style="font-size:x-small;"><b>Status :</b> {{promoData.status}}</p>

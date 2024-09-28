@@ -1,4 +1,4 @@
-import { formatDate } from "@angular/common";
+import { DatePipe, formatDate } from "@angular/common";
 
 export interface Result {
   success: boolean,
@@ -77,6 +77,12 @@ export class JsonHelper {
 
   static getLimitedChar(value: string,limit: number): string{
     return value && value.length > limit ? value.substring(0,limit) + '..' : value;
+  }
+
+  static getFormattedDate(value: Date, format: string){
+    const datepipe: DatePipe = new DatePipe('en-US')
+    let formattedDate = datepipe.transform(value, format);
+    return formattedDate;
   }
 }
 

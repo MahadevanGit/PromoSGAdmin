@@ -25,7 +25,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   user_subscription: Subscription;
   isAdmin: boolean = false;
   userId: string;
-  shopCustomerList: any[] = [];
+  shopCustomerList: string[] = [];
   customerList: any[] = [];
   imgSrc = 'assets/images/image-placeholder.png';
 
@@ -61,16 +61,18 @@ export class CustomerComponent implements OnInit, OnDestroy {
         ? this.customerService.itemsRef
           .valueChanges()
           .subscribe((customer) => {
-            this.shopCustomerList = customer;
+            this.shopCustomerList = customer[0];
           })
         :
         this.customerService.getItemsByShopUserID(this.userId)
           .valueChanges()
           .subscribe((customer) => {
-            this.shopCustomerList = customer;
+            console.log(customer)
+            this.shopCustomerList = customer[0];
           })
 
       this.user_subscription = this.userService.getAllUser().subscribe((users) => {
+        console.log(users)
         this.customerList = [];
         // users object from firebase is key and user object
         // we have to use Object calss to get only values [Object.values]
@@ -79,6 +81,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
           (u) => {
             this.shopCustomerList.forEach(
               (c) => {
+                console.log(c)
                 if (c == u.uid)
                   this.customerList.push(u)
               });
