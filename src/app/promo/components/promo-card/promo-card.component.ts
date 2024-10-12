@@ -3,13 +3,13 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/core/services/loading.service';
-import { ProductService } from 'src/app/product/services/product.service';
-import { ProductStatsService } from 'src/app/product/services/product.stats.service';
-import { JsonHelper, LocalStorageMember } from 'src/app/shared/models/common';
-import { IProduct, IProductPurchasedInfo, ProductStats } from 'src/app/shared/models/product';
-import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
-import { UserContentService } from 'src/app/shared/services/user-content.service';
+import { LoadingService } from '../../../core/services/loading.service';
+import { ProductService } from '../../../product/services/product.service';
+import { ProductStatsService } from '../../../product/services/product.stats.service';
+import { JsonHelper, LocalStorageMember } from '../../../shared/models/common';
+import { IProduct, IProductPurchasedInfo, ProductStats } from '../../../shared/models/product';
+import { FlashMessageService } from '../../../shared/services/flash-message.service';
+import { UserContentService } from '../../../shared/services/user-content.service';
 import { DialogComponent } from '../../../dialog/dialog.component';
 import { AuthService } from '../../../shared/services/auth.service';
 import { IPromotionCard } from '../../models/promotioncard';
@@ -40,7 +40,7 @@ export class PromoCardComponent implements OnInit, OnChanges, OnDestroy {
   productStatsObj: ProductStats;
 
   //assign promo card to user
-  customerId: string;
+  customerId: string | null;
   userContentServiceSubscription: Subscription;
   productSubscription: Subscription;
   customerAssignedPromoCardList: IPromotionCard[] = [];

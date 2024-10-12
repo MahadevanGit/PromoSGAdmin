@@ -49,7 +49,7 @@ export class UserContentService {
     return this.itemsRef;
   }
 
-  getItemsByCustomerId(_customerId: string) {
+  getItemsByCustomerId(_customerId: string | null) {
     this.pathRef = '/' + this.usersUserContent + '/' + _customerId + '/' + this.userPromocards + '/' + this.shopUserId + '/';
     this.itemsRef = this.db.list(this.pathRef, ref => {
       return ref.orderByChild(this.orderBy)

@@ -5,13 +5,13 @@ import { ProductService } from '../../services/product.service';
 import { ImageDetailsFolder, LocalStorageMember, MatMenuListItem } from '../../../shared/models/common';
 import 'rxjs/add/operator/take'
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { DialogComponent } from '../../../dialog/dialog.component';
 import { from, Subscription } from 'rxjs';
 import { KeyValue } from '@angular/common';
-import { ImageService } from 'src/app/shared/services/image.service';
+import { ImageService } from '../../../shared/services/image.service';
 import { NgForm } from '@angular/forms';
-import { LoadingService } from 'src/app/core/services/loading.service';
-import { IProduct, IProductChart } from 'src/app/shared/models/product';
+import { LoadingService } from '../../../core/services/loading.service';
+import { IProduct, IProductChart } from '../../../shared/models/product';
 
 @Component({
   selector: 'product-form',
@@ -69,7 +69,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
           });
         });
       if (mode == 'create') {
-        this.productKey = null;
+        this.productKey = "";
         this.productForm && this.productForm.resetForm();
       } else if (this.productKey) {
         this.productService.getItem(this.productKey).valueChanges().take(1)
@@ -122,7 +122,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   createOrUpdateCategory() {
-    let categoryNameList = [];
+    let categoryNameList : string[] = [];
     this.categoryList.filter(element => {
       categoryNameList.push(element.value.toLowerCase());
     });
@@ -176,7 +176,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.imageSubscription = this.imageService
         .getImageListByCategory(_categoryKey,ImageDetailsFolder.product,this.userId).take(1).subscribe((value) => {
           this.imageList = [];
-          value.forEach((img) => {
+          value?.forEach((img) => {
             Object.keys(img).length;
             this.imageList.push(img)
           });

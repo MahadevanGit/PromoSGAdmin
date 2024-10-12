@@ -17,7 +17,7 @@ export interface IProductPurchasedInfo {
 
 export interface IProductStatistics {
   productKey: string;
-  customerKey: string;
+  customerKey: string | null;
   stats: IStats;
 }
 export interface IStats {
@@ -27,7 +27,7 @@ export interface IStats {
 
 export class ProductStats implements IProductStatistics {
   public productKey: string;
-  public customerKey: string;
+  public customerKey: string | null;
   public stats: IStats;
   public purchaseMonth: string;
   public purchaseYear: string;
