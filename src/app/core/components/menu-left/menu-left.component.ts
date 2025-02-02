@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LocalStorageMember } from 'src/app/shared/models/common';
-import { ShopUser } from 'src/app/shared/models/shop';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { animateText, onSideNavChange } from '../../animations/animations';
-import { SidenavService } from '../../services/sidenav.service';
+import { LocalStorageMember } from '../../../shared/models/common';
+import { ShopUser } from '../../../shared/models/shop';
+import { AuthService } from '../../../shared/services/auth.service';
 
 interface Page {
   link: string;
@@ -18,7 +16,6 @@ interface Page {
   selector: 'promo-menu-left',
   templateUrl: './menu-left.component.html',
   styleUrls: ['./menu-left.component.scss'],
-  animations: [onSideNavChange, animateText],
   providers: [AuthService]
 })
 export class MenuLeftComponent implements OnInit, OnDestroy {
@@ -27,12 +24,11 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
   personName: string;
-  public sideNavState: boolean = false;
+  public sideNavState: boolean = true;
   public linkText: boolean = false;
   public pages: Page[] = [];
 
   constructor(
-    private _sidenavService: SidenavService,
     public auth: AuthService,
     private router: Router) {
   }
@@ -43,13 +39,18 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
       this.personName = this.appUser && this.appUser.firstname ? this.appUser.firstname.substring(0, 18) : this.appUser && this.appUser.email ? this.appUser.email.split("@")[0] : '';
       this.pages = [];
       if (this.appUser) {
-        let page: Page = { name: this.personName, link: '/usersetting', icon: 'person', selected: false };
-        this.pages.push(page);
-        page = { name: 'Dashboard', link: '/dashboard', icon: 'dashboard', selected: false }
-        this.pages.push(page);
+        this.pages = [
+          { name: this.personName, link: '/usersetting', icon: 'person', selected: false },
+          { name: 'Customers', link: '/customers', icon: 'people', selected: false },
+          { name: 'Promo cards', link: '/promocarddb', icon: 'stars', selected: false },
+          { name: 'Products', link: '/products', icon: 'playlist_add', selected: false },
+          { name: 'Statistics', link: '/statisticsdbd', icon: 'bar_chart', selected: false },
+        ];
         if (this.appUser && this.appUser.isAdmin) {
-          page = { name: 'Setting', link: '/adminsetting', icon: 'settings', selected: false }
-          this.pages.push(page);
+          this.pages = [
+            { name: 'Dashboard', link: '/dashboard', icon: 'dashboard', selected: false },
+            { name: 'Setting', link: '/adminsetting', icon: 'settings', selected: false }
+          ];
         }
       }
       else {
@@ -63,7 +64,6 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.linkText = this.sideNavState;
     }, 200)
-    this._sidenavService.sideNavState$.next(this.sideNavState)
   }
 
   onClick(page: Page) {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,13 +7,14 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { ShopCustomerService } from '../../services/customer.service';
 import { UserService } from '../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/core/services/loading.service';
-import { Convert } from 'src/app/shared/models/user';
+import { LoadingService } from '../../../core/services/loading.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [UserService, ShopCustomerService]
 })
 export class CustomerComponent implements OnInit, OnDestroy {
@@ -24,7 +25,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   customer_subscription: Subscription;
   user_subscription: Subscription;
   isAdmin: boolean = false;
-  userId: string;
+  userId: string | null;
   shopCustomerList: string[] = [];
   customerList: any[] = [];
   imgSrc = 'assets/images/image-placeholder.png';

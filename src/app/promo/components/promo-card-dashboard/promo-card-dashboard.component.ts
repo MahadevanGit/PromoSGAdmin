@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/core/services/loading.service';
-import { MatMenuListItem } from 'src/app/shared/models/common';
-import { User } from 'src/app/shared/models/user';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserContentService } from 'src/app/shared/services/user-content.service';
-import { UserService } from 'src/app/shared/services/user.service';
+import { LoadingService } from '../../../core/services/loading.service';
+import { MatMenuListItem } from '../../../shared/models/common';
+import { User } from '../../../shared/models/user';
+import { AuthService } from '../../../shared/services/auth.service';
+import { UserContentService } from '../../../shared/services/user-content.service';
+import { UserService } from '../../../shared/services/user.service';
 import { IPromotionCard } from '../../models/promotioncard';
 import { PromoCardService } from '../../services/promo-card.service';
 import { PromoCardFormComponent } from '../promo-card-form/promo-card-form.component';
@@ -19,7 +19,7 @@ import { PromoCardFormComponent } from '../promo-card-form/promo-card-form.compo
 })
 export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
-  userId: string;
+  userId: string | null;
   subscription: Subscription;
   auth_subscription: Subscription;
   promoCardList: any[];
@@ -27,11 +27,11 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   actionData: any;
 
   //assign promo card to user
-  customerId: string;
+  customerId: string | null;
   // assignPromoCard: UrlSegment;
   // stampPromoCard: UrlSegment;
-  assignPromoCard: string;
-  stampPromoCard: string;
+  assignPromoCard: string | undefined;
+  stampPromoCard: string | undefined;
   userContentServiceSubscription: Subscription;
   customerAssignedPromoCardList: IPromotionCard[] = [];
   isPromoCardAssignedToCustomer: boolean = false;
@@ -41,19 +41,19 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   //required
   selectedProductKey: string;
   selectedMenuItem: string;
-  defaultSelection: MatMenuListItem;
+  defaultSelection: MatMenuListItem | undefined;
   menuListItems: MatMenuListItem[];
-  customerAct: UrlSegment;
+  customerAct: UrlSegment | undefined;
   //menu-icon-dd fields end
 
   //menu-icon-dd ForDB fields start
   //optional
   @ViewChild(PromoCardFormComponent) promoCardFormComponent: PromoCardFormComponent;
-  selectedPromoCardKey: string;
+  selectedPromoCardKey: string | null;
   //required
   selectedProductKeyForDB: string;
-  selectedMenuItemForDB: string;
-  defaultSelectionForDB: MatMenuListItem;
+  selectedMenuItemForDB: string | null;
+  defaultSelectionForDB: MatMenuListItem | null;
   menuListItemsForDB: MatMenuListItem[];
   customerActForDB: UrlSegment;
   //menu-icon-dd fields end
@@ -80,12 +80,14 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.url);
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.customerAct = this.route.snapshot.url.find(x => x.path == 'customer-act');
 
     if (this.customerAct) {
       // Assign / Stamp Promo card view
-      this.loadMatMenuListItem();
+      var vpath = this.route.snapshot.url.find(x => x.path == 'assign' || x.path == 'stamp')?.path ?? '';
+      this.loadMatMenuListItem(vpath);
     }
     else {
       // Promo card dash board / Create view
@@ -126,13 +128,13 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   onChildCompleteForDB() {
     if (this.menuListItemsForDB) {
       this.defaultSelectionForDB = this.menuListItemsForDB ? this.menuListItemsForDB[0] : null;
-      this.onSelectForDB(this.defaultSelectionForDB.menuLinkKey);
+      this.onSelectForDB(this.defaultSelectionForDB!.menuLinkKey);
     }
     else
       this.loadMatMenuListItemForDB();
   }
 
-  onSelectForDB(menuLinkKey: string) {
+  onSelectForDB(menuLinkKey: string | null) {
     if (menuLinkKey == 'promoCard-form') {
       this.promoCardFormComponent && this.promoCardFormComponent.customInit('create');
       this.selectedMenuItemForDB = null;
@@ -146,21 +148,21 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   }
 
   // Assign / Stamp Promo card view
-  loadMatMenuListItem() {
+  loadMatMenuListItem(currentSelection: string) {
     this.menuListItems = this.menuListItems = [
       {
         menuLinkText: 'Assign promo card',
         menuLinkKey: 'assign-promo-card',
         menuIcon: 'share',
         isDisabled: false,
-        selected: true
+        selected: currentSelection == 'assign' ? true : false
       },
       {
         menuLinkText: 'Stamp promo card',
         menuLinkKey: 'stamp-promo-card',
         menuIcon: 'star',
         isDisabled: false,
-        selected: false
+        selected: currentSelection == 'stamp' ? true : false
       },
       {
         menuLinkText: 'Customer',
@@ -175,11 +177,11 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
 
   public onChildComplete(data?: any): void {
     if (this.menuListItems) {
-      this.defaultSelection = this.menuListItems ? this.menuListItems[0] : null;
-      this.onSelect(this.defaultSelection.menuLinkKey);
+      this.defaultSelection = this.menuListItems.find(x=> x.selected) ?? undefined;
+      this.onSelect(this.defaultSelection!.menuLinkKey);
     }
     else
-      this.loadMatMenuListItem();
+      this.loadMatMenuListItem('empty');
   }
 
   public onSelect(menuLinkKey: string): void {
@@ -198,7 +200,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
 
   getCurrentCustomer() {
     try {
-      this.userService.getByUserId(this.customerId).take(1).subscribe((user) => {
+      this.userService.getByUserId(this.customerId!).subscribe((user) => {
         this.currentCustomer = user;
       });
     } catch (error) {
@@ -208,6 +210,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
 
   async applyFilter(event?) {
     // this.loader.show();
+    console.log(this.stampPromoCard);
     const filterValue = event ? (event.target as HTMLInputElement).value : "";
     try {
       if (this.stampPromoCard) {
@@ -260,7 +263,7 @@ export class PromoCardDashboardComponent implements OnInit, OnDestroy {
   }
 
   //PromoCardForm
-  editPromoCard(promoCardKey: string) {
+  editPromoCard(promoCardKey: string | null) {
     this.selectedPromoCardKey = promoCardKey;
     this.selectedMenuItemForDB = this.menuListItemsForDB[1].menuLinkKey;
   }

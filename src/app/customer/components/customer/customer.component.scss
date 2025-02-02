@@ -1,5 +1,11 @@
 mat-card {
-  width: 450px;
+  background-color: rgb(243 244 244);
+  padding: 6px;
+}
+
+.mat-card-content-text{
+  color: #1e8bdd;
+  font-size: 12px;
 }
 
 .spinner {

@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LocalStorageMember } from 'src/app/shared/models/common';
-import { ShopUser } from 'src/app/shared/models/shop';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { LocalStorageMember } from '../../../shared/models/common';
+import { ShopUser } from '../../../shared/models/shop';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'promoSg-navbar-header',

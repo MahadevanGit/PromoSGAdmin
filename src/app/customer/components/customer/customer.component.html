@@ -1,6 +1,14 @@
 <div>
 
+    
+
     <div id="table">
+
+        <mat-card appearance="none">
+            <mat-card-content class="mat-card-content-text">
+                Customer need to register and conncet to 'company name goes here' from PromoSG mobile app in order to display in this page. 
+            </mat-card-content>
+        </mat-card>
 
         <mat-form-field appearance="standard">
             <mat-label>Search</mat-label>
@@ -57,10 +65,10 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.uid]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/assign/',row.uid]">
                                 Assign Promotion card
                             </button>
-                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/',row.uid]">
+                            <button type="button" mat-menu-item [routerLink]="['/promocarddb/customer-act/stamp/',row.uid]">
                                 Make Stamp
                             </button>
                         </mat-menu>

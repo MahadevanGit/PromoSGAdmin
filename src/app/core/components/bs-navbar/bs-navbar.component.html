@@ -1,36 +1,18 @@
 <div class="nav-container" [class.nav-is-mobile]="mobileQuery.matches">
   <promoSg-navbar-header [sidenav]="snav"></promoSg-navbar-header>
   <mat-sidenav-container class="nav-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'" [fixedInViewport]="mobileQuery.matches"
+    <!-- options : 'side' : 'over' -->
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <promo-menu-left *ngIf="appUser"></promo-menu-left>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <div class="main_content">
-        <div style="padding-left: 30px;padding-right: 30px;padding-top: 10px;">
+        <div style="padding-left: 20px;padding-right: 20px;padding-top: 10px;">
           <router-outlet></router-outlet>
         </div>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
-<!-- 
-<div>
-  <promoSg-navbar-header [sidenav]="snav"></promoSg-navbar-header>
-
-  <mat-sidenav-container class="sidenav-container" >
-    <mat-sidenav #snav mode="side" opened>
-      <promo-menu-left *ngIf="appUser"></promo-menu-left>
-    </mat-sidenav>
-
-    <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
-      <div class="main_content">
-        <div style="padding-left: 90px;padding-right: 90px;padding-top: 30px;">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container> 
-</div> -->

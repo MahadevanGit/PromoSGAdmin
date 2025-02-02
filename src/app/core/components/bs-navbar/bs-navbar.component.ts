@@ -6,16 +6,11 @@ import 'rxjs/add/operator/map';
 import { LocalStorageMember } from '../../../shared/models/common';
 import { ShopUser } from '../../../shared/models/shop'
 import { AuthService } from '../../../shared/services/auth.service';
-import { onMainContentChange } from '../../animations/animations';
-import { SidenavService } from '../../services/sidenav.service';
-
-
 
 @Component({
   selector: 'promoSg-bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.scss'],
-  animations: [onMainContentChange],
   providers: [AuthService]
 })
 export class BsNavbarComponent implements OnInit, OnDestroy {
@@ -32,7 +27,6 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
     public auth: AuthService,
     private router: Router,
     changeDetectorRef: ChangeDetectorRef,
-    private _sidenavService: SidenavService,
     media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();

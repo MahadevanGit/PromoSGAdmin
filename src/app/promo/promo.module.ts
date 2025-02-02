@@ -25,7 +25,8 @@ import { PromoCardService } from './services/promo-card.service';
     RouterModule.forChild([
       {path:"promocarddb/:userId",component:PromoCardDashboardComponent,canActivate: [AuthGuard,AdminAuthGuard]},
       {path:"promocarddb",component:PromoCardDashboardComponent,canActivate: [AuthGuard,ClientAuthGuard]},
-      {path:"promocarddb/customer-act/:customerId",component:PromoCardDashboardComponent,canActivate: [AuthGuard,ClientAuthGuard]},
+      {path:"promocarddb/customer-act/assign/:customerId",component:PromoCardDashboardComponent,canActivate: [AuthGuard,ClientAuthGuard]},
+      {path:"promocarddb/customer-act/stamp/:customerId",component:PromoCardDashboardComponent,canActivate: [AuthGuard,ClientAuthGuard]},
     ]),
   ],
   providers: [

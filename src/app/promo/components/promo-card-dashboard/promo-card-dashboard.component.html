@@ -9,30 +9,73 @@
   <div class="row mar-bot">
     <!-- Create promo card btn -->
 
+    <mat-tab-group animationDuration="0ms" dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mat-tab-icon">stars</mat-icon>
+          Promocards
+        </ng-template>
+        <div class="mat-tab-content">
+          <mat-form-field appearance="standard">
+            <mat-label>Search</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="search" (keyup)="applyFilter($event)" placeholder="Ex. promo title" #input>
+          </mat-form-field>
+          <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
+              <promo-card [promoData]="promoCard" *ngIf="promoCard" [canEdit]="false"
+                [action]="actionData"></promo-card>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mat-tab-icon">add_box</mat-icon>
+          Add Promocard
+        </ng-template>
+        <div class="mat-tab-content">
+          <promo-card-form #promoCardFormComponent [promoCardKey]="selectedPromoCardKey"
+            (amDone)="isPromoCardFormDone($event)">
+          </promo-card-form>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <!-- <div class="div-app-button">
+      <button class="app-btn-green" mat-flat-button type="button" (click)="onSelectForDB('promoCard') ">
+       <mat-icon>stars</mat-icon> Promocards
+      </button>
+   </div>
+      <div class="div-app-button">
+        <button class="app-btn-green" mat-flat-button type="button" (click)="onSelectForDB('promoCard-form')">
+         <mat-icon>add_box</mat-icon> Create
+        </button>
+     </div>
     <div *ngIf="!isAdmin && !(customerAct && customerAct.path == 'customer-act')">
       <menu-icon-dd [menuListItems]='menuListItemsForDB'
         [defaultSelection]='defaultSelectionForDB && defaultSelectionForDB' (onSelect)="onSelectForDB($event)">
       </menu-icon-dd>
-    </div>
+    </div> -->
 
-    <div *ngIf="selectedMenuItemForDB == 'promoCard-form'">
+    <!-- <div *ngIf="selectedMenuItemForDB == 'promoCard-form'">
       <promo-card-form #promoCardFormComponent [promoCardKey]="selectedPromoCardKey"
         (amDone)="isPromoCardFormDone($event)">
       </promo-card-form>
-    </div>
+    </div> -->
 
     <!-- Search -->
-    <div *ngIf="selectedMenuItemForDB == 'promoCard'">
+    <!-- <div *ngIf="selectedMenuItemForDB == 'promoCard'">
       <mat-form-field appearance="standard">
         <mat-label>Search</mat-label>
         <mat-icon matPrefix>search</mat-icon>
         <input matInput type="search" (keyup)="applyFilter($event)" placeholder="Ex. promo title" #input>
       </mat-form-field>
     </div>
-  </div>
+  </div> -->
 
-  <!-- List view -->
-  <!-- <div class="row" *ngIf="group.value == 'list'">
+    <!-- List view -->
+    <!-- <div class="row" *ngIf="group.value == 'list'">
     <div class="col-md-4 mar-bot">
       <mat-selection-list #promoCardSelected [multiple]="false">
         <mat-list-option (click)="getpromoCard(promoCardSelected.selectedOptions.selected[0]?.value.key)"
@@ -57,16 +100,16 @@
   </div> -->
 
 
-  <!-- Grid view -->
-  <!-- <div *ngIf="group.value == 'grid'"> -->
-  <!-- <div *ngIf="!isAdmin && (customerAct && customerAct.path == 'customer-act')"> -->
-  <!-- *ngIf="selectedMenuItemForDB == 'promoCard'" -->
-  <div *ngIf="selectedMenuItemForDB != 'promoCard-form'">
+    <!-- Grid view -->
+    <!-- <div *ngIf="group.value == 'grid'"> -->
+    <!-- <div *ngIf="!isAdmin && (customerAct && customerAct.path == 'customer-act')"> -->
+    <!-- *ngIf="selectedMenuItemForDB == 'promoCard'" -->
+    <!-- <div *ngIf="selectedMenuItemForDB != 'promoCard-form'">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let promoCard of promoCardList">
         <promo-card [promoData]="promoCard" *ngIf="promoCard" [canEdit]="false" [action]="actionData"></promo-card>
       </div>
     </div>
-  </div>
+  </div> -->
 
-</div>
+  </div>

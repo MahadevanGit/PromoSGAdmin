@@ -15,7 +15,6 @@ import { MenuLeftComponent } from './components/menu-left/menu-left.component';
 import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoadingService } from './services/loading.service';
-import { SidenavService } from './services/sidenav.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { SidenavService } from './services/sidenav.service';
     NavbarHeaderComponent,
   ],
   providers:[
-    SidenavService,
     LoadingService,
   ]
 })
