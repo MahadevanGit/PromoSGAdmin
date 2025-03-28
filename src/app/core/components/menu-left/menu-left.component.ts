@@ -24,7 +24,6 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
   appUser: ShopUser;
   localStorageMember = new LocalStorageMember();
   personName: string;
-  public sideNavState: boolean = true;
   public linkText: boolean = false;
   public pages: Page[] = [];
 
@@ -57,13 +56,6 @@ export class MenuLeftComponent implements OnInit, OnDestroy {
         this.pages = [];
       }
     });
-  }
-
-  onSinenavToggle() {
-    this.sideNavState = !this.sideNavState
-    setTimeout(() => {
-      this.linkText = this.sideNavState;
-    }, 200)
   }
 
   onClick(page: Page) {

@@ -28,20 +28,10 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 100px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.appUserSubscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
-
-    // this.sideNavSubscription = this._sidenavService.sideNavState$.subscribe( res => {
-    //   console.log(res)
-
-    //   this.onSideNavChange = res;
-    //})
-
-    // this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    // this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnInit(): void {

@@ -33,6 +33,7 @@ export class NavbarHeaderComponent {
   }
 
   logout() {
+    this.sidenav.toggle();
     LocalStorageMember.clear();
     localStorage.clear();
     this.auth.logout();
